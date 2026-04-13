@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python -c \"import google.generativeai as genai; print\\('OK:', genai.__version__\\)\")",
+      "Bash(python -c \"import google.generativeai as genai; print\\('OK'\\)\")",
+      "Bash(C:/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe -c \"import google.generativeai as genai; print\\('OK', genai.__version__\\)\")",
+      "Bash(attrib \"c:/Users/naohi/テスト/.env\")",
+      "Bash(C:/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe scripts/main.py)",
+      "Bash(C:/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe -m pip install -r \"c:/Users/naohi/テスト/requirements.txt\")",
+      "Bash(C:/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe -c ':*)",
+      "Bash(C:/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe scripts/main.py --dry-run)",
+      "Bash(python scripts/main.py --dry-run)",
+      "Bash(exit 0)",
+      "Bash(python main.py --dry-run)",
+      "Bash(python -W ignore main.py --dry-run)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(python -c ':*)",
+      "Bash(python -c \"print\\('hello'\\)\")",
+      "Bash(\"/c/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe\" --version)",
+      "Bash(/c/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe main.py --dry-run)",
+      "Bash(/c/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe main.py)",
+      "Bash(/c/Users/naohi/AppData/Local/Programs/Python/Python313/python.exe -c ':*)"
+    ]
+  }
+}

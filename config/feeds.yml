@@ -1,0 +1,68 @@
+categories:
+
+  # ── AI ────────────────────────────────────────────────────────────────────
+  - name: AI社会実装・ビジネス
+    feeds:
+      - url: https://techcrunch.com/category/artificial-intelligence/feed/
+        lang: en
+      - url: https://venturebeat.com/category/ai/feed/
+        lang: en
+      - url: https://www.technologyreview.com/feed/
+        lang: en
+
+  - name: AIメーカー・プレスリリース
+    feeds:
+      - url: https://openai.com/blog/rss.xml
+        lang: en
+      - url: https://deepmind.google/blog/rss.xml
+        lang: en
+      - url: https://huggingface.co/blog/feed.xml
+        lang: en
+
+  - name: AI学術研究・最新論文
+    feeds:
+      - url: http://arxiv.org/rss/cs.AI
+        lang: en
+      - url: http://arxiv.org/rss/cs.LG
+        lang: en
+      - url: http://arxiv.org/rss/stat.ML
+        lang: en
+
+  # ── 脳科学 ──────────────────────────────────────────────────────────────
+  - name: 脳科学・社会実装
+    feeds:
+      - url: https://greatergood.berkeley.edu/feeds/article_rss_feed
+        lang: en
+      - url: https://www.psychologicalscience.org/news/feeds/research.rss
+        lang: en
+
+  - name: 脳科学・プレスリリース
+    feeds:
+      - url: https://www.sciencedaily.com/rss/mind_brain.xml
+        lang: en
+      - url: https://neurosciencenews.com/feed/
+        lang: en
+
+  - name: 脳科学研究・身体性
+    feeds:
+      - url: https://www.frontiersin.org/journals/human-neuroscience/rss
+        lang: en
+      - url: https://journals.plos.org/plosone/feed/atom
+        lang: en
+
+  - name: 脳科学研究・心理組織
+    feeds:
+      - url: https://www.frontiersin.org/journals/psychology/rss
+        lang: en
+      - url: https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=science
+        lang: en
+
+  # ── 脳科学×AI ─────────────────────────────────────────────────────────
+  - name: 脳科学×AI
+    feeds:
+      - url: https://www.nature.com/natmachintell/rss/current
+        lang: en
+      - url: http://arxiv.org/rss/q-bio.NC
+        lang: en
+      - url: https://www.nature.com/neuro/rss/current
+        lang: en

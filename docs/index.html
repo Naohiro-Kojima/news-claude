@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My News Digest</title>
+  <style>
+    :root {
+      --bg: #fcfce8;
+      --surface: #ffffff;
+      --insight-bg: #fde8ec;
+      --accent: #CC1340;
+      --text: #333333;
+      --muted: #888888;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: var(--accent);
+      padding: 12px 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 19px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .updated { font-size: 12px; color: rgba(255,255,255,0.72); }
+
+    /* ── ナビゲーション ── */
+    .nav-row    { padding-bottom: 10px; }
+    .sub-nav-row  { padding: 5px 0 9px; }
+    .sub3-nav-row { padding: 4px 0 8px; }
+
+    .seg-group {
+      display: inline-flex;
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .seg-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.18s, color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .seg-btn.active {
+      background: #ffffff;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* 第2階層 */
+    .sub-nav-row .seg-btn { font-size: 13px; padding: 5px 15px; }
+    /* 第3階層 */
+    .sub3-nav-row .seg-group { background: rgba(255,255,255,0.12); }
+    .sub3-nav-row .seg-btn {
+      font-size: 12px;
+      padding: 4px 14px;
+      color: rgba(255,255,255,0.62);
+    }
+    .sub3-nav-row .seg-btn.active {
+      background: rgba(255,255,255,0.88);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .hidden { display: none !important; }
+
+    /* ── レイアウト ── */
+    main { padding: 16px 16px 48px; max-width: 720px; margin: 0 auto; }
+
+    /* ── Hot Topics ── */
+    .hot-section { margin-bottom: 10px; }
+    .hot-heading {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.09);
+      margin: 4px 0 20px;
+    }
+
+    /* ── カード（共通） ── */
+    .card {
+      position: relative;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      padding: 16px;
+      margin-bottom: 14px;
+      opacity: 0.72;
+      transform: scale(0.985);
+      transform-origin: center top;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .card.in-view { opacity: 1; transform: scale(1); }
+    @media (hover: hover) {
+      .card:hover, .card.in-view:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.11);
+        opacity: 1;
+      }
+    }
+    /* Hot カード */
+    .card-hot {
+      background: #fff7f0;
+      border: 2px solid var(--accent);
+      border-top: 4px solid var(--accent);
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(204,19,64,0.15);
+    }
+    .card-hot .card-title { font-size: 17.5px; }
+    /* 未読バッジ */
+    .badge-new {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.06em; line-height: 1;
+      padding: 3px 8px;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    /* カード内要素 */
+    .card-title { font-size: 16.5px; font-weight: 600; margin-bottom: 8px; line-height: 1.45; }
+    .card-title a { color: var(--text); text-decoration: none; }
+    .card-title a:hover { color: var(--accent); }
+    .section-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; color: var(--accent);
+      text-transform: uppercase; margin: 11px 0 4px;
+    }
+    .card-summary { font-size: 15px; color: #555555; }
+    .card-insight {
+      font-size: 15px; color: #4a0016;
+      background: var(--insight-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 9px 12px;
+    }
+    .card-footer {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-top: 12px;
+    }
+    .card-date { font-size: 12px; color: var(--muted); }
+    .read-link { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 600; }
+    .empty { text-align: center; color: var(--muted); padding: 60px 0; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1>My News Digest</h1>
+      <span class="updated">2026-04-14 01:26 JST</span>
+    </div>
+    <!-- 親タブ (3並列) -->
+    <div class="nav-row">
+      <div class="seg-group">
+        <button class="seg-btn active" data-parent="ai" onclick="showParent('ai')">🤖 AI</button>
+        <button class="seg-btn" data-parent="neuro" onclick="showParent('neuro')">🧠 脳科学</button>
+        <button class="seg-btn" data-parent="neuro_ai" onclick="showParent('neuro_ai')">⚡ 脳科学×AI</button>
+      </div>
+    </div>
+    <!-- AI 子タブ (第2階層) -->
+    <div class="sub-nav-row" id="sub-nav-ai">
+      <div class="seg-group">
+        <button class="seg-btn active" data-sub="social" onclick="showSub('ai','social')">💼 社会実装</button>
+        <button class="seg-btn" data-sub="press" onclick="showSub('ai','press')">📢 プレスリリース</button>
+        <button class="seg-btn" data-sub="academic" onclick="showSub('ai','academic')">🎓 学術・研究</button>
+      </div>
+    </div>
+    <!-- 脳科学 子タブ (第2階層) -->
+    <div class="sub-nav-row hidden" id="sub-nav-neuro">
+      <div class="seg-group">
+        <button class="seg-btn active" data-sub="social" onclick="showSub('neuro','social')">💼 社会実装</button>
+        <button class="seg-btn" data-sub="press" onclick="showSub('neuro','press')">📢 プレスリリース</button>
+        <button class="seg-btn" data-sub="research" onclick="showSub('neuro','research')">🔬 研究・論文</button>
+      </div>
+    </div>
+    <!-- 脳科学 > 研究・論文 の第3階層 -->
+    <div class="sub3-nav-row hidden" id="sub3-nav-research">
+      <div class="seg-group">
+        <button class="seg-btn active" data-sub3="embodiment" onclick="showSub3('embodiment')">🏃 身体性</button>
+        <button class="seg-btn" data-sub3="psychology" onclick="showSub3('psychology')">🧑‍🤝‍🧑 心理・組織</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hot Topics (AI のみ) -->
+    
+    <section class="hot-section" id="hot-section">
+      <div class="hot-heading">🔥 今、絶対に見るべきHot Topics</div>
+      
+      <article class="card card-hot" data-url="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" target="_blank" rel="noopener">🔥 Vercel CEOがAIエージェントの収益急増を背景にIPO準備を表明</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">VercelのCEO Guillermo Rauchが、AIエージェント技術による収益急増を受けてIPO準備の進捗を発表した。AIエージェントが企業の業務自動化・意思決定支援の実装段階へ移行し、実際のビジネス価値創造を牽引していることを示唆している。この動きは、AI技術がスタートアップから大型上場企業へと発展する新たなパラダイムシフトの始まりを象徴している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">AIエージェント技術の収益化成功は、単なる技術的優位性ではなく、企業の定型業務の完全自動化・複雑な意思決定の外部委譲が現実化したことを意味する。組織の中核業務フロー（営業パイプライン管理、カスタマーサクセス自動化、データドリブン意思決定）をエージェント化する実装案件が急増しており、2027年入職時には『エージェント統合マネジャー』が求人の定番職種になる可能性が高い。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-14 00:22</span>
+    <a class="read-link" href="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      
+      <article class="card card-hot" data-url="https://openai.com/index/cloudflare-openai-agent-cloud">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://openai.com/index/cloudflare-openai-agent-cloud" target="_blank" rel="noopener">🔥 Cloudflare Agent Cloudでエンタープライズ向けエージェントワークフローが実現——OpenAIとの統合で生産性革新へ</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">CloudflareがOpenAIのGPT-5.4とCodexをAgent Cloudに統合し、エンタープライズ向けのAIエージェント構築・展開・スケーリングを実現した。セキュリティと速度を両立しながら、現実の業務タスク自動化を可能にするプラットフォームが登場した。これはAIエージェントが単なる実験段階から企業の実践的な意思決定支援・業務自動化ツールへ移行する転機を示している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">エージェント型AIの企業導入が加速局面に入ったことを示す。既存のワークフロー自動化ツール（RPA、ワークフロー管理）との統合が進むことで、2025～2027年には『エージェント思考型の組織構造』が常識化する可能性がある。自社の業務プロセスをどのタスクから『エージェント化』するか、優先順位を今から整理しておくことが競争優位になるだろう。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 15:00</span>
+    <a class="read-link" href="https://openai.com/index/cloudflare-openai-agent-cloud" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      
+      <article class="card card-hot" data-url="https://arxiv.org/abs/2604.08601">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08601" target="_blank" rel="noopener">🔥 OpenKedge：実行境界安全性とエビデンスチェーンによる自律エージェント変異の統治</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">自律AIエージェントがAPI直接実行による状態変異を安全保証なく行う問題に対し、OpenKedgeプロトコルはAPI呼び出しを単なる即座の実行ではなく、文脈・調整・安全性を備えた統治されたプロセスとして再定義する。エージェントの意思決定に監査証跡と安全性保証を組み込むことで、エンタープライズ環境における生産システムの信頼性を根本的に向上させる。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">業務システムにAIエージェントを導入する際、単なる高速化ではなく「なぜそう決めたか」を後から監査できる仕組みが必須となる時代に突入する。OpenKedgeのような執行権限の分離・証跡記録は、金融・医療・製造などの規制業界でのエージェント利用の前提条件となり、2027年にはこの考え方が産業スタンダードになると考えられる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08601" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      
+    </section>
+    <hr class="section-divider" id="hot-divider">
+    
+
+    <!-- 🤖 AI パネル -->
+    <div id="panel-ai">
+      <div class="sub-panel" id="sub-panel-ai-social">
+        <article class="card " data-url="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" target="_blank" rel="noopener">AI現況を理解したいなら、これらのチャートを見よ：2026年AIインデックス</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">スタンフォード大学の2026 AI Indexが公開され、AIに関する相反する言説（ゴールドラッシュ vs バブル、雇用削減 vs 能力限界）を客観的データで整理している。年次報告書として業界トレンドの信頼できるベンチマークとなり、企業・研究機関の戦略決定に重要な基準を提供する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">AIの過度な期待と過度な懐疑が混在する現状で、統計的ファクトチェックは組織のAI導入意思決定に必須になっている。データに基づいた投資判断・人事戦略策定を支援する『AI現況分析レポート』の活用が、大型案件の基盤となりつつある。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 22:00</span>
+    <a class="read-link" href="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" target="_blank" rel="noopener">最大規模の軌道上コンピュートクラスターがサービス開始</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">Kepler Communicationsが地球軌道上に40個のGPUを配置し、衛星ベースの分散計算インフラとしてサービス提供を開始した。Sophia Spaceがこの軌道上コンピュートの初期顧客となり、低遅延・高スケーラビリティの地球規模AI処理基盤が現実化。衛星ネットワークとAI演算の融合は、クラウド集約型から分散型へのパラダイムシフトを示唆している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">軌道上GPUクラスタは、リアルタイム地球観測・気象予測・防災AI、IoTエッジ処理の最適化に即座に応用可能である。2027年の企業インフラは『地上のクラウド+軌道上エッジAI』のハイブリッド構成が当たり前になり、レイテンシー依存型ビジネス（自動運転、金融取引、ロボット遠隔操作）の競争力格差が劇的に開く。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 16:01</span>
+    <a class="read-link" href="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08621">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08621" target="_blank" rel="noopener">マーケティングにおける自律的パーソナライゼーションの持続的インパクト：縦断的事例研究</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">従来のCRM手法は静的で手動調整が必要だが、自律学習システムによるパーソナライゼーションが実際のビジネス環境でどの程度の人間介入を必要とするかを実装事例から検証する。エージェント駆動のマーケティング施策の実効性と運用コストを定量評価することで、導入判断に必要なエビデンスを提供する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">顧客対応業務のエージェント化が実務レベルで何を実現でき、何に人手が必要かが具体的に見える化される。マーケティング部門の意思決定を自動化する際に『何割の判断をエージェントに委譲でき、何割に目視チェックが要るか』というプラクティカルな知見は、2027年の投資判断を大きく左右する基準データになる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08621" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-ai-press">
+        <article class="card " data-url="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" target="_blank" rel="noopener">トランプ政権関係者がAnthropicのMythosモデルの銀行テストを推奨している可能性</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">Anthropicの新型言語モデル「Mythos」が、米国の銀行機関のテスト対象として政権関係者から推奨されていることが報じられた。同時に国防総省がAnthropicをサプライチェーンリスクと認定した矛盾した状況にある。政府機関と民間企業の信頼関係の揺らぎと、AI規制の不確実性を象徴する動き。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">エンタープライズAIの採用判断が、技術的メリットより地政学的・政治的リスク評価に左右される時代の到来を示唆している。2027年の経営陣は、AI導入の意思決定プロセスに『技術検証→政治リスク評価→契約リスク管理』の多層フィルタを組み込む必要が生じている。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 06:14</span>
+    <a class="read-link" href="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-ai-academic">
+        <article class="card " data-url="https://arxiv.org/abs/2604.08603">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08603" target="_blank" rel="noopener">ビジネスイベントから監査可能な決定へ：エンタープライズAIのためのオントロジー統治グラフシミュレーション</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">LLMベースのエージェントが無制限の知識空間から回答するため監査証跡のない問題に対し、LOM-actionはビジネスシナリオの文脈で知識空間を事前シミュレーションしてから決定を下す仕組みを提案する。決定の根拠を可視化・監査可能にすることで、流暢だが根拠不明な回答から脱却する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">エンタープライズAIの導入は、生成AIの「速度」よりも「説明責任」が勝敗を分ける時代が来る。オントロジー駆動のシミュレーション層は、意思決定の信頼性が経営上の最大課題である組織（金融機関、大手製造業、公的機関）の標準実装になる可能性があり、2027年の業務オートメーション実装に大きなインパクトをもたらすだろう。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08603" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08685">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08685" target="_blank" rel="noopener">RAMP：数値行動モデルのオンライン学習のためのハイブリッド深層強化学習</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">自動計画アルゴリズムには行動の前提条件と効果を記述した行動モデルが必要だが、それを手動で作成するのは困難である。RAMPは強化学習を用いて観測データからリアルタイムに行動モデルを学習し、数値パラメータを扱うシステムでの実現を初めて可能にする。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">ロボット・自動化システム・製造ラインなど、複雑な環境で『状態→行動→結果』の因果関係を人間が仕様化せず自動学習させる技術が実用化される。これにより、適応型オートメーションの導入コストが大きく低下し、従来ルールベース自動化では対応できていた変動環境への対応が劇的に改善されるようになる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08685" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08712">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08712" target="_blank" rel="noopener">フィードバック空間における探索としてのモデル空間推論：計画領域生成</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">自然言語記述から計画領域を自動生成する問題に対し、大規模言語モデルの推論能力を活用した新しいアプローチを提案している。従来のLLMベースの手法では実運用に耐える高品質な領域定義の生成が困難であったため、フィードバック空間での探索フレームワークを導入することで、より実用的な計画領域の生成を実現する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">この研究は、LLMの推論能力を自動計画・スケジューリング問題に統合する方向性を示唆している。企業のワークフロー自動化やプロセス最適化において、自然言語仕様から実行可能な計画を自動生成するシステムへの応用が期待される。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08712" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08756">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08756" target="_blank" rel="noopener">エージェント境界を超えたメモリとしてのアーティファクト</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">強化学習の枠組みで、環境そのものがエージェントの外部メモリとして機能する数学的モデルを形式化した研究。従来のエージェント内部のメモリのみに依存する考え方から、環境への積極的な働きかけを通じた認知が重要であることを理論的に証明している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">この視点は、AIシステムの設計思想を根底から変える可能性を秘めている。外部ツール・ノートベース・知識グラフなどを『拡張メモリ』として組み込むエージェント型AIの開発において、単なる機能統合ではなく数学的正当性を与えることで、より強力で自律的なAIワーカーの実現が加速するだろう。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08756" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08863">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08863" target="_blank" rel="noopener">可視化場から隠れた記号的解析解を推論する視覚から記号への解析解推定</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">物理場の可視化画像から解析的な解を自動推定するAI技術を開発している。可視化領域図とその一階微分を入力として、線形定常場の二次元解析解を記号的に復元するという、AI支援科学推論の新しい能力を実証している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">科学者や工学者の現場では、数値計算結果から物理法則の解析形を逆算する作業が多く発生する。この技術により、複雑な物理シミュレーション結果から直感的な数式モデルを自動導出できるようになれば、仮説検証の速度が大幅に向上し、研究開発のサイクルタイムが短縮される。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08863" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08865">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08865" target="_blank" rel="noopener">長期推論タスク向け配列レベルPPO（SPPO）</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">長い思考連鎖（CoT）を要する推論タスクにおいて、標準的なトークンレベルPPOでは時間的クレジット割当の不安定性とメモリコスト増大により性能が低下する問題を解決する新手法を提案している。配列レベルでの最適化により、複雑な推論タスクでのLLMアラインメント効率が大幅に向上する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">LLMを用いた複雑な意思決定支援・論文執筆補助・コード生成などの実務タスクでは、通常10～50ステップの思考過程が必要である。このSPPOにより、そうした長期推論を伴うエージェント型AIの学習効率と信頼性が格段に向上し、企業ナレッジワーカーのアシスタントとしてのLLMの実用化が加速するであろう。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08865" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08905">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08905" target="_blank" rel="noopener">安定性拡張強化ポリシー最適化（StaRPO）</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">複雑な推論タスクにおいてLLMの精度を向上させる強化学習では、従来は最終的な正解/不正解のみをフィードバック信号としていたが、この手法は推論過程の内部論理構造を捉えることで、より流暢で意味的に一貫性のある生成を実現する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">現在のLLM+RL手法は『正解すれば良い』という粗い報酬設計に陥っているが、推論ステップ毎の論理的正当性を組み込むことで、エージェント型AIの『説明責任性』と『監査可能性』が劇的に向上する。金融、医療、法務などのホワイトボックス性が必須の業界でのLLM導入の障壁が大きく低下するパラダイムシフトである。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08905" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <!-- 🧠 脳科学 パネル -->
+    <div id="panel-neuro" class="hidden">
+      <div class="sub-panel" id="sub-panel-neuro-social">
+        <article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" target="_blank" rel="noopener">職場生活の質の階層的多次元スケールの開発と初期検証</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">職場生活の質（QWL）を階層的な多次元構成概念として体系化し、ステークホルダーグラウンデッドなアプローチで包括的測定を可能にする新しい測定ツールを開発した。これまで概念の断片化と満足度代理指標への依存が理論統合と堅牢な測定を制限していたが、本研究は成人の生活の質向上に向けた組織人事評価の基盤となりうる。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">職場の質的評価が定量化でき、組織内の心理社会的ウェルビーイングを戦略的に把握・改善できるツールとなる。人事評価、組織開発、働き方改革の科学的根拠として活用でき、従業員エンゲージメント施策の効果測定に直結する。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" target="_blank" rel="noopener">少年司法介入における実行機能の重要性：臨床実践からの知見</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">執行機能（EF）は目標指向的行動と行動制御を支える認知処理として、少年の非行リスク低減と社会復帰に深く関連している。執行機能は成人早期まで発達し続けるため、少年司法機関における個別化介入の重要なターゲットとなりうる。臨床実践からの知見が、リスク・ニーズ対応型の介入設計に科学的根拠を提供する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">認知機能アセスメントを矯正教育や社会復帰プログラムに組み込むことで、個別化された支援と再犯防止効果の向上が期待できる。心理評価と認知訓練を組み合わせた組織的介入モデルは、社会福祉・教育機関の実践革新につながりうる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-neuro-press">
+        <div class="empty">本日の注目記事はありません</div>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-neuro-research">
+        <div class="sub3-panel" id="sub3-panel-embodiment">
+          <article class="card " data-url="https://neurosciencenews.com/sci-motor-unit-coordination-30509/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" target="_blank" rel="noopener">脊髄損傷が脳の「音量調整機能」を破壊する</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">脊髄損傷後に平衡感覚が失われるのはなぜか。新研究は脊髄損傷が運動制御を再構成し、揺らいだ動きと硬直した神経信号につながるメカニズムを明らかにした。身体フィードバックと脳制御の相互作用の破綻を示す発見。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">脊髄損傷後のリハビリテーション設計や神経可塑性を活用した回復プログラム開発に直結する知見。運動学習の本質——身体と脳の統合制御——を理解することで、より効果的なトレーニング手法や神経インターフェース応用が期待される。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-14 00:03</span>
+    <a class="read-link" href="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://neurosciencenews.com/predictive-brain-categorization-action-30508/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" target="_blank" rel="noopener">予測脳：カテゴリ化は思考ではなく行動である</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">脳は感覚プロトタイプではなく、行動計画に基づいて世界をカテゴリ化する——これがランドマーク論文の主張。この予測的アプローチにより、脳は身体のニーズを効率的に満たす。認知と行動の従来の分離を根本から問い直す知見。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">AIの「認識と実行の統合」設計にパラダイムシフトをもたらす可能性がある。従来のシステムは知覚→意思決定→実行の線形フローだが、この理論は脳が同時に行動目標と知覚を統合していることを示唆。ロボットやエージェント、人間作業支援システムの設計哲学を、『センサー駆動』から『目標駆動・身体統合』へ転換するきっかけになりうる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 23:27</span>
+    <a class="read-link" href="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" target="_blank" rel="noopener">AI生成キャラクターが視覚的注意と前頭葉認知応答に及ぼす影響：年齢と画像タイプ別条件下でのfNIRSとアイトラッキング研究</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">本研究はAI生成キャラクターとユーザーの感情的ラポール構築の重要性に着目し、fNIRSとアイトラッキングを用いて、年齢条件別における視覚的注意と前頭葉認知応答の違いを調査した。デジタルコンテンツの急速な拡大に伴い、AI生成キャラクターの認知的・神経的影響を定量測定することで、ユーザー体験設計の科学的基盤を提供する。この知見は、教育・エンターテインメント・HCI領域でのAI活用戦略を根本的に再考させる可能性を持つ。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">AI生成キャラクターが異なる年代層で神経的に異なる応答を引き起こすことが明らかになれば、年代別パーソナライズ戦略やアバター設計の最適化が可能になります。特にデジタルネイティブと従来世代の神経応答差を理解することで、組織内研修やカスタマーサクセスツール開発における戦略的な人材育成インターフェース設計へと展開できます。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" target="_blank" rel="noopener">シナプス間通信の歴史的レビュー：1930年代の初期基礎から現代ルネサンスへ――計算モデリングと意識理論の新展開</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">本レビューは9十年に及ぶシナプス間電場通信（ephaptic field）研究の進化を追跡し、1930年代の先駆的観測から20世紀中盤の懐疑的時代を経て、最新の計算モデリング・計測技術・意識理論に駆動される現代的ルネサンスへの発展を記録している。従来の「シナプス間伝達が唯一の神経通信機構」という支配的パラダイムを揺るがす可能性を秘めている。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">シナプス間伝達以外の神経通信メカニズムが脳の情報処理に重要な役割を果たしていることが確立されれば、神経インターフェース設計やBCI・BMI技術の基本原理から再考が迫られます。また意識や認知の生物物理学的メカニズム理解が深化することで、AI・機械学習の『ブラックボックス問題』解決へのヒントが生まれる可能性があります。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" target="_blank" rel="noopener">第二言語習得における発音トレーニング：電磁気アーティキュログラフィを活用した調音目標ベース訓練法の効果</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">調音運動の直接訓練が第二言語学習の効果的で効率的なツールとなることを実証する研究。電磁気アーティキュログラフィを用いた調音目標ベース訓練法により、参加者の舌位置推定値をリアルタイムで表示し、身体感覚フィードバックを通じた学習を可能にした。身体所有感と言語獲得プロセスの神経的結合を明らかにする。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">身体的フィードバック（proprioception）を活用した学習メカニズムが企業研修・スキル習得プログラムに応用可能です。特にリモートワーク時代における言語研修や技能習得では、VRアバターを用いた遠隔フィードバック環境構築により、集中力と学習定着度を飛躍的に向上させるデザイン開発へ展開できます。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+        </div>
+        <div class="sub3-panel hidden" id="sub3-panel-psychology">
+          <article class="card " data-url="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" target="_blank" rel="noopener">トラウマ直後のエストロゲンレベルがPTSD発症を予測する</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">トラウマ発症直後の高エストロゲン状態が脳の可塑性を高め、PTSD発症リスクを増加させる。この生物学的メカニズムが、女性が男性より高いPTSD罹患率を示す理由を説明する。ホルモンと神経脆弱性の重要な相互作用。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">トラウマ対応の臨床現場で、患者の性別・ホルモン状態を考慮した治療タイミングや介入戦略の最適化が可能になる。危機対応組織やメンタルヘルスサービスは、女性労働者へのサポート体制を科学的根拠に基づいて設計・強化でき、組織のウェルビーイング・レジリエンス向上につながる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 02:39</span>
+    <a class="read-link" href="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" target="_blank" rel="noopener">自閉症児・思春期における自然な行動の実行・模倣・観察時の脳活動：fMRI研究の体系的レビュー</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">自閉症児における運動困難とその社会行動への関連性を、内的行動モデルの非定型的神経処理の観点から検討する体系的レビュー。fMRI研究から行動の実行・模倣・観察時の脳活動パターンを統合的に分析し、自閉症の神経生物学的基盤を明らかにする。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">自閉症児の行動学習メカニズムの神経的特性が明確化されることで、組織研修における神経多様性（neurodiversity）対応の科学的根拠が提供されます。また感覚処理や模倣学習の個人差を理解することで、インクルーシブなワークプレイス設計や個別適応型トレーニングプログラム開発の基礎理論として活用できます。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" target="_blank" rel="noopener">食文化は霊長類における社会的絆と社会的アイデンティティのメカニズムである</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">食文化は人間の社会生活を形作る共有された習慣・儀式・信念であり、単なる栄養摂取ではなく社会的関係や個人のアイデンティティを構築する機能がある。食べ物の選択・調理・共食という行為を通じて、集団内の結束感が醸成され、社会的ヒエラルキーや所属感が形成される。この知見は、人間の組織・チームビルディングやコミュニティ形成の場面でも応用可能な心理的メカニズムを示唆している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">食事の共有が信頼醸成と帰属意識を強める仕組みは、組織内のチームランチやカフェテリア設計、カンパニー文化構築の重要性を科学的に説明する。リモートワークが浸透する中で、同期入社者や新規配属メンバーとの関係構築において、食事をめぐるコミュニティ活動の価値が再認識される可能性がある。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" target="_blank" rel="noopener">親の養育スタイルと新入生のインターネットゲーム依存症：人生の意味と自己制御を介した調停連鎖モデル</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">中国の大学1年生728名を対象に、親の養育スタイルがインターネットゲーム依存症に与える影響を調査した。人生の意味の存在と自己制御が媒介変数として機能し、性差による調節効果が認められた。この知見は、学生の心理的適応を支援するための親子関係改善と自己制御トレーニングの重要性を示唆している。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">大学生の問題行動への親の影響は、単なる厳格さではなく「人生の意味づけ」という内的動機形成が鍵となることが示唆される。組織研究でも、メンバーの目的意識や自己規制能力の育成は、生産性低下やバーンアウト予防に直結する可能性があり、マネジメント実践への応用価値がある。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" target="_blank" rel="noopener">中学生における情動処理の潜在的タイプ、身体運動、攻撃的行動の相関関係：潜在プロファイル分析に基づく研究</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">中学生を対象に、潜在プロファイル分析を用いて情動処理のタイプと身体運動、攻撃性の関係を調査した。特定の情動処理パターンが攻撃的行動に至るプロセスにおいて、身体運動がバッファ役として機能することが明らかになった。この知見は、青年期の問題行動予防における運動介入の科学的根拠を提供する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">感情制御能力の低い層に対して、運動という実践的介入が攻撃性低減に有効であることは、企業研修やストレス管理プログラム、学校現場でのメンタルヘルス対策に直結する知見。「心のトレーニング＝認知療法」だけでなく、身体活動を組み入れた統合的アプローチの重要性を示唆している。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" target="_blank" rel="noopener">成人初期段階における心理的ニーズ充足、ユーモア様式、心理的苦痛の関連性</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">自己決定理論（SDT）に基づき、成人初期段階の心理的ニーズ（自律性、有能感、関係性）の充足度と、ユーモア様式、心理的苦痛の関連を検証した。自律性や関係性のニーズが充足されることで、適応的なユーモア使用が促進され、心理的ストレスが緩和される傾向が示唆される。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">職場や組織内での個人の心理的ウェルビーイングは、スキル習得よりも『自分で判断できる環境』『他者との信頼関係』という基本的ニーズの充足にかかっていることを示唆。リーダーシップやチームビルディング設計に『自律と関係性』の視点を組み入れることで、組織的なレジリエンス向上が期待できる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 09:00</span>
+    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.09229">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.09229" target="_blank" rel="noopener">高速道路仮説：フォン・エコノモ神経細胞は生物学的速度と精度のトレードオフを実装している</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">フォン・エコノモ神経細胞（VEN）は複雑な社会認知を持つ種（人間、類人猿、鯨類）の前部帯状皮質と前頭島に限定される大型投射ニューロンで、速度重視の社会的意思決定を支える神経機構である。その機能喪失が前頭側頭型認知症やアスペルガー症候群の社会的認知障害に関連していることが示唆される。社会的判断の速度・精度バランスを神経レベルで説明する貴重な知見。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">VENの機能が社会的判断における『速度-精度トレードオフ』を制御するという知見は、組織内のリーダーシップ育成や交渉スキル研修の神経基盤を理解する材料になる。迅速な判断が求められる経営層と慎重さが必要な現場層の神経的個人差を認識することで、職種適性評価や組織人事配置の科学的根拠が整う。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.09229" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚡ 脳科学×AI パネル -->
+    <div id="panel-neuro-ai" class="hidden">
+      <article class="card " data-url="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" target="_blank" rel="noopener">この記事を読むことに選択肢はない——かもしれない</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">神経科学者Uri Maozは、脳が腕の動きを指示する仕組みと知覚メカニズムの研究から、自由意志と決定の神経基盤へと関心をシフトさせた。学部生向け講義での経験を通じて、脳科学とAIの融合的視点で人間の意思決定の本質に迫る研究に転換。自由意志の幻想を科学的に検証する取り組みは、AI時代の人間の自律性と責任の問い直しへとつながる重要なテーマである。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">脳の動作メカニズムをAIで再現する際、自由意志が幻想である可能性を理解することは、AIエージェントの振る舞いをより正確にモデル化し、人間との協働システムの設計に直結する。2027年の組織では、人間とAIの役割分担を決める際に『本当の意思決定者は誰か』という問いが根本的に変わる可能性がある。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 19:00</span>
+    <a class="read-link" href="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2604.08594">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2604.08594" target="_blank" rel="noopener">人間の脳における生成AIの利用マッピング：機能的と社会情動的AIの使用における発散した神経・学業・心理健康プロフィール</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">大学生の生成AI会話エージェント（AICA）の広範な採用が、発達途上にある人間の脳に与える影響を、機能的・社会情動的利用パターンと脳MRI画像を組み合わせて実証的に検証した研究。AIとの相互作用が脳の神経構造や学業成績、メンタルヘルスに異なる影響を与えることを明らかにする。2030年代の若年層の認知発達と学習環境を根底から再定義する知見。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">生成AIの使用パターンが脳の神経発達に与える影響は、教育機関・組織のAI導入ガイダンスに直結する。学習支援ツールとしての生成AIの有効性を脳科学的に実証することで、職場や教育現場でのAI活用の最適設計（機能重視vs.社会的相互作用重視）が可能になる。若年層採用時の認知スタイル評価指標としても活用価値がある。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2604.08594" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2506.17310">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2506.17310" target="_blank" rel="noopener">PaceLLM：長文脈理解のための脳にインスパイアされた大言語モデル</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">LLMの長文脈処理限界を、脳の作業記憶と皮質モジュラリティから着想を得た設計により克服する手法を提案。一過的な神経活動による情報減衰と非構造的な前向きフィード供給ネットワーク重みによる意味的断片化を解決し、生物学的脳の効率的な情報保持メカニズムをAIに実装。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">脳の皮質モジュラリティを模倣した長文脈LLMは、複雑な企業文書処理・意思決定支援システムの効率性を飛躍的に向上させる。医学文献の統合分析、法律文書の要件抽出、顧客対応の文脈保持など、現在3層以上の支援者が必要な業務を自動化できるようになり、知識労働の生産性パラダイムが変わる。神経科学のAI実装は、単なる技術向上ではなく業務フロー全体の再設計を迫る。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2506.17310" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2507.10722">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2507.10722" target="_blank" rel="noopener">脳とマシンを橋渡けする：神経科学、人工汎知能、ニューロモーフィックシステムの統一フロンティア</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">神経科学、AGI、ニューロモーフィック計算の収束を示す総合的な調査論文。脳生理学を基盤に、シナプス可塑性、スパイク型通信、マルチモーダル連想がニューロモーフィック設計にいかに応用できるかを明示している。この統一的パラダイムは、脳に近い計算原理で効率的で適応的なAI構築を可能にし、AIモデルの解釈可能性向上にも寄与する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">ニューロモーフィック計算の実装により、現在のトランスフォーマー型モデルの膨大な計算量を数桁削減しながら、リアルタイム適応学習を実現できる可能性がある。これは自動運転、ロボット制御、エッジAIなど低遅延・低消費電力が必須の業務領域で業務形態そのものを革新する。脳科学とAI研究のクロスドメイン人材需要が急増し、2027年の新卒採用基準が根本的に変わるだろう。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2507.10722" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article><article class="card " data-url="https://arxiv.org/abs/2510.21588">
+  <span class="badge-new">NEW</span>
+  <div class="card-title">
+    <a href="https://arxiv.org/abs/2510.21588" target="_blank" rel="noopener">タスク無関連刺激が神経表現の漂流に与える寄与</a>
+  </div>
+  <div class="section-label">要約</div>
+  <p class="card-summary">生物学的学習者と人工学習者は、生涯を通じて継続的なデータストリームに曝露され、入力の適応・学習・選別を強いられることを実証的に示す論文。パフォーマンスが安定していても、潜在的な神経表現は時間とともに漸進的に変化する現象（neural drift）を検証している。この知見は、継続学習（continual learning）環境下での学習エージェント設計に直結する。</p>
+  <div class="section-label">インサイト</div>
+  <div class="card-insight">AIモデルの「忘れない学習」設計において、タスク無関連情報の影響を定量的に制御することで、カタストロフィック忘却を回避しながら新規タスク適応速度を大幅に向上させられる。組織内の長期運用AI（推奨エンジン、不正検知など）の精度維持メカニズムに応用できる。</div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-13 13:00</span>
+    <a class="read-link" href="https://arxiv.org/abs/2510.21588" target="_blank" rel="noopener">元記事 →</a>
+  </div>
+</article>
+    </div>
+  </main>
+
+  <script>
+    let currentParent = 'ai';
+    let currentSubAi   = 'social';
+    let currentSubNeuro = 'social';
+    let currentSub3    = 'embodiment';
+
+    function showParent(tab) {
+      currentParent = tab;
+      document.querySelectorAll('.nav-row .seg-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.parent === tab));
+
+      // 第2階層の表示切り替え
+      document.getElementById('sub-nav-ai').classList.toggle('hidden', tab !== 'ai');
+      document.getElementById('sub-nav-neuro').classList.toggle('hidden', tab !== 'neuro');
+
+      // 第3階層は 脳科学 > 研究・論文 のときだけ
+      const show3 = tab === 'neuro' && currentSubNeuro === 'research';
+      document.getElementById('sub3-nav-research').classList.toggle('hidden', !show3);
+
+      // パネルの表示切り替え
+      document.getElementById('panel-ai').classList.toggle('hidden', tab !== 'ai');
+      document.getElementById('panel-neuro').classList.toggle('hidden', tab !== 'neuro');
+      document.getElementById('panel-neuro-ai').classList.toggle('hidden', tab !== 'neuro_ai');
+
+      // Hot Topics は AI のみ
+      const hs = document.getElementById('hot-section');
+      const hd = document.getElementById('hot-divider');
+      if (hs) hs.classList.toggle('hidden', tab !== 'ai');
+      if (hd) hd.classList.toggle('hidden', tab !== 'ai');
+
+      // Observer リフレッシュ
+      let targetId;
+      if (tab === 'ai') {
+        targetId = `sub-panel-ai-${currentSubAi}`;
+      } else if (tab === 'neuro') {
+        targetId = currentSubNeuro === 'research'
+          ? `sub3-panel-${currentSub3}`
+          : `sub-panel-neuro-${currentSubNeuro}`;
+      } else {
+        targetId = 'panel-neuro-ai';
+      }
+      setTimeout(() => refreshObserver(targetId), 50);
+    }
+
+    function showSub(parent, tab) {
+      if (parent === 'ai') {
+        currentSubAi = tab;
+        document.querySelectorAll('#sub-nav-ai .seg-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.sub === tab));
+        ['social', 'press', 'academic'].forEach(k =>
+          document.getElementById(`sub-panel-ai-${k}`).classList.toggle('hidden', k !== tab));
+        setTimeout(() => refreshObserver(`sub-panel-ai-${tab}`), 50);
+
+      } else if (parent === 'neuro') {
+        currentSubNeuro = tab;
+        document.querySelectorAll('#sub-nav-neuro .seg-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.sub === tab));
+        ['social', 'press', 'research'].forEach(k =>
+          document.getElementById(`sub-panel-neuro-${k}`).classList.toggle('hidden', k !== tab));
+
+        // 第3階層の表示/非表示
+        document.getElementById('sub3-nav-research').classList.toggle('hidden', tab !== 'research');
+
+        const targetId = tab === 'research'
+          ? `sub3-panel-${currentSub3}`
+          : `sub-panel-neuro-${tab}`;
+        setTimeout(() => refreshObserver(targetId), 50);
+      }
+    }
+
+    function showSub3(tab) {
+      currentSub3 = tab;
+      document.querySelectorAll('#sub3-nav-research .seg-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.sub3 === tab));
+      ['embodiment', 'psychology'].forEach(k =>
+        document.getElementById(`sub3-panel-${k}`).classList.toggle('hidden', k !== tab));
+      setTimeout(() => refreshObserver(`sub3-panel-${tab}`), 50);
+    }
+
+    function refreshObserver(panelId) {
+      document.querySelectorAll(`#${panelId} .card`).forEach(c => {
+        observer.unobserve(c);
+        observer.observe(c);
+      });
+    }
+
+    /* ── Intersection Observer：スクロール中央フォーカス ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry =>
+        entry.target.classList.toggle('in-view', entry.intersectionRatio >= 0.45)
+      );
+    }, {
+      threshold: [0, 0.45, 1.0],
+      rootMargin: '-12% 0px -12% 0px'
+    });
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+
+    /* ── 未読バッジ管理（localStorage） ── */
+    const STORAGE_KEY = 'newsdigest_read_v1';
+    function getReadSet() {
+      try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); }
+      catch { return new Set(); }
+    }
+    function markRead(url) {
+      const s = getReadSet(); s.add(url);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...s]));
+    }
+    function hideBadge(card) {
+      const b = card.querySelector('.badge-new');
+      if (b) b.style.display = 'none';
+    }
+    const readSet = getReadSet();
+    document.querySelectorAll('.card').forEach(card => {
+      if (readSet.has(card.dataset.url)) hideBadge(card);
+    });
+    document.querySelectorAll('.card a').forEach(link => {
+      link.addEventListener('click', () => {
+        const card = link.closest('.card');
+        if (card) { markRead(card.dataset.url); hideBadge(card); }
+      });
+    });
+  </script>
+</body>
+</html>

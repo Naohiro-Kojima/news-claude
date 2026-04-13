@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot Picks – My News Digest</title>
+  <style>
+    :root {
+      --bg: #fcfce8;
+      --surface: #ffffff;
+      --insight-bg: #fde8ec;
+      --accent: #CC1340;
+      --text: #333333;
+      --muted: #888888;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: var(--accent);
+      padding: 14px 20px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 { font-size: 19px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .header-sub { font-size: 12.5px; color: rgba(255,255,255,0.82); margin-top: 4px; }
+    .back-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .back-link:hover { color: #fff; }
+    .updated { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 6px; }
+
+    /* ── レイアウト ── */
+    main { padding: 16px 16px 48px; max-width: 720px; margin: 0 auto; }
+
+    /* ── カード ── */
+    .card {
+      position: relative;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      padding: 16px;
+      margin-bottom: 14px;
+      opacity: 0.72;
+      transform: scale(0.985);
+      transform-origin: center top;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .card.in-view { opacity: 1; transform: scale(1); }
+    @media (hover: hover) {
+      .card:hover, .card.in-view:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.11);
+        opacity: 1;
+      }
+    }
+
+    /* カテゴリバッジ */
+    .badge-category {
+      display: inline-block;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 9px;
+    }
+    /* 未読バッジ */
+    .badge-new {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      padding: 3px 8px;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    /* ── カード内要素 ── */
+    .card-title { font-size: 16.5px; font-weight: 600; margin-bottom: 8px; line-height: 1.45; }
+    .card-title a { color: var(--text); text-decoration: none; }
+    .card-title a:hover { color: var(--accent); }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: 11px 0 4px;
+    }
+    .card-summary { font-size: 15px; color: #555555; }
+    .card-insight {
+      font-size: 15px;
+      color: #4a0016;
+      background: var(--insight-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 9px 12px;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .card-date { font-size: 12px; color: var(--muted); }
+    .read-link { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    .empty { text-align: center; color: var(--muted); padding: 60px 0; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1>🔥 Hot Picks</h1>
+      <a class="back-link" href="index.html">← 全ニュース</a>
+    </div>
+    <div class="header-sub">直近3日間で特に重要度の高い記事（4件）</div>
+    <div class="updated">2026-04-13 16:38 JST</div>
+  </header>
+
+  <main>
+    
+      
+      <article class="card" data-url="https://example.com/脳科学-認知科学-心理学/0">
+        <span class="badge-new">NEW</span>
+        <div class="badge-category">脳科学・認知科学・心理学</div>
+        <div class="card-title">
+          <a href="https://example.com/脳科学-認知科学-心理学/0" target="_blank" rel="noopener">[DRY-RUN] 睡眠中の記憶固定メカニズムを解明——海馬と新皮質の連携を可視化</a>
+        </div>
+        <div class="section-label">要約</div>
+        <p class="card-summary">MITの研究チームが、睡眠中に海馬から新皮質へ記憶が転送されるプロセスをリアルタイムで可視化することに成功した。特定の神経回路が「リプレイ」を行うタイミングが、記憶の長期定着率と高い相関を示すことが判明した。この知見はアルツハイマー病の早期介入に応用できる可能性がある。</p>
+        <div class="section-label">インサイト</div>
+        <div class="card-insight">睡眠の質と認知機能の関係がより精密に理解されることで、教育や医療の現場が変わる可能性がある。睡眠介入による記憶増強が、高齢化社会における認知症予防の新たな柱になるだろう。</div>
+        <div class="card-footer">
+          <span class="card-date">2026-04-13 16:38</span>
+          <a class="read-link" href="https://example.com/脳科学-認知科学-心理学/0" target="_blank" rel="noopener">元記事 →</a>
+        </div>
+      </article>
+      
+      <article class="card" data-url="https://example.com/AI学術研究-最新論文/0">
+        <span class="badge-new">NEW</span>
+        <div class="badge-category">AI学術研究・最新論文</div>
+        <div class="card-title">
+          <a href="https://example.com/AI学術研究-最新論文/0" target="_blank" rel="noopener">[DRY-RUN] 「Test-Time Compute Scaling」でLLMの推論精度を動的に向上させる新手法</a>
+        </div>
+        <div class="section-label">要約</div>
+        <p class="card-summary">スタンフォード大学とMITの共同研究が、推論時の計算資源を動的に割り当てることでLLMの精度を向上させる「Adaptive Compute Routing」手法を発表した。数学・コーディング・論理推論タスクで従来比15〜30%の改善を確認。モデルの再学習なしに適用でき、既存のAPIサービスにも統合可能だという。</p>
+        <div class="section-label">インサイト</div>
+        <div class="card-insight">推論フェーズの効率化はAIのコストパフォーマンスを根本から変える可能性がある。訓練コスト競争から推論設計競争へとAI開発の主戦場がシフトするかもしれない。</div>
+        <div class="card-footer">
+          <span class="card-date">2026-04-13 16:38</span>
+          <a class="read-link" href="https://example.com/AI学術研究-最新論文/0" target="_blank" rel="noopener">元記事 →</a>
+        </div>
+      </article>
+      
+      <article class="card" data-url="https://example.com/AIメーカー-プレスリリース/0">
+        <span class="badge-new">NEW</span>
+        <div class="badge-category">AIメーカー・プレスリリース</div>
+        <div class="card-title">
+          <a href="https://example.com/AIメーカー-プレスリリース/0" target="_blank" rel="noopener">[DRY-RUN] OpenAIがGPT-5を正式発表——マルチモーダル推論と長期記憶機能を搭載</a>
+        </div>
+        <div class="section-label">要約</div>
+        <p class="card-summary">OpenAIはGPT-5の一般公開を発表し、テキスト・画像・音声・動画を統合処理するマルチモーダル推論と、最大100万トークンの長期記憶管理機能を新たに搭載したと明らかにした。APIは従来比40%のコスト削減を実現し、エンタープライズ向けプランでは専用インスタンスも提供される。</p>
+        <div class="section-label">インサイト</div>
+        <div class="card-insight">GPT-5の投入はエージェント型AIの実用化を加速し、知識労働の自動化が新たな段階に入ることを意味する。競合他社への圧力が高まり、モデル性能・コスト・安全性をめぐる競争がさらに激化するだろう。</div>
+        <div class="card-footer">
+          <span class="card-date">2026-04-13 16:38</span>
+          <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/0" target="_blank" rel="noopener">元記事 →</a>
+        </div>
+      </article>
+      
+      <article class="card" data-url="https://example.com/AI社会実装-ビジネス/0">
+        <span class="badge-new">NEW</span>
+        <div class="badge-category">AI社会実装・ビジネス</div>
+        <div class="card-title">
+          <a href="https://example.com/AI社会実装-ビジネス/0" target="_blank" rel="noopener">[DRY-RUN] 大手金融機関がAIを活用した与信審査システムを本格導入</a>
+        </div>
+        <div class="section-label">要約</div>
+        <p class="card-summary">メガバンク3行がGeminiベースの与信審査AIを2026年度内に全店舗展開すると発表した。従来の審査時間を平均72時間から4時間に短縮し、小規模事業者への融資承認率が18%向上する見込みだ。金融庁はAI審査モデルの説明可能性に関するガイドラインを今夏に改定する方針を示している。</p>
+        <div class="section-label">インサイト</div>
+        <div class="card-insight">AIによる金融インフラの刷新は、これまで融資が困難だったロングテール層へのアクセスを劇的に改善する。銀行員の業務が審査から顧客提案にシフトし、金融機関のビジネスモデル自体が再定義されるだろう。</div>
+        <div class="card-footer">
+          <span class="card-date">2026-04-13 16:38</span>
+          <a class="read-link" href="https://example.com/AI社会実装-ビジネス/0" target="_blank" rel="noopener">元記事 →</a>
+        </div>
+      </article>
+      
+    
+  </main>
+
+  <script>
+    /* ── Intersection Observer ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('in-view', entry.intersectionRatio >= 0.45);
+      });
+    }, {
+      threshold: [0, 0.45, 1.0],
+      rootMargin: '-12% 0px -12% 0px'
+    });
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+
+    /* ── 未読バッジ管理（localStorage） ── */
+    const STORAGE_KEY = 'newsdigest_read_v1';
+
+    function getReadSet() {
+      try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); }
+      catch { return new Set(); }
+    }
+    function markRead(url) {
+      const s = getReadSet();
+      s.add(url);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...s]));
+    }
+    function hideBadge(card) {
+      const badge = card.querySelector('.badge-new');
+      if (badge) badge.style.display = 'none';
+    }
+
+    const readSet = getReadSet();
+    document.querySelectorAll('.card').forEach(card => {
+      if (readSet.has(card.dataset.url)) hideBadge(card);
+    });
+
+    document.querySelectorAll('.card a').forEach(link => {
+      link.addEventListener('click', () => {
+        const card = link.closest('.card');
+        if (!card) return;
+        markRead(card.dataset.url);
+        hideBadge(card);
+      });
+    });
+  </script>
+</body>
+</html>
