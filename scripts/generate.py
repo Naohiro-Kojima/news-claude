@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import glob as _glob
 import hashlib
+import json
 import os
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urlparse
@@ -23,9 +25,15 @@ _CAT_MAP: dict[str, tuple[str, str | None, str | None]] = {
     "neuro_embodiment": ("neuro",    "research",    "embodiment"),
     "neuro_psychology": ("neuro",    "research",    "psychology"),
     "neuro_ai":         ("neuro_ai", None,          None),
+    "hr_social":        ("hr",       "social",      None),
+    "hr_press":         ("hr",       "press",       None),
+    "hr_academic":      ("hr",       "academic",    None),
 }
 
-_HOT_CATS: frozenset[str] = frozenset({"ai_social", "ai_press", "ai_academic"})
+_HOT_CATS: frozenset[str] = frozenset({
+    "ai_social", "ai_press", "ai_academic",
+    "hr_social", "hr_press",
+})
 
 _DOMAIN_TO_SOURCE: dict[str, str] = {
     "techcrunch.com":           "TechCrunch",
@@ -96,24 +104,109 @@ _CATEGORY_LABELS: dict[str, str] = {
     "neuro_social":     "脳科学 · 社会",
     "neuro_press":      "脳科学 · プレス",
     "neuro_embodiment": "身体性",
-    "neuro_psychology": "心理 · 組織",
+    "neuro_psychology": "心理 · 認知",
     "neuro_ai":         "脳科学 × AI",
+    "hr_social":        "組織人事 · 実装",
+    "hr_press":         "組織人事 · プレス",
+    "hr_academic":      "組織人事 · 研究",
 }
 
 
-def _impact_score(article: dict) -> int:
-    """既存データ（hot フラグ + URL ハッシュ）から 1–5 段階のインパクトスコアを算出する。"""
+def _impact_score(article: dict) -> float:
+    """記事の impact フィールドを返す。未設定時は hot フラグ + URL ハッシュでフォールバック。"""
+    stored = article.get("impact")
+    if stored is not None:
+        try:
+            v = float(stored)
+            if 0.0 < v <= 5.0:
+                return round(v * 10) / 10
+        except (TypeError, ValueError):
+            pass
     if article.get("hot"):
-        return 5
+        return 5.0
     url = article.get("url", "")
     h = int(hashlib.md5(url.encode()).hexdigest(), 16)
-    return (h % 3) + 2  # 2, 3, 4 のいずれか（決定論的）
+    return float((h % 3) + 2)  # 2.0, 3.0, 4.0 のいずれか（決定論的）
+
+
+# ── Hot Topics 定数 ───────────────────────────────────────────────────────────
+HOT_SCORE_THRESHOLD: float = 4.5
+HOT_TOPICS_MAX: int = 6
+HOT_TOPICS_MAX_AGE_DAYS: int = 14
+
+
+# ── Hot Topics 永続化ヘルパー ─────────────────────────────────────────────────
+
+def _hot_topics_path(cache_dir: str) -> str:
+    return os.path.join(cache_dir, "hot_topics.json")
+
+
+def load_hot_topics(cache_dir: str) -> list[dict]:
+    path = _hot_topics_path(cache_dir)
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def save_hot_topics(cache_dir: str, articles: list[dict]) -> None:
+    os.makedirs(cache_dir, exist_ok=True)
+    with open(_hot_topics_path(cache_dir), "w", encoding="utf-8") as f:
+        json.dump(articles, f, ensure_ascii=False, indent=2)
+
+
+def update_hot_topics(cache_dir: str, today_articles: list[dict]) -> list[dict]:
+    """today_articles からスコア閾値以上の記事を追加し、期限切れを除去して保存する。"""
+    existing = load_hot_topics(cache_dir)
+    existing_urls = {a["url"] for a in existing}
+    today_str = datetime.now(JST).strftime("%Y-%m-%d")
+    cutoff = datetime.now(JST).date() - timedelta(days=HOT_TOPICS_MAX_AGE_DAYS)
+
+    for a in today_articles:
+        if a["url"] not in existing_urls and a.get("impact", 0.0) >= HOT_SCORE_THRESHOLD:
+            existing.append({**a, "added_date": today_str})
+            existing_urls.add(a["url"])
+
+    # 期限切れ除去
+    kept = []
+    for a in existing:
+        try:
+            added = datetime.strptime(a.get("added_date", today_str), "%Y-%m-%d").date()
+        except ValueError:
+            added = datetime.now(JST).date()
+        if added >= cutoff:
+            kept.append(a)
+
+    kept.sort(key=lambda a: (a.get("impact", 0.0), a.get("added_date", "")), reverse=True)
+    result = kept[:HOT_TOPICS_MAX]
+    save_hot_topics(cache_dir, result)
+    return result
+
+
+def _enrich_articles(processed: dict) -> list[dict]:
+    """processed dict を flatten してインパクトスコア・カテゴリラベル・JST日時を付与する。"""
+    all_articles: list[dict] = []
+    for articles in processed.values():
+        for a in articles:
+            enriched = {
+                **a,
+                "published_jst":  _format_published(a["published"]),
+                "impact":         _impact_score(a),
+                "category_label": _CATEGORY_LABELS.get(a.get("category", ""), a.get("category", "")),
+                "source":         a.get("source") or _extract_source(a["url"]),
+            }
+            all_articles.append(enriched)
+    return all_articles
 
 
 HTML_TEMPLATE = """\
 {%- macro render_stars(impact) -%}
 <span class="impact-stars" title="インパクト {{ impact }}/5">
-  {%- for i in range(1, 6) -%}<span class="star {{ 'filled' if i <= impact else 'empty' }}">★</span>{%- endfor -%}
+  {%- for i in range(1, 6) -%}<span class="star {{ 'filled' if i <= impact|float else 'empty' }}">★</span>{%- endfor -%}
+  <span class="impact-val">{{ "%.1f"|format(impact|float) }}</span>
 </span>
 {%- endmacro -%}
 {%- macro render_card(article, extra_class='') -%}
@@ -127,6 +220,11 @@ HTML_TEMPLATE = """\
   <div class="card-title">
     <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title_ja }}</a>
   </div>
+  {%- if article.hashtags %}
+  <div class="card-hashtags">
+    {%- for tag in article.hashtags %}<span class="hashtag">{{ tag }}</span>{% endfor %}
+  </div>
+  {%- endif %}
   <div class="section-label-summary">Abstract</div>
   <p class="card-summary exp-text">{{ article.summary }}</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
@@ -155,57 +253,57 @@ HTML_TEMPLATE = """\
   <style>
     /* ===== CSS Custom Properties ===== */
     :root {
-      --bg:               #f5f4ef;
+      --bg:               #fcfce8;
       --surface:          #ffffff;
-      --surface-insight:  #fdf0f3;
-      --border:           #e8e0d8;
-      --border-subtle:    #ede8e1;
-      --accent:           #a3002e;
-      --accent2:          #c0003a;
-      --hot-accent:       #a3002e;
-      --text:             #333333;
-      --text2:            #5a4a4e;
+      --surface-insight:  #fff0f3;
+      --border:           #e8e0d5;
+      --border-subtle:    #eeeed8;
+      --accent:           #cc1340;
+      --accent2:          #a80f34;
+      --hot-accent:       #cc1340;
+      --text:             #2a2a2a;
+      --text2:            #5a4448;
       --muted:            #9e8e92;
       --star-filled:      #c8960c;
-      --star-empty:       #ddd5d0;
-      --tag-bg:           #f4e8eb;
-      --tag-text:         #a3002e;
-      --insight-bg:       #fdf0f3;
-      --insight-border:   #a3002e;
+      --star-empty:       #ddd5cc;
+      --tag-bg:           #fce8ed;
+      --tag-text:         #cc1340;
+      --insight-bg:       #fff0f3;
+      --insight-border:   #cc1340;
       --hot-bg:           #fff5f7;
-      --hot-border:       #a3002e;
-      --badge-bg:         #a3002e;
-      --header-bg:        #a3002e;
+      --hot-border:       #cc1340;
+      --badge-bg:         #cc1340;
+      --header-bg:        #cc1340;
       --header-text:      #ffffff;
-      --subnav-bg:        #faf9f5;
-      --subnav-border:    #e8e0d8;
+      --subnav-bg:        #fafadf;
+      --subnav-border:    #e8e0d5;
       --radius:           8px;
     }
     [data-theme="dark"] {
-      --bg:               #0d1b2a;
-      --surface:          #142030;
-      --surface-insight:  #162840;
-      --border:           #243450;
-      --border-subtle:    #1c2d44;
-      --accent:           #5ba4e0;
-      --accent2:          #7bbfff;
+      --bg:               #00212b;
+      --surface:          #003847;
+      --surface-insight:  #00404f;
+      --border:           #005566;
+      --border-subtle:    #003040;
+      --accent:           #5bc8e0;
+      --accent2:          #7dddf0;
       --hot-accent:       #ff7070;
-      --text:             #e4ecf5;
-      --text2:            #a0b0c8;
-      --muted:            #5a6a80;
+      --text:             #e0e0e0;
+      --text2:            #a8c8d4;
+      --muted:            #5a8090;
       --star-filled:      #f0c040;
-      --star-empty:       #2a3a50;
-      --tag-bg:           #1c3050;
-      --tag-text:         #7bbfff;
-      --insight-bg:       #142840;
-      --insight-border:   #5ba4e0;
-      --hot-bg:           #1e1525;
+      --star-empty:       #003345;
+      --tag-bg:           #004555;
+      --tag-text:         #7dddf0;
+      --insight-bg:       #003040;
+      --insight-border:   #5bc8e0;
+      --hot-bg:           #002030;
       --hot-border:       #ff7070;
-      --badge-bg:         #5ba4e0;
-      --header-bg:        #0a1520;
-      --header-text:      #e4ecf5;
-      --subnav-bg:        #0d1b2a;
-      --subnav-border:    #243450;
+      --badge-bg:         #5bc8e0;
+      --header-bg:        #001820;
+      --header-text:      #e0e0e0;
+      --subnav-bg:        #00212b;
+      --subnav-border:    #005566;
     }
 
     /* ===== Reset & Base ===== */
@@ -248,7 +346,7 @@ HTML_TEMPLATE = """\
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--header-text);
-      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Helvetica Neue', sans-serif;
       line-height: 1.2;
     }
     .header-updated {
@@ -296,7 +394,7 @@ HTML_TEMPLATE = """\
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
-      font-family: -apple-system, 'Hiragino Sans', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', sans-serif;
       letter-spacing: 0.03em;
       white-space: nowrap;
       transition: color 0.15s, border-color 0.15s;
@@ -329,7 +427,7 @@ HTML_TEMPLATE = """\
       cursor: pointer;
       font-size: 12.5px;
       font-weight: 500;
-      font-family: -apple-system, 'Hiragino Sans', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', sans-serif;
       white-space: nowrap;
       transition: color 0.15s, border-color 0.15s;
       -webkit-tap-highlight-color: transparent;
@@ -475,7 +573,7 @@ HTML_TEMPLATE = """\
          横並びカード全体で ABSTRACT の開始位置をピクセル単位で揃える */
       min-height: 68px;
       margin-bottom: 10px;
-      font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
     }
     .card-title a {
       display: -webkit-box;
@@ -604,6 +702,57 @@ HTML_TEMPLATE = """\
     }
     .exp-btn:hover { text-decoration: underline; }
     .card-insight .exp-btn { color: var(--accent2); }
+
+    /* ===== Hashtags ===== */
+    .card-hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 8px 0 10px;
+    }
+    .hashtag {
+      font-size: 10.5px;
+      color: var(--accent);
+      background: var(--tag-bg);
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: -apple-system, sans-serif;
+      letter-spacing: 0.02em;
+    }
+    [data-theme="dark"] .hashtag {
+      color: var(--accent2);
+      background: var(--tag-bg);
+    }
+
+    /* ===== Impact numeric ===== */
+    .impact-val {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: -apple-system, sans-serif;
+      margin-left: 2px;
+    }
+
+    /* ===== Archive link ===== */
+    .archive-link {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.85);
+      padding: 5px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-family: -apple-system, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .archive-link:hover {
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.40);
+    }
   </style>
 </head>
 <body>
@@ -613,13 +762,17 @@ HTML_TEMPLATE = """\
         <h1>Human Science Insights</h1>
         <span class="header-updated">{{ updated }}</span>
       </div>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a class="archive-link" href="archive/index.html">アーカイブ</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+      </div>
     </div>
     <nav class="nav-bar" role="tablist">
       <button class="tab-btn active" data-parent="all"      onclick="showParent('all')">All</button>
       <button class="tab-btn"        data-parent="ai"       onclick="showParent('ai')">AI</button>
       <button class="tab-btn"        data-parent="neuro"    onclick="showParent('neuro')">脳科学</button>
       <button class="tab-btn"        data-parent="neuro_ai" onclick="showParent('neuro_ai')">脳科学 × AI</button>
+      <button class="tab-btn"        data-parent="hr"       onclick="showParent('hr')">組織人事</button>
     </nav>
   </header>
 
@@ -638,7 +791,13 @@ HTML_TEMPLATE = """\
   <!-- 脳科学 > 研究・論文 第3階層 -->
   <div class="sub-nav-bar hidden" id="sub3-nav-research">
     <button class="sub-tab-btn active" data-sub3="embodiment" onclick="showSub3('embodiment')">身体性</button>
-    <button class="sub-tab-btn"        data-sub3="psychology" onclick="showSub3('psychology')">心理・組織</button>
+    <button class="sub-tab-btn"        data-sub3="psychology" onclick="showSub3('psychology')">心理・認知</button>
+  </div>
+  <!-- 組織人事 サブナビ -->
+  <div class="sub-nav-bar hidden" id="sub-nav-hr">
+    <button class="sub-tab-btn active" data-sub="social"   onclick="showSub('hr','social')">社会実装</button>
+    <button class="sub-tab-btn"        data-sub="press"    onclick="showSub('hr','press')">プレスリリース</button>
+    <button class="sub-tab-btn"        data-sub="academic" onclick="showSub('hr','academic')">研究・論文</button>
   </div>
 
   <main>
@@ -698,6 +857,19 @@ HTML_TEMPLATE = """\
     <div id="panel-neuro-ai" class="hidden">
       {{ render_panel(neuro_ai['articles']) }}
     </div>
+
+    <!-- ===== 組織人事 パネル ===== -->
+    <div id="panel-hr" class="hidden">
+      <div class="sub-panel" id="sub-panel-hr-social">
+        {{ render_panel(hr['social']['articles']) }}
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-hr-press">
+        {{ render_panel(hr['press']['articles']) }}
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-hr-academic">
+        {{ render_panel(hr['academic']['articles']) }}
+      </div>
+    </div>
   </main>
 
   <script>
@@ -705,6 +877,7 @@ HTML_TEMPLATE = """\
     let currentParent   = 'all';
     let currentSubAi    = 'social';
     let currentSubNeuro = 'social';
+    let currentSubHr    = 'social';
     let currentSub3     = 'embodiment';
 
     /* ── Parent tab switching ── */
@@ -717,14 +890,16 @@ HTML_TEMPLATE = """\
       // サブナビ表示制御
       document.getElementById('sub-nav-ai').classList.toggle('hidden', tab !== 'ai');
       document.getElementById('sub-nav-neuro').classList.toggle('hidden', tab !== 'neuro');
+      document.getElementById('sub-nav-hr').classList.toggle('hidden', tab !== 'hr');
       const show3 = tab === 'neuro' && currentSubNeuro === 'research';
       document.getElementById('sub3-nav-research').classList.toggle('hidden', !show3);
 
-      // パネル表示制御（Hot Topics は panel-all 内部のためここでは制御不要）
+      // パネル表示制御
       document.getElementById('panel-all').classList.toggle('hidden',      tab !== 'all');
       document.getElementById('panel-ai').classList.toggle('hidden',       tab !== 'ai');
       document.getElementById('panel-neuro').classList.toggle('hidden',    tab !== 'neuro');
       document.getElementById('panel-neuro-ai').classList.toggle('hidden', tab !== 'neuro_ai');
+      document.getElementById('panel-hr').classList.toggle('hidden',       tab !== 'hr');
     }
 
     /* ── Sub tab switching ── */
@@ -742,6 +917,12 @@ HTML_TEMPLATE = """\
         ['social', 'press', 'research'].forEach(k =>
           document.getElementById(`sub-panel-neuro-${k}`).classList.toggle('hidden', k !== tab));
         document.getElementById('sub3-nav-research').classList.toggle('hidden', tab !== 'research');
+      } else if (parent === 'hr') {
+        currentSubHr = tab;
+        document.querySelectorAll('#sub-nav-hr .sub-tab-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.sub === tab));
+        ['social', 'press', 'academic'].forEach(k =>
+          document.getElementById(`sub-panel-hr-${k}`).classList.toggle('hidden', k !== tab));
       }
     }
 
@@ -878,9 +1059,175 @@ def _format_published(iso_str: str) -> str:
         return iso_str
 
 
+ARCHIVE_DAY_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Science Insights — {{ date }}</title>
+  <style>
+    :root {
+      --bg:#fcfce8;--surface:#ffffff;--border:#e8e0d5;--border-subtle:#eeeed8;
+      --accent:#cc1340;--accent2:#a80f34;--hot-accent:#cc1340;
+      --text:#2a2a2a;--text2:#5a4448;--muted:#9e8e92;
+      --star-filled:#c8960c;--star-empty:#ddd5cc;
+      --tag-bg:#fce8ed;--tag-text:#cc1340;
+      --insight-bg:#fff0f3;--insight-border:#cc1340;
+      --hot-bg:#fff5f7;--hot-border:#cc1340;
+      --badge-bg:#cc1340;--radius:8px;
+    }
+    [data-theme="dark"] {
+      --bg:#00212b;--surface:#003847;--border:#005566;--border-subtle:#003040;
+      --accent:#5bc8e0;--accent2:#7dddf0;--hot-accent:#ff7070;
+      --text:#e0e0e0;--text2:#a8c8d4;--muted:#5a8090;
+      --star-filled:#f0c040;--star-empty:#003345;
+      --tag-bg:#004555;--tag-text:#7dddf0;
+      --insight-bg:#003040;--insight-border:#5bc8e0;
+      --hot-bg:#002030;--hot-border:#ff7070;
+      --badge-bg:#5bc8e0;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Yu Gothic','YuGothic','Hiragino Sans','Noto Sans JP',sans-serif;font-size:15px;line-height:1.72;padding:24px 28px 56px}
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+    h1{font-size:20px;font-weight:700;color:var(--accent)}
+    .back-link{font-size:12px;color:var(--accent);text-decoration:none}
+    .back-link:hover{text-decoration:underline}
+    .date-label{font-size:13px;color:var(--muted)}
+    .theme-toggle{background:var(--tag-bg);border:1px solid var(--border);color:var(--accent);padding:5px 14px;border-radius:4px;cursor:pointer;font-size:11.5px;font-weight:500}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:1080px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.card-grid{grid-template-columns:1fr;gap:12px}}
+    .card{position:relative;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--accent);padding:18px;display:flex;flex-direction:column}
+    .card-hot{border-top-color:var(--hot-accent);border-color:var(--hot-border);background:var(--hot-bg)}
+    .card-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .card-tag{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--tag-bg);color:var(--tag-text);padding:2px 8px;border-radius:3px}
+    .card-hot .card-tag{background:var(--hot-border);color:#fff}
+    .card-source{font-size:9.5px;color:var(--muted);background:var(--border-subtle);padding:1px 7px;border-radius:3px}
+    .impact-stars{font-size:12px}.star.filled{color:var(--star-filled)}.star.empty{color:var(--star-empty)}
+    .impact-val{font-size:10px;color:var(--muted);margin-left:2px}
+    .card-hashtags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 10px}
+    .hashtag{font-size:10.5px;color:var(--accent);background:var(--tag-bg);padding:2px 7px;border-radius:10px}
+    .card-title{font-size:14.5px;font-weight:600;line-height:1.5;min-height:68px;margin-bottom:10px;font-family:'Yu Gothic','YuGothic',-apple-system,sans-serif}
+    .card-title a{color:var(--text);text-decoration:none}.card-title a:hover{color:var(--accent)}
+    .section-label-summary{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin:12px 0 5px}
+    .section-label-insight{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin:12px 0 5px}
+    .card-summary{font-size:13.5px;color:var(--text2);line-height:1.68}
+    .card-insight{font-size:13.5px;color:var(--text);background:var(--insight-bg);border-left:3px solid var(--insight-border);border-radius:0 4px 4px 0;padding:10px 13px;line-height:1.68}
+    .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid var(--border-subtle)}
+    .card-date{font-size:11px;color:var(--muted)}.read-link{font-size:12px;color:var(--accent);text-decoration:none;font-weight:600}
+    .read-link:hover{text-decoration:underline}
+    .section-heading{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot-accent);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .section-heading.regular{color:var(--accent)}
+    .section-divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+    .empty{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <div>
+      <h1>Human Science Insights</h1>
+      <span class="date-label">{{ date }} のアーカイブ</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="back-link" href="index.html">← 一覧へ戻る</a>
+      <button class="theme-toggle" onclick="(function(){var h=document.documentElement,d=h.dataset.theme==='dark';h.dataset.theme=d?'light':'dark';this.textContent=d?'Dark Mode':'Light Mode'}).call(this)">Dark Mode</button>
+    </div>
+  </div>
+  {% if hot_articles %}
+  <div class="section-heading">Hot Topics</div>
+  <div class="card-grid" style="margin-bottom:28px">
+    {% for a in hot_articles %}
+    <article class="card card-hot">
+      <div class="card-meta">
+        <span class="card-tag">{{ a.category_label }}</span>
+        {% if a.source %}<span class="card-source">{{ a.source }}</span>{% endif %}
+        <span class="impact-stars">{% for i in range(1,6) %}<span class="star {{ 'filled' if i <= a.impact|float else 'empty' }}">★</span>{% endfor %}<span class="impact-val">{{ "%.1f"|format(a.impact|float) }}</span></span>
+      </div>
+      <div class="card-title"><a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title_ja }}</a></div>
+      {% if a.hashtags %}<div class="card-hashtags">{% for tag in a.hashtags %}<span class="hashtag">{{ tag }}</span>{% endfor %}</div>{% endif %}
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">{{ a.summary }}</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">{{ a.insight }}</div>
+      <div class="card-footer"><span class="card-date">{{ a.published_jst }}</span><a class="read-link" href="{{ a.url }}" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    {% endfor %}
+  </div>
+  <hr class="section-divider">
+  {% endif %}
+  <div class="section-heading regular">All Articles</div>
+  <div class="card-grid">
+    {% for a in all_articles %}
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">{{ a.category_label }}</span>
+        {% if a.source %}<span class="card-source">{{ a.source }}</span>{% endif %}
+        <span class="impact-stars">{% for i in range(1,6) %}<span class="star {{ 'filled' if i <= a.impact|float else 'empty' }}">★</span>{% endfor %}<span class="impact-val">{{ "%.1f"|format(a.impact|float) }}</span></span>
+      </div>
+      <div class="card-title"><a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title_ja }}</a></div>
+      {% if a.hashtags %}<div class="card-hashtags">{% for tag in a.hashtags %}<span class="hashtag">{{ tag }}</span>{% endfor %}</div>{% endif %}
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">{{ a.summary }}</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">{{ a.insight }}</div>
+      <div class="card-footer"><span class="card-date">{{ a.published_jst }}</span><a class="read-link" href="{{ a.url }}" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    {% else %}
+    <div class="empty">記事がありません</div>
+    {% endfor %}
+  </div>
+</body>
+</html>"""
+
+
+ARCHIVE_INDEX_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Science Insights — アーカイブ</title>
+  <style>
+    :root{--bg:#fcfce8;--surface:#ffffff;--border:#e8e0d5;--accent:#cc1340;--text:#2a2a2a;--text2:#5a4448;--muted:#9e8e92;--tag-bg:#fce8ed;--radius:8px}
+    [data-theme="dark"]{--bg:#00212b;--surface:#003847;--border:#005566;--accent:#5bc8e0;--text:#e0e0e0;--text2:#a8c8d4;--muted:#5a8090;--tag-bg:#004555}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Yu Gothic','YuGothic','Hiragino Sans',sans-serif;font-size:15px;line-height:1.72;padding:32px 28px 56px}
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:10px}
+    h1{font-size:20px;font-weight:700;color:var(--accent)}
+    .back-link{font-size:12px;color:var(--accent);text-decoration:none}.back-link:hover{text-decoration:underline}
+    .theme-toggle{background:var(--tag-bg);border:1px solid var(--border);color:var(--accent);padding:5px 14px;border-radius:4px;cursor:pointer;font-size:11.5px;font-weight:500}
+    .archive-list{list-style:none;display:flex;flex-direction:column;gap:10px;max-width:480px}
+    .archive-list li a{display:block;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:12px 16px;color:var(--text);text-decoration:none;font-size:14px;font-weight:600;transition:box-shadow .18s}
+    .archive-list li a:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);color:var(--accent)}
+    .empty{color:var(--muted);font-size:14px;padding:40px 0}
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>アーカイブ一覧</h1>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="back-link" href="../index.html">← トップへ戻る</a>
+      <button class="theme-toggle" onclick="(function(){var h=document.documentElement,d=h.dataset.theme==='dark';h.dataset.theme=d?'light':'dark';this.textContent=d?'Dark Mode':'Light Mode'}).call(this)">Dark Mode</button>
+    </div>
+  </div>
+  {% if entries %}
+  <ul class="archive-list">
+    {% for entry in entries %}
+    <li><a href="{{ entry.filename }}">{{ entry.date }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div class="empty">アーカイブはまだありません</div>
+  {% endif %}
+</body>
+</html>"""
+
+
 def generate_html(
     processed: dict[str, list[ProcessedArticle]],
     output_path: str = "docs/index.html",
+    cache_dir: str | None = None,
 ) -> None:
     """精査済み記事データからindex.htmlを生成し output_path に書き出す。"""
     now_jst = datetime.now(JST)
@@ -901,33 +1248,33 @@ def generate_html(
             },
         },
         "neuro_ai": {"articles": []},
+        "hr": {
+            "social":   {"articles": []},
+            "press":    {"articles": []},
+            "academic": {"articles": []},
+        },
     }
 
-    # 全記事を flatten してエンリッチ（impact スコア・カテゴリラベル付与）
-    all_articles: list[dict] = []
-    for articles in processed.values():
-        for a in articles:
-            enriched = {
-                **a,
-                "published_jst":  _format_published(a["published"]),
-                "impact":         _impact_score(a),
-                "category_label": _CATEGORY_LABELS.get(a.get("category", ""), a.get("category", "")),
-                "source":         a.get("source") or _extract_source(a["url"]),
-            }
-            all_articles.append(enriched)
+    all_articles = _enrich_articles(processed)
 
-    # Pass 1: AIカテゴリの hot 候補を収集
-    hot_candidates = [
-        a for a in all_articles
-        if a.get("hot") and a.get("category") in _HOT_CATS
-    ]
-    hot_candidates.sort(key=lambda a: a.get("published", ""), reverse=True)
-    hot_articles = hot_candidates[:3]
-    hot_url_set = {a["url"] for a in hot_articles}
+    # Hot Topics: スコアベースで永続化（cache_dir あり）または当日のみフィルタ
+    if cache_dir:
+        hot_articles = update_hot_topics(cache_dir, all_articles)
+        today_urls = {a["url"] for a in all_articles}
+        hot_url_set = {a["url"] for a in hot_articles if a["url"] in today_urls}
+    else:
+        hot_candidates = [
+            a for a in all_articles
+            if a.get("impact", 0.0) >= HOT_SCORE_THRESHOLD and a.get("category") in _HOT_CATS
+        ]
+        hot_candidates.sort(key=lambda a: (a.get("impact", 0.0), a.get("published", "")), reverse=True)
+        hot_articles = hot_candidates[:HOT_TOPICS_MAX]
+        hot_url_set = {a["url"] for a in hot_articles}
 
-    # Pass 2: Gemini カテゴリキーでパネルに振り分け（hot は除外）
+    # パネルへ振り分け（today の hot は除外）
+    today_urls_set = {a["url"] for a in all_articles}
     for a in all_articles:
-        if a["url"] in hot_url_set:
+        if a["url"] in hot_url_set and a["url"] in today_urls_set:
             continue
         mapping = _CAT_MAP.get(a.get("category", ""))
         if not mapping:
@@ -942,21 +1289,28 @@ def generate_html(
             panels["neuro"][sub]["articles"].append(a)
         elif parent == "neuro_ai":
             panels["neuro_ai"]["articles"].append(a)
+        elif parent == "hr" and sub:
+            panels["hr"][sub]["articles"].append(a)
 
-    # パネルごとに上限10件
+    # パネルごとにインパクト降順・上限10件
+    def _sort_limit(lst: list, n: int = 10) -> list:
+        lst.sort(key=lambda a: (a.get("impact", 0.0), a.get("published", "")), reverse=True)
+        return lst[:n]
+
     for sub in ("social", "press", "academic"):
-        panels["ai"][sub]["articles"] = panels["ai"][sub]["articles"][:10]
+        panels["ai"][sub]["articles"]   = _sort_limit(panels["ai"][sub]["articles"])
+        panels["hr"][sub]["articles"]   = _sort_limit(panels["hr"][sub]["articles"])
     for sub in ("social", "press"):
-        panels["neuro"][sub]["articles"] = panels["neuro"][sub]["articles"][:10]
+        panels["neuro"][sub]["articles"] = _sort_limit(panels["neuro"][sub]["articles"])
     panels["neuro"]["research"]["embodiment"]["articles"] = \
-        panels["neuro"]["research"]["embodiment"]["articles"][:10]
+        _sort_limit(panels["neuro"]["research"]["embodiment"]["articles"])
     panels["neuro"]["research"]["psychology"]["articles"] = \
-        panels["neuro"]["research"]["psychology"]["articles"][:10]
-    panels["neuro_ai"]["articles"] = panels["neuro_ai"]["articles"][:10]
+        _sort_limit(panels["neuro"]["research"]["psychology"]["articles"])
+    panels["neuro_ai"]["articles"] = _sort_limit(panels["neuro_ai"]["articles"])
 
-    # All タブ用：hot 以外の全記事を日付降順で最大 30 件
+    # All タブ用：hot 以外の全記事をインパクト降順で最大 30 件
     all_non_hot = [a for a in all_articles if a["url"] not in hot_url_set]
-    all_non_hot.sort(key=lambda a: a.get("published", ""), reverse=True)
+    all_non_hot.sort(key=lambda a: (a.get("impact", 0.0), a.get("published", "")), reverse=True)
     all_non_hot_articles = all_non_hot[:30]
 
     env = Environment(loader=BaseLoader())
@@ -968,6 +1322,7 @@ def generate_html(
         ai=panels["ai"],
         neuro=panels["neuro"],
         neuro_ai=panels["neuro_ai"],
+        hr=panels["hr"],
     )
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -975,3 +1330,52 @@ def generate_html(
         f.write(html)
 
     print(f"[generate] Written to {output_path}")
+
+
+def generate_archive_page(
+    processed: dict[str, list[ProcessedArticle]],
+    archive_dir: str = "docs/archive",
+) -> None:
+    """本日分のアーカイブ HTML を docs/archive/YYYY-MM-DD.html に保存する。"""
+    today = datetime.now(JST).strftime("%Y-%m-%d")
+    os.makedirs(archive_dir, exist_ok=True)
+    out_path = os.path.join(archive_dir, f"{today}.html")
+
+    all_articles = _enrich_articles(processed)
+    all_articles.sort(key=lambda a: (a.get("impact", 0.0), a.get("published", "")), reverse=True)
+
+    hot_articles = [
+        a for a in all_articles
+        if a.get("impact", 0.0) >= HOT_SCORE_THRESHOLD and a.get("category") in _HOT_CATS
+    ][:HOT_TOPICS_MAX]
+    hot_urls = {a["url"] for a in hot_articles}
+    non_hot = [a for a in all_articles if a["url"] not in hot_urls]
+
+    env = Environment(loader=BaseLoader())
+    tmpl = env.from_string(ARCHIVE_DAY_TEMPLATE)
+    html = tmpl.render(date=today, hot_articles=hot_articles, all_articles=non_hot)
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"[generate] Archive saved: {out_path}")
+
+
+def generate_archive_index(archive_dir: str = "docs/archive") -> None:
+    """docs/archive/ 内の HTML ファイルを走査してインデックスページを生成する。"""
+    os.makedirs(archive_dir, exist_ok=True)
+    pattern = os.path.join(archive_dir, "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].html")
+    files = sorted(_glob.glob(pattern), reverse=True)
+
+    entries = [
+        {"date": os.path.basename(f).replace(".html", ""), "filename": os.path.basename(f)}
+        for f in files
+    ]
+
+    env = Environment(loader=BaseLoader())
+    tmpl = env.from_string(ARCHIVE_INDEX_TEMPLATE)
+    html = tmpl.render(entries=entries)
+
+    index_path = os.path.join(archive_dir, "index.html")
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"[generate] Archive index: {index_path}")

@@ -7,57 +7,57 @@
   <style>
     /* ===== CSS Custom Properties ===== */
     :root {
-      --bg:               #f5f4ef;
+      --bg:               #fcfce8;
       --surface:          #ffffff;
-      --surface-insight:  #fdf0f3;
-      --border:           #e8e0d8;
-      --border-subtle:    #ede8e1;
-      --accent:           #a3002e;
-      --accent2:          #c0003a;
-      --hot-accent:       #a3002e;
-      --text:             #333333;
-      --text2:            #5a4a4e;
+      --surface-insight:  #fff0f3;
+      --border:           #e8e0d5;
+      --border-subtle:    #eeeed8;
+      --accent:           #cc1340;
+      --accent2:          #a80f34;
+      --hot-accent:       #cc1340;
+      --text:             #2a2a2a;
+      --text2:            #5a4448;
       --muted:            #9e8e92;
       --star-filled:      #c8960c;
-      --star-empty:       #ddd5d0;
-      --tag-bg:           #f4e8eb;
-      --tag-text:         #a3002e;
-      --insight-bg:       #fdf0f3;
-      --insight-border:   #a3002e;
+      --star-empty:       #ddd5cc;
+      --tag-bg:           #fce8ed;
+      --tag-text:         #cc1340;
+      --insight-bg:       #fff0f3;
+      --insight-border:   #cc1340;
       --hot-bg:           #fff5f7;
-      --hot-border:       #a3002e;
-      --badge-bg:         #a3002e;
-      --header-bg:        #a3002e;
+      --hot-border:       #cc1340;
+      --badge-bg:         #cc1340;
+      --header-bg:        #cc1340;
       --header-text:      #ffffff;
-      --subnav-bg:        #faf9f5;
-      --subnav-border:    #e8e0d8;
+      --subnav-bg:        #fafadf;
+      --subnav-border:    #e8e0d5;
       --radius:           8px;
     }
     [data-theme="dark"] {
-      --bg:               #0d1b2a;
-      --surface:          #142030;
-      --surface-insight:  #162840;
-      --border:           #243450;
-      --border-subtle:    #1c2d44;
-      --accent:           #5ba4e0;
-      --accent2:          #7bbfff;
+      --bg:               #00212b;
+      --surface:          #003847;
+      --surface-insight:  #00404f;
+      --border:           #005566;
+      --border-subtle:    #003040;
+      --accent:           #5bc8e0;
+      --accent2:          #7dddf0;
       --hot-accent:       #ff7070;
-      --text:             #e4ecf5;
-      --text2:            #a0b0c8;
-      --muted:            #5a6a80;
+      --text:             #e0e0e0;
+      --text2:            #a8c8d4;
+      --muted:            #5a8090;
       --star-filled:      #f0c040;
-      --star-empty:       #2a3a50;
-      --tag-bg:           #1c3050;
-      --tag-text:         #7bbfff;
-      --insight-bg:       #142840;
-      --insight-border:   #5ba4e0;
-      --hot-bg:           #1e1525;
+      --star-empty:       #003345;
+      --tag-bg:           #004555;
+      --tag-text:         #7dddf0;
+      --insight-bg:       #003040;
+      --insight-border:   #5bc8e0;
+      --hot-bg:           #002030;
       --hot-border:       #ff7070;
-      --badge-bg:         #5ba4e0;
-      --header-bg:        #0a1520;
-      --header-text:      #e4ecf5;
-      --subnav-bg:        #0d1b2a;
-      --subnav-border:    #243450;
+      --badge-bg:         #5bc8e0;
+      --header-bg:        #001820;
+      --header-text:      #e0e0e0;
+      --subnav-bg:        #00212b;
+      --subnav-border:    #005566;
     }
 
     /* ===== Reset & Base ===== */
@@ -100,7 +100,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--header-text);
-      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Helvetica Neue', sans-serif;
       line-height: 1.2;
     }
     .header-updated {
@@ -148,7 +148,7 @@
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
-      font-family: -apple-system, 'Hiragino Sans', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', sans-serif;
       letter-spacing: 0.03em;
       white-space: nowrap;
       transition: color 0.15s, border-color 0.15s;
@@ -181,7 +181,7 @@
       cursor: pointer;
       font-size: 12.5px;
       font-weight: 500;
-      font-family: -apple-system, 'Hiragino Sans', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', sans-serif;
       white-space: nowrap;
       transition: color 0.15s, border-color 0.15s;
       -webkit-tap-highlight-color: transparent;
@@ -327,7 +327,7 @@
          横並びカード全体で ABSTRACT の開始位置をピクセル単位で揃える */
       min-height: 68px;
       margin-bottom: 10px;
-      font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      font-family: 'Yu Gothic', 'YuGothic', -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
     }
     .card-title a {
       display: -webkit-box;
@@ -456,6 +456,57 @@
     }
     .exp-btn:hover { text-decoration: underline; }
     .card-insight .exp-btn { color: var(--accent2); }
+
+    /* ===== Hashtags ===== */
+    .card-hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 8px 0 10px;
+    }
+    .hashtag {
+      font-size: 10.5px;
+      color: var(--accent);
+      background: var(--tag-bg);
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: -apple-system, sans-serif;
+      letter-spacing: 0.02em;
+    }
+    [data-theme="dark"] .hashtag {
+      color: var(--accent2);
+      background: var(--tag-bg);
+    }
+
+    /* ===== Impact numeric ===== */
+    .impact-val {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: -apple-system, sans-serif;
+      margin-left: 2px;
+    }
+
+    /* ===== Archive link ===== */
+    .archive-link {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.85);
+      padding: 5px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-family: -apple-system, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .archive-link:hover {
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.40);
+    }
   </style>
 </head>
 <body>
@@ -463,15 +514,19 @@
     <div class="header-top">
       <div class="header-brand">
         <h1>Human Science Insights</h1>
-        <span class="header-updated">2026-04-16 08:50 JST</span>
+        <span class="header-updated">2026-04-16 15:13 JST</span>
       </div>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a class="archive-link" href="archive/index.html">アーカイブ</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+      </div>
     </div>
     <nav class="nav-bar" role="tablist">
       <button class="tab-btn active" data-parent="all"      onclick="showParent('all')">All</button>
       <button class="tab-btn"        data-parent="ai"       onclick="showParent('ai')">AI</button>
       <button class="tab-btn"        data-parent="neuro"    onclick="showParent('neuro')">脳科学</button>
       <button class="tab-btn"        data-parent="neuro_ai" onclick="showParent('neuro_ai')">脳科学 × AI</button>
+      <button class="tab-btn"        data-parent="hr"       onclick="showParent('hr')">組織人事</button>
     </nav>
   </header>
 
@@ -490,7 +545,13 @@
   <!-- 脳科学 > 研究・論文 第3階層 -->
   <div class="sub-nav-bar hidden" id="sub3-nav-research">
     <button class="sub-tab-btn active" data-sub3="embodiment" onclick="showSub3('embodiment')">身体性</button>
-    <button class="sub-tab-btn"        data-sub3="psychology" onclick="showSub3('psychology')">心理・組織</button>
+    <button class="sub-tab-btn"        data-sub3="psychology" onclick="showSub3('psychology')">心理・認知</button>
+  </div>
+  <!-- 組織人事 サブナビ -->
+  <div class="sub-nav-bar hidden" id="sub-nav-hr">
+    <button class="sub-tab-btn active" data-sub="social"   onclick="showSub('hr','social')">社会実装</button>
+    <button class="sub-tab-btn"        data-sub="press"    onclick="showSub('hr','press')">プレスリリース</button>
+    <button class="sub-tab-btn"        data-sub="academic" onclick="showSub('hr','academic')">研究・論文</button>
   </div>
 
   <main>
@@ -500,68 +561,149 @@
       <section>
         <div class="section-heading">Hot Topics — パラダイムシフト候補</div>
         <div class="card-grid">
-          <article class="card card-hot" data-url="https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/">
+          <article class="card card-hot" data-url="https://example.com/AI社会実装-ビジネス/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · プレス</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/" target="_blank" rel="noopener">OpenAIがエンタープライズ向けエージェントSDKを更新、より安全で高機能なエージェント構築を支援</a>
+    <a href="https://example.com/AI社会実装-ビジネス/0" target="_blank" rel="noopener">[DRY-RUN] 大手金融機関がAIを活用した与信審査システムを本格導入</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI活用</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">OpenAIは企業向けエージェント構築ツールキットの機能を大幅に拡張した。エージェントAIの急速な普及に対応し、安全性と汎用性を両立させるアップデートは、エンタープライズAI導入の加速を意味する。この動きは業務自動化・意思決定支援ツールの標準化を促進し、組織の作業フローを根本から変える可能性がある。</p>
+  <p class="card-summary exp-text">メガバンク3行がClaudeベースの与信審査AIを2026年度内に全店舗展開すると発表した。従来の審査時間を平均72時間から4時間に短縮し、小規模事業者への融資承認率が18%向上する見込みだ。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">エージェントAIの安全性向上は大規模組織での導入障壁を下げ、定型業務の自動化から複雑な判断業務まで展開可能になる。2027年までに、AIエージェントは社内システムの『標準オペレーション層』となり、人間は戦略的意思決定に専念する組織設計が当たり前になるだろう。</div>
+    <div class="exp-text">AIによる金融インフラの刷新は、融資が困難だったロングテール層へのアクセスを劇的に改善する。銀行員の業務が審査から顧客提案にシフトし、金融機関のビジネスモデル自体が再定義されるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 04:28</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/AI社会実装-ビジネス/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card card-hot" data-url="https://techcrunch.com/2026/04/15/indias-vibe-coding-startup-emergent-enters-openclaw-like-ai-agent-space/">
+</article><article class="card card-hot" data-url="https://example.com/AIメーカー-プレスリリース/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/indias-vibe-coding-startup-emergent-enters-openclaw-like-ai-agent-space/" target="_blank" rel="noopener">インドのバイブコーディングスタートアップEmergentがOpenClaw型AIエージェント領域に参入</a>
+    <a href="https://example.com/AIメーカー-プレスリリース/0" target="_blank" rel="noopener">[DRY-RUN] Anthropicが次世代Claudeを正式発表——長期記憶と高度な推論機能を搭載</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#LLM</span><span class="hashtag">#プレスリリース</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">インドのスタートアップEmergentが開発したWingmanは、WhatsAppやTelegramなどのチャットプラットフォームを通じてユーザーがタスク管理と自動化を行えるAIエージェントである。新興国でのスマートフォン普及に乗じて、自然言語インターフェースを備えた業務自動化ツールが急速に実装されつつある。</p>
+  <p class="card-summary exp-text">Anthropicは最新Claudeの一般公開を発表し、最大100万トークンの長期記憶管理機能を搭載したと明らかにした。APIは従来比40%のコスト削減を実現し、エンタープライズ向けプランでは専用インスタンスも提供される。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">メッセージングアプリを業務プラットフォーム化するAIエージェントは、ノーコード環境での意思決定支援・ワークフロー自動化を実現し、新興国の中小企業や個人事業主の生産性向上に直結する。日本企業もLINE等への統合可能性を検討する価値がある。</div>
+    <div class="exp-text">最新Claudeの投入はエージェント型AIの実用化を加速し、知識労働の自動化が新たな段階に入ることを意味する。競合他社への圧力が高まり、モデル性能・コスト・安全性をめぐる競争がさらに激化するだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 02:24</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/indias-vibe-coding-startup-emergent-enters-openclaw-like-ai-agent-space/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card card-hot" data-url="https://techcrunch.com/2026/04/15/after-sale-of-its-shoe-business-allbirds-pivots-to-ai/">
+</article><article class="card card-hot" data-url="https://example.com/AI学術研究-最新論文/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 学術</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/after-sale-of-its-shoe-business-allbirds-pivots-to-ai/" target="_blank" rel="noopener">靴事業売却後、AllbirdsはAIサーバー事業へのピボット—NewBird AIに再生</a>
+    <a href="https://example.com/AI学術研究-最新論文/0" target="_blank" rel="noopener">[DRY-RUN] 推論時の計算資源を動的配分してLLM精度を向上させる新手法</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#深層学習</span><span class="hashtag">#機械学習</span><span class="hashtag">#論文</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">サステナブル靴メーカーのAllbirdsが靴事業を売却し、5000万ドルの転換社債を調達してAIサーバー事業のNewBird AIへピボットした。物理製品からAIインフラへの経営資源の抜本的転換を決断した。</p>
+  <p class="card-summary exp-text">スタンフォード大学とMITの共同研究が、推論時の計算資源を動的に割り当てることでLLMの精度を向上させる手法を発表した。数学・コーディング・論理推論タスクで従来比15〜30%の改善を確認。モデルの再学習なしに適用できる。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">既存の製造業ブランドがAIインフラ事業へシフトするトレンドは、ハードウェア・物流・カスタマーベースの資産が急速にデジタル化・再配置される時代を象徴する。2027年の就職市場では「レガシー企業からのAI事業化人材」の需要が急増し、業界横断的なキャリア転換が常態化する。</div>
+    <div class="exp-text">推論フェーズの効率化はAIのコストパフォーマンスを根本から変える可能性がある。訓練コスト競争から推論設計競争へとAI開発の主戦場がシフトするかもしれない。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 23:24</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/after-sale-of-its-shoe-business-allbirds-pivots-to-ai/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/AI学術研究-最新論文/0" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card card-hot" data-url="https://example.com/脳科学-社会実装/0">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-社会実装/0" target="_blank" rel="noopener">[DRY-RUN] 心理的安全性の高い組織ほどイノベーション創出率が2.5倍——NIH大規模調査</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#心理的安全性</span><span class="hashtag">#組織行動</span><span class="hashtag">#脳科学</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">NIHが企業・官公庁を横断した4,200名規模の調査を実施し、心理的安全性スコアが上位25%の組織は下位25%と比較してイノベーション創出件数が2.5倍、離職率が38%低いことが明らかになった。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">心理的安全性は採用・育成コストの削減と創造性向上を同時に達成する組織設計の要だ。「失敗を共有できる文化」が最も強い予測因子であることが判明した点は、採用や評価制度設計のヒントになる。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/脳科学-社会実装/0" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card card-hot" data-url="https://example.com/脳科学-プレスリリース/0">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-プレスリリース/0" target="_blank" rel="noopener">[DRY-RUN] ハーバード大が認知症早期発見バイオマーカーを発表——発症10年前から検出可能</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#神経科学</span><span class="hashtag">#認知研究</span><span class="hashtag">#ウェルビーイング</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">ハーバード医科大学の研究チームが、血液検査で認知症発症の10年前から異常を検出できる新バイオマーカーを発表した。感度94%・特異度89%を達成し、既存の脳脊髄液検査に比べ侵襲性が大幅に低い。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">認知症の超早期発見は、介護費用削減と就労継続の両面で社会インパクトが大きい。予防医療と職場健康管理の連携が新たなビジネス機会を生み出す可能性がある。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/脳科学-プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card card-hot" data-url="https://example.com/脳科学研究-身体性/0">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">身体性</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.8/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.8</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学研究-身体性/0" target="_blank" rel="noopener">[DRY-RUN] 歩きながら学ぶと記憶定着率が40%向上——運動と認知の神経回路を解明</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#身体性</span><span class="hashtag">#VR</span><span class="hashtag">#感覚統合</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">スタンフォード大学の研究が、軽度の有酸素運動（歩行）と同時に行う学習が海馬のBDNF分泌を促進し、記憶定着率を座学比で40%向上させることを神経科学的に実証した。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">「体を動かしながら学ぶ」設計は、研修効果と従業員の身体的健康を同時に高める投資対効果の高い手法だ。スタンディングデスクやウォーキングミーティングの導入根拠として即使えるエビデンスになる。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 11:20</span>
+    <a class="read-link" href="https://example.com/脳科学研究-身体性/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
         </div>
@@ -571,593 +713,437 @@
       <div class="section-heading regular">All Articles</div>
       <div class="card-grid">
         
-          <article class="card " data-url="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/">
+          <article class="card " data-url="https://example.com/脳科学×AI/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/" target="_blank" rel="noopener">Hightouchが$1億ARR達成、AIマーケティングツールの急成長で20ヶ月で$7000万増加</a>
+    <a href="https://example.com/脳科学×AI/0" target="_blank" rel="noopener">[DRY-RUN] 脳型ニューラルネットワークが従来比7倍のエネルギー効率を達成——ニューロモーフィックAIの実用化</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Hightouchはマーケター向けAIエージェントプラットフォームを立ち上げてから20ヶ月で年間経常収益を$7000万増加させ、$1億ARRに到達した。AI駆動マーケティング自動化ツールが実ビジネスで急速に採用されている事例であり、マーケティング部門の生産性向上と人員配置の最適化が現実に進行していることを示す。</p>
+  <p class="card-summary exp-text">IntelとIBMの共同研究チームが、ヒト脳のスパイキングニューロンを模倣したチップ上で従来のGPUベースDNNと同等精度を達成しながらエネルギー消費を7分の1に抑えることに成功した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">マーケティング自動化の加速は、データ分析・セグメント化・キャンペーン実行の全プロセスをAIが担当できることを実証した。マーケティング職の役割は『キャンペーン実行者』から『戦略企画者・AIプロンプトエンジニア』へシフトし、組織構造と採用基準が2027年までに大きく変わるだろう。</div>
+    <div class="exp-text">ニューロモーフィックコンピューティングの実用化はAIの民主化とグリーン化を同時に推進する。脳科学とAI工学の融合が次のハードウェア革命の中心軸になりつつあるというトレンドの証拠になる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:55</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/">
+</article><article class="card " data-url="https://example.com/脳科学研究-心理組織/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/" target="_blank" rel="noopener">AIラーニングアプリGizmo、1300万ユーザー達成と$2200万シリーズA調達で急成長</a>
+    <a href="https://example.com/脳科学研究-心理組織/0" target="_blank" rel="noopener">[DRY-RUN] 心理的安全性と前頭前皮質の関係——「恐れのない職場」の神経科学的根拠</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI駆動の学習プラットフォームGizmoは1300万ユーザーを獲得し、シリーズAで$2200万を調達した。個人学習のAI化が実際のスケール段階に入り、教育テクノロジーの次世代標準となりつつある。この成長は、従来の一律教育から適応的・パーソナライズ学習への業界転換を加速させている。</p>
+  <p class="card-summary exp-text">MITスローンとハーバードビジネススクールの共同研究が、高い心理的安全性を感じている組織員はプレゼン・発言時の扁桃体活性が対照群比で42%低く、前頭前皮質が活性化することを確認した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">エンタープライズ研修や人材育成プログラムをAI適応学習に置き換えることで、スキル習得期間の短縮と習得率向上が期待できる。2027年までに企業研修の大半がAI学習プラットフォーム経由に移行し、『研修部門の人員削減』と『従業員の自律学習文化』が加速する可能性がある。</div>
+    <div class="exp-text">「心理的安全性」が単なる感情論ではなく脳機能レベルでパフォーマンスに影響することが実証された。組織設計や1on1の設計根拠として、神経科学的エビデンスを提示できる場面で強い説得力になる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:38</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/">
+</article><article class="card " data-url="https://example.com/脳科学×AI/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/" target="_blank" rel="noopener">GoogleがMac用のネイティブGeminiアプリをロールアウト</a>
+    <a href="https://example.com/脳科学×AI/1" target="_blank" rel="noopener">[DRY-RUN] AIによる感情認識が組織の離職リスクを82%の精度で予測——HR技術への応用</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">GoogleはMac上で動作するネイティブGeminiアプリを発表し、ユーザーは画面上のコンテンツやローカルファイルをGeminiと共有して、その場でのタスク支援を受けられるようになった。リアルタイムでの文脈理解と即座の支援が可能になることで、Mac利用者の業務効率が向上する。</p>
+  <p class="card-summary exp-text">顔表情・音声・テキストを融合したマルチモーダルAIが、面談データから6ヶ月以内の離職リスクを82%の精度で予測することに成功した研究が発表された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">ローカルファイルとの連携可能なAIアシスタントは、機密情報を扱う業務での導入障壁を低くし、設計・分析・文書作成などのナレッジワーカータスクの自動化を加速させる。組織内でのプロトタイプ導入から本格展開への道が拓ける。</div>
+    <div class="exp-text">AI×脳科学の知見を組み合わせたHRテクノロジーは、人材損失コストの大幅削減を可能にする。倫理的活用ガイドラインの整備が急務であり、先行企業が競争優位を確立する局面だ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:22</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/">
+</article><article class="card " data-url="https://example.com/脳科学×AI/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · プレス</span><span class="card-source">Deepmind</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/" target="_blank" rel="noopener">Gemini 3.1 Flash TTS：表現力豊かなAI音声生成の次世代</a>
+    <a href="https://example.com/脳科学×AI/2" target="_blank" rel="noopener">[DRY-RUN] 大規模言語モデルと脳波データの統合でうつ病の早期診断精度が91%に到達</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">GoogleがGemini 3.1 Flash TTSを発表し、細粒度のオーディオタグにより音声生成をきめ細かく制御できるようになった。音声合成における表現力と制御精度が向上し、音声UI・カスタマーサービス・メディア制作など多様な産業での応用が期待される。</p>
+  <p class="card-summary exp-text">慶應大学医学部とAnthropicの共同研究が、会話AIと脳波（EEG）データを組み合わせたうつ病早期診断システムを開発し、精神科医と同等の91%診断精度を達成した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">AIが生成する音声の「声色・感情・抑揚」を精密に指定できるようになることで、顧客対応チャットボットやポッドキャスト自動生成、多言語カスタマーサービスの品質向上に直結する。従来のテンプレート音声から『個性のあるAI音声ワーカー』への進化が業務効率化とブランド体験を同時に実現する可能性がある。</div>
+    <div class="exp-text">メンタルヘルスケアへのAI×神経科学の応用は、精神科医不足問題の解決と早期介入を実現する。企業のEAP（従業員支援プログラム）との統合が次のイノベーション領域になるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 01:03</span>
-    <a class="read-link" href="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414">
+</article><article class="card " data-url="https://example.com/脳科学研究-心理組織/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Plos</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414" target="_blank" rel="noopener">NSUN4 媒介 m5C RNA メチル化は SHH シグナル経路を介して網膜細胞を興奮毒性傷害から保護する</a>
+    <a href="https://example.com/脳科学研究-心理組織/1" target="_blank" rel="noopener">[DRY-RUN] マインドフルネス瞑想8週間で扁桃体の体積が縮小——ストレス耐性の構造変化</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">NSUN4 というRNA修飾酵素が m5C メチル化を通じて網膜細胞の神経保護に働くメカニズムが明らかになった。緑内障による視神経損傷の予防・治療に向けた新たな分子標的候補となる可能性がある。この知見は RNA修飾による神経細胞保護という新しい治療戦略を示唆している。</p>
+  <p class="card-summary exp-text">8週間のマインドフルネス介入を受けた被験者120名のfMRI解析で、扁桃体のストレス反応が平均23%低下し灰白質体積の有意な縮小が観察された。効果は介入終了6ヶ月後も持続していた。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">RNA修飾という微視的な分子機構が神経保護に直結することは、将来的に神経変性疾患全般の治療開発に応用できる。また、このような分子レベルの保護メカニズムは AI による医薬品スクリーニングやドラッグディスカバリーの対象として、プロテオミクス・バイオインフォマティクスと組み合わせることで創薬の効率化に寄与する可能性がある。</div>
+    <div class="exp-text">瞑想の神経科学的エビデンスが蓄積されることで、メンタルヘルス治療の選択肢が広がる。「脳の形が変わる」という事実は、習慣化の重要性を語るときの強力なフックになる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 23:00</span>
-    <a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319">
+</article><article class="card " data-url="https://example.com/脳科学研究-心理組織/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">身体性</span><span class="card-source">Plos</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319" target="_blank" rel="noopener">小型SERF磁力計によるラット脳の視聴覚超加算性の非侵襲的検出</a>
+    <a href="https://example.com/脳科学研究-心理組織/2" target="_blank" rel="noopener">[DRY-RUN] 認知的柔軟性が高い社員ほどAIと協働した問題解決能力が3倍——組織研究</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">複数感覚入力が単一感覚反応の合計を超える神経活動を生じる「超加算性」の神経メカニズムを、高感度スピン交換弛緩磁力計を用いてラット脳で非侵襲的に検出した研究。脳画像計測技術の小型化・高感度化により、マルチセンサーインテグレーション研究に新たな計測手法をもたらす成果。</p>
+  <p class="card-summary exp-text">オックスフォード大学が社会人500名を対象に行った研究で、認知的柔軟性スコアが上位25%の社員はAIツール活用時の生産性が下位25%比で3倍高く、新しい問題への適応速度も顕著に速かった。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">この小型磁力計技術は、ウェアラブルな脳計測デバイスの実現に道を開き、神経フィードバックを用いた認知トレーニングやBCI応用の精度向上に直結する可能性がある。脳の感覚統合メカニズムの理解は、VRやメタバース環境における没入感設計、あるいは聴覚障害者向けの代替感覚技術開発の理論的基盤となりうる。</div>
+    <div class="exp-text">AI時代の人材育成は認知的柔軟性の向上を中核に据えるべき時代に入った。採用基準や育成プログラムの設計に「AIと協働できる認知特性」という視点を入れるべきタイミングだ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 23:00</span>
-    <a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260415043626.htm">
+</article><article class="card " data-url="https://example.com/脳科学研究-身体性/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">身体性</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260415043626.htm" target="_blank" rel="noopener">あなたがある日は生産的で、別の日はそうでない理由—その驚くべき正体</a>
+    <a href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">[DRY-RUN] 腸内マイクロバイオームが意思決定の質に影響——腸脳相関の新メカニズム</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#身体性</span><span class="hashtag">#具身認知</span><span class="hashtag">#VR</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">認知機能が高い日と低い日の差は単なる心理的なものではなく、脳の実際の状態変化に基づいている。研究により、精神的敏鋭性が高い日には人は野心的な目標を設定し実行する傾向があり、最大40分の生産性向上につながることが判明した。ただし過度に高い状態を長く維持しようとするとこの効果は逆転する。</p>
+  <p class="card-summary exp-text">腸内細菌叢の多様性が低い被験者群は、リスク判断タスクにおいて前頭前皮質の活性が23%低く衝動的意思決定が増加することが脳スキャンで確認された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">チームマネジメントやプロジェクト管理において、個人の日々の認知状態を把握し、重要な意思決定や目標設定はメンバーの「精神的に冴えた日」に集中させることで、組織全体の生産性を戦略的に向上させられる可能性がある。また過度な高パフォーマンス要求は長期的には逆効果となるため、認知機能の自然なリズムを尊重した働き方改革のヒントになる。</div>
+    <div class="exp-text">食事と認知パフォーマンスの直接的関連が明らかになり、職場の食環境設計が戦略的意義を持つ。「腸活」が単なる健康トレンドでなく、意思決定の質を左右するという話題として会話で使える。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 21:44</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260415043626.htm" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis">
+</article><article class="card " data-url="https://example.com/脳科学研究-身体性/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Huggingface</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">身体性</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis" target="_blank" rel="noopener">VAKRA内部解析：推論、ツール使用、エージェントの故障モード</a>
+    <a href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">[DRY-RUN] 睡眠中の体温低下が記憶固定を促進——深部体温と海馬リプレイの相関</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#身体性</span><span class="hashtag">#具身認知</span><span class="hashtag">#VR</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">VAKRAエージェント研究が、AIエージェントが推論・ツール使用時にどのような失敗パターンを示すかを体系的に分析した。複雑なタスク実行環境におけるエージェント動作の脆弱性と限界が明らかになり、本番環境でのリスク管理の必要性が浮上している。</p>
+  <p class="card-summary exp-text">深部体温が就寝後2時間で0.5℃以上低下した被験者は、翌朝の記憶テストで平均31%高いスコアを示した。海馬のシャープウェーブリプル発生頻度が体温低下と正の相関を持つことが確認された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">エージェント型AIが業務自動化の主流になる前に、その『故障モード』と『信頼できない判断箇所』を科学的に把握することは、金融・法務・医療など高リスク産業での導入時の安全設計の基盤となる。2027年までにエージェント監査・検証フレームワークの確立が組織のコンプライアンス要件になる可能性が高い。</div>
+    <div class="exp-text">最適な睡眠環境の設計（室温・湿度・寝具）が学習効率と業務パフォーマンスに直結する可能性がある。「なぜ涼しい部屋で寝ると頭がよくなるのか」という切り口で雑談でも刺さる知見だ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 21:07</span>
-    <a class="read-link" href="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://openai.com/index/the-next-evolution-of-the-agents-sdk">
+</article><article class="card " data-url="https://example.com/脳科学-プレスリリース/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · プレス</span><span class="card-source">Openai</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://openai.com/index/the-next-evolution-of-the-agents-sdk" target="_blank" rel="noopener">Agents SDK の次世代進化：ネイティブサンドボックス実行と組み込みモデルハーネス</a>
+    <a href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">[DRY-RUN] 理研が感情の脳内マッピングを高精度化——7種の感情状態をリアルタイム判別</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#神経科学</span><span class="hashtag">#脳研究</span><span class="hashtag">#ニューロテック</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">OpenAIがAgents SDKをアップデートし、ネイティブサンドボックス実行環境と組み込みモデルハーネスを導入した。長時間稼働するマルチツール・マルチファイル操作エージェントの開発が容易になり、セキュリティと信頼性が大幅に向上する。</p>
+  <p class="card-summary exp-text">理化学研究所が開発した機械学習モデルが、fMRIデータから喜び・怒り・恐怖など7種の感情をリアルタイムかつ84%の精度で判別することに成功した。非侵襲的ウェアラブルへの応用研究も開始。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">サンドボックス環境でのエージェント実行が標準化されることで、社内システムの自動化・ワークフロー管理・ナレッジワーカー支援の導入障壁が劇的に低下する。2027年までに『エージェントによる自動実行可能な業務』の定義と検証が組織の競争力を左右する重要な経営課題になる。</div>
+    <div class="exp-text">感情状態のリアルタイム計測が可能になると、会議中のエンゲージメント把握やメンタルヘルス管理に革命をもたらす。この技術が「脳の表情」を読む新しいコミュニケーションの形を生み出すかもしれない。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 19:00</span>
-    <a class="read-link" href="https://openai.com/index/the-next-evolution-of-the-agents-sdk" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260414075648.htm">
+</article><article class="card " data-url="https://example.com/脳科学-プレスリリース/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260414075648.htm" target="_blank" rel="noopener">人生を通じてこれを続けると、アルツハイマー病リスクが38％低下する可能性</a>
+    <a href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">[DRY-RUN] 欧州脳研究コンソーシアムが2035年神経科学ロードマップを公表</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#神経科学</span><span class="hashtag">#脳研究</span><span class="hashtag">#ニューロテック</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">読書、執筆、新しいスキル習得といった認知的刺激を人生を通じて継続することで、加齢に伴う脳の劣化から大きな保護効果が得られる。認知的充実度が最も高いグループはアルツハイマー病リスクが大幅に低下し、発症時期も数年遅延することが明らかになった。</p>
+  <p class="card-summary exp-text">Human Brain Project後継となる欧州神経科学コンソーシアムが2035年を見据えたロードマップを公表し、「デジタルツイン脳」の構築と神経疾患治療への応用を最重要目標に掲げた。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">企業研修やキャリア開発プログラムを単なる職能向上ではなく「生涯にわたる認知的刺激」として位置づけることで、従業員のウェルネスと長期的な生産性維持に貢献できる。また教育機関や人事部門は、継続学習文化を組織に根付かせることが、個人の健康寿命延伸とビジネス価値の両立を実現する重要な戦略となる。</div>
+    <div class="exp-text">脳のデジタルツインは創薬・教育・メンタルヘルスケアの設計を根本から変える可能性を持つ。日本企業にとっても国際共同研究への参画機会が広がる局面だ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 17:09</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260414075648.htm" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11914">
+</article><article class="card " data-url="https://example.com/脳科学-社会実装/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11914" target="_blank" rel="noopener">構造的統合からの自己監視の利益：連続時間マルチタイムスケールエージェントにおけるメタ認知の教訓</a>
+    <a href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">[DRY-RUN] マインドフルネス研修8週間で従業員エンゲージメントが平均18%向上</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#脳科学</span><span class="hashtag">#組織設計</span><span class="hashtag">#ウェルビーイング</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">強化学習エージェントにメタ認知（自己監視）機能を追加することの実効性を、捕食者・被食者環境で検証した研究。自己予測と主観的時間認識が複雑なマルチタイムスケール環境でのエージェント性能にもたらす構造的改善を実証。エージェント設計の基本原理をパラダイム的に転換する可能性がある。</p>
+  <p class="card-summary exp-text">大手製造業3社が導入したマインドフルネス研修プログラムの効果検証で、参加者のエンゲージメントスコアが平均18%向上し、欠勤率が12%低下したことが報告された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">LLMエージェントの長期タスク分解・実行において、メタ認知層を組み込むことで意思決定品質と行動チェーンの堅牢性が向上する可能性が示唆される。複雑な業務自動化ワークフロー設計時に『エージェント自身がタスク進行状況を監視・修正する仕組み』の必要性がビジネス実装の観点から実証的に裏付けられた。</div>
+    <div class="exp-text">科学的根拠に基づく人材育成施策は、感情的投資対効果の可視化を可能にし経営層への説得力が増す。ウェルビーイング施策が人材マネジメントの主流に移行するペースが加速するだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11914" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11924">
+</article><article class="card " data-url="https://example.com/脳科学-社会実装/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11924" target="_blank" rel="noopener">GoodPoint：著者の返答から建設的な科学論文フィードバックを学習</a>
+    <a href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">[DRY-RUN] 内発的動機づけが高い社員は創造的問題解決能力が3倍——fMRI研究</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#脳科学</span><span class="hashtag">#組織設計</span><span class="hashtag">#ウェルビーイング</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMが科学論文の著者に対して建設的で実行可能なフィードバックを生成するシステムを提案。人間の研究者による監督下でLLMを活用し、研究内容と論文品質を同時に向上させるプロセスを支援。学術研究の品質向上ツールとしてLLMの補助的活用モデルを示唆。</p>
+  <p class="card-summary exp-text">慶應義塾大学と産業技術総合研究所の共同研究で、内発的動機づけの高い被験者は外発的報酬依存型に比べ、前帯状皮質の活性が顕著に高く、創造的タスク遂行速度も3倍であった。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">研究組織内でのレビュー・フィードバック業務をLLM補助で半自動化し、人間評価者の認知負荷を削減しながら批評品質を維持する仕組みとして実装可能。学術出版・研究組織の業務生産性向上に直結する応用価値がある。</div>
+    <div class="exp-text">金銭インセンティブ偏重の報酬設計が創造性を阻害するメカニズムが脳科学的に実証された。目的・自律・成長の3要素を組み込んだ設計への移行が組織競争力の鍵となるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11924" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11969">
+</article><article class="card " data-url="https://example.com/AI学術研究-最新論文/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 学術</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11969" target="_blank" rel="noopener">ナラティブ駆動型論文スライド生成フレームワークArcDeck</a>
+    <a href="https://example.com/AI学術研究-最新論文/1" target="_blank" rel="noopener">[DRY-RUN] 大規模言語モデルにおける幻覚生成の内部表現パターンを特定</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#機械学習</span><span class="hashtag">#深層学習</span><span class="hashtag">#AI研究</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">複数のAIエージェントが協働して、学術論文をプレゼンテーションスライドへ変換するマルチエージェントシステム。従来の単純要約ではなく、論文の論理的構造と議論フローを明示的にモデル化し、より説得力のあるナラティブスライドを生成。研究成果の発表効率化に直結。</p>
+  <p class="card-summary exp-text">MIT・東大共同チームがLLMの幻覚生成時にactivateされる内部表現パターンを解析手法で特定した。「確信度と正確性の乖離」が特定のAttentionヘッドに集中することが判明し、事前検出の可能性が示された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">学術発表資料作成業務の自動化により、研究者がスライド作成に費やす時間を大幅削減でき、本来の研究時間へのシフトが可能に。組織全体の研究生産性向上の観点からも実装価値が高い。</div>
+    <div class="exp-text">幻覚のメカニズム解明は信頼性の高いAIシステム設計に直結する重要な基礎研究だ。将来的には幻覚を事前に検知・修正する機構をモデルに組み込めるようになるかもしれない。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11969" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI学術研究-最新論文/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11978">
+</article><article class="card " data-url="https://example.com/AI学術研究-最新論文/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 学術</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11978" target="_blank" rel="noopener">長期タスクの蜃気楼？エージェントシステムが破綻する場所と理由の診断</a>
+    <a href="https://example.com/AI学術研究-最新論文/2" target="_blank" rel="noopener">[DRY-RUN] 拡散モデルによる3Dタンパク質構造生成の精度がAlphaFoldに迫る水準に到達</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#機械学習</span><span class="hashtag">#深層学習</span><span class="hashtag">#AI研究</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMエージェントが短中期タスクでは高性能だが、長期タスク（複数の相互依存的アクション）で失敗する根本原因を体系的に診断。エージェントシステムの失敗パターンを領域横断的に分類・比較し、設計改善への指針を提供。実装エージェントの信頼性限界を明示。</p>
+  <p class="card-summary exp-text">カーネギーメロン大学が発表した拡散モデルベースの構造予測システムが、CASP15ベンチマークでAlphaFold 3と僅差の精度を達成したと報告された。生成速度はAlphaFoldの10倍以上。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">2027年の自律型エージェント市場では、長期タスク失敗の具体的メカニズム（計画破綻・状態追跡喪失など）を理解することが、信頼できるシステム構築の必須要件になる。単なるモデル性能向上ではなく『エージェント設計哲学』そのものの再検討を迫る。</div>
+    <div class="exp-text">複数の競合手法がAlphaFoldに迫ることで、タンパク質構造予測はコモディティ化しつつある。次の競争軸は動的な構造変化や相互作用予測へと移行するだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11978" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI学術研究-最新論文/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12007">
+</article><article class="card " data-url="https://example.com/AIメーカー-プレスリリース/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12007" target="_blank" rel="noopener">忘却のタイミング：メモリガバナンスプリミティブ</a>
+    <a href="https://example.com/AIメーカー-プレスリリース/1" target="_blank" rel="noopener">[DRY-RUN] Google DeepMindがタンパク質設計AIの最新版を公開</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#LLM</span><span class="hashtag">#AIサービス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">エージェント型AI システムのメモリ管理において、静的なスコアに頼らず、タスク分布の変化に応じて動的にメモリの信頼度を判定・廃棄する原理的フレームワークを提案している。現在のシステムはLLMの判断や構造的ヒューリスティクスに頼っているが、この研究は出力結果に基づいた客観的なメモリ品質ガバナンス指標を確立しようとしている。この実現は、長期運用されるエージェント型AIの信頼性と効率性を根本的に変える可能性を持つ。</p>
+  <p class="card-summary exp-text">Google DeepMindは創薬研究者向けに最新版AIを公開し、抗体・核酸との相互作用予測精度を大幅に向上させた。新機能として動的構造変化のシミュレーションが追加され、創薬ターゲット探索の効率化が期待される。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">企業のAIエージェント導入では、学習経験の蓄積と同時に「不要な学習の忘却」が業務生産性向上の鍵になる。このメモリガバナンス技術を組織知識ベースや営業支援AIに組み込むことで、古い営業パターンや廃止されたプロセスの自動廃棄が可能になり、常に最新の企業知識に基づいたエージェント動作が実現する。</div>
+    <div class="exp-text">AIによるタンパク質科学の進化は、創薬コストと期間を桁違いに圧縮する可能性を秘めている。製薬大手とAI企業のパートナーシップが加速し、バイオテック産業のパラダイムシフトが進むだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12007" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12016">
+</article><article class="card " data-url="https://example.com/AIメーカー-プレスリリース/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12016" target="_blank" rel="noopener">アトラクタとしてのアイデンティティ：LLM活性化空間における永続的エージェントアーキテクチャの幾何学的証拠</a>
+    <a href="https://example.com/AIメーカー-プレスリリース/2" target="_blank" rel="noopener">[DRY-RUN] HuggingFaceがオープンソースLLMの新ベンチマーク「OpenEval」を公開</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#LLM</span><span class="hashtag">#AIサービス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">大規模言語モデルの内部表現空間において、エージェントの「認識コア」（自己アイデンティティ）がアトラクタ的な幾何学的構造を持つことを実証している。意味的に関連したプロンプトが類似表現にマップされるのと同様に、エージェント自身の認知コアも安定的な内部構造を保持する動力学が存在することを示唆している。この発見は、マルチターンのエージェント推論や人格の一貫性を維持するAIシステム設計の基礎理論になる可能性がある。</p>
+  <p class="card-summary exp-text">HuggingFaceは商用・非商用を問わず公平に評価できるLLMベンチマーク「OpenEval」を発表した。従来のベンチマークへの依存から脱却し、実業務シナリオに近いタスクセットで評価する設計が特徴だ。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">顧客対応AIやコンシェルジュエージェントを構築する際、単なる応答ルールではなく「エージェント自身の一貫した認知アイデンティティ」を幾何学的に設計できれば、複数ターンの対話で顧客との信頼関係が堅牢化し、カスタマーロイヤルティが向上する。この理論を基に社内向けエージェント（営業支援、HR対応など）の人格一貫性を数学的に検証できるようになる。</div>
+    <div class="exp-text">ベンチマークの多様化はAI開発の評価指標を民主化し、特定企業によるランキング操作を抑制する効果がある。オープンモデルの信頼性向上がエンタープライズ採用を後押しし、クローズドモデル依存からの脱却が進むだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12016" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12019">
+</article><article class="card " data-url="https://example.com/AI社会実装-ビジネス/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12019" target="_blank" rel="noopener">縦断的ヘルスケアエージェントフレームワーク</a>
+    <a href="https://example.com/AI社会実装-ビジネス/1" target="_blank" rel="noopener">[DRY-RUN] 製造業向けAI品質検査SaaSが累計導入500社を突破</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">症状管理、行動変容、患者支援といった長期にわたるヘルスケアタスクをサポートするAIエージェントの設計フレームワークを提案している。現在の実装の多くはユーザーインテント（利用者の意思決定支援）とアカウンタビリティ（説明責任）を十分に備えていないという課題に対し、先行研究の知見を踏まえた改善アプローチを示している。医療現場での長期的患者支援にAIを実装する際の実用的設計原則を確立しようとしている。</p>
+  <p class="card-summary exp-text">工場向け画像認識AIのスタートアップが導入実績500社を発表し、シリーズCで120億円を調達した。不良品検出精度は99.7%に達し、人手による目視検査との比較でコストを60%削減できるという。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">医療機関や健康管理プラットフォームがこのフレームワークを採用することで、患者との継続的な信頼関係を構築しながら行動変容を促進するAIシステムが実装可能になる。説明責任を内装したエージェント設計により、医療訴訟リスク低減と患者満足度向上が同時に達成でき、DX推進の現実的な競争優位になる。</div>
+    <div class="exp-text">製造DXにおけるAI活用は、品質管理から予知保全・生産最適化へと応用範囲が急拡大している。中小製造業がSaaS型で高精度AIを利用できる環境が整い、産業構造の底上げにつながるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12019" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI社会実装-ビジネス/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12034">
+</article><article class="card " data-url="https://example.com/AI社会実装-ビジネス/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12034" target="_blank" rel="noopener">代謝としてのメモリ：コンパニオン知識システムの設計</a>
+    <a href="https://example.com/AI社会実装-ビジネス/2" target="_blank" rel="noopener">[DRY-RUN] EU AI法の施行細則が確定——企業が対応すべき主要ポイント</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMの永続的メモリ実装の主流であるRetrieval-Augmented Generation（RAG）に対し、2026年4月に出現した新しなパラダイム——個人用のWiki風メモリアーキテクチャ（Karpathy、MemPalace、LLM Wiki v2など）を分析している。これらは知識を相互リンク可能なアーティファクトとして編成し、単一ユーザの長期利用に最適化している。RAGの検索・生成パイプラインではなく、「代謝的に更新・統合される知識生態系」への転換を示唆している。</p>
+  <p class="card-summary exp-text">欧州委員会がEU AI法の施行細則を正式公表し、高リスクAIシステムに関する要件が明確化された。医療・採用・信用評価などの用途では第三者監査と透明性レポートの提出が義務付けられる。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">企業内ナレッジマネジメントやR&D支援AIをこのコンパニオン知識システム設計で再構築することで、RAGの検索遅延や不適切な文脈混合を根本解決できる。エンジニア・研究者が自分のメモリ資産を有機的に成長させながら活用できるシステムは、個人の生産性向上だけでなく、組織の暗黙知の可視化と継承メカニズムを確立し、人的資本の流動化への適応が容易になる。</div>
+    <div class="exp-text">EU AI法は事実上のグローバルスタンダードになりつつあり、EU外の企業も対応を迫られる。コンプライアンスコストが大企業優位の構造を生む可能性があり、規制設計の国際調和が急務だ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12034" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12825">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12825" target="_blank" rel="noopener">フィードフォワードパスの見せかけの単純性：霊長類腹側視覚経路に沿った刺激符号化のダイナミカルな性質の証拠</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">霊長類の視覚処理はフィードフォワードの段階的情報処理と考えられてきたが、本研究は腹側視覚経路における刺激符号化がダイナミカルかつ相互作用的であることを示唆している。従来の段階的モデルではなく、神経活動の時間的ダイナミクスを考慮した解析が必要であることを提案している。この知見はニューロモーフィック計算モデルやAIビジョンシステムの設計に新たな視点をもたらす可能性がある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">視覚情報処理の実時間ダイナミクスを理解することで、より脳に近いAIビジョンモデルの開発が可能になる。現在のフィードフォワード型深層学習モデルに反復的・動的な処理メカニズムを導入することで、より効率的で堅牢な画像認識システムが実現できるだろう。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12825" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12683">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12683" target="_blank" rel="noopener">Brain-DiT：メタデータ条件付き事前学習を用いた汎用マルチ状態fMRI基盤モデル</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">24のデータセットから35万近くのfMRI走査セッションを用いて、複数の脳状態（安静時、タスク実行時など）に対応する普遍的なfMRI基盤モデルを構築した。既存のfMRI基盤モデルは限定的な脳状態にしか対応していなかったが、Brain-DiTは多様な脳状態間での汎化表現を学習できる。この汎化表現は脳画像解析やBCI応用の精度向上に直結する可能性がある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">fMRI基盤モデルの汎化能力向上は、個人差を超えた脳-機械インターフェース（BMI/BCI）の実用化を加速させる。医療診断支援、神経リハビリテーション、意思疎通支援など、2027年までに臨床応用が広がる業界パラダイムシフトの鍵になるだろう。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12683" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2503.14333">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2503.14333" target="_blank" rel="noopener">生成型拡散モデルを用いた高次表現の特性化が人間のデコード型ニューロフィードバック性能を説明する</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">脳は環境の一次表現だけでなく、その不確実性を含む高次表現を生成し、学習と適応行動を制御している。本研究は生成型拡散モデルを用いることで、この高次表現構造を数学的に特性化し、ニューロフィードバック学習の個人差を説明できることを示した。脳が不確実性自体をどう表現・学習するかの理解が進む。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">脳の高次表現メカニズムをAIで再現することで、より人間的で適応的な機械学習システムを設計できる。特に医療や教育の個別適応型システムにおいて、学習者の不確実性を推定し最適なフィードバックを提供するAIアシスタント開発が加速するだろう。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2503.14333" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2602.05971">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2602.05971" target="_blank" rel="noopener">概念生成における人間の意味的ナビゲーションの特性化：埋め込み空間内の軌跡として</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">人間が概念や意味を検索・操作する際に、内在する埋め込み空間を動的にナビゲートしていることを示す研究。トランスフォーマーベースのテキスト埋め込みモデルを用いて、概念生成プロセスを埋め込み空間内の軌跡として可視化・分析している。人間の意味的思考の幾何学的構造が明らかになる。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">人間の概念思考プロセスを埋め込み空間の軌跡で理解することで、より自然な対話型AI（チャットボット、推論支援システム）の設計が可能になる。ユーザーの意図・思考過程を先読みして最適なサジェッションを提供するインテリジェントシステムの開発に直結する知見となる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2602.05971" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956" target="_blank" rel="noopener">中国の新世代従業員におけるインクルーシブな職場風土認知と発言行動：職場の友情と関係的帰属の役割</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">中国の新世代従業員を対象に、インクルーシブな職場風土の認知が発言行動に与える影響を調査した研究。職場の友情が媒介役として機能し、組織の持続的発展に向けた従業員の声を促進するメカニズムを明らかにした。職場人間関係と心理的安全性の構築がエンゲージメント向上に直結することを示唆している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">組織内での心理的安全性とピアネットワークが従業員の建設的フィードバック提供を促進するという知見は、フラットな意思決定体制やアジャイル組織設計の有効性を脳科学面から支持する。管理職研修やチームビルディングの際に、友情形成の場の設計が従業員エンゲージメント向上の具体的施策として応用できる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047" target="_blank" rel="noopener">看護インターン中のAI依存、AI リテラシー、批判的思考力の関連：多施設横断研究</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">看護インターンを対象に、AI依存と批判的思考能力の関連を調査し、AI リテラシーの媒介役を検証した研究。AI を過度に依存する人材ほど批判的思考力が低下する傾向が示唆され、AI 時代の専門職教育に求められるデジタルリテラシーと人間的判断の統合が重要課題であることが明らかになった。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">医療・専門職領域でAI導入が進む一方、ツールへの過度な依存が専門家の判断力低下を招くという因果関係を実証した極めて重要な知見。企業や教育機関でのAI研修設計において、単なる使用方法ではなく『AI と人間の思考をどう融合させるか』という教育哲学が2027年の人材育成の根本的パラダイムになる可能性が高い。インターンシップやOJT評価指標の再設計が急務。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929" target="_blank" rel="noopener">血清バイオマーカーPCSK9とLCATはパーキンソン病の認知機能障害を予測する高い有効性を示す</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">パーキンソン病における認知機能障害の早期診断バイオマーカーとして、脂質代謝と炎症シグナルに関連する血清マーカー（PCSK9とLCAT）が同定された。これらのバイオマーカーは患者の認知機能低下を予測する高い精度を示し、神経変性疾患の早期介入への道を開く。脂質代謝異常が神経認知機能に与える影響の解明は、加齢関連疾患の診断・治療戦略の転換点となる。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">この研究成果は、認知機能低下の客観的な生物学的指標を提供し、企業の健康診断やハイリスク従業員の早期スクリーニングに応用できる可能性がある。また神経変性疾患と代謝異常の関連性は、組織内のメンタルヘルスケア戦略や従業員の長期キャリア支援プログラム設計の科学的根拠となり得る。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922" target="_blank" rel="noopener">青少年における問題のあるソーシャルメディア利用と不登校の縦断的関連性：ランダムインターセプト交差遅延パネルモデルによる検討</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">青少年を対象とした3波の縦断データから、問題のあるソーシャルメディア利用と学校拒否の双方向的な関連性が明らかにされた。特にジェンダー差を考慮した分析により、男女で異なる心理メカニズムが存在することが示唆される。この知見は、デジタルデバイス利用と心理社会的適応の相互作用を理解する上で重要である。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">企業における若手・新入社員のメンタルヘルス管理やリモートワーク導入時の心理的課題対策に応用できる。SNS利用パターンと組織への適応・エンゲージメントの関連性を把握することで、組織内コミュニケーション施策やメンタルサポート体制の設計に科学的根拠をもたらす可能性がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619" target="_blank" rel="noopener">ロマンティックな出会いにおいて女性の視覚的注意を引くもの、記憶に残すもの：アイトラッキング指標と自己報告の比較</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">女性68名を対象にロマンティックシーン視聴時のアイトラッキングと事後回想を比較し、視線行動と自己報告の対応性を検討した。視覚的注意の実測値と主観的記憶の間にズレが存在することが示され、潜在的・顕在的認知プロセスの相互作用が明かされた。この知見は認知心理学の二重過程モデルを実証的に支持する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">ユーザー行動の実測データ（アイトラッキング、行動ログ）と主観報告の乖離は、UI/UX設計やマーケティング施策の効果測定において重要な洞察をもたらす。「ユーザーが気付いていない潜在的注意」を捉えることで、より効果的な情報設計やプロダクト改善のアプローチが可能になる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.nature.com/articles/s41593-026-02261-9">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Nature</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.nature.com/articles/s41593-026-02261-9" target="_blank" rel="noopener">アルツハイマー病モデルマウスにおけるアミロイドβ駆動グリンファティック機能障害はCa2+仲介アストロサイトコレステロール増加によって引き起こされる</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">本研究は、アミロイドβがアストロサイト内のカルシウム活動を増強し、コレステロール上昇と脳内老廃物クリアランス障害を引き起こすメカニズムを解明した。アストロサイトのカルシウムやコレステロールを標的とすることで、クリアランス機能が回復し、認知機能が改善されることを示している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このグリンファティック機能障害メカニズムの解明は、アルツハイマー病の予防・治療戦略として、アストロサイトの代謝制御AIスクリーニングモデルの構築に直結する。脳内老廃物クリアランス効率を数値化・予測するバイオマーカー開発により、早期診断と個別化医療の実装が加速し、医療AI産業全体のパラダイムシフトとなりうる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.nature.com/articles/s41593-026-02261-9" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI社会実装-ビジネス/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
         
@@ -1168,309 +1154,231 @@
     <div id="panel-ai" class="hidden">
       <div class="sub-panel" id="sub-panel-ai-social">
         <div class="card-grid">
-<article class="card " data-url="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/">
+<article class="card " data-url="https://example.com/脳科学研究-心理組織/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/" target="_blank" rel="noopener">Hightouchが$1億ARR達成、AIマーケティングツールの急成長で20ヶ月で$7000万増加</a>
+    <a href="https://example.com/脳科学研究-心理組織/0" target="_blank" rel="noopener">[DRY-RUN] 心理的安全性と前頭前皮質の関係——「恐れのない職場」の神経科学的根拠</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Hightouchはマーケター向けAIエージェントプラットフォームを立ち上げてから20ヶ月で年間経常収益を$7000万増加させ、$1億ARRに到達した。AI駆動マーケティング自動化ツールが実ビジネスで急速に採用されている事例であり、マーケティング部門の生産性向上と人員配置の最適化が現実に進行していることを示す。</p>
+  <p class="card-summary exp-text">MITスローンとハーバードビジネススクールの共同研究が、高い心理的安全性を感じている組織員はプレゼン・発言時の扁桃体活性が対照群比で42%低く、前頭前皮質が活性化することを確認した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">マーケティング自動化の加速は、データ分析・セグメント化・キャンペーン実行の全プロセスをAIが担当できることを実証した。マーケティング職の役割は『キャンペーン実行者』から『戦略企画者・AIプロンプトエンジニア』へシフトし、組織構造と採用基準が2027年までに大きく変わるだろう。</div>
+    <div class="exp-text">「心理的安全性」が単なる感情論ではなく脳機能レベルでパフォーマンスに影響することが実証された。組織設計や1on1の設計根拠として、神経科学的エビデンスを提示できる場面で強い説得力になる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:55</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/hightouch-reaches-100m-arr-fueled-by-marketing-tools-powered-by-ai/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/">
+</article><article class="card " data-url="https://example.com/脳科学研究-心理組織/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/" target="_blank" rel="noopener">AIラーニングアプリGizmo、1300万ユーザー達成と$2200万シリーズA調達で急成長</a>
+    <a href="https://example.com/脳科学研究-心理組織/1" target="_blank" rel="noopener">[DRY-RUN] マインドフルネス瞑想8週間で扁桃体の体積が縮小——ストレス耐性の構造変化</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI駆動の学習プラットフォームGizmoは1300万ユーザーを獲得し、シリーズAで$2200万を調達した。個人学習のAI化が実際のスケール段階に入り、教育テクノロジーの次世代標準となりつつある。この成長は、従来の一律教育から適応的・パーソナライズ学習への業界転換を加速させている。</p>
+  <p class="card-summary exp-text">8週間のマインドフルネス介入を受けた被験者120名のfMRI解析で、扁桃体のストレス反応が平均23%低下し灰白質体積の有意な縮小が観察された。効果は介入終了6ヶ月後も持続していた。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">エンタープライズ研修や人材育成プログラムをAI適応学習に置き換えることで、スキル習得期間の短縮と習得率向上が期待できる。2027年までに企業研修の大半がAI学習プラットフォーム経由に移行し、『研修部門の人員削減』と『従業員の自律学習文化』が加速する可能性がある。</div>
+    <div class="exp-text">瞑想の神経科学的エビデンスが蓄積されることで、メンタルヘルス治療の選択肢が広がる。「脳の形が変わる」という事実は、習慣化の重要性を語るときの強力なフックになる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:38</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/">
+</article><article class="card " data-url="https://example.com/脳科学研究-心理組織/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/" target="_blank" rel="noopener">GoogleがMac用のネイティブGeminiアプリをロールアウト</a>
+    <a href="https://example.com/脳科学研究-心理組織/2" target="_blank" rel="noopener">[DRY-RUN] 認知的柔軟性が高い社員ほどAIと協働した問題解決能力が3倍——組織研究</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">GoogleはMac上で動作するネイティブGeminiアプリを発表し、ユーザーは画面上のコンテンツやローカルファイルをGeminiと共有して、その場でのタスク支援を受けられるようになった。リアルタイムでの文脈理解と即座の支援が可能になることで、Mac利用者の業務効率が向上する。</p>
+  <p class="card-summary exp-text">オックスフォード大学が社会人500名を対象に行った研究で、認知的柔軟性スコアが上位25%の社員はAIツール活用時の生産性が下位25%比で3倍高く、新しい問題への適応速度も顕著に速かった。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">ローカルファイルとの連携可能なAIアシスタントは、機密情報を扱う業務での導入障壁を低くし、設計・分析・文書作成などのナレッジワーカータスクの自動化を加速させる。組織内でのプロトタイプ導入から本格展開への道が拓ける。</div>
+    <div class="exp-text">AI時代の人材育成は認知的柔軟性の向上を中核に据えるべき時代に入った。採用基準や育成プログラムの設計に「AIと協働できる認知特性」という視点を入れるべきタイミングだ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 03:22</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-心理組織/2" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12019">
+</article><article class="card " data-url="https://example.com/AI社会実装-ビジネス/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 社会実装</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12019" target="_blank" rel="noopener">縦断的ヘルスケアエージェントフレームワーク</a>
+    <a href="https://example.com/AI社会実装-ビジネス/1" target="_blank" rel="noopener">[DRY-RUN] 製造業向けAI品質検査SaaSが累計導入500社を突破</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">症状管理、行動変容、患者支援といった長期にわたるヘルスケアタスクをサポートするAIエージェントの設計フレームワークを提案している。現在の実装の多くはユーザーインテント（利用者の意思決定支援）とアカウンタビリティ（説明責任）を十分に備えていないという課題に対し、先行研究の知見を踏まえた改善アプローチを示している。医療現場での長期的患者支援にAIを実装する際の実用的設計原則を確立しようとしている。</p>
+  <p class="card-summary exp-text">工場向け画像認識AIのスタートアップが導入実績500社を発表し、シリーズCで120億円を調達した。不良品検出精度は99.7%に達し、人手による目視検査との比較でコストを60%削減できるという。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">医療機関や健康管理プラットフォームがこのフレームワークを採用することで、患者との継続的な信頼関係を構築しながら行動変容を促進するAIシステムが実装可能になる。説明責任を内装したエージェント設計により、医療訴訟リスク低減と患者満足度向上が同時に達成でき、DX推進の現実的な競争優位になる。</div>
+    <div class="exp-text">製造DXにおけるAI活用は、品質管理から予知保全・生産最適化へと応用範囲が急拡大している。中小製造業がSaaS型で高精度AIを利用できる環境が整い、産業構造の底上げにつながるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12019" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI社会実装-ビジネス/1" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://example.com/AI社会実装-ビジネス/2">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">AI · 社会実装</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/AI社会実装-ビジネス/2" target="_blank" rel="noopener">[DRY-RUN] EU AI法の施行細則が確定——企業が対応すべき主要ポイント</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI実装</span><span class="hashtag">#業務自動化</span><span class="hashtag">#DX</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">欧州委員会がEU AI法の施行細則を正式公表し、高リスクAIシステムに関する要件が明確化された。医療・採用・信用評価などの用途では第三者監査と透明性レポートの提出が義務付けられる。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">EU AI法は事実上のグローバルスタンダードになりつつあり、EU外の企業も対応を迫られる。コンプライアンスコストが大企業優位の構造を生む可能性があり、規制設計の国際調和が急務だ。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI社会実装-ビジネス/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
 </div>
       </div>
       <div class="sub-panel hidden" id="sub-panel-ai-press">
         <div class="card-grid">
-<article class="card " data-url="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/">
+<article class="card " data-url="https://example.com/AIメーカー-プレスリリース/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · プレス</span><span class="card-source">Deepmind</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">AI · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/" target="_blank" rel="noopener">Gemini 3.1 Flash TTS：表現力豊かなAI音声生成の次世代</a>
+    <a href="https://example.com/AIメーカー-プレスリリース/1" target="_blank" rel="noopener">[DRY-RUN] Google DeepMindがタンパク質設計AIの最新版を公開</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#LLM</span><span class="hashtag">#AIサービス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">GoogleがGemini 3.1 Flash TTSを発表し、細粒度のオーディオタグにより音声生成をきめ細かく制御できるようになった。音声合成における表現力と制御精度が向上し、音声UI・カスタマーサービス・メディア制作など多様な産業での応用が期待される。</p>
+  <p class="card-summary exp-text">Google DeepMindは創薬研究者向けに最新版AIを公開し、抗体・核酸との相互作用予測精度を大幅に向上させた。新機能として動的構造変化のシミュレーションが追加され、創薬ターゲット探索の効率化が期待される。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">AIが生成する音声の「声色・感情・抑揚」を精密に指定できるようになることで、顧客対応チャットボットやポッドキャスト自動生成、多言語カスタマーサービスの品質向上に直結する。従来のテンプレート音声から『個性のあるAI音声ワーカー』への進化が業務効率化とブランド体験を同時に実現する可能性がある。</div>
+    <div class="exp-text">AIによるタンパク質科学の進化は、創薬コストと期間を桁違いに圧縮する可能性を秘めている。製薬大手とAI企業のパートナーシップが加速し、バイオテック産業のパラダイムシフトが進むだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-16 01:03</span>
-    <a class="read-link" href="https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://openai.com/index/the-next-evolution-of-the-agents-sdk">
+</article><article class="card " data-url="https://example.com/AIメーカー-プレスリリース/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · プレス</span><span class="card-source">Openai</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://openai.com/index/the-next-evolution-of-the-agents-sdk" target="_blank" rel="noopener">Agents SDK の次世代進化：ネイティブサンドボックス実行と組み込みモデルハーネス</a>
+    <a href="https://example.com/AIメーカー-プレスリリース/2" target="_blank" rel="noopener">[DRY-RUN] HuggingFaceがオープンソースLLMの新ベンチマーク「OpenEval」を公開</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#LLM</span><span class="hashtag">#AIサービス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">OpenAIがAgents SDKをアップデートし、ネイティブサンドボックス実行環境と組み込みモデルハーネスを導入した。長時間稼働するマルチツール・マルチファイル操作エージェントの開発が容易になり、セキュリティと信頼性が大幅に向上する。</p>
+  <p class="card-summary exp-text">HuggingFaceは商用・非商用を問わず公平に評価できるLLMベンチマーク「OpenEval」を発表した。従来のベンチマークへの依存から脱却し、実業務シナリオに近いタスクセットで評価する設計が特徴だ。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">サンドボックス環境でのエージェント実行が標準化されることで、社内システムの自動化・ワークフロー管理・ナレッジワーカー支援の導入障壁が劇的に低下する。2027年までに『エージェントによる自動実行可能な業務』の定義と検証が組織の競争力を左右する重要な経営課題になる。</div>
+    <div class="exp-text">ベンチマークの多様化はAI開発の評価指標を民主化し、特定企業によるランキング操作を抑制する効果がある。オープンモデルの信頼性向上がエンタープライズ採用を後押しし、クローズドモデル依存からの脱却が進むだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 19:00</span>
-    <a class="read-link" href="https://openai.com/index/the-next-evolution-of-the-agents-sdk" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AIメーカー-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
 </div>
       </div>
       <div class="sub-panel hidden" id="sub-panel-ai-academic">
         <div class="card-grid">
-<article class="card " data-url="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis">
+<article class="card " data-url="https://example.com/AI学術研究-最新論文/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Huggingface</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 学術</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis" target="_blank" rel="noopener">VAKRA内部解析：推論、ツール使用、エージェントの故障モード</a>
+    <a href="https://example.com/AI学術研究-最新論文/1" target="_blank" rel="noopener">[DRY-RUN] 大規模言語モデルにおける幻覚生成の内部表現パターンを特定</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#機械学習</span><span class="hashtag">#深層学習</span><span class="hashtag">#AI研究</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">VAKRAエージェント研究が、AIエージェントが推論・ツール使用時にどのような失敗パターンを示すかを体系的に分析した。複雑なタスク実行環境におけるエージェント動作の脆弱性と限界が明らかになり、本番環境でのリスク管理の必要性が浮上している。</p>
+  <p class="card-summary exp-text">MIT・東大共同チームがLLMの幻覚生成時にactivateされる内部表現パターンを解析手法で特定した。「確信度と正確性の乖離」が特定のAttentionヘッドに集中することが判明し、事前検出の可能性が示された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">エージェント型AIが業務自動化の主流になる前に、その『故障モード』と『信頼できない判断箇所』を科学的に把握することは、金融・法務・医療など高リスク産業での導入時の安全設計の基盤となる。2027年までにエージェント監査・検証フレームワークの確立が組織のコンプライアンス要件になる可能性が高い。</div>
+    <div class="exp-text">幻覚のメカニズム解明は信頼性の高いAIシステム設計に直結する重要な基礎研究だ。将来的には幻覚を事前に検知・修正する機構をモデルに組み込めるようになるかもしれない。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 21:07</span>
-    <a class="read-link" href="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI学術研究-最新論文/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11914">
+</article><article class="card " data-url="https://example.com/AI学術研究-最新論文/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">AI · 学術</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11914" target="_blank" rel="noopener">構造的統合からの自己監視の利益：連続時間マルチタイムスケールエージェントにおけるメタ認知の教訓</a>
+    <a href="https://example.com/AI学術研究-最新論文/2" target="_blank" rel="noopener">[DRY-RUN] 拡散モデルによる3Dタンパク質構造生成の精度がAlphaFoldに迫る水準に到達</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#機械学習</span><span class="hashtag">#深層学習</span><span class="hashtag">#AI研究</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">強化学習エージェントにメタ認知（自己監視）機能を追加することの実効性を、捕食者・被食者環境で検証した研究。自己予測と主観的時間認識が複雑なマルチタイムスケール環境でのエージェント性能にもたらす構造的改善を実証。エージェント設計の基本原理をパラダイム的に転換する可能性がある。</p>
+  <p class="card-summary exp-text">カーネギーメロン大学が発表した拡散モデルベースの構造予測システムが、CASP15ベンチマークでAlphaFold 3と僅差の精度を達成したと報告された。生成速度はAlphaFoldの10倍以上。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">LLMエージェントの長期タスク分解・実行において、メタ認知層を組み込むことで意思決定品質と行動チェーンの堅牢性が向上する可能性が示唆される。複雑な業務自動化ワークフロー設計時に『エージェント自身がタスク進行状況を監視・修正する仕組み』の必要性がビジネス実装の観点から実証的に裏付けられた。</div>
+    <div class="exp-text">複数の競合手法がAlphaFoldに迫ることで、タンパク質構造予測はコモディティ化しつつある。次の競争軸は動的な構造変化や相互作用予測へと移行するだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11914" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11924">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11924" target="_blank" rel="noopener">GoodPoint：著者の返答から建設的な科学論文フィードバックを学習</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMが科学論文の著者に対して建設的で実行可能なフィードバックを生成するシステムを提案。人間の研究者による監督下でLLMを活用し、研究内容と論文品質を同時に向上させるプロセスを支援。学術研究の品質向上ツールとしてLLMの補助的活用モデルを示唆。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">研究組織内でのレビュー・フィードバック業務をLLM補助で半自動化し、人間評価者の認知負荷を削減しながら批評品質を維持する仕組みとして実装可能。学術出版・研究組織の業務生産性向上に直結する応用価値がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11924" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11969">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11969" target="_blank" rel="noopener">ナラティブ駆動型論文スライド生成フレームワークArcDeck</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">複数のAIエージェントが協働して、学術論文をプレゼンテーションスライドへ変換するマルチエージェントシステム。従来の単純要約ではなく、論文の論理的構造と議論フローを明示的にモデル化し、より説得力のあるナラティブスライドを生成。研究成果の発表効率化に直結。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">学術発表資料作成業務の自動化により、研究者がスライド作成に費やす時間を大幅削減でき、本来の研究時間へのシフトが可能に。組織全体の研究生産性向上の観点からも実装価値が高い。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11969" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.11978">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.11978" target="_blank" rel="noopener">長期タスクの蜃気楼？エージェントシステムが破綻する場所と理由の診断</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMエージェントが短中期タスクでは高性能だが、長期タスク（複数の相互依存的アクション）で失敗する根本原因を体系的に診断。エージェントシステムの失敗パターンを領域横断的に分類・比較し、設計改善への指針を提供。実装エージェントの信頼性限界を明示。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">2027年の自律型エージェント市場では、長期タスク失敗の具体的メカニズム（計画破綻・状態追跡喪失など）を理解することが、信頼できるシステム構築の必須要件になる。単なるモデル性能向上ではなく『エージェント設計哲学』そのものの再検討を迫る。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.11978" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12007">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12007" target="_blank" rel="noopener">忘却のタイミング：メモリガバナンスプリミティブ</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">エージェント型AI システムのメモリ管理において、静的なスコアに頼らず、タスク分布の変化に応じて動的にメモリの信頼度を判定・廃棄する原理的フレームワークを提案している。現在のシステムはLLMの判断や構造的ヒューリスティクスに頼っているが、この研究は出力結果に基づいた客観的なメモリ品質ガバナンス指標を確立しようとしている。この実現は、長期運用されるエージェント型AIの信頼性と効率性を根本的に変える可能性を持つ。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">企業のAIエージェント導入では、学習経験の蓄積と同時に「不要な学習の忘却」が業務生産性向上の鍵になる。このメモリガバナンス技術を組織知識ベースや営業支援AIに組み込むことで、古い営業パターンや廃止されたプロセスの自動廃棄が可能になり、常に最新の企業知識に基づいたエージェント動作が実現する。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12007" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12016">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12016" target="_blank" rel="noopener">アトラクタとしてのアイデンティティ：LLM活性化空間における永続的エージェントアーキテクチャの幾何学的証拠</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">大規模言語モデルの内部表現空間において、エージェントの「認識コア」（自己アイデンティティ）がアトラクタ的な幾何学的構造を持つことを実証している。意味的に関連したプロンプトが類似表現にマップされるのと同様に、エージェント自身の認知コアも安定的な内部構造を保持する動力学が存在することを示唆している。この発見は、マルチターンのエージェント推論や人格の一貫性を維持するAIシステム設計の基礎理論になる可能性がある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">顧客対応AIやコンシェルジュエージェントを構築する際、単なる応答ルールではなく「エージェント自身の一貫した認知アイデンティティ」を幾何学的に設計できれば、複数ターンの対話で顧客との信頼関係が堅牢化し、カスタマーロイヤルティが向上する。この理論を基に社内向けエージェント（営業支援、HR対応など）の人格一貫性を数学的に検証できるようになる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12016" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12034">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">AI · 学術</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12034" target="_blank" rel="noopener">代謝としてのメモリ：コンパニオン知識システムの設計</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMの永続的メモリ実装の主流であるRetrieval-Augmented Generation（RAG）に対し、2026年4月に出現した新しなパラダイム——個人用のWiki風メモリアーキテクチャ（Karpathy、MemPalace、LLM Wiki v2など）を分析している。これらは知識を相互リンク可能なアーティファクトとして編成し、単一ユーザの長期利用に最適化している。RAGの検索・生成パイプラインではなく、「代謝的に更新・統合される知識生態系」への転換を示唆している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">企業内ナレッジマネジメントやR&D支援AIをこのコンパニオン知識システム設計で再構築することで、RAGの検索遅延や不適切な文脈混合を根本解決できる。エンジニア・研究者が自分のメモリ資産を有機的に成長させながら活用できるシステムは、個人の生産性向上だけでなく、組織の暗黙知の可視化と継承メカニズムを確立し、人的資本の流動化への適応が容易になる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12034" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/AI学術研究-最新論文/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
 </div>
@@ -1481,170 +1389,167 @@
     <div id="panel-neuro" class="hidden">
       <div class="sub-panel" id="sub-panel-neuro-social">
         <div class="card-grid">
-<div class="empty">本日の注目記事はありません</div>
+<article class="card " data-url="https://example.com/脳科学-社会実装/1">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">[DRY-RUN] マインドフルネス研修8週間で従業員エンゲージメントが平均18%向上</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#脳科学</span><span class="hashtag">#組織設計</span><span class="hashtag">#ウェルビーイング</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">大手製造業3社が導入したマインドフルネス研修プログラムの効果検証で、参加者のエンゲージメントスコアが平均18%向上し、欠勤率が12%低下したことが報告された。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">科学的根拠に基づく人材育成施策は、感情的投資対効果の可視化を可能にし経営層への説得力が増す。ウェルビーイング施策が人材マネジメントの主流に移行するペースが加速するだろう。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://example.com/脳科学-社会実装/2">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">[DRY-RUN] 内発的動機づけが高い社員は創造的問題解決能力が3倍——fMRI研究</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#脳科学</span><span class="hashtag">#組織設計</span><span class="hashtag">#ウェルビーイング</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">慶應義塾大学と産業技術総合研究所の共同研究で、内発的動機づけの高い被験者は外発的報酬依存型に比べ、前帯状皮質の活性が顕著に高く、創造的タスク遂行速度も3倍であった。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">金銭インセンティブ偏重の報酬設計が創造性を阻害するメカニズムが脳科学的に実証された。目的・自律・成長の3要素を組み込んだ設計への移行が組織競争力の鍵となるだろう。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>
 </div>
       </div>
       <div class="sub-panel hidden" id="sub-panel-neuro-press">
         <div class="card-grid">
-<div class="empty">本日の注目記事はありません</div>
+<article class="card " data-url="https://example.com/脳科学-プレスリリース/1">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">[DRY-RUN] 理研が感情の脳内マッピングを高精度化——7種の感情状態をリアルタイム判別</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#神経科学</span><span class="hashtag">#脳研究</span><span class="hashtag">#ニューロテック</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">理化学研究所が開発した機械学習モデルが、fMRIデータから喜び・怒り・恐怖など7種の感情をリアルタイムかつ84%の精度で判別することに成功した。非侵襲的ウェアラブルへの応用研究も開始。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">感情状態のリアルタイム計測が可能になると、会議中のエンゲージメント把握やメンタルヘルス管理に革命をもたらす。この技術が「脳の表情」を読む新しいコミュニケーションの形を生み出すかもしれない。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://example.com/脳科学-プレスリリース/2">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">[DRY-RUN] 欧州脳研究コンソーシアムが2035年神経科学ロードマップを公表</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#神経科学</span><span class="hashtag">#脳研究</span><span class="hashtag">#ニューロテック</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">Human Brain Project後継となる欧州神経科学コンソーシアムが2035年を見据えたロードマップを公表し、「デジタルツイン脳」の構築と神経疾患治療への応用を最重要目標に掲げた。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">脳のデジタルツインは創薬・教育・メンタルヘルスケアの設計を根本から変える可能性を持つ。日本企業にとっても国際共同研究への参画機会が広がる局面だ。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>
 </div>
       </div>
       <div class="sub-panel hidden" id="sub-panel-neuro-research">
         <div class="sub3-panel" id="sub3-panel-embodiment">
           <div class="card-grid">
-<article class="card " data-url="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319">
+<article class="card " data-url="https://example.com/脳科学研究-身体性/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">身体性</span><span class="card-source">Plos</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">身体性</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319" target="_blank" rel="noopener">小型SERF磁力計によるラット脳の視聴覚超加算性の非侵襲的検出</a>
+    <a href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">[DRY-RUN] 腸内マイクロバイオームが意思決定の質に影響——腸脳相関の新メカニズム</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#身体性</span><span class="hashtag">#具身認知</span><span class="hashtag">#VR</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">複数感覚入力が単一感覚反応の合計を超える神経活動を生じる「超加算性」の神経メカニズムを、高感度スピン交換弛緩磁力計を用いてラット脳で非侵襲的に検出した研究。脳画像計測技術の小型化・高感度化により、マルチセンサーインテグレーション研究に新たな計測手法をもたらす成果。</p>
+  <p class="card-summary exp-text">腸内細菌叢の多様性が低い被験者群は、リスク判断タスクにおいて前頭前皮質の活性が23%低く衝動的意思決定が増加することが脳スキャンで確認された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">この小型磁力計技術は、ウェアラブルな脳計測デバイスの実現に道を開き、神経フィードバックを用いた認知トレーニングやBCI応用の精度向上に直結する可能性がある。脳の感覚統合メカニズムの理解は、VRやメタバース環境における没入感設計、あるいは聴覚障害者向けの代替感覚技術開発の理論的基盤となりうる。</div>
+    <div class="exp-text">食事と認知パフォーマンスの直接的関連が明らかになり、職場の食環境設計が戦略的意義を持つ。「腸活」が単なる健康トレンドでなく、意思決定の質を左右するという話題として会話で使える。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 23:00</span>
-    <a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347319" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://example.com/脳科学研究-身体性/2">
+  <span class="badge-new">NEW</span>
+  <div class="card-meta">
+    <span class="card-tag">身体性</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">[DRY-RUN] 睡眠中の体温低下が記憶固定を促進——深部体温と海馬リプレイの相関</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#身体性</span><span class="hashtag">#具身認知</span><span class="hashtag">#VR</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">深部体温が就寝後2時間で0.5℃以上低下した被験者は、翌朝の記憶テストで平均31%高いスコアを示した。海馬のシャープウェーブリプル発生頻度が体温低下と正の相関を持つことが確認された。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">最適な睡眠環境の設計（室温・湿度・寝具）が学習効率と業務パフォーマンスに直結する可能性がある。「なぜ涼しい部屋で寝ると頭がよくなるのか」という切り口で雑談でも刺さる知見だ。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
 </div>
         </div>
         <div class="sub3-panel hidden" id="sub3-panel-psychology">
           <div class="card-grid">
-<article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260415043626.htm">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260415043626.htm" target="_blank" rel="noopener">あなたがある日は生産的で、別の日はそうでない理由—その驚くべき正体</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">認知機能が高い日と低い日の差は単なる心理的なものではなく、脳の実際の状態変化に基づいている。研究により、精神的敏鋭性が高い日には人は野心的な目標を設定し実行する傾向があり、最大40分の生産性向上につながることが判明した。ただし過度に高い状態を長く維持しようとするとこの効果は逆転する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">チームマネジメントやプロジェクト管理において、個人の日々の認知状態を把握し、重要な意思決定や目標設定はメンバーの「精神的に冴えた日」に集中させることで、組織全体の生産性を戦略的に向上させられる可能性がある。また過度な高パフォーマンス要求は長期的には逆効果となるため、認知機能の自然なリズムを尊重した働き方改革のヒントになる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 21:44</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260415043626.htm" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260414075648.htm">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260414075648.htm" target="_blank" rel="noopener">人生を通じてこれを続けると、アルツハイマー病リスクが38％低下する可能性</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">読書、執筆、新しいスキル習得といった認知的刺激を人生を通じて継続することで、加齢に伴う脳の劣化から大きな保護効果が得られる。認知的充実度が最も高いグループはアルツハイマー病リスクが大幅に低下し、発症時期も数年遅延することが明らかになった。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">企業研修やキャリア開発プログラムを単なる職能向上ではなく「生涯にわたる認知的刺激」として位置づけることで、従業員のウェルネスと長期的な生産性維持に貢献できる。また教育機関や人事部門は、継続学習文化を組織に根付かせることが、個人の健康寿命延伸とビジネス価値の両立を実現する重要な戦略となる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 17:09</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260414075648.htm" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956" target="_blank" rel="noopener">中国の新世代従業員におけるインクルーシブな職場風土認知と発言行動：職場の友情と関係的帰属の役割</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">中国の新世代従業員を対象に、インクルーシブな職場風土の認知が発言行動に与える影響を調査した研究。職場の友情が媒介役として機能し、組織の持続的発展に向けた従業員の声を促進するメカニズムを明らかにした。職場人間関係と心理的安全性の構築がエンゲージメント向上に直結することを示唆している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">組織内での心理的安全性とピアネットワークが従業員の建設的フィードバック提供を促進するという知見は、フラットな意思決定体制やアジャイル組織設計の有効性を脳科学面から支持する。管理職研修やチームビルディングの際に、友情形成の場の設計が従業員エンゲージメント向上の具体的施策として応用できる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1795956" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929" target="_blank" rel="noopener">血清バイオマーカーPCSK9とLCATはパーキンソン病の認知機能障害を予測する高い有効性を示す</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">パーキンソン病における認知機能障害の早期診断バイオマーカーとして、脂質代謝と炎症シグナルに関連する血清マーカー（PCSK9とLCAT）が同定された。これらのバイオマーカーは患者の認知機能低下を予測する高い精度を示し、神経変性疾患の早期介入への道を開く。脂質代謝異常が神経認知機能に与える影響の解明は、加齢関連疾患の診断・治療戦略の転換点となる。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">この研究成果は、認知機能低下の客観的な生物学的指標を提供し、企業の健康診断やハイリスク従業員の早期スクリーニングに応用できる可能性がある。また神経変性疾患と代謝異常の関連性は、組織内のメンタルヘルスケア戦略や従業員の長期キャリア支援プログラム設計の科学的根拠となり得る。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1789929" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 4/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922" target="_blank" rel="noopener">青少年における問題のあるソーシャルメディア利用と不登校の縦断的関連性：ランダムインターセプト交差遅延パネルモデルによる検討</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">青少年を対象とした3波の縦断データから、問題のあるソーシャルメディア利用と学校拒否の双方向的な関連性が明らかにされた。特にジェンダー差を考慮した分析により、男女で異なる心理メカニズムが存在することが示唆される。この知見は、デジタルデバイス利用と心理社会的適応の相互作用を理解する上で重要である。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">企業における若手・新入社員のメンタルヘルス管理やリモートワーク導入時の心理的課題対策に応用できる。SNS利用パターンと組織への適応・エンゲージメントの関連性を把握することで、組織内コミュニケーション施策やメンタルサポート体制の設計に科学的根拠をもたらす可能性がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1801922" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">心理 · 組織</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619" target="_blank" rel="noopener">ロマンティックな出会いにおいて女性の視覚的注意を引くもの、記憶に残すもの：アイトラッキング指標と自己報告の比較</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">女性68名を対象にロマンティックシーン視聴時のアイトラッキングと事後回想を比較し、視線行動と自己報告の対応性を検討した。視覚的注意の実測値と主観的記憶の間にズレが存在することが示され、潜在的・顕在的認知プロセスの相互作用が明かされた。この知見は認知心理学の二重過程モデルを実証的に支持する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">ユーザー行動の実測データ（アイトラッキング、行動ログ）と主観報告の乖離は、UI/UX設計やマーケティング施策の効果測定において重要な洞察をもたらす。「ユーザーが気付いていない潜在的注意」を捉えることで、より効果的な情報設計やプロダクト改善のアプローチが可能になる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1773619" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article>
+<div class="empty">本日の注目記事はありません</div>
 </div>
         </div>
       </div>
@@ -1653,155 +1558,99 @@
     <!-- ===== 脳科学×AI パネル ===== -->
     <div id="panel-neuro-ai" class="hidden">
       <div class="card-grid">
-<article class="card " data-url="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414">
+<article class="card " data-url="https://example.com/脳科学×AI/0">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Plos</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 4.5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414" target="_blank" rel="noopener">NSUN4 媒介 m5C RNA メチル化は SHH シグナル経路を介して網膜細胞を興奮毒性傷害から保護する</a>
+    <a href="https://example.com/脳科学×AI/0" target="_blank" rel="noopener">[DRY-RUN] 脳型ニューラルネットワークが従来比7倍のエネルギー効率を達成——ニューロモーフィックAIの実用化</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">NSUN4 というRNA修飾酵素が m5C メチル化を通じて網膜細胞の神経保護に働くメカニズムが明らかになった。緑内障による視神経損傷の予防・治療に向けた新たな分子標的候補となる可能性がある。この知見は RNA修飾による神経細胞保護という新しい治療戦略を示唆している。</p>
+  <p class="card-summary exp-text">IntelとIBMの共同研究チームが、ヒト脳のスパイキングニューロンを模倣したチップ上で従来のGPUベースDNNと同等精度を達成しながらエネルギー消費を7分の1に抑えることに成功した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">RNA修飾という微視的な分子機構が神経保護に直結することは、将来的に神経変性疾患全般の治療開発に応用できる。また、このような分子レベルの保護メカニズムは AI による医薬品スクリーニングやドラッグディスカバリーの対象として、プロテオミクス・バイオインフォマティクスと組み合わせることで創薬の効率化に寄与する可能性がある。</div>
+    <div class="exp-text">ニューロモーフィックコンピューティングの実用化はAIの民主化とグリーン化を同時に推進する。脳科学とAI工学の融合が次のハードウェア革命の中心軸になりつつあるというトレンドの証拠になる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 23:00</span>
-    <a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347414" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/0" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047">
+</article><article class="card " data-url="https://example.com/脳科学×AI/1">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Frontiersin</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047" target="_blank" rel="noopener">看護インターン中のAI依存、AI リテラシー、批判的思考力の関連：多施設横断研究</a>
+    <a href="https://example.com/脳科学×AI/1" target="_blank" rel="noopener">[DRY-RUN] AIによる感情認識が組織の離職リスクを82%の精度で予測——HR技術への応用</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">看護インターンを対象に、AI依存と批判的思考能力の関連を調査し、AI リテラシーの媒介役を検証した研究。AI を過度に依存する人材ほど批判的思考力が低下する傾向が示唆され、AI 時代の専門職教育に求められるデジタルリテラシーと人間的判断の統合が重要課題であることが明らかになった。</p>
+  <p class="card-summary exp-text">顔表情・音声・テキストを融合したマルチモーダルAIが、面談データから6ヶ月以内の離職リスクを82%の精度で予測することに成功した研究が発表された。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">医療・専門職領域でAI導入が進む一方、ツールへの過度な依存が専門家の判断力低下を招くという因果関係を実証した極めて重要な知見。企業や教育機関でのAI研修設計において、単なる使用方法ではなく『AI と人間の思考をどう融合させるか』という教育哲学が2027年の人材育成の根本的パラダイムになる可能性が高い。インターンシップやOJT評価指標の再設計が急務。</div>
+    <div class="exp-text">AI×脳科学の知見を組み合わせたHRテクノロジーは、人材損失コストの大幅削減を可能にする。倫理的活用ガイドラインの整備が急務であり、先行企業が競争優位を確立する局面だ。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1823047" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/1" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12825">
+</article><article class="card " data-url="https://example.com/脳科学×AI/2">
   <span class="badge-new">NEW</span>
   <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Example</span>
+    <span class="impact-stars" title="インパクト 3.0/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
+</span>
   </div>
   <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12825" target="_blank" rel="noopener">フィードフォワードパスの見せかけの単純性：霊長類腹側視覚経路に沿った刺激符号化のダイナミカルな性質の証拠</a>
+    <a href="https://example.com/脳科学×AI/2" target="_blank" rel="noopener">[DRY-RUN] 大規模言語モデルと脳波データの統合でうつ病の早期診断精度が91%に到達</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#BCI</span><span class="hashtag">#ニューロモーフィック</span><span class="hashtag">#脳×AI</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">霊長類の視覚処理はフィードフォワードの段階的情報処理と考えられてきたが、本研究は腹側視覚経路における刺激符号化がダイナミカルかつ相互作用的であることを示唆している。従来の段階的モデルではなく、神経活動の時間的ダイナミクスを考慮した解析が必要であることを提案している。この知見はニューロモーフィック計算モデルやAIビジョンシステムの設計に新たな視点をもたらす可能性がある。</p>
+  <p class="card-summary exp-text">慶應大学医学部とAnthropicの共同研究が、会話AIと脳波（EEG）データを組み合わせたうつ病早期診断システムを開発し、精神科医と同等の91%診断精度を達成した。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">視覚情報処理の実時間ダイナミクスを理解することで、より脳に近いAIビジョンモデルの開発が可能になる。現在のフィードフォワード型深層学習モデルに反復的・動的な処理メカニズムを導入することで、より効率的で堅牢な画像認識システムが実現できるだろう。</div>
+    <div class="exp-text">メンタルヘルスケアへのAI×神経科学の応用は、精神科医不足問題の解決と早期介入を実現する。企業のEAP（従業員支援プログラム）との統合が次のイノベーション領域になるだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12825" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2604.12683">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2604.12683" target="_blank" rel="noopener">Brain-DiT：メタデータ条件付き事前学習を用いた汎用マルチ状態fMRI基盤モデル</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">24のデータセットから35万近くのfMRI走査セッションを用いて、複数の脳状態（安静時、タスク実行時など）に対応する普遍的なfMRI基盤モデルを構築した。既存のfMRI基盤モデルは限定的な脳状態にしか対応していなかったが、Brain-DiTは多様な脳状態間での汎化表現を学習できる。この汎化表現は脳画像解析やBCI応用の精度向上に直結する可能性がある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">fMRI基盤モデルの汎化能力向上は、個人差を超えた脳-機械インターフェース（BMI/BCI）の実用化を加速させる。医療診断支援、神経リハビリテーション、意思疎通支援など、2027年までに臨床応用が広がる業界パラダイムシフトの鍵になるだろう。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2604.12683" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2503.14333">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 2/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2503.14333" target="_blank" rel="noopener">生成型拡散モデルを用いた高次表現の特性化が人間のデコード型ニューロフィードバック性能を説明する</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">脳は環境の一次表現だけでなく、その不確実性を含む高次表現を生成し、学習と適応行動を制御している。本研究は生成型拡散モデルを用いることで、この高次表現構造を数学的に特性化し、ニューロフィードバック学習の個人差を説明できることを示した。脳が不確実性自体をどう表現・学習するかの理解が進む。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">脳の高次表現メカニズムをAIで再現することで、より人間的で適応的な機械学習システムを設計できる。特に医療や教育の個別適応型システムにおいて、学習者の不確実性を推定し最適なフィードバックを提供するAIアシスタント開発が加速するだろう。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2503.14333" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://arxiv.org/abs/2602.05971">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Arxiv</span>
-    <span class="impact-stars" title="インパクト 3/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://arxiv.org/abs/2602.05971" target="_blank" rel="noopener">概念生成における人間の意味的ナビゲーションの特性化：埋め込み空間内の軌跡として</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">人間が概念や意味を検索・操作する際に、内在する埋め込み空間を動的にナビゲートしていることを示す研究。トランスフォーマーベースのテキスト埋め込みモデルを用いて、概念生成プロセスを埋め込み空間内の軌跡として可視化・分析している。人間の意味的思考の幾何学的構造が明らかになる。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">人間の概念思考プロセスを埋め込み空間の軌跡で理解することで、より自然な対話型AI（チャットボット、推論支援システム）の設計が可能になる。ユーザーの意図・思考過程を先読みして最適なサジェッションを提供するインテリジェントシステムの開発に直結する知見となる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 13:00</span>
-    <a class="read-link" href="https://arxiv.org/abs/2602.05971" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://www.nature.com/articles/s41593-026-02261-9">
-  <span class="badge-new">NEW</span>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 × AI</span><span class="card-source">Nature</span>
-    <span class="impact-stars" title="インパクト 5/5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.nature.com/articles/s41593-026-02261-9" target="_blank" rel="noopener">アルツハイマー病モデルマウスにおけるアミロイドβ駆動グリンファティック機能障害はCa2+仲介アストロサイトコレステロール増加によって引き起こされる</a>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">本研究は、アミロイドβがアストロサイト内のカルシウム活動を増強し、コレステロール上昇と脳内老廃物クリアランス障害を引き起こすメカニズムを解明した。アストロサイトのカルシウムやコレステロールを標的とすることで、クリアランス機能が回復し、認知機能が改善されることを示している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このグリンファティック機能障害メカニズムの解明は、アルツハイマー病の予防・治療戦略として、アストロサイトの代謝制御AIスクリーニングモデルの構築に直結する。脳内老廃物クリアランス効率を数値化・予測するバイオマーカー開発により、早期診断と個別化医療の実装が加速し、医療AI産業全体のパラダイムシフトとなりうる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-15 09:00</span>
-    <a class="read-link" href="https://www.nature.com/articles/s41593-026-02261-9" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-16 15:13</span>
+    <a class="read-link" href="https://example.com/脳科学×AI/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
 </div>
+    </div>
+
+    <!-- ===== 組織人事 パネル ===== -->
+    <div id="panel-hr" class="hidden">
+      <div class="sub-panel" id="sub-panel-hr-social">
+        <div class="card-grid">
+<div class="empty">本日の注目記事はありません</div>
+</div>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-hr-press">
+        <div class="card-grid">
+<div class="empty">本日の注目記事はありません</div>
+</div>
+      </div>
+      <div class="sub-panel hidden" id="sub-panel-hr-academic">
+        <div class="card-grid">
+<div class="empty">本日の注目記事はありません</div>
+</div>
+      </div>
     </div>
   </main>
 
@@ -1810,6 +1659,7 @@
     let currentParent   = 'all';
     let currentSubAi    = 'social';
     let currentSubNeuro = 'social';
+    let currentSubHr    = 'social';
     let currentSub3     = 'embodiment';
 
     /* ── Parent tab switching ── */
@@ -1822,14 +1672,16 @@
       // サブナビ表示制御
       document.getElementById('sub-nav-ai').classList.toggle('hidden', tab !== 'ai');
       document.getElementById('sub-nav-neuro').classList.toggle('hidden', tab !== 'neuro');
+      document.getElementById('sub-nav-hr').classList.toggle('hidden', tab !== 'hr');
       const show3 = tab === 'neuro' && currentSubNeuro === 'research';
       document.getElementById('sub3-nav-research').classList.toggle('hidden', !show3);
 
-      // パネル表示制御（Hot Topics は panel-all 内部のためここでは制御不要）
+      // パネル表示制御
       document.getElementById('panel-all').classList.toggle('hidden',      tab !== 'all');
       document.getElementById('panel-ai').classList.toggle('hidden',       tab !== 'ai');
       document.getElementById('panel-neuro').classList.toggle('hidden',    tab !== 'neuro');
       document.getElementById('panel-neuro-ai').classList.toggle('hidden', tab !== 'neuro_ai');
+      document.getElementById('panel-hr').classList.toggle('hidden',       tab !== 'hr');
     }
 
     /* ── Sub tab switching ── */
@@ -1847,6 +1699,12 @@
         ['social', 'press', 'research'].forEach(k =>
           document.getElementById(`sub-panel-neuro-${k}`).classList.toggle('hidden', k !== tab));
         document.getElementById('sub3-nav-research').classList.toggle('hidden', tab !== 'research');
+      } else if (parent === 'hr') {
+        currentSubHr = tab;
+        document.querySelectorAll('#sub-nav-hr .sub-tab-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.sub === tab));
+        ['social', 'press', 'academic'].forEach(k =>
+          document.getElementById(`sub-panel-hr-${k}`).classList.toggle('hidden', k !== tab));
       }
     }
 
