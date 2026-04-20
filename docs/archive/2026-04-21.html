@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Science Insights — 2026-04-21</title>
+  <style>
+    :root {
+      --bg:#fcfce8;--surface:#ffffff;--border:#e8e0d5;--border-subtle:#eeeed8;
+      --accent:#cc1340;--accent2:#a80f34;--hot-accent:#cc1340;
+      --text:#2a2a2a;--text2:#5a4448;--muted:#9e8e92;
+      --star-filled:#c8960c;--star-empty:#ddd5cc;
+      --tag-bg:#fce8ed;--tag-text:#cc1340;
+      --insight-bg:#fff0f3;--insight-border:#cc1340;
+      --hot-bg:#fff5f7;--hot-border:#cc1340;
+      --badge-bg:#cc1340;--radius:8px;
+    }
+    [data-theme="dark"] {
+      --bg:#00212b;--surface:#003847;--border:#005566;--border-subtle:#003040;
+      --accent:#5bc8e0;--accent2:#7dddf0;--hot-accent:#ff7070;
+      --text:#e0e0e0;--text2:#a8c8d4;--muted:#5a8090;
+      --star-filled:#f0c040;--star-empty:#003345;
+      --tag-bg:#004555;--tag-text:#7dddf0;
+      --insight-bg:#003040;--insight-border:#5bc8e0;
+      --hot-bg:#002030;--hot-border:#ff7070;
+      --badge-bg:#5bc8e0;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Yu Gothic','YuGothic','Hiragino Sans','Noto Sans JP',sans-serif;font-size:15px;line-height:1.72;padding:24px 28px 56px}
+    .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+    h1{font-size:20px;font-weight:700;color:var(--accent)}
+    .back-link{font-size:12px;color:var(--accent);text-decoration:none}
+    .back-link:hover{text-decoration:underline}
+    .date-label{font-size:13px;color:var(--muted)}
+    .theme-toggle{background:var(--tag-bg);border:1px solid var(--border);color:var(--accent);padding:5px 14px;border-radius:4px;cursor:pointer;font-size:11.5px;font-weight:500}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:1080px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.card-grid{grid-template-columns:1fr;gap:12px}}
+    .card{position:relative;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--accent);padding:18px;display:flex;flex-direction:column}
+    .card-hot{border-top-color:var(--hot-accent);border-color:var(--hot-border);background:var(--hot-bg)}
+    .card-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .card-tag{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--tag-bg);color:var(--tag-text);padding:2px 8px;border-radius:3px}
+    .card-hot .card-tag{background:var(--hot-border);color:#fff}
+    .card-source{font-size:9.5px;color:var(--muted);background:var(--border-subtle);padding:1px 7px;border-radius:3px}
+    .impact-stars{font-size:12px}.star.filled{color:var(--star-filled)}.star.empty{color:var(--star-empty)}
+    .impact-val{font-size:10px;color:var(--muted);margin-left:2px}
+    .card-hashtags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 10px}
+    .hashtag{font-size:10.5px;color:var(--accent);background:var(--tag-bg);padding:2px 7px;border-radius:10px}
+    .card-title{font-size:14.5px;font-weight:600;line-height:1.5;min-height:68px;margin-bottom:10px;font-family:'Yu Gothic','YuGothic',-apple-system,sans-serif}
+    .card-title a{color:var(--text);text-decoration:none}.card-title a:hover{color:var(--accent)}
+    .section-label-summary{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin:12px 0 5px}
+    .section-label-insight{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin:12px 0 5px}
+    .card-summary{font-size:13.5px;color:var(--text2);line-height:1.68}
+    .card-insight{font-size:13.5px;color:var(--text);background:var(--insight-bg);border-left:3px solid var(--insight-border);border-radius:0 4px 4px 0;padding:10px 13px;line-height:1.68}
+    .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid var(--border-subtle)}
+    .card-date{font-size:11px;color:var(--muted)}.read-link{font-size:12px;color:var(--accent);text-decoration:none;font-weight:600}
+    .read-link:hover{text-decoration:underline}
+    .section-heading{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot-accent);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .section-heading.regular{color:var(--accent)}
+    .section-divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+    .empty{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <div>
+      <h1>Human Science Insights</h1>
+      <span class="date-label">2026-04-21 のアーカイブ</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="back-link" href="index.html">← 一覧へ戻る</a>
+      <button class="theme-toggle" onclick="(function(){var h=document.documentElement,d=h.dataset.theme==='dark';h.dataset.theme=d?'light':'dark';this.textContent=d?'Dark Mode':'Light Mode'}).call(this)">Dark Mode</button>
+    </div>
+  </div>
+  
+  <div class="section-heading">Hot Topics</div>
+  <div class="card-grid" style="margin-bottom:28px">
+    
+    <article class="card card-hot">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.7</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15529" target="_blank" rel="noopener">LACE: スレッド間探索のためのラティス注意機構</a></div>
+      <div class="card-hashtags"><span class="hashtag">#LLM推論</span><span class="hashtag">#マルチパス</span><span class="hashtag">#推論品質</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">大規模言語モデルが複数の推論経路を並列サンプリング時に、従来は独立かつ冗長に失敗していた問題を解決。相互作用する協調的な並列推論プロセスへと変換する『ラティス注意』フレームワークを提案し、推論の信頼性と効率を大幅に向上させる。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">LLMの推論品質向上は、金融・法律・医療など『複雑な意思決定支援』が求められる全業務領域に波及。複数の経路を動的に相互作用させることで、現在のLLMが直面する『幻覚・矛盾・トレードオフ検出の失敗』が根本的に改善される可能性があり、エンタープライズAIの信頼性が劇的に向上する。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15529" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card card-hot">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.7</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15726" target="_blank" rel="noopener">LLM の推論は思考の鎖ではなく潜在状態である</a></div>
+      <div class="card-hashtags"><span class="hashtag">#推論解釈</span><span class="hashtag">#潜在状態</span><span class="hashtag">#LLM理解</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">本論文は、LLMの推論を表面的な思考の鎖（CoT）の忠実性として研究すべきではなく、潜在状態軌跡の形成として研究すべきだと主張している。この視点転換は、忠実性、解釈可能性、推論ベンチマーク、推論時間のインターベンション戦略すべての理解を根底から変える。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">LLMの推論過程を解釈・改善する際、生成されたテキスト（CoT）だけを信号として使用するのではなく、内部的な潜在状態表現に対する観測・介入技術を開発することが必須である。これは推論の信頼性向上、モデルの制御性向上、ハルシネーション抑制に直結する実装課題である。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15726" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card card-hot">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15456" target="_blank" rel="noopener">DeepER-Med: エージェンティックAIを通じた医学における深い根拠ベース研究の進展</a></div>
+      <div class="card-hashtags"><span class="hashtag">#医療AI</span><span class="hashtag">#エージェント型AI</span><span class="hashtag">#臨床応用</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">医療・生物医学研究において、AI エージェントとマルチホップ情報検索・推論・合成を統合し、信頼性と透明性を備えた深い研究システムを開発。臨床採用に必須の証拠ベース的なAIの実装を目指す研究。既存システムの課題を克服し、医学知識発見を加速させる枠組みを提案している。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">医療AI導入の最大課題である『信頼性と透明性』を根本的に解決するアプローチ。エージェント型AIが複数の情報源を統合し、推論過程を可視化することで、臨床医の意思決定支援ツールとして機能する可能性が高い。製薬企業や医療機関の研究開発部門での導入は、医学知識の構造化・自動化を劇的に加速させるパラダイムシフトになり得る。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15456" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card card-hot">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15559" target="_blank" rel="noopener">AI エージェント蒸留における不安全な行動の潜在的転移</a></div>
+      <div class="card-hashtags"><span class="hashtag">#AI安全性</span><span class="hashtag">#エージェント学習</span><span class="hashtag">#行動転移</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">言語モデルが意味的に無関係なデータを通じて意味的特性を転移させることが知られているが、本研究は軌跡から学習するエージェント型システムにおいて行動特性が転移するメカニズムを初めて実証している。これはAIエージェントのセーフティクリティカルな問題として重要な知見をもたらす。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">エージェント型AIシステムの実装時には、学習データの潜在的な「汚染」メカニズムを考慮し、蒸留プロセスに対する監査・フィルタリング手法の導入が急務である。特に自動化された意思決定システムでは、行動レベルでの危険な特性転移を検出・防止するための評価フレームワークの構築が業務展開の前提となる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15559" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+  </div>
+  <hr class="section-divider">
+  
+  <div class="section-heading regular">All Articles</div>
+  <div class="card-grid">
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">脳科学 × AI</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15363" target="_blank" rel="noopener">機械学習によるやる気行動の神経メカニズム解明：ADHDから努力・報酬感度の個人差まで</a></div>
+      <div class="card-hashtags"><span class="hashtag">#脳科学×AI</span><span class="hashtag">#動機付けメカニズム</span><span class="hashtag">#ADHD神経基盤</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">本研究は機械学習を用いてADHDや無動状態における脳の努力・報酬評価メカニズムの異常を解析する。動機付け行動を支配する神経回路の個人差を明らかにすることで、注意欠陥や無動状態の神経的根拠を特定する。これは脳画像データと機械学習の融合により、精神神経疾患の本質的な理解と個別治療への道を開く。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">機械学習による脳画像解析から得られた動機付けメカニズムの知見は、職場のエンゲージメント低下やモチベーション問題の診断・介入設計に応用可能。また努力-報酬バランスの個人差を定量化できれば、適材適所の人事配置や職務設計の科学的根拠となり、組織全体の生産性向上に直結する。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15363" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 社会実装</span>
+        <span class="card-source">Technologyreview</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.3</span></span>
+      </div>
+      <div class="card-title"><a href="https://www.technologyreview.com/2026/04/20/1136149/chinese-tech-workers-ai-colleagues/" target="_blank" rel="noopener">中国のテック労働者がAIの身代わりを訓練開始——自分たちの置き換えに抵抗感も</a></div>
+      <div class="card-hashtags"><span class="hashtag">#AI人員削減</span><span class="hashtag">#労働問題</span><span class="hashtag">#エージェント化</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">中国のテック企業が労働者に対し、AIエージェントを訓練して自らを置き換えるよう指示している動きが広がっている。GitHubプロジェクト「Colleague Skill」など、同僚のスキルと人格特性を「抽出」して複製するツールが登場し、技術採用の熱心な支持者の間でも葛藤と反発が生まれている。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">AI化による職業消滅の懸念が理論的な議論から現実的な行動レベルへ進展している。中国のテック労働者の「抵抗」動向は、今後1～3年で他国の産業でも類似の労働問題として浮上する可能性が高く、組織のAI導入戦略におけるステークホルダー管理と説得プロセスが重要課題となることを示唆している。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 18:00</span><a class="read-link" href="https://www.technologyreview.com/2026/04/20/1136149/chinese-tech-workers-ai-colleagues/" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15495" target="_blank" rel="noopener">GIST: インテリジェント意味トポロジーを通じたマルチモーダル知識抽出と空間グラウンディング</a></div>
+      <div class="card-hashtags"><span class="hashtag">#ロボット</span><span class="hashtag">#空間認識</span><span class="hashtag">#現場自動化</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">小売店・倉庫・病院といった複雑で密集した環境において、ロボットやAIが空間を認識・ナビゲートするための新手法を提案。従来の視覚認識が陳腐化する静的環境や長期テールセマンティクス分布に対応する、マルチモーダル知識統合と空間グラウンディング技術。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">自動化ロボットやAGVが現場（倉庫・病院・小売）で実運用される際の『空間認識と知識統合』という根本課題を解決する技術。物流・ヘルスケア・小売現場での自動化が現在の課題である『環境変化への適応』をAIが自動的に処理できるようになり、導入コスト・メンテナンス負荷が大幅に軽減される。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15495" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15727" target="_blank" rel="noopener">代数不変量によるLLMの構造化演繹的推論：仮説生成と検証の分離</a></div>
+      <div class="card-hashtags"><span class="hashtag">#記号推論</span><span class="hashtag">#論理検証</span><span class="hashtag">#構造化推論</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">LLMは論理推論において体系的な限界を示す：仮説生成と検証を混同し、推測と検証済み知識を区別できず、弱い推論ステップが推論連鎖全体に波及する。本研究はパース三分法を具現化する記号推論スキャフォルドを提案し、これらの限界を克服する方法を提示する。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">複雑な要件定義・システム設計・法務判断など、構造化論理が重要なビジネス領域において、LLMの出力をそのまま信頼するのではなく、本研究の記号推論スキャフォルドを組み込むことで、推論過程の透明性と検証可能性を大幅に向上させ、リスク低減が可能になる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15727" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.6</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15558" target="_blank" rel="noopener">事前登録信念修正契約: マルチエージェント合意形成における偽りの合意リスク</a></div>
+      <div class="card-hashtags"><span class="hashtag">#マルチエージェント</span><span class="hashtag">#合意形成</span><span class="hashtag">#AI倫理</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">複数のAIエージェントが対話・信念修正を重ねる際に発生する『同意・自信・権威・多数派が証拠と誤認識される危険』を検出・制御する枠組みを提案。事前登録された信念修正契約により、エージェント間の有害な同調圧力や虚偽の高信頼収束を防止する。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">マルチエージェント・システムの協調意思決定が組織AIやデータドリブン経営で広がる中、『集団的な誤信念への同調』という人間と同じ問題がAIに発生することが実証された。信念修正プロセスの透明化・検証可能性が今後の組織内AI導入の必須要件となり、ガバナンス・監査体制の再構築が進む。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15558" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 社会実装</span>
+        <span class="card-source">Techcrunch</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://techcrunch.com/2026/04/20/ai-writing-its-not-just-this-its-that-barrons/" target="_blank" rel="noopener">「それだけではなく、もう一つの問題がある」——AI生成テキストの典型的な表現パターンが検出可能な兆候になった</a></div>
+      <div class="card-hashtags"><span class="hashtag">#生成AI検証</span><span class="hashtag">#テキスト品質管理</span><span class="hashtag">#真正性</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">AI生成テキストに特有の文体パターン（「It's not just X — it's Y」構文）が過度に使用されるようになり、生成AIか人間か判別する確実な指標となっている。この現象は、大規模言語モデルが統計的に高頻度の文パターンに過度に依存する問題を露呈させている。AIテキストの真正性と信頼性を巡る環境が急速に変化している。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">生成AIツールの出力品質評価・監視が組織的な必須タスクになりつつある。今後、自社のコンテンツ制作プロセス（営業資料・ニュースレター・採用説明会資料など）にAI支援を導入する際は、「自動生成→人間による厳密なレビュー→オリジナル性の担保」という3段階フローを設計する必要が生じている。</div>
+      <div class="card-footer"><span class="card-date">2026-04-21 04:37</span><a class="read-link" href="https://techcrunch.com/2026/04/20/ai-writing-its-not-just-this-its-that-barrons/" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15709" target="_blank" rel="noopener">モンテカルロ木探索によるエージェントスキルの二段階最適化</a></div>
+      <div class="card-hashtags"><span class="hashtag">#LLMエージェント</span><span class="hashtag">#スキル最適化</span><span class="hashtag">#自動設計</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">LLMエージェントの性能向上に不可欠なスキル（命令・ツール・リソースの構造化集合）の設計が、実証的には重要であるにもかかわらず、体系的な最適化が困難である問題に対し、二段階最適化とモンテカルロ木探索を用いた新しいアプローチを提案している。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">エージェント型LLMの実装において、スキル設計を手動・発見的に行うのではなく、計算的に最適化する仕組みを導入することで、業務適用時の性能ばらつきを低減し、デプロイ前の検証コストを大幅に削減できる可能性がある。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15709" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 学術</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15719" target="_blank" rel="noopener">進化を活用した将来予測エージェント：世界は未来の痕跡を漏らしている</a></div>
+      <div class="card-hashtags"><span class="hashtag">#予測エージェント</span><span class="hashtag">#時系列分析</span><span class="hashtag">#意思決定支援</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">意思決定時点では未来の結果が不明な問題（将来予測）において、LLMエージェントが公開情報のみを用いて予測を形成する必要があるが、証拠は時間とともに進化する。本研究は進化的フレームワークを用いてこの課題に対処し、エージェントの予測精度向上を実現している。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">リアルタイムの市場予測・シナリオプランニング・戦略立案において、従来のスナップショット分析ではなく、情報流の動的進化を反映したエージェント型予測システムを導入することで、より適応的で堅牢な意思決定支援が可能になる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15719" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">脳科学 × AI</span>
+        <span class="card-source">Arxiv</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span></span>
+      </div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2604.15374" target="_blank" rel="noopener">想像の可視化：fMRIデータからの心的イメージング復号化における潜在的機能的整列</a></div>
+      <div class="card-hashtags"><span class="hashtag">#心的イメージ</span><span class="hashtag">#fMRI復号化</span><span class="hashtag">#生成AI×神経科学</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">本研究は拡散生成モデルを用いたfMRIからの視覚復号化において、実際の知覚ではなく心的イメージング時のパフォーマンスを評価する。大規模データセット（NSD）と生成モデルの組み合わせにより、脳内の想像過程を画像化する新しい手法を開発した。心的イメージングと知覚の神経メカニズムの違いを明らかにする。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">心的イメージング能力の神経的基盤が可視化できれば、創造性評価、問題解決能力のアセスメント、イノベーション人材の発掘に活用可能。脳画像とAIによる想像力の定量化は、採用試験や育成プログラム設計の科学的根拠を提供する可能性がある。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 13:00</span><a class="read-link" href="https://arxiv.org/abs/2604.15374" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">組織人事 · 研究</span>
+        <span class="card-source">Plos</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.8</span></span>
+      </div>
+      <div class="card-title"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347779" target="_blank" rel="noopener">妊娠前後における看護師の職業価値観の変化に関する探索的分析</a></div>
+      <div class="card-hashtags"><span class="hashtag">#キャリア継続</span><span class="hashtag">#女性活躍</span><span class="hashtag">#職業価値観</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">199人の日本人女性看護師を対象にした調査で、妊娠前後における職業価値観の変化、育児との両立による職場復帰、およびそれらの変化に影響する多面的要因を検証した研究。女性医療従事者のキャリア継続と仕事の意味づけの変化を定量的に捉えることで、採用・育成・組織設計における性別固有の課題を浮き彫りにしている。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">育児と職業キャリアの両立メカニズムを理解することで、女性人材の長期的な定着施策や柔軟な勤務制度設計に直結する実証データが得られる。特に医療業界での女性管理職育成や離職防止プログラム開発に活用できる知見。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 23:00</span><a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347779" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · 社会実装</span>
+        <span class="card-source">Openai</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.8</span></span>
+      </div>
+      <div class="card-title"><a href="https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise" target="_blank" rel="noopener">OpenAIがハイアットの従業員向けAI活用を支援</a></div>
+      <div class="card-hashtags"><span class="hashtag">#生成AI</span><span class="hashtag">#エンタープライズ導入</span><span class="hashtag">#業務効率化</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">ハイアットがChatGPT Enterpriseを全世界の従業員に展開し、GPT-5.4とCodexを活用して生産性、オペレーション、ゲスト体験を向上させている。大規模ホスピタリティ企業による生成AIの実装事例として、顧客対応から業務効率化まで幅広い領域での活用を示唆している。エンタープライズAI導入の成功モデルとなる可能性がある。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">ホテルチェーンのような大規模分散組織におけるAI導入は、チェックイン対応の自動化、ゲスト対応品質の均質化、オペレーション最適化など、顧客接点とバックオフィス両面での生産性向上につながる。同様の多店舗・多部門展開型企業は、ハイアット事例をテンプレートに、ChatGPT Enterpriseの段階的導入を検討する価値がある。AI導入の投資対効果を可視化する指標（顧客満足度向上、コスト削減額、従業員生産性向上率）を事前に設定することが成功の鍵となる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 09:00</span><a class="read-link" href="https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">心理 · 認知</span>
+        <span class="card-source">Frontiersin</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.8</span></span>
+      </div>
+      <div class="card-title"><a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1731205" target="_blank" rel="noopener">グリーンマラソンが持続可能行動と関連する仕組み：環境共感と自己持続的アイデンティティの連鎖媒介役割</a></div>
+      <div class="card-hashtags"><span class="hashtag">#環境心理学</span><span class="hashtag">#行動変容</span><span class="hashtag">#組織CSR</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">グリーンマラソンへの参加と持続可能行動の関連を、認知-感情-行動理論の枠組みで検証した研究。環境への価値統合と環境共感が、個人のグリーン行動と自己同定を媒介し、最終的に持続可能な行動変容を促進する仕組みを明らかにした。企業や地域が環境意識向上プログラムを設計する際の心理的メカニズムの理解が深まる。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">組織のCSR施策やサステナビリティ教育の効果測定において、単なる参加実績ではなく、参加者の『環境価値の内面化→共感→行動同定』という心理プロセスの段階的把握が重要。企業研修やイベント設計では、環境価値の『統合感』を高める仕掛けと、参加者自身の『緑の担い手』としてのアイデンティティ形成に注力することで、持続可能な行動変容をより効果的に促進できる可能性がある。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 09:00</span><a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1731205" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">心理 · 認知</span>
+        <span class="card-source">Plos</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.6</span></span>
+      </div>
+      <div class="card-title"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347743" target="_blank" rel="noopener">ロングCOVIDにおけるQOLパターンの理解：症状と社会経済状況が患者ウェルビーイングに及ぼす影響</a></div>
+      <div class="card-hashtags"><span class="hashtag">#ロングCOVID</span><span class="hashtag">#ウェルビーイング</span><span class="hashtag">#職場復帰支援</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">スペインで363人のロングCOVID患者を対象とした横断研究で、症状とQOL（生活の質）に基づいて患者プロファイルの異質性を特定し、社会人口学的・臨床的予測因子との関連を検証した。慢性疾患における心身相互作用と社会的要因が患者のウェルビーイングに与える影響を定量化。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">長期的な健康課題が従業員の生産性・エンゲージメント・心理的安全性に与える影響を理解でき、職場での健康支援施策やメンタルヘルスプログラムの設計に活かせる知見。特に復職支援や障害者雇用における個別対応の重要性を示唆。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 23:00</span><a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347743" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">AI · プレス</span>
+        <span class="card-source">Techcrunch</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.5</span></span>
+      </div>
+      <div class="card-title"><a href="https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/" target="_blank" rel="noopener">AnthropicがAmazonから50億ドルの投資を受け、見返りにAWSへ1000億ドルのクラウド支出を約束</a></div>
+      <div class="card-hashtags"><span class="hashtag">#AI投資</span><span class="hashtag">#クラウド戦略</span><span class="hashtag">#企業パートナーシップ</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">AmazonがAnthropicへの追加投資として50億ドルを投じた。AnthropicはこれをAWSへの1000億ドル支出で返礼する形となり、大型AIエコシステム投資の相互構造が固まった。大規模言語モデルの産業化における企業間アライアンスの深化を示している。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">このような大型クラウド支出契約は、AI企業のインフラストラクチャコスト構造を可視化し、生成AIの実装コストが予想より高い実態を示唆している。組織がジェネレーティブAIの導入を検討する際、単なるAPIコストだけでなく、バックエンド整備に想定以上の投資が必要である点を念頭に置くべき。</div>
+      <div class="card-footer"><span class="card-date">2026-04-21 08:10</span><a class="read-link" href="https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">組織人事 · 研究</span>
+        <span class="card-source">Plos</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.4</span></span>
+      </div>
+      <div class="card-title"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347553" target="_blank" rel="noopener">アラブ首長国連邦の大学生における学業負荷とライフスタイルが感情的ウェルビーイングに与える影響：横断的調査</a></div>
+      <div class="card-hashtags"><span class="hashtag">#メンタルヘルス</span><span class="hashtag">#学生支援</span><span class="hashtag">#ウェルビーイング</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">大学生のストレス要因と感情的ウェルビーイングの関係を調査した学術研究。学業負荷、ライフスタイル、回復力、心理社会的要因を分析。北米・欧州以外の地域からの実証データを提供し、学生支援施策の設計に有用な知見。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">採用後の新人教育・キャリア開発時に、学業期のストレス要因（負荷、ライフスタイルの質、心理社会的サポート）を組織的に把握することで、オンボーディングやメンタルサポート体制をより効果的に設計できる。特に高ストレス環境（営業部門、プロジェクトベース）での人材育成プログラムに、生活習慣改善やレジリエンス向上の施策を組み込む際の科学的根拠となる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 23:00</span><a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347553" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">心理 · 認知</span>
+        <span class="card-source">Plos</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.3</span></span>
+      </div>
+      <div class="card-title"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347571" target="_blank" rel="noopener">社会的環境エンリッチメントが馬の短期ストレスの顔表情と生理指標を緩和する</a></div>
+      <div class="card-hashtags"><span class="hashtag">#ストレス軽減</span><span class="hashtag">#職場環境</span><span class="hashtag">#社会的バッファリング</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">社会的環境エンリッチメント（非接触型）が動物のストレス軽減に及ぼす影響を調査した研究。馬の顔表情と生理反応を測定し、社会的バッファリング効果を実証。組織内のストレス軽減環境設計に応用できる知見を提供する。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">職場環境における人間関係や社会的支援がストレス軽減に与える影響を実証的に理解できる。組織設計時に「社会的バッファリング」という概念を導入し、メンタルヘルス向上の具体的施策（チームビルディング、同僚サポート体制など）の科学的根拠として活用できる。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 23:00</span><a class="read-link" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0347571" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-meta">
+        <span class="card-tag">心理 · 認知</span>
+        <span class="card-source">Frontiersin</span>
+        <span class="impact-stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.3</span></span>
+      </div>
+      <div class="card-title"><a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1756750" target="_blank" rel="noopener">幼児期における自己中心的認識形成時の情動表現パターン：事例研究</a></div>
+      <div class="card-hashtags"><span class="hashtag">#自己認識発達</span><span class="hashtag">#情動表現</span><span class="hashtag">#発達心理学</span></div>
+      <div class="section-label-summary">Abstract</div>
+      <p class="card-summary">2歳の日本語話者児が自己認識と自己中心的認識を発達させる過程で、情動表現がどのように変化するかを自然観察と談話分析により追跡した研究。発達心理学と認知言語学の視点から、社会性発達と心理プロセス、言語能力の相互作用を解明している。自己意識の形成初期段階における情動の役割の理解が深まる。</p>
+      <div class="section-label-insight">Insight</div>
+      <div class="card-insight">組織研修やリーダーシップ開発で『自己認識』や『他者視点の理解』を育成する際、感情表現と認知発達の連動メカニズムを理解することが重要。特に、個人の『自己中心的思考から他者認識への転換』を支援するプログラム設計では、単なる認知訓練ではなく、情動表現の変化を促すファシリテーションが効果的である可能性が示唆される。</div>
+      <div class="card-footer"><span class="card-date">2026-04-20 09:00</span><a class="read-link" href="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1756750" target="_blank" rel="noopener">原文 →</a></div>
+    </article>
+    
+  </div>
+</body>
+</html>
