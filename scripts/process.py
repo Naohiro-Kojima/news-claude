@@ -853,7 +853,7 @@ def process_category(
     if not articles:
         return []
 
-    fallback_cat = _FEED_TO_GEMINI_CAT.get(category_name, "ai_social")
+    fallback_cat = _FEED_TO_GEMINI_CAT.get(category_name, "ai_product")
     results: list[ProcessedArticle] = []
 
     uncached     = [a for a in articles if a["url"] not in url_cache]

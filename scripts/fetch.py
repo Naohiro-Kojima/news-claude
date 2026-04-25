@@ -150,7 +150,7 @@ def fetch_category(category_name: str, feeds: list[dict], hours: int = 24) -> li
         time.sleep(0.5)
 
     articles.sort(key=lambda a: a["published"], reverse=True)
-    return articles[:10]
+    return articles[:20]
 
 
 def fetch_all(config_path: str = "config/feeds.yml", hours: int = 24) -> dict[str, list[Article]]:

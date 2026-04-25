@@ -1,6 +1,6 @@
 """
-LM OS 5.0 プロンプト検証スクリプト
-3種類のサンプル記事（AI系 / 脳科学系 / 競合業界系）でインサイト品質を検証する
+2ステップパイプライン検証スクリプト
+Step A（スクリーニング）→ Step B（深層解析）の両プロンプトを検証する
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import anthropic
-from process import SYSTEM_PROMPT, MODEL
+from process import SCREENING_PROMPT, DEEP_ANALYSIS_PROMPT, SCREENING_MODEL, ANALYSIS_MODEL
 
 SAMPLE_ARTICLES = [
     {
@@ -74,61 +74,109 @@ SAMPLE_ARTICLES = [
             "reporting above-median engagement scores showed 2.3x higher revenue per employee."
         ),
     },
+    {
+        "index": 4,
+        "lang": "en",
+        "category": "AIプロダクト速報",
+        "title": "New JavaScript framework released for hobby developers",
+        "description": (
+            "A new lightweight JavaScript framework targeting hobbyist developers was released today. "
+            "It focuses on simplicity and has no enterprise features. Suitable for personal projects."
+        ),
+    },
 ]
 
-USER_PROMPT = (
-    "以下の記事リストを分析し、JSON配列のみを返してください。\n\n"
-    + json.dumps(SAMPLE_ARTICLES, ensure_ascii=False, indent=2)
-)
+
+def _call(client: anthropic.Anthropic, system: str, user: str, model: str, max_tokens: int) -> list[dict]:
+    resp = client.messages.create(
+        model=model,
+        max_tokens=max_tokens,
+        system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+        messages=[{"role": "user", "content": user}],
+    )
+    raw = resp.content[0].text.strip()
+    import re
+    cleaned = re.sub(r"```(?:json)?", "", raw).strip().rstrip("```").strip()
+    return json.loads(cleaned), resp.usage
 
 
 def run_validation() -> None:
     client = anthropic.Anthropic()
 
-    print("=== LM OS 5.0 プロンプト検証 ===\n")
-    print(f"モデル: {MODEL}")
-    print(f"サンプル記事数: {len(SAMPLE_ARTICLES)}\n")
-    print("APIコール中...\n")
+    print("=== 2ステップパイプライン検証 ===\n")
+    print(f"スクリーニングモデル : {SCREENING_MODEL}")
+    print(f"深層解析モデル       : {ANALYSIS_MODEL}")
+    print(f"サンプル記事数       : {len(SAMPLE_ARTICLES)}\n")
 
-    response = client.messages.create(
-        model=MODEL,
+    # ── Step A: スクリーニング ────────────────────────────────────────────────
+    screen_input = "\n".join(
+        f"[{a['index']}] lang={a['lang']}\n  title: {a['title']}\n  description: {a['description']}\n"
+        for a in SAMPLE_ARTICLES
+    )
+    print("── Step A: スクリーニング APIコール中... ──\n")
+    screen_results, screen_usage = _call(
+        client,
+        SCREENING_PROMPT,
+        f"以下の記事を判定してください:\n\n{screen_input}",
+        SCREENING_MODEL,
+        max_tokens=512,
+    )
+    screen_map = {r["index"]: r for r in screen_results}
+
+    print(f"{'='*65}")
+    for r in screen_results:
+        sel = "✓" if r.get("selected") else "✗"
+        hot = "🔥" if r.get("hot") else "  "
+        print(f"  [{r['index']}] {sel}{hot} cat={r.get('category','?'):<20} {r.get('title_ja','')[:40]}")
+    print(f"\n【Step A トークン】入力: {screen_usage.input_tokens}  出力: {screen_usage.output_tokens}")
+    cr = getattr(screen_usage, "cache_read_input_tokens", 0)
+    cc = getattr(screen_usage, "cache_creation_input_tokens", 0)
+    if cr or cc: print(f"  キャッシュ読込: {cr}  作成: {cc}")
+
+    # ── Step B: 選別 & 擬似フェッチ ─────────────────────────────────────────
+    selected = [a for a in SAMPLE_ARTICLES if screen_map.get(a["index"], {}).get("selected")]
+    print(f"\n選別通過: {len(selected)}/{len(SAMPLE_ARTICLES)} 件\n")
+
+    if not selected:
+        print("選別通過記事が0件のため Step C をスキップします。")
+        return
+
+    # Step B では実際にURLフェッチはせずdescriptionをcontentとして使う
+    analysis_input = [
+        {
+            "index": i,
+            "lang": a["lang"],
+            "category": screen_map[a["index"]].get("category", ""),
+            "title_ja": screen_map[a["index"]].get("title_ja", a["title"]),
+            "content": a["description"],
+        }
+        for i, a in enumerate(selected)
+    ]
+
+    # ── Step C: 深層解析 ──────────────────────────────────────────────────────
+    print("── Step C: 深層解析 APIコール中... ──\n")
+    deep_results, deep_usage = _call(
+        client,
+        DEEP_ANALYSIS_PROMPT,
+        "以下の記事（全文テキスト含む）を深層解析し、"
+        "summary / insight / impact / impact_axes / hashtags をJSON配列で出力してください:\n\n"
+        + json.dumps(analysis_input, ensure_ascii=False, indent=2),
+        ANALYSIS_MODEL,
         max_tokens=4096,
-        system=[
-            {
-                "type": "text",
-                "text": SYSTEM_PROMPT,
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
-        messages=[{"role": "user", "content": USER_PROMPT}],
     )
 
-    raw = response.content[0].text.strip()
-
-    # JSON パース
-    try:
-        results = json.loads(raw)
-    except json.JSONDecodeError:
-        # コードブロックを除去して再試行
-        import re
-        cleaned = re.sub(r"```(?:json)?", "", raw).strip()
-        results = json.loads(cleaned)
-
-    print(f"{'='*70}\n")
-    for r in results:
-        idx = r.get("index", "?")
-        orig = next((a for a in SAMPLE_ARTICLES if a["index"] == idx), {})
-        print(f"[記事 {idx}] {orig.get('category', '')} ({orig.get('lang', '')})")
-        print(f"  原題  : {orig.get('title', '')[:60]}...")
-        print(f"  訳題  : {r.get('title_ja', '')}")
-        print(f"  判定  : selected={r.get('selected')}  hot={r.get('hot')}  impact={r.get('impact')}  category={r.get('category')}")
+    print(f"{'='*65}\n")
+    for r in deep_results:
+        local_idx = r.get("index", 0)
+        orig_article = selected[local_idx] if local_idx < len(selected) else {}
+        screen = screen_map.get(orig_article.get("index", -1), {})
+        print(f"[記事 {orig_article.get('index','?')}] {orig_article.get('category', '')}")
+        print(f"  訳題  : {screen.get('title_ja', '')}")
+        print(f"  判定  : selected=True  hot={screen.get('hot')}  impact={r.get('impact')}  category={screen.get('category')}")
         print(f"  要約  : {r.get('summary', '')}")
         print(f"  洞察  : {r.get('insight', '')}")
-        axes = r.get('impact_axes') or {}
-        per = axes.get('per', '-')
-        sci = axes.get('sci', '-')
-        cps = axes.get('cps', '-')
-        print(f"  3軸   : PER={per}  SCI={sci}  CPS={cps}  → impact={r.get('impact')}")
+        axes = r.get("impact_axes") or {}
+        print(f"  3軸   : PER={axes.get('per','-')}  SCI={axes.get('sci','-')}  CPS={axes.get('cps','-')}")
         print(f"  タグ  : {' '.join(r.get('hashtags', []))}")
         print()
 
@@ -139,27 +187,18 @@ def run_validation() -> None:
         "ICE BLOCK", "INK BLOT", "農耕型", "狩猟型", "EPS", "PER", "i-Company",
         "4C", "C1", "C2", "C3", "C4",
     ]
-    all_text = " ".join([
-        r.get("summary", "") + r.get("insight", "")
-        for r in results if r.get("selected")
-    ])
-    found = [t for t in lm_terms if t in all_text]
+    all_text = " ".join(r.get("summary", "") + r.get("insight", "") for r in deep_results)
+    found   = [t for t in lm_terms if t in all_text]
     missing = [t for t in lm_terms if t not in all_text]
-
-    print(f"{'='*70}")
+    print(f"{'='*65}")
     print(f"【LM OS 5.0 用語チェック】")
     print(f"  使用済み ({len(found)}): {', '.join(found)}")
     print(f"  未使用   ({len(missing)}): {', '.join(missing)}")
-    print()
 
-    # 使用トークン
-    usage = response.usage
-    print(f"【トークン使用量】")
-    print(f"  入力: {usage.input_tokens}  出力: {usage.output_tokens}")
-    cache_read = getattr(usage, "cache_read_input_tokens", 0)
-    cache_create = getattr(usage, "cache_creation_input_tokens", 0)
-    if cache_read or cache_create:
-        print(f"  キャッシュ読込: {cache_read}  キャッシュ作成: {cache_create}")
+    print(f"\n【Step C トークン】入力: {deep_usage.input_tokens}  出力: {deep_usage.output_tokens}")
+    cr = getattr(deep_usage, "cache_read_input_tokens", 0)
+    cc = getattr(deep_usage, "cache_creation_input_tokens", 0)
+    if cr or cc: print(f"  キャッシュ読込: {cr}  作成: {cc}")
 
 
 if __name__ == "__main__":

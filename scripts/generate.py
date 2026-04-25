@@ -15,9 +15,9 @@ from process import ProcessedArticle
 
 JST = timezone(timedelta(hours=9))
 
-TIMELINE_MAX_ALL     = 90   # All タブに表示する最大記事数
-TIMELINE_MAX_PER_TAB = 50   # 各サブタブの最大記事数
-TIMELINE_MAX_DAYS    = 30   # 遡る最大日数
+TIMELINE_MAX_ALL     = 60   # All タブに表示する最大記事数
+TIMELINE_MAX_PER_TAB = 30   # 各サブタブの最大記事数
+TIMELINE_MAX_DAYS    = 14   # 遡る最大日数
 
 # カテゴリキー → (parent_tab, sub_tab, sub3_tab)
 _CAT_MAP: dict[str, tuple[str, str | None, str | None]] = {
@@ -292,6 +292,7 @@ HTML_TEMPLATE = """\
 {%- set is_apex = article.impact|float >= 4.5 and extra_class != 'card-hot' -%}
 <article class="card {{ extra_class }}{{ ' card-apex' if is_apex }}" data-url="{{ article.url }}" data-competitor-group="{{ article.competitor_group }}">
   <span class="badge-new">{{ 'HOT' if is_apex else 'NEW' }}</span>
+  <button class="fav-btn" data-url="{{ article.url }}" onclick="toggleFav('{{ article.url }}')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">{{ article.category_label }}</span>
     {%- if article.source %}<span class="card-source">{{ article.source }}</span>{% endif %}
@@ -654,7 +655,7 @@ HTML_TEMPLATE = """\
     .star.empty  { color: var(--star-empty); }
     .badge-new {
       position: absolute;
-      top: 11px; right: 11px;
+      top: 11px; right: 48px;
       background: var(--badge-bg);
       color: #fff;
       font-size: 9px;
@@ -666,6 +667,21 @@ HTML_TEMPLATE = """\
       font-family: -apple-system, sans-serif;
     }
     .card-hot .badge-new { background: var(--hot-accent); }
+    .fav-btn {
+      position: absolute;
+      top: 8px; right: 11px;
+      background: none;
+      border: none;
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--star-empty);
+      padding: 2px;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .fav-btn.favorited { color: var(--star-filled); }
+    .fav-btn:hover { transform: scale(1.25); }
     .card-title {
       font-size: 14.5px;
       font-weight: 600;
@@ -793,6 +809,7 @@ HTML_TEMPLATE = """\
       <button class="tab-btn"        data-parent="ai"         onclick="showParent('ai')">AI</button>
       <button class="tab-btn"        data-parent="neuro"      onclick="showParent('neuro')">脳科学</button>
       <button class="tab-btn"        data-parent="competitor" onclick="showParent('competitor')">他社リサーチ</button>
+      <button class="tab-btn"        data-parent="favorites"  onclick="showParent('favorites')">★ お気に入り</button>
     </nav>
   </header>
 
@@ -880,6 +897,11 @@ HTML_TEMPLATE = """\
         {{ render_timeline(panels.competitor.trend) }}
       </div>
     </div>
+
+    <!-- ===== お気に入り パネル ===== -->
+    <div id="panel-favorites" class="hidden">
+      <div class="empty fav-empty-msg">お気に入り記事はありません。記事カードの ☆ ボタンで登録できます。</div>
+    </div>
   </main>
 
   <script>
@@ -904,6 +926,8 @@ HTML_TEMPLATE = """\
       document.getElementById('panel-ai').classList.toggle('hidden',         tab !== 'ai');
       document.getElementById('panel-neuro').classList.toggle('hidden',      tab !== 'neuro');
       document.getElementById('panel-competitor').classList.toggle('hidden', tab !== 'competitor');
+      document.getElementById('panel-favorites').classList.toggle('hidden',  tab !== 'favorites');
+      if (tab === 'favorites') renderFavorites();
     }
 
     /* ── Sub tab switching ── */
@@ -1016,6 +1040,102 @@ HTML_TEMPLATE = """\
       }
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
+
+    /* ── お気に入り機能 ── */
+    const FAV_KEY = 'hsi_fav_v1';
+    function getFavs() {
+      try { return JSON.parse(localStorage.getItem(FAV_KEY) || '{}'); }
+      catch { return {}; }
+    }
+    function getCardData(card) {
+      const axes = {};
+      const title = card.querySelector('.impact-stars')?.getAttribute('title') || '';
+      const m = title.match(/PER:([0-9.]+) SCI:([0-9.]+) CPS:([0-9.]+)/);
+      if (m) { axes.per = parseFloat(m[1]); axes.sci = parseFloat(m[2]); axes.cps = parseFloat(m[3]); }
+      return {
+        url:            card.dataset.url,
+        title_ja:       card.querySelector('.card-title a')?.textContent?.trim() || '',
+        summary:        card.querySelector('.card-summary')?.textContent?.trim() || '',
+        insight:        card.querySelector('.card-insight .exp-text')?.textContent?.trim() || '',
+        category_label: card.querySelector('.card-tag')?.textContent?.trim() || '',
+        source:         card.querySelector('.card-source')?.textContent?.trim() || '',
+        published_jst:  card.querySelector('.card-date')?.textContent?.trim() || '',
+        impact:         parseFloat(card.querySelector('.impact-val')?.textContent || '0'),
+        impact_axes:    axes,
+        hashtags:       [...card.querySelectorAll('.hashtag')].map(h => h.textContent.trim()),
+        competitor_group: card.dataset.competitorGroup || '',
+      };
+    }
+    function toggleFav(url) {
+      const favs = getFavs();
+      if (favs[url]) {
+        delete favs[url];
+      } else {
+        const card = document.querySelector(`.card[data-url="${CSS.escape(url)}"]`);
+        if (card) favs[url] = getCardData(card);
+      }
+      localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+      refreshFavBtns();
+      if (currentParent === 'favorites') renderFavorites();
+    }
+    function refreshFavBtns() {
+      const favs = getFavs();
+      document.querySelectorAll('.fav-btn').forEach(btn => {
+        const isFav = !!favs[btn.dataset.url];
+        btn.classList.toggle('favorited', isFav);
+        btn.textContent = isFav ? '★' : '☆';
+        btn.title = isFav ? 'お気に入りから削除' : 'お気に入りに追加';
+      });
+    }
+    function renderFavCard(a) {
+      const imp = parseFloat(a.impact) || 0;
+      const stars = Array.from({length:5}, (_,i) =>
+        `<span class="star ${i < imp ? 'filled' : 'empty'}">★</span>`).join('');
+      const axTitle = a.impact_axes && a.impact_axes.per != null
+        ? ` | PER:${a.impact_axes.per} SCI:${a.impact_axes.sci} CPS:${a.impact_axes.cps}` : '';
+      const hashtags = (a.hashtags||[]).map(t=>`<span class="hashtag">${t}</span>`).join('');
+      const src = a.source ? `<span class="card-source">${a.source}</span>` : '';
+      return `<article class="card" data-url="${a.url}" data-competitor-group="${a.competitor_group||''}">
+  <span class="badge-new">FAV</span>
+  <button class="fav-btn favorited" data-url="${a.url}" onclick="toggleFav('${a.url.replace(/'/g,"\\'")}')">★</button>
+  <div class="card-meta">
+    <span class="card-tag">${a.category_label||''}</span>${src}
+    <span class="impact-stars" title="Impact ${imp.toFixed(1)}/5${axTitle}">${stars}<span class="impact-val">${imp.toFixed(1)}</span></span>
+  </div>
+  <div class="card-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title_ja}</a></div>
+  ${hashtags ? `<div class="card-hashtags">${hashtags}</div>` : ''}
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">${a.summary}</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">${a.insight}</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">${a.published_jst}</span>
+    <a class="read-link" href="${a.url}" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>`;
+    }
+    function renderFavorites() {
+      const favs = getFavs();
+      const panel = document.getElementById('panel-favorites');
+      const keys = Object.keys(favs);
+      if (keys.length === 0) {
+        panel.innerHTML = '<div class="empty">お気に入り記事はありません。記事カードの ☆ ボタンで登録できます。</div>';
+        return;
+      }
+      const cards = keys.map(url => renderFavCard(favs[url])).join('');
+      panel.innerHTML = `<div class="section-heading regular">お気に入り（${keys.length}件）</div>
+<div class="card-grid">${cards}</div>`;
+      panel.querySelectorAll('.exp-btn').forEach(btn => {
+        const el = btn.previousElementSibling;
+        if (el && el.classList.contains('exp-text') && el.scrollHeight <= el.clientHeight + 4)
+          btn.style.display = 'none';
+      });
+    }
+    refreshFavBtns();
 
     /* ── 未読バッジ管理 ── */
     const READ_KEY = 'hsi_read_v2';

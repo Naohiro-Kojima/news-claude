@@ -319,7 +319,7 @@
     .star.empty  { color: var(--star-empty); }
     .badge-new {
       position: absolute;
-      top: 11px; right: 11px;
+      top: 11px; right: 48px;
       background: var(--badge-bg);
       color: #fff;
       font-size: 9px;
@@ -331,6 +331,21 @@
       font-family: -apple-system, sans-serif;
     }
     .card-hot .badge-new { background: var(--hot-accent); }
+    .fav-btn {
+      position: absolute;
+      top: 8px; right: 11px;
+      background: none;
+      border: none;
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--star-empty);
+      padding: 2px;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .fav-btn.favorited { color: var(--star-filled); }
+    .fav-btn:hover { transform: scale(1.25); }
     .card-title {
       font-size: 14.5px;
       font-weight: 600;
@@ -449,7 +464,7 @@
     <div class="header-top">
       <div class="header-brand">
         <h1>Human Science Insights</h1>
-        <span class="header-updated">2026-04-26 02:42 JST</span>
+        <span class="header-updated">2026-04-26 03:29 JST</span>
       </div>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     </div>
@@ -458,6 +473,7 @@
       <button class="tab-btn"        data-parent="ai"         onclick="showParent('ai')">AI</button>
       <button class="tab-btn"        data-parent="neuro"      onclick="showParent('neuro')">脳科学</button>
       <button class="tab-btn"        data-parent="competitor" onclick="showParent('competitor')">他社リサーチ</button>
+      <button class="tab-btn"        data-parent="favorites"  onclick="showParent('favorites')">★ お気に入り</button>
     </nav>
   </header>
 
@@ -492,6 +508,7 @@
         <div class="card-grid">
           <article class="card card-hot" data-url="https://arxiv.org/abs/2604.08756" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08756" onclick="toggleFav('https://arxiv.org/abs/2604.08756')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -514,6 +531,7 @@
   </div>
 </article><article class="card card-hot" data-url="https://arxiv.org/abs/2604.08865" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08865" onclick="toggleFav('https://arxiv.org/abs/2604.08865')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -536,6 +554,7 @@
   </div>
 </article><article class="card card-hot" data-url="https://arxiv.org/abs/2604.08905" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08905" onclick="toggleFav('https://arxiv.org/abs/2604.08905')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -558,6 +577,7 @@
   </div>
 </article><article class="card card-hot" data-url="https://arxiv.org/abs/2604.08594" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08594" onclick="toggleFav('https://arxiv.org/abs/2604.08594')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -580,6 +600,7 @@
   </div>
 </article><article class="card card-hot" data-url="https://arxiv.org/abs/2506.17310" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2506.17310" onclick="toggleFav('https://arxiv.org/abs/2506.17310')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -602,6 +623,7 @@
   </div>
 </article><article class="card card-hot" data-url="https://arxiv.org/abs/2507.10722" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2507.10722" onclick="toggleFav('https://arxiv.org/abs/2507.10722')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -634,6 +656,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/業界-市場トレンド/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/0" onclick="toggleFav('https://example.com/業界-市場トレンド/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -653,11 +676,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/業界-市場トレンド/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/1" onclick="toggleFav('https://example.com/業界-市場トレンド/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -677,11 +701,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/業界-市場トレンド/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/2" onclick="toggleFav('https://example.com/業界-市場トレンド/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -701,11 +726,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/競合プレスリリース/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/0" onclick="toggleFav('https://example.com/競合プレスリリース/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -725,11 +751,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/競合プレスリリース/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/1" onclick="toggleFav('https://example.com/競合プレスリリース/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -749,11 +776,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/競合プレスリリース/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/2" onclick="toggleFav('https://example.com/競合プレスリリース/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -773,11 +801,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/脳科学研究-心理認知/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/0" onclick="toggleFav('https://example.com/脳科学研究-心理認知/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -797,11 +826,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-心理認知/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/1" onclick="toggleFav('https://example.com/脳科学研究-心理認知/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -821,11 +851,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-心理認知/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/2" onclick="toggleFav('https://example.com/脳科学研究-心理認知/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -845,11 +876,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/脳科学研究-身体性/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/0" onclick="toggleFav('https://example.com/脳科学研究-身体性/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -869,11 +901,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-身体性/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/1" onclick="toggleFav('https://example.com/脳科学研究-身体性/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -893,11 +926,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-身体性/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/2" onclick="toggleFav('https://example.com/脳科学研究-身体性/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -917,11 +951,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/脳科学-プレスリリース/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/0" onclick="toggleFav('https://example.com/脳科学-プレスリリース/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -941,11 +976,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-プレスリリース/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/1" onclick="toggleFav('https://example.com/脳科学-プレスリリース/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -965,11 +1001,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-プレスリリース/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/2" onclick="toggleFav('https://example.com/脳科学-プレスリリース/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -989,11 +1026,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/脳科学-社会実装/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/0" onclick="toggleFav('https://example.com/脳科学-社会実装/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -1013,11 +1051,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-社会実装/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/1" onclick="toggleFav('https://example.com/脳科学-社会実装/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1037,11 +1076,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-社会実装/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/2" onclick="toggleFav('https://example.com/脳科学-社会実装/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1061,11 +1101,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/AIビジネス活用事例/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/0" onclick="toggleFav('https://example.com/AIビジネス活用事例/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -1085,11 +1126,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIビジネス活用事例/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/1" onclick="toggleFav('https://example.com/AIビジネス活用事例/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1109,11 +1151,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIビジネス活用事例/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/2" onclick="toggleFav('https://example.com/AIビジネス活用事例/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1133,11 +1176,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card  card-apex" data-url="https://example.com/AIプロダクト速報/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/0" onclick="toggleFav('https://example.com/AIプロダクト速報/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -1157,11 +1201,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIプロダクト速報/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/1" onclick="toggleFav('https://example.com/AIプロダクト速報/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1181,11 +1226,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIプロダクト速報/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/2" onclick="toggleFav('https://example.com/AIプロダクト速報/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1205,7 +1251,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -1215,6 +1261,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" onclick="toggleFav('https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1237,6 +1284,7 @@
   </div>
 </article><article class="card " data-url="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" onclick="toggleFav('https://neurosciencenews.com/sci-motor-unit-coordination-30509/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1259,6 +1307,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" onclick="toggleFav('https://neurosciencenews.com/predictive-brain-categorization-action-30508/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1281,6 +1330,7 @@
   </div>
 </article><article class="card " data-url="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" onclick="toggleFav('https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">MIT Tech Review</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1303,6 +1353,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" onclick="toggleFav('https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">MIT Tech Review</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1325,6 +1376,7 @@
   </div>
 </article><article class="card " data-url="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" onclick="toggleFav('https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1347,6 +1399,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://openai.com/index/cloudflare-openai-agent-cloud" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://openai.com/index/cloudflare-openai-agent-cloud" onclick="toggleFav('https://openai.com/index/cloudflare-openai-agent-cloud')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">OpenAI</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1369,6 +1422,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://arxiv.org/abs/2604.08601" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08601" onclick="toggleFav('https://arxiv.org/abs/2604.08601')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1391,6 +1445,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://arxiv.org/abs/2604.08603" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08603" onclick="toggleFav('https://arxiv.org/abs/2604.08603')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1413,6 +1468,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08621" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08621" onclick="toggleFav('https://arxiv.org/abs/2604.08621')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1435,6 +1491,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08685" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08685" onclick="toggleFav('https://arxiv.org/abs/2604.08685')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1457,6 +1514,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08712" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08712" onclick="toggleFav('https://arxiv.org/abs/2604.08712')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1479,6 +1537,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08863" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08863" onclick="toggleFav('https://arxiv.org/abs/2604.08863')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1501,6 +1560,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.09229" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.09229" onclick="toggleFav('https://arxiv.org/abs/2604.09229')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -1523,6 +1583,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2510.21588" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2510.21588" onclick="toggleFav('https://arxiv.org/abs/2510.21588')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -1545,6 +1606,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1567,6 +1629,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1589,6 +1652,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -1611,6 +1675,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1633,6 +1698,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1655,6 +1721,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1677,6 +1744,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1699,6 +1767,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1721,6 +1790,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1743,6 +1813,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -1770,6 +1841,7 @@
   <div class="card-grid">
     <article class="card " data-url="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" onclick="toggleFav('https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1792,6 +1864,7 @@
   </div>
 </article><article class="card " data-url="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" onclick="toggleFav('https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -1827,6 +1900,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/AIプロダクト速報/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/0" onclick="toggleFav('https://example.com/AIプロダクト速報/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -1846,11 +1920,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIプロダクト速報/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/1" onclick="toggleFav('https://example.com/AIプロダクト速報/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1870,11 +1945,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIプロダクト速報/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIプロダクト速報/2" onclick="toggleFav('https://example.com/AIプロダクト速報/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1894,7 +1970,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIプロダクト速報/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -1904,6 +1980,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://openai.com/index/cloudflare-openai-agent-cloud" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://openai.com/index/cloudflare-openai-agent-cloud" onclick="toggleFav('https://openai.com/index/cloudflare-openai-agent-cloud')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">OpenAI</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -1931,6 +2008,7 @@
   <div class="card-grid">
     <article class="card " data-url="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/" onclick="toggleFav('https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -1963,6 +2041,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/AIビジネス活用事例/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/0" onclick="toggleFav('https://example.com/AIビジネス活用事例/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -1982,11 +2061,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIビジネス活用事例/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/1" onclick="toggleFav('https://example.com/AIビジネス活用事例/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2006,11 +2086,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/AIビジネス活用事例/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/AIビジネス活用事例/2" onclick="toggleFav('https://example.com/AIビジネス活用事例/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2030,7 +2111,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/AIビジネス活用事例/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -2040,6 +2121,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/" onclick="toggleFav('https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2062,6 +2144,7 @@
   </div>
 </article><article class="card " data-url="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/" onclick="toggleFav('https://www.technologyreview.com/2026/04/13/1135675/want-to-understand-the-current-state-of-ai-check-out-these-charts/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">MIT Tech Review</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2084,6 +2167,7 @@
   </div>
 </article><article class="card " data-url="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/" onclick="toggleFav('https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">TechCrunch</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2106,6 +2190,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://arxiv.org/abs/2604.08601" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08601" onclick="toggleFav('https://arxiv.org/abs/2604.08601')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2128,6 +2213,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://arxiv.org/abs/2604.08603" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08603" onclick="toggleFav('https://arxiv.org/abs/2604.08603')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2150,6 +2236,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08621" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08621" onclick="toggleFav('https://arxiv.org/abs/2604.08621')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · ビジネス活用</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2172,6 +2259,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08685" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08685" onclick="toggleFav('https://arxiv.org/abs/2604.08685')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2194,6 +2282,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08712" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08712" onclick="toggleFav('https://arxiv.org/abs/2604.08712')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2216,6 +2305,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.08863" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.08863" onclick="toggleFav('https://arxiv.org/abs/2604.08863')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · 研究</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2252,6 +2342,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/脳科学-社会実装/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/0" onclick="toggleFav('https://example.com/脳科学-社会実装/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -2271,11 +2362,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-社会実装/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/1" onclick="toggleFav('https://example.com/脳科学-社会実装/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2295,11 +2387,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-社会実装/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-社会実装/2" onclick="toggleFav('https://example.com/脳科学-社会実装/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2319,7 +2412,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-社会実装/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -2329,6 +2422,7 @@
   <div class="card-grid">
     <article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1810409')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2351,6 +2445,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1809135')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · 社会</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2383,6 +2478,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/脳科学-プレスリリース/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/0" onclick="toggleFav('https://example.com/脳科学-プレスリリース/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -2402,11 +2498,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-プレスリリース/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/1" onclick="toggleFav('https://example.com/脳科学-プレスリリース/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2426,11 +2523,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学-プレスリリース/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学-プレスリリース/2" onclick="toggleFav('https://example.com/脳科学-プレスリリース/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2450,7 +2548,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学-プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -2466,6 +2564,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/脳科学研究-身体性/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/0" onclick="toggleFav('https://example.com/脳科学研究-身体性/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -2485,11 +2584,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-身体性/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/1" onclick="toggleFav('https://example.com/脳科学研究-身体性/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2509,11 +2609,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-身体性/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-身体性/2" onclick="toggleFav('https://example.com/脳科学研究-身体性/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2533,7 +2634,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-身体性/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -2543,6 +2644,7 @@
   <div class="card-grid">
     <article class="card " data-url="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/sci-motor-unit-coordination-30509/" onclick="toggleFav('https://neurosciencenews.com/sci-motor-unit-coordination-30509/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2565,6 +2667,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/predictive-brain-categorization-action-30508/" onclick="toggleFav('https://neurosciencenews.com/predictive-brain-categorization-action-30508/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2587,6 +2690,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1723608')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2609,6 +2713,7 @@
   </div>
 </article><article class="card  card-apex" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1747899')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2631,6 +2736,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1743034')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">身体性</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -2663,6 +2769,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/脳科学研究-心理認知/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/0" onclick="toggleFav('https://example.com/脳科学研究-心理認知/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -2682,11 +2789,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-心理認知/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/1" onclick="toggleFav('https://example.com/脳科学研究-心理認知/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2706,11 +2814,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/脳科学研究-心理認知/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/脳科学研究-心理認知/2" onclick="toggleFav('https://example.com/脳科学研究-心理認知/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2730,7 +2839,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/脳科学研究-心理認知/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -2740,6 +2849,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/" onclick="toggleFav('https://www.technologyreview.com/2026/04/13/1135162/uri-maoz-does-free-will-exist/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">MIT Tech Review</span>
     <span class="impact-stars" title="Impact 5.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="impact-val">5.0</span>
@@ -2762,6 +2872,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2604.09229" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2604.09229" onclick="toggleFav('https://arxiv.org/abs/2604.09229')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -2784,6 +2895,7 @@
   </div>
 </article><article class="card " data-url="https://arxiv.org/abs/2510.21588" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://arxiv.org/abs/2510.21588" onclick="toggleFav('https://arxiv.org/abs/2510.21588')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">arXiv</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -2806,6 +2918,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1786807')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2828,6 +2941,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fnhum.2026.1788917')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2850,6 +2964,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1748294')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2872,6 +2987,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1815526')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -2894,6 +3010,7 @@
   </div>
 </article><article class="card " data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980" onclick="toggleFav('https://www.frontiersin.org/articles/10.3389/fpsyg.2026.1793980')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Frontiers</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
@@ -2921,6 +3038,7 @@
   <div class="card-grid">
     <article class="card " data-url="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/" onclick="toggleFav('https://neurosciencenews.com/estrogen-ptsd-vulnerability-30506/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Neuroscience News</span>
     <span class="impact-stars" title="Impact 2.0/5 | PER:0.0 SCI:0.0 CPS:0.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.0</span>
@@ -2967,6 +3085,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/競合プレスリリース/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/0" onclick="toggleFav('https://example.com/競合プレスリリース/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -2986,11 +3105,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/競合プレスリリース/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/1" onclick="toggleFav('https://example.com/競合プレスリリース/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -3010,11 +3130,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/競合プレスリリース/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/競合プレスリリース/2" onclick="toggleFav('https://example.com/競合プレスリリース/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">他社 · プレス</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -3034,7 +3155,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/競合プレスリリース/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -3049,6 +3170,7 @@
   <div class="card-grid">
     <article class="card  card-apex" data-url="https://example.com/業界-市場トレンド/0" data-competitor-group="">
   <span class="badge-new">HOT</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/0" onclick="toggleFav('https://example.com/業界-市場トレンド/0')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.5 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
@@ -3068,11 +3190,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/0" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/業界-市場トレンド/1" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/1" onclick="toggleFav('https://example.com/業界-市場トレンド/1')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -3092,11 +3215,12 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://example.com/業界-市場トレンド/2" data-competitor-group="">
   <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://example.com/業界-市場トレンド/2" onclick="toggleFav('https://example.com/業界-市場トレンド/2')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">業界トレンド</span><span class="card-source">Example</span>
     <span class="impact-stars" title="Impact 3.0/5 | PER:3.0 SCI:3.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.0</span>
@@ -3116,7 +3240,7 @@
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 02:42</span>
+    <span class="card-date">2026-04-26 03:29</span>
     <a class="read-link" href="https://example.com/業界-市場トレンド/2" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
@@ -3124,6 +3248,11 @@
   
 
       </div>
+    </div>
+
+    <!-- ===== お気に入り パネル ===== -->
+    <div id="panel-favorites" class="hidden">
+      <div class="empty fav-empty-msg">お気に入り記事はありません。記事カードの ☆ ボタンで登録できます。</div>
     </div>
   </main>
 
@@ -3149,6 +3278,8 @@
       document.getElementById('panel-ai').classList.toggle('hidden',         tab !== 'ai');
       document.getElementById('panel-neuro').classList.toggle('hidden',      tab !== 'neuro');
       document.getElementById('panel-competitor').classList.toggle('hidden', tab !== 'competitor');
+      document.getElementById('panel-favorites').classList.toggle('hidden',  tab !== 'favorites');
+      if (tab === 'favorites') renderFavorites();
     }
 
     /* ── Sub tab switching ── */
@@ -3261,6 +3392,102 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
+
+    /* ── お気に入り機能 ── */
+    const FAV_KEY = 'hsi_fav_v1';
+    function getFavs() {
+      try { return JSON.parse(localStorage.getItem(FAV_KEY) || '{}'); }
+      catch { return {}; }
+    }
+    function getCardData(card) {
+      const axes = {};
+      const title = card.querySelector('.impact-stars')?.getAttribute('title') || '';
+      const m = title.match(/PER:([0-9.]+) SCI:([0-9.]+) CPS:([0-9.]+)/);
+      if (m) { axes.per = parseFloat(m[1]); axes.sci = parseFloat(m[2]); axes.cps = parseFloat(m[3]); }
+      return {
+        url:            card.dataset.url,
+        title_ja:       card.querySelector('.card-title a')?.textContent?.trim() || '',
+        summary:        card.querySelector('.card-summary')?.textContent?.trim() || '',
+        insight:        card.querySelector('.card-insight .exp-text')?.textContent?.trim() || '',
+        category_label: card.querySelector('.card-tag')?.textContent?.trim() || '',
+        source:         card.querySelector('.card-source')?.textContent?.trim() || '',
+        published_jst:  card.querySelector('.card-date')?.textContent?.trim() || '',
+        impact:         parseFloat(card.querySelector('.impact-val')?.textContent || '0'),
+        impact_axes:    axes,
+        hashtags:       [...card.querySelectorAll('.hashtag')].map(h => h.textContent.trim()),
+        competitor_group: card.dataset.competitorGroup || '',
+      };
+    }
+    function toggleFav(url) {
+      const favs = getFavs();
+      if (favs[url]) {
+        delete favs[url];
+      } else {
+        const card = document.querySelector(`.card[data-url="${CSS.escape(url)}"]`);
+        if (card) favs[url] = getCardData(card);
+      }
+      localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+      refreshFavBtns();
+      if (currentParent === 'favorites') renderFavorites();
+    }
+    function refreshFavBtns() {
+      const favs = getFavs();
+      document.querySelectorAll('.fav-btn').forEach(btn => {
+        const isFav = !!favs[btn.dataset.url];
+        btn.classList.toggle('favorited', isFav);
+        btn.textContent = isFav ? '★' : '☆';
+        btn.title = isFav ? 'お気に入りから削除' : 'お気に入りに追加';
+      });
+    }
+    function renderFavCard(a) {
+      const imp = parseFloat(a.impact) || 0;
+      const stars = Array.from({length:5}, (_,i) =>
+        `<span class="star ${i < imp ? 'filled' : 'empty'}">★</span>`).join('');
+      const axTitle = a.impact_axes && a.impact_axes.per != null
+        ? ` | PER:${a.impact_axes.per} SCI:${a.impact_axes.sci} CPS:${a.impact_axes.cps}` : '';
+      const hashtags = (a.hashtags||[]).map(t=>`<span class="hashtag">${t}</span>`).join('');
+      const src = a.source ? `<span class="card-source">${a.source}</span>` : '';
+      return `<article class="card" data-url="${a.url}" data-competitor-group="${a.competitor_group||''}">
+  <span class="badge-new">FAV</span>
+  <button class="fav-btn favorited" data-url="${a.url}" onclick="toggleFav('${a.url.replace(/'/g,"\'")}')">★</button>
+  <div class="card-meta">
+    <span class="card-tag">${a.category_label||''}</span>${src}
+    <span class="impact-stars" title="Impact ${imp.toFixed(1)}/5${axTitle}">${stars}<span class="impact-val">${imp.toFixed(1)}</span></span>
+  </div>
+  <div class="card-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title_ja}</a></div>
+  ${hashtags ? `<div class="card-hashtags">${hashtags}</div>` : ''}
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">${a.summary}</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">${a.insight}</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">${a.published_jst}</span>
+    <a class="read-link" href="${a.url}" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>`;
+    }
+    function renderFavorites() {
+      const favs = getFavs();
+      const panel = document.getElementById('panel-favorites');
+      const keys = Object.keys(favs);
+      if (keys.length === 0) {
+        panel.innerHTML = '<div class="empty">お気に入り記事はありません。記事カードの ☆ ボタンで登録できます。</div>';
+        return;
+      }
+      const cards = keys.map(url => renderFavCard(favs[url])).join('');
+      panel.innerHTML = `<div class="section-heading regular">お気に入り（${keys.length}件）</div>
+<div class="card-grid">${cards}</div>`;
+      panel.querySelectorAll('.exp-btn').forEach(btn => {
+        const el = btn.previousElementSibling;
+        if (el && el.classList.contains('exp-text') && el.scrollHeight <= el.clientHeight + 4)
+          btn.style.display = 'none';
+      });
+    }
+    refreshFavBtns();
 
     /* ── 未読バッジ管理 ── */
     const READ_KEY = 'hsi_read_v2';

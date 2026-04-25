@@ -78,12 +78,12 @@ categories:
       - url: https://www.hrexecutive.com/feed/
         lang: en
         group: hr_tech
-      # 人材紹介（URL は要確認）
-      - url: https://www.linkedin.com/blog/engineering/rss
+      # 人材紹介
+      - url: https://www.ere.net/feed/
         lang: en
         group: talent_recruitment
-      # 研修・教育（URL は要確認）
-      - url: https://www.coursera.org/blog/feed
+      # 研修・教育
+      - url: https://www.td.org/rss/content-type/article
         lang: en
         group: training_education
 
