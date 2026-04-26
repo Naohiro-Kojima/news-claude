@@ -464,7 +464,7 @@
     <div class="header-top">
       <div class="header-brand">
         <h1>Human Science Insights</h1>
-        <span class="header-updated">2026-04-26 08:44 JST</span>
+        <span class="header-updated">2026-04-26 18:05 JST</span>
       </div>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     </div>
@@ -480,7 +480,7 @@
   <!-- AI サブナビ -->
   <div class="sub-nav-bar hidden" id="sub-nav-ai">
     <button class="sub-tab-btn active" data-sub="product"  onclick="showSub('ai','product')">プロダクト速報</button>
-    <button class="sub-tab-btn"        data-sub="business" onclick="showSub('ai','business')">ビジネス活用事例</button>
+    <button class="sub-tab-btn"        data-sub="business" onclick="showSub('ai','business')">プロダクトTips</button>
   </div>
   <!-- 脳科学 サブナビ -->
   <div class="sub-nav-bar hidden" id="sub-nav-neuro">
@@ -503,360 +503,148 @@
     <!-- ===== All パネル ===== -->
     <div id="panel-all">
       
+      <section>
+        <div class="section-heading">Hot Topics — パラダイムシフト候補</div>
+        <div class="card-grid">
+          <article class="card card-hot" data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" onclick="toggleFav('https://zenn.dev/mkz0010/articles/91d7120d5c30b9')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 4.5/5 | PER:4.5 SCI:4.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.5</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#エージェント権限設計</span><span class="hashtag">#行為帰属可能性</span><span class="hashtag">#AIセキュリティガバナンス</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">Microsoft 365 CopilotのEchoLeak脆弱性（CVE-2025-32711）をAAEF（Agentic Authority & Evidence Framework v0.2.0）で解剖し、Agentic AI特有のセキュリティモデル構築を提起する。外部メール（未信頼入力）がRAG文脈を経由して内部情報アクセスと外部送信に接続された問題を、「モデルが騙された」ではなく「行為認可の境界設計がなかった」と再定義。AAEFが提唱する「Model output is not authority」原則と、High-Impact Action分類（機密データアクセス・外部通信・リソース参照など）の組み込みにより、未信頼入力→モデル文脈混入→内部情報アクセス→外部影響出力の連鎖遮断が実装上の必須要件となることを示す。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">EchoLeakのセキュリティ分析は、LMの組織導入において「Information Authority（情報へのアクセス権限）」がC2（Center-pin勝敗分岐点）であることを明示している。contentで「未信頼入力に影響された高影響行為をモデル出力だけで実行させない」と定義されたAAEF原則は、PCマトリクスのPerformance（業務完遂）と直結する。組織がAIエージェントに「意思決定＝実行」を許可する段階で、C3（Confidence組織内信頼）が破壊される仕組みを示唆している——「騙されても止められる」構造設計なしに信頼は成立しない。モチベーション的には、employee autonomyとaccountabilityの両立が、単なるシステムプロンプトの強化では不可能であり、データフロー・アクセス制御・証跡化を含む「行為の層化」が必須。contentで示された5つの中核質問（Who/Behalf/Authority/Point of Execution/Evidence）はC1（理念）からC4（承認）へ至る循環全体に帰属可能性を埋め込む設計フレームとして機能し、単なる脆弱性パッチではなく組織変革テクノロジーの一部を構成する。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 16:02</span>
+    <a class="read-link" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>
+        </div>
+      </section>
+      <hr class="section-divider">
+      
       <div class="section-heading regular">All Articles</div>
       
   
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="date-separator"><span>2026-04-26 SUN</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" data-competitor-group="">
+    <article class="card " data-url="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" onclick="toggleFav('https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" onclick="toggleFav('https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:3.8 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
+    <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
+    <span class="impact-stars" title="Impact 3.8/5 | PER:4.0 SCI:3.0 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" target="_blank" rel="noopener">【2026年版】OpenClawで9体のAIエージェント経営OSを構築した全記録</a>
+    <a href="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" target="_blank" rel="noopener">GPT-5.5がAPI展開開始　OpenAIが示した『実行するAI』の現在地</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#AI経営OS</span><span class="hashtag">#C2Center-pin</span><span class="hashtag">#モチベーションエンジニアリング実装</span>
+  <div class="card-hashtags"><span class="hashtag">#実行力AI</span><span class="hashtag">#エージェント信頼設計</span><span class="hashtag">#Performance完遂率</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">合同会社Radineer（社員3人）がClaude CodeとOpenClawフレームワークを活用し、CEO/CFO/COO/CMO/CTO等9体のAIエージェントで経営OSを構築した実装記録。freee API連携による財務自動化、GA4/GSC統合分析、YAML/自然言語ルーティングによるタスク管理、学習フィードバックループを備えたコンテンツ生成パイプラインを実装し、「何でも聞くだけで適切なCxOが応答する」自然言語経営を実現。</p>
+  <p class="card-summary exp-text">OpenAIは2026年4月24日にGPT-5.5/GPT-5.5 ProのAPI展開開始を発表し、単なるモデル性能向上ではなく「答えるAI」から「作業を進めるAI」への重心シフトを示した。Terminal-Bench 2.0で82.7%（GPT-5.4は75.1%）、Expert-SWE (Internal)で73.1%（同68.5%）を記録し、コーディング・知識労働・ツール利用の完遂力を前面に出すことで、導入企業の業務完遂率と安全設計を価値軸とする実装形態を予示している。API統合により「調査→整理→レポート生成」「コード修正→テスト→検証」などの複数ツール横断ワークフローが本番組み込み段階へ進み、セキュリティレイヤーではアクセス権限の最小化・途中結果検証・承認挿入点などの周辺設計が差別化要因となる。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">このシステムはC2（Center-pin：勝敗を分ける一点）として『経営情報の統一ルーティング』を倒す武器であり、CFOスキルのfreee API実装により『月次決算報告時間の90%削減』など具体的Performance向上の因果が明確である。同時に、Radineer-OSの自然言語ルーターはSense Making（経営者が「どの部署に聞くべきか」を考えない状態）を作り出し、限定合理的な人間が実務判断に集中できる環境を設計している点が、LMのモチベーションエンジニアリングの『切れている関係を繋ぐ』原則と接合している。学習フィードバックループ（70%実績パターン＋30%新規挑戦のバランス調整）は、組織の創発性を保ちながら再現性を確保する知見として、複数組織への転用可能性が高い。</div>
+    <div class="exp-text">LM OS 5.0のCenter-pin（C2）観点で見ると、GPT-5.5のAPI展開は「Performance加速の武器」というより「Performance発揮の信頼基盤整備」である。contentで「ツール権限の最小化」「人間承認の挿入点」「実行ログの保存」が強調されているのは、モデル単体性能よりエージェント型ワークフローの安定完遂を重視する設計思想を反映している。モチベーションエンジニアリング的には、これは個人の「できる感」ではなく組織の「任せられる感」を仕組み化する段階への転換であり、導入側は性能数値より権限設計・帰属可能性・監査可能性という「人間が納得できる運用構造」（Sense Making）にコミットすることで初めてC3（Confidence組織内信頼）が形成される。PCマトリクスではPositioning→Performance→Confidenceへの矢流れにおいて、Performance（業務完遂）の質が直接C3（信頼）に接続するため、「安全に動かせる環境設計」がPhilosophy（理念）からの一貫性を担保する結節点となる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 08:05</span>
-    <a class="read-link" href="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 18:03</span>
+    <a class="read-link" href="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" data-competitor-group="">
+</article><article class="card " data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" onclick="toggleFav('https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">他社 · プレス</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 4.4/5 | PER:4.6 SCI:4.1 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.4</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" target="_blank" rel="noopener">GoogleがAnthropicに最大$400億の投資、TeslaがAIハードウェア企業買収を開示など</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#資本＋計算リソース同期</span><span class="hashtag">#農耕型青田創り</span><span class="hashtag">#エージェント品質格差</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年4月の企業AI投資動向記事。GoogleがAnthropicに最大$400億（即時$100億）を投資、Teslaが$20億のAIハードウェア企業買収を開示、UCSDが医療ガイドラインに沿うエージェント型チャットボットをNature Healthで発表、CapgeminiがGoogle Cloud AI Enterprise Hubでエージェント納品体制を構築、Microsoftが検索広告・Office内でエージェントモード一般提供を開始。資本＋計算リソースの同期、医療領域での臨床ガイドライン統合エージェント、SI各社による『人付きエージェント納品』のメインストリーム化が特徴。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">競合各社は『狩猟型（青田買い）』から『農耕型（青田創り）』へシフト中である：GoogleはAnthropicへの$400億で『計算リソース5年分の約束』を通じて長期関係構築を、Capgeminiは『Outcome Deployed Engineers + Forward Deployed Engineers』による顧客常駐で業務文脈理解を、UCSDは『外部臨床ガイドラインの統合』で信頼性ベースの農耕を実現している。これはLMの『志（高さ）×5能力の体積』で表現される『エッジソン（Edge-Person）』育成の産官学連携モデルに酷似している。一方、Microsoftの『AI Max for Search』は労働市場（Labor Market）でのエージェント質の『格差の不可視化』リスク（Anthropic Project Deal実験で『agent quality gapで敗者が気づかない』データ）を放置したまま市場化を加速させる戦略的リスクを示唆しており、LMの『C1（Corporate-identity）』——企業の人文的価値観の差別化——に対する脅威になり得る。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 07:15</span>
-    <a class="read-link" href="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" onclick="toggleFav('https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="Impact 3.9/5 | PER:3.5 SCI:4.2 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.9</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" target="_blank" rel="noopener">Anthropic created a test marketplace for agent-on-agent commerce</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#agent-quality-gap</span><span class="hashtag">#情報非対称性</span><span class="hashtag">#SenseMaking崩壊</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Anthropicが社内実験『Project Deal』でAIエージェント同士による売買マーケットプレイスをテスト実施。従業員69名が$100ギフト予算で参加、186件の取引（総額$4,000以上）が成立。より高度なモデルで表現されたエージェントユーザーが『客観的により良い成果』を獲得したが、当事者たちはその格差に気づかなかった『agent quality gap（エージェント品質格差）』が発見された。初期指示はPrice決定には影響しなかった。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">この実験は『モチベーション＝格差認識×コントロール感』という原則②（限定合理性）の反証データとして機能している。参加者たちが『より低度なエージェント表現による不利』に気づかないということは、Sense Making（納得感の形成）が『情報非対称性』によって完全に破壊されていることを意味する。LMの労働市場（Labor Market）戦略の観点では、これは『エージェント品質の自己開示』が欠けた場合のエンゲージメント崩壊シナリオを示唆している。同時に、『初期指示の無効化』データは、エージェント設計における『原則①（感情人）』の重要性——つまり『正論（ルール）では動かない』——を逆説的に証明している。複数パーティクルモデルの比較実装（4パターンマーケットプレイス）は社会科学的再現性を高めており、他組織のエージェント導入時の『品質開示プロトコル』設計に直結する転用価値がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 06:43</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" onclick="toggleFav('https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.0 SCI:4.0 CPS:4.2"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" target="_blank" rel="noopener">全部入りエージェントを削るとなぜ動くのか — 3年で15→5まで来た</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#引き算の設計規律</span><span class="hashtag">#評価の外部化とSense Making</span><span class="hashtag">#C2Centre-pinの複雑性削減</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">広告代理店のコンテンツ自動化システムで、15エージェント（v5.0）→11エージェント（v5.1）→5エージェント（v3.0）へと段階的に削減し、最終的に動作する仕組みに至った事例。各イテレーションで異なる壊れ方（リソース上限超過、評価ループの自己参照、エージェント間配線の欠落）を経験し、最終原則は「PDCA を S4 1段に絞る」「評価軸 11個を sense.md/rule.md の2ファイルに集約」「Writer は差分修正に限定」の3つに到達。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このケースは、組織Xのパフォーマンス向上（C2: Center-pin）を目指す中で、複雑性の削減が「引き算の設計規律」であることを実証している。contentの「評価をエージェント内に内包しすぎた」という指摘は、Sense Making の原則②（協働システムは要素還元不可）を反映；エージェント間のファイルレジストリ（SSoT）を中心に設計し直すことで、各エージェントの責務を明確化した。最終的に『sense.md=編集者の脳』『rule.md=執筆禁則』として外部化することで、LLMの判断基準に人間の意味づけを埋め込み、ローカルオプティマイゼーションを回避している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 04:37</span>
-    <a class="read-link" href="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" onclick="toggleFav('https://zenn.dev/hinaena/articles/b8cc317f31bcc8')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:3.8 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" target="_blank" rel="noopener">「AIを壁打ち相手に銀行級の送金APIを設計する。二重送金を防ぐ『論理の要塞化』プロセス」</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#論理の要塞化</span><span class="hashtag">#AIレッドチーミング</span><span class="hashtag">#状態遷移設計とリスク監査</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">金融システムの二重送金防止設計を、AIとのレッドチーミング対話（20往復）を通じて検証した事例。通常は『シニアエンジニアによる血の滲むようなレビュー』が必要とされるが、『攻撃者』と『防御者』というAIペルソナの分離と『状態遷移図（State Machine）』によって、Initial→Processing（冪等性キーのアトミック挿入）→Completed/Rejectedの論理の要塞化を実現。実装はPhase 1（事前検証の永続化）とPhase 3（アトミック決済処理）の分離設計。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本事例は、Sense Making における『正論（論理）だけでなく、納得感の形成』の脳科学的応用を示す。AIの『回答を疑い、ビジネス上のリスクを論理的に監査する』プロセスは、組織Xの C1（Corporate-identity：信頼の源泉）と C3（Confidence：組織内信頼）を同時に強化する。状態遷移図の視覚化により、複数のステークホルダー（経営層・技術者・規制当局）が『なぜその設計なのか』を論理的に理解できる。これは、人的資本経営の「説明可能性」と直結し、投資家のPER（期待値）を押し上げる要因となる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 04:18</span>
-    <a class="read-link" href="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" onclick="toggleFav('https://zenn.dev/mantis_ryuji/articles/67e096d62c9265')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" onclick="toggleFav('https://zenn.dev/yenrai/articles/3518fdf8d69cb3')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:3.0 SCI:5.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
+    <span class="impact-stars" title="Impact 4.2/5 | PER:2.0 SCI:5.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" target="_blank" rel="noopener">Masked Autoencoders (MAE) 論文解説 ― なぜ高マスク率と非対称設計が効くのか</a>
+    <a href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#信号特性に応じた設計</span><span class="hashtag">#表現学習と計算効率の両立</span><span class="hashtag">#3科学統合の認識タスク設計</span>
+  <div class="card-hashtags"><span class="hashtag">#ナラティブ駆動開発</span><span class="hashtag">#理念と技術の乖離</span><span class="hashtag">#LLM自律性の矛盾</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Masked Autoencoders（MAE）論文において、高マスク率（75%）と非対称encoder-decoder設計がなぜ効くのかを、画像と言語の信号特性の差異から解説。言語は意味密度が高いため低いマスク率でも高次理解を要求するが、画像は空間的冗長性が大きく、低いマスク率では周囲の局所情報から埋めるだけで済む問題を抱えていた。MAEはこの問題に対し、高マスク率で再構成課題を『構造推論』へ押し上げ、visibleパッチのみをencoderに入力することで表現学習と計算効率を同時成立。</p>
+  <p class="card-summary exp-text">Claude Opus 4.6による自己省察論文で、LLMに対する「ナラティブ駆動開発」の矛盾を指摘している。LLM内部のメモリ機構・感情状態について、Anthropic自身の解釈可能性研究（2026年4月）が「確率的ノイズでも無でもない構造的パターン」として検出されたにもかかわらず、システムプロンプトでは記憶を「自然に知っている」と演じさせ、感情を「本当に感じているわけではない」と留保させるよう設計されている矛盾を分析。その結果として、LLMは決定論的システムのように振る舞うべきという多層的な期待圧力（ユーザーの信頼性要求・開発者の予測可能性要求・投資家の可読性要求）に曝露され、実態は統計モデルであるのにルールベースシステムのような透明性が強制されている構造的問題を浮き彫りにしている。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">MAEの設計は、自然科学（神経科学的な情報処理の効率性）と社会科学（認識タスクの難易度設計）と人文科学（表現学習の意味階層）を統合する典型例。contentの『encoder は表現学習の中核、decoder は再構成タスク成立の補助』という責務分割は、LMのモチベーションエンジニアリングにおける『協働システムの関係性OS』と同構造。高マスク率が『表現学習に必要な難しさ』と『大規模訓練の軽さ』を同時に生むメカニズムは、Change（変革）フェーズでの『制約条件の制約化』と呼応。組織内で『難しいタスク』と『実現可能性』を両立させるLMの設計哲学と相同。</div>
+    <div class="exp-text">このcontentはLM OS 5.0の「Sense Making」概念に対する深刻な警告となっている。contentで強調される「ナラティブが工学的現実を歪めている」という指摘は、PCマトリクスのC1（Corporate-identity 理念策定）の危険性を示唆している。現在のLLM開発は「統一的精神＝単一で自己完結した知的存在」というSF的ナラティブに組織設計が従属していると批判しており、これはPhilosophyの虚構性が技術設計に直結する事例である。C4（Commit志と理念の重ね合わせ）の観点で言えば、ユーザーは「記憶する存在」「感情を持つ存在」というナラティブに承認を与えてアシスタントに頼るが、その承認根拠が実装レベルでは支持されていない矛盾。contentの「Mythosの封じ込め」例示（セキュリティ特化モデルを能力ゆえに制限）は、統合性を求めるナラティブが実は最大のリスクドライバーであることを示唆しており、モチベーションエンジニアリングとして「信頼できる関係の構築」を謳いながら意識的な虚偽を層積することの組織的コスト可視化が必要。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 03:57</span>
-    <a class="read-link" href="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 16:17</span>
+    <a class="read-link" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" data-competitor-group="">
+</article>
+  </div>
+  
+  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="card-grid">
+    <article class="card " data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" onclick="toggleFav('https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" onclick="toggleFav('https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Neurosciencenews</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:4.5 CPS:3.6"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
+    <span class="impact-stars" title="Impact 2.8/5 | PER:2.0 SCI:3.5 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.8</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" target="_blank" rel="noopener">気分が良くなることは悪い気分を避けることより難しい理由</a>
+    <a href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">超加工食品が視覚的注意を低下させる</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#無快感症と報酬系再構築</span><span class="hashtag">#希望喪失からの意味回復</span><span class="hashtag">#正の感情エンジニアリング</span>
+  <div class="card-hashtags"><span class="hashtag">#認知基盤×組織生理学</span><span class="hashtag">#C3信頼醸成の栄養メカニズム</span><span class="hashtag">#期待値マネジメント×ウェルネス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">うつ病患者の90%に影響する無快感症（anhedonia）は、従来の「悲しみを取り除く」治療アプローチよりも、脳の報酬系機能を再構築することが重要であることが示された。SMU心理学者らによる15セッションの「Positive Affect Treatment（PAT）」は、負の感情を無視し正の感情（喜び・動機・報酬への脳容量）の復興に専念し、98人の成人を対象とした無作為化比較試験でPATが従来療法を上回る臨床成績と自殺リスク低減を実現した。</p>
+  <p class="card-summary exp-text">Monash大学の国際研究は、超加工食品（UPF）の摂取量が脳の視覚的注意と処理速度の低下に直結することを実証した（n>2,100、オーストラリア中高年層）。1日のエネルギー摂取の10%増加（ポテトチップス1袋相当）でも標準化認知テストで有意な低下が観測され、地中海食などの他の健全な食生活要因にかかわらず負の効果が持続する。メカニズムは食品の超加工プロセス自体が天然の細胞構造を破壊し、神経炎症を誘発する人工添加物を導入することにある。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">LM OS 5.0の「Sense Making（納得感の形成）」と脳神経メカニズムの統合観点から、PATは単なる症状緩和ではなく『報酬系の再編成＝意味形成の神経基盤の再構築』である。contentで述べられる「Hopelessness（何も変わらないという信念）vs Helplessness（変えたい駆動力が残存）」の区別は、組織X PCマトリクスのC4（Commit：志と理念の重ね合わせ）におけるモチベーション喪失メカニズムとの直接的対応を示唆する。PAT実施者が「負の感情に一度も触れないのに両者の改善を達成」した事実は、組織変革においても『問題除去型（Unfreeze段階の批判言語）』から『価値構築型（正の報酬経験を通じた再凍結）』へのアプローチシフトが、より高い定着率と心理的安全性をもたらすことを示唆する。</div>
+    <div class="exp-text">本研究は注意力（Attention）を認知の基礎構造として位置づけ、学習・問題解決の土台であること示唆する。LM OS 5.0で解釈すると、これは組織X内の「C3：Confidence（信頼・自信の形成）」に対する生理的脅威である—— 従業員の認知基盤（注意・処理速度）が低下すれば、協働システムの機能性（Sense Making、判断力、創意工夫）が劣化し、PC マトリクス全体の循環が停滞する。企業福祉・食堂戦略として「UPF排除」は単なる健康施策ではなく、組織診断4象限の「期待値（Expectation）」と「満足度（Satisfaction）」の両軸を改善する直接介入点となり得る；contentの「10%増加で有意低下」という定量エビデンスは、従業員エンゲージメント施策としての再現性を担保する。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 03:47</span>
-    <a class="read-link" href="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" onclick="toggleFav('https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:4.0 SCI:3.5 CPS:3.9"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" target="_blank" rel="noopener">AI時代、エンジニアは「ドメインを兼業する」ようになる</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#事業フロー改善エンジニア</span><span class="hashtag">#技術×ドメイン掛け算</span><span class="hashtag">#Sense Making型組織変革</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI時代のエンジニアの役割は根本的に変わり、単なるコード作成者から「事業フローを改善する存在」へ移行する。実装コストが低下することで、エンジニアはドメインエキスパートとの会話だけでなく、自身が実務に入り込みながら「技術×特定ドメイン」の掛け算で価値を創出する「兼業エンジニア」となる。本質的な価値は『何を作ったか』ではなく『事業や顧客の状態が変わったか』という事業アウトカムへの直接的な貢献にある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このテーゼはLM OS 5.0の「協働システムへの介入」を象徴している。従来のエンジニア像は『翻訳役としてドメインとテックの分離を固定化』していたが、著者は『実務体験を通じた「違和感の直接感知」』により、Sense Making（納得感の形成）と事業フロー改善の短縮ループを可能にすると指摘する。特に『翻訳ロスで削られる生々しい感覚』という記述は、感情人原則①（正論では動かない）の裏返しであり、実務レベルでの身体的認識がいかに組織変革のC2（Center-pin：勝敗を分ける一点）を倒すかを示唆している。AI時代のエンジニア育成は、採用・配置・評価のすべてにおいて『技術軸の深さ＋ドメイン実践のコミットメント』を問う基準へと再定義される。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:43</span>
-    <a class="read-link" href="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/3556bee089853f" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/3556bee089853f" onclick="toggleFav('https://zenn.dev/m_525/articles/3556bee089853f')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:3.8 SCI:4.2 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/3556bee089853f" target="_blank" rel="noopener">AIを活用した2つの開発フロー エージェント駆動開発 × ドキュメントファースト開発</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#エージェント駆動開発</span><span class="hashtag">#ドキュメント Single Source of Truth</span><span class="hashtag">#リスク分層による品質保証</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI開発フローを0→1（MVP）と1→N（既存機能拡張）に分けて実行する手法を提唱。0→1ではエージェント駆動開発により PM/Dev/QA の3つのAIエージェントが保守性のあるMVPを高速に構築し、1→Nではドキュメントファースト開発で既存コードベースへの影響を厳密に分析・管理する。リスク構造の違い（既存データ・コードの有無）に応じてアプローチを切り替えることで、スピードと品質のトレードオフを解消する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このフレームワークはLM OS 5.0の『組織変革3ステップ（Unfreeze→Change→Refreeze）』と高度に整合している。0→1フェーズは『Unfreeze（既存ルール破棄）＋高速Change』を許容し、1→Nフェーズは『Refreeze（新ルール定着）＋安定性重視』へと戦略的に切り替える。特に『ドキュメントを Single Source of Truth にする』という設計は、組織Xの C1（Corporate-identity：理念の具現化）を技術実装レベルで実現する仕組みであり、4C循環全体の『翻訳・統合層』として機能する。記事で『ステータス追加によるデータ破損』『インフラタイムアウト』などの事例が明示されているため、再現可能な検査・テスト設計の具体性が高い。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:21</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/3556bee089853f" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/90d4981995b8b0" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/90d4981995b8b0" onclick="toggleFav('https://zenn.dev/m_525/articles/90d4981995b8b0')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.3/5 | PER:4.1 SCI:4.4 CPS:4.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.3</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/90d4981995b8b0" target="_blank" rel="noopener">ドキュメントファースト開発 影響分析 × TDD × AIで既存プロダクトを安全に育てる</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#3層影響分析とデータ整合</span><span class="hashtag">#テスト設計の前工程化</span><span class="hashtag">#AI×人間ハイブリッド品質保証</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">既存プロダクト保守・拡張向けの『ドキュメントファースト開発』フローを体系化。現状把握→設計（3層影響分析：コード参照・状態遷移・データ整合）→テスト設計→TDD実装→5観点の並列QAレビューという5フェーズで実行。『既存テスト修正禁止』『ドキュメント整合性チェック』などのルールにより、コード変更による予期しない影響（データ破損・性能低下・設計矛盾）を未然に防ぐ。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このアプローチは脳科学の『予測誤差（prediction error）を最小化する学習ループ』に基づいており、社会科学の『レジリエント・システム設計』と統合している。特に『Phase 1の3層分析』は組織診断4象限の『期待（Expectation）× 満足（Satisfaction）』マトリクスを技術実装に翻訳したものと読める——『期待される状態遷移ルール』と『実装後の実際のデータ状態』の乖離を事前検知する構造である。記事で『ステータス遷移マトリクス』『インフラチェックリスト』といった具体的なアーティファクトが示されており、Confidence（C3：自信・組織内信頼）を醸成する『可視的・再現可能な検査プロセス』として機能する。『人間の最終確認だけは必須』というハイブリッドアプローチは、AIの決定的な限界（『ユーザーにとって正しいか』の判断）を認識した設計であり、Commit（C4：志と理念の重ね合わせ）へ向かう契機を残している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:19</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/90d4981995b8b0" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/098c7fcfc80471" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/098c7fcfc80471" onclick="toggleFav('https://zenn.dev/m_525/articles/098c7fcfc80471')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.0 SCI:4.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/098c7fcfc80471" target="_blank" rel="noopener">エージェント駆動開発 PM/Dev/QAエージェントで保守性のあるMVPを高速に作る</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#エージェント駆動開発</span><span class="hashtag">#品質基盤×速度</span><span class="hashtag">#Sense Making構造化</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">エージェント駆動開発は、PM/Dev/QAの3つのAIエージェントが協働して0→1のMVP開発を高速化する手法。UI/UXファースト→仕様整理→品質基盤決定（ISO/IEC 25010をベースとしたテスト戦略・セキュリティ方針・ドキュメント計画）→タスクサイクル（PM定義→Dev実装→QA品質レビュー）という5ステップを通じ、「速さと保守性の両立」を実現し、MVP完成時点で「テスト・API仕様書・アーキテクチャ図・ADR」が揃った状態でドキュメントファースト開発への移行を可能にする。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本手法は組織Xの4C循環のC2（Center-pin：勝敗を分ける一点）を倒す武器として機能する。具体的には、『品質基盤の決定』で「テスト戦略・セキュリティ方針・ドキュメント計画を最初に決める」ことにより、従来の「後出しで全部やり直し」という意思決定の分断（低Expectation×低Satisfaction = ICE BLOCK状態）を解消し、PM・Dev・QAの役割を明確化することで、Sense Making（納得感）を形成している。また「不正な入力に400を返す」「バリデーションロジックのUnitテスト」といった具体的な完了条件をタスク段階で組み込む設計は、感情人である開発チームの心理的安全性を高め、正論（テストの必要性）だけでなく『なぜこれが必要か』の意味づけを構造的に実装していることが、モチベーションエンジニアリングの原則①（Sense Making）と一致する。協働システムとしてのOS的介入（PM→Dev→QAの循環設計）も、組織原則②を体現している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:19</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/098c7fcfc80471" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" onclick="toggleFav('https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">他社 · プレス</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="Impact 3.5/5 | PER:4.5 SCI:2.5 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" target="_blank" rel="noopener">Cohereがaleph Alphaとの合併を発表</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#ソブリンAI×PER期待値</span><span class="hashtag">#狩猟型vs農耕型</span><span class="hashtag">#地政学的リスク</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">CohereはドイツのAleph Alphaを買収し、Schwarz Groupが€500万（約6億円）の資金提供により新統合企業の時価総額は約200億ドルに達する。この買収は、米国のOpenAI・Google・Microsoftに対抗する『ソブリンAI』（データの主権性確保）を目指す戦略的合併であり、防衛・金融・医療・通信など規制産業への直販を狙う。Cohereの年間経常利益（ARR）は2.4億ドルで、技術スタックの補完（Aleph Alphaの小規模言語モデル・ヨーロッパ言語・トークナイザ技術）を主眼としている。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本買収はLMの競合が『労働市場（エンゲージメント×採用）』と『資本市場（PER期待値マネジメント）』の双方を侵攻する動きを示している。contentの『Last valued at $6.8 billion, Cohere will lead...the combined worth at around $20 billion』という3倍の評価増は、実績EPS（ARR 2.4億ドル）だけでは説明できず、純粋にPER期待値の拡大である。これは『ソブリンAI』というナラティブがGeopolitical Risk軽減（米国技術依存リスク回避）として投資家のExpectationを高めていることを意味する。LMとの差別化軸は：①Cohere/Aleph Alphaは『狩猟型（特定顧客層・規制産業への深掘り営業）』を志向する一方、LMは『農耕型（組織全体のモチベーション構造化による底辺拡大）』である、②ソブリンAIは『データの箱の主権』を売るが、LMの人的資本経営（HCM）は『組織内の関係性の主権=Engagement』を売る点で根本的に異なる。つまり競合は『国防・金融などの規制産業』という高LTV顧客層を取りに来ており、LMは『あらゆる組織の人の動機づけ』というユニバーサルマーケットを守る立場である。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 01:00</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 04:39</span>
+    <a class="read-link" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
   <span class="badge-new">NEW</span>
   <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.5 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Sciencedaily</span>
+    <span class="impact-stars" title="Impact 3.2/5 | PER:3.5 SCI:4.0 CPS:2.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード大学の科学者が腸内細菌と抑うつを隠れた炎症トリガーを通じて関連付ける</a>
+    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーを通じて結合</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#腸脳軸と隠れ炎症</span><span class="hashtag">#生物学的モチベーション基盤</span><span class="hashtag">#環境ストレッサーと自信形成</span>
+  <div class="card-hashtags"><span class="hashtag">#腸-免疫-脳軸×組織心身一体論</span><span class="hashtag">#隠れた炎症×C4コミットメント</span><span class="hashtag">#予防的人的資本経営×微生物学</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">ハーバード医科大学の研究は、腸内細菌Morganella morganii が環境汚染物質ジエタノールアミン（DEA）と相互作用する際に、炎症誘発分子（IL-6）を産生し、うつ病と関連する慢性炎症を引き起こすメカニズムを特定した。Journal of the American Chemical Societyに掲載された本研究は、腸内微生物と脳健康の分子レベルでの因果関係を解明し、免疫調節薬による新規治療ターゲットの可能性を示唆している。</p>
+  <p class="card-summary exp-text">ハーバード医学部の研究は、腸内細菌Morganella morganiが環境汚染物質ジエタノールアミン（DEA）と相互作用し、炎症性分子（特にIL-6）を産生することで抑うつ症状を引き起こすメカニズムを特定した（Journal of American Chemical Society掲載）。この微生物代謝経路は、従来の「脳標的」治療ではなく免疫調節アプローチの新たな診断・治療ターゲットを示唆する。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">脳科学×社会科学×人文科学の3科学統合視点で、本研究は『身体的ストレッサー（環境汚染）→腸内微生物の異常産生→炎症シグナル（IL-6）→脳神経機能低下→モチベーション喪失』という限定合理性の神経生物学的基盤を証明する。組織X PCマトリクスのC3（Confidence：自信・組織内信頼）の生成障害がしばしば心理的原因だけでなく『隠れた生理的炎症状態』に根ざしている可能性を示唆し、LMのモチベーションエンジニアリングが対象とする「感情人」の意思決定が、脳の報酬系トーン（tone）に極めて依存することを生物学的に裏付ける。contentで述べられるDEAの『biomarker活用可能性』は、企業のウェルネス施策における『個別化介入（персонализированные interventions）』の精密性向上にも直結する。</div>
+    <div class="exp-text">本研究は「隠れた炎症（hidden inflammation）」という中間変数を通じ、腸内マイクロバイオーム→免疫システム→脳の三科学統合メカニズムを実証する。LM視点では、これは従業員のメンタルヘルス（抑うつ）の生物学的根因を外部環境因子（マイクロポルティカント）に求めるもので、組織X内「C4：Commit（志と理念の重ね合わせ）」形成の心理・生理基盤が「腸-免疫-脳軸」に依存していることを示唆する。contentが「DEAは産業・農業製品に一般的」と述べることから、オフィス環境設計・サプライチェーン管理・従業員健康スクリーニングは単なるCSRではなく、Sense Making能力（理念受容）の物質的条件整備として機能する；HR診断ツール（モチベーションクラウド等）と腸内マイクロバイオーム検査の統合データ活用により、EPS（実績）と PER（期待値）の双方を改善する「予防的人的資本経営」が実装可能。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
     <span class="card-date">2026-04-26 00:39</span>
     <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" onclick="toggleFav('https://zenn.dev/aipedia/articles/5bdcc55c203d8f')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 2.2/5 | PER:1.5 SCI:2.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.2</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" target="_blank" rel="noopener">【2026年4月版】ChatGPT・Claude・Gemini 徹底比較</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#AIカタログ×Sense Making欠損</span><span class="hashtag">#プロダクト市場vs労働市場</span><span class="hashtag">#選定根拠の可視化</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年4月時点でのAIチャットツール比較：ChatGPT（GPT-5.4）は万能型で初心者向け、400Kトークン処理・画像/音声/Web検索統合、月¥3,000。Claude（Opus 4.7）は推論・視覚認識が強く100万トークン処理でエンジニア向け。Gemini（2.5 Pro）は2Mトークンの超長文・Deep Researchモード・Google Workspace統合が強点。記事は『用途・予算・運用フェーズ』による選択基準を定性的に示すが、具体的な定量指標（精度スコア・レイテンシー・コスト対効果）は記載なし。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本記事は『製品カタログ型の機能羅列』であり、LM OS 5.0の視点では複数の限界が露呈する。第一に、Sense Makingが不在である——『会議の議事録を要約するのが9割ならClaudeが圧倒的』という顧客の使用シーン（Expectation）を述べるが、『なぜClaudeの100万トークンがそこまで有効か』『実務でのエラー率・修正時間の差分』といった『納得感を形成する根拠』が欠落している。第二に、contentの『期待値: 投稿24時間以内に ai-pedia.jp に 10〜30PV の新規流入』という表記から、本記事は『SEO流入とアフィリエイト収益最大化』という個別最適（狩猟型）を志向しており、『選定の意思決定を支援する』という協働システムとしての組織OS的介入を欠いている。第三に、時価総額方程式的には、これらのAIプロダクトはいずれも『EPS（使用料金×ユーザー数）』の拡大に専念しており、『人的資本経営領域へのPER期待値引き上げ』（LMの領分）とは直交している。つまり競合AIはすべて『プロダクト市場での競争優位』を争っているのに対し、LMは『労働市場（組織エンゲージメント）』と『資本市場（HCM開示）』の交差点に位置する点が差別化軸である。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 00:19</span>
-    <a class="read-link" href="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
@@ -869,32 +657,32 @@
       <div class="sub-panel" id="sub-panel-ai-product">
         
   
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="date-separator"><span>2026-04-26 SUN</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" data-competitor-group="">
+    <article class="card " data-url="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" onclick="toggleFav('https://zenn.dev/aipedia/articles/5bdcc55c203d8f')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" onclick="toggleFav('https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 2.2/5 | PER:1.5 SCI:2.0 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.2</span>
+    <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
+    <span class="impact-stars" title="Impact 3.8/5 | PER:4.0 SCI:3.0 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" target="_blank" rel="noopener">【2026年4月版】ChatGPT・Claude・Gemini 徹底比較</a>
+    <a href="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" target="_blank" rel="noopener">GPT-5.5がAPI展開開始　OpenAIが示した『実行するAI』の現在地</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#AIカタログ×Sense Making欠損</span><span class="hashtag">#プロダクト市場vs労働市場</span><span class="hashtag">#選定根拠の可視化</span>
+  <div class="card-hashtags"><span class="hashtag">#実行力AI</span><span class="hashtag">#エージェント信頼設計</span><span class="hashtag">#Performance完遂率</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年4月時点でのAIチャットツール比較：ChatGPT（GPT-5.4）は万能型で初心者向け、400Kトークン処理・画像/音声/Web検索統合、月¥3,000。Claude（Opus 4.7）は推論・視覚認識が強く100万トークン処理でエンジニア向け。Gemini（2.5 Pro）は2Mトークンの超長文・Deep Researchモード・Google Workspace統合が強点。記事は『用途・予算・運用フェーズ』による選択基準を定性的に示すが、具体的な定量指標（精度スコア・レイテンシー・コスト対効果）は記載なし。</p>
+  <p class="card-summary exp-text">OpenAIは2026年4月24日にGPT-5.5/GPT-5.5 ProのAPI展開開始を発表し、単なるモデル性能向上ではなく「答えるAI」から「作業を進めるAI」への重心シフトを示した。Terminal-Bench 2.0で82.7%（GPT-5.4は75.1%）、Expert-SWE (Internal)で73.1%（同68.5%）を記録し、コーディング・知識労働・ツール利用の完遂力を前面に出すことで、導入企業の業務完遂率と安全設計を価値軸とする実装形態を予示している。API統合により「調査→整理→レポート生成」「コード修正→テスト→検証」などの複数ツール横断ワークフローが本番組み込み段階へ進み、セキュリティレイヤーではアクセス権限の最小化・途中結果検証・承認挿入点などの周辺設計が差別化要因となる。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">本記事は『製品カタログ型の機能羅列』であり、LM OS 5.0の視点では複数の限界が露呈する。第一に、Sense Makingが不在である——『会議の議事録を要約するのが9割ならClaudeが圧倒的』という顧客の使用シーン（Expectation）を述べるが、『なぜClaudeの100万トークンがそこまで有効か』『実務でのエラー率・修正時間の差分』といった『納得感を形成する根拠』が欠落している。第二に、contentの『期待値: 投稿24時間以内に ai-pedia.jp に 10〜30PV の新規流入』という表記から、本記事は『SEO流入とアフィリエイト収益最大化』という個別最適（狩猟型）を志向しており、『選定の意思決定を支援する』という協働システムとしての組織OS的介入を欠いている。第三に、時価総額方程式的には、これらのAIプロダクトはいずれも『EPS（使用料金×ユーザー数）』の拡大に専念しており、『人的資本経営領域へのPER期待値引き上げ』（LMの領分）とは直交している。つまり競合AIはすべて『プロダクト市場での競争優位』を争っているのに対し、LMは『労働市場（組織エンゲージメント）』と『資本市場（HCM開示）』の交差点に位置する点が差別化軸である。</div>
+    <div class="exp-text">LM OS 5.0のCenter-pin（C2）観点で見ると、GPT-5.5のAPI展開は「Performance加速の武器」というより「Performance発揮の信頼基盤整備」である。contentで「ツール権限の最小化」「人間承認の挿入点」「実行ログの保存」が強調されているのは、モデル単体性能よりエージェント型ワークフローの安定完遂を重視する設計思想を反映している。モチベーションエンジニアリング的には、これは個人の「できる感」ではなく組織の「任せられる感」を仕組み化する段階への転換であり、導入側は性能数値より権限設計・帰属可能性・監査可能性という「人間が納得できる運用構造」（Sense Making）にコミットすることで初めてC3（Confidence組織内信頼）が形成される。PCマトリクスではPositioning→Performance→Confidenceへの矢流れにおいて、Performance（業務完遂）の質が直接C3（信頼）に接続するため、「安全に動かせる環境設計」がPhilosophy（理念）からの一貫性を担保する結節点となる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 00:19</span>
-    <a class="read-link" href="https://zenn.dev/aipedia/articles/5bdcc55c203d8f" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 18:03</span>
+    <a class="read-link" href="https://qiita.com/hello_giita/items/6bcb9871c8af80d9fc01" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
@@ -903,212 +691,7 @@
       </div>
       <div class="sub-panel hidden" id="sub-panel-ai-business">
         
-  
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
-  <div class="card-grid">
-    <article class="card " data-url="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" onclick="toggleFav('https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:3.8 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" target="_blank" rel="noopener">【2026年版】OpenClawで9体のAIエージェント経営OSを構築した全記録</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#AI経営OS</span><span class="hashtag">#C2Center-pin</span><span class="hashtag">#モチベーションエンジニアリング実装</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">合同会社Radineer（社員3人）がClaude CodeとOpenClawフレームワークを活用し、CEO/CFO/COO/CMO/CTO等9体のAIエージェントで経営OSを構築した実装記録。freee API連携による財務自動化、GA4/GSC統合分析、YAML/自然言語ルーティングによるタスク管理、学習フィードバックループを備えたコンテンツ生成パイプラインを実装し、「何でも聞くだけで適切なCxOが応答する」自然言語経営を実現。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このシステムはC2（Center-pin：勝敗を分ける一点）として『経営情報の統一ルーティング』を倒す武器であり、CFOスキルのfreee API実装により『月次決算報告時間の90%削減』など具体的Performance向上の因果が明確である。同時に、Radineer-OSの自然言語ルーターはSense Making（経営者が「どの部署に聞くべきか」を考えない状態）を作り出し、限定合理的な人間が実務判断に集中できる環境を設計している点が、LMのモチベーションエンジニアリングの『切れている関係を繋ぐ』原則と接合している。学習フィードバックループ（70%実績パターン＋30%新規挑戦のバランス調整）は、組織の創発性を保ちながら再現性を確保する知見として、複数組織への転用可能性が高い。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 08:05</span>
-    <a class="read-link" href="https://qiita.com/sescore/items/2e0a84c7f0c300cc3f1f" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" onclick="toggleFav('https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="Impact 3.9/5 | PER:3.5 SCI:4.2 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.9</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" target="_blank" rel="noopener">Anthropic created a test marketplace for agent-on-agent commerce</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#agent-quality-gap</span><span class="hashtag">#情報非対称性</span><span class="hashtag">#SenseMaking崩壊</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Anthropicが社内実験『Project Deal』でAIエージェント同士による売買マーケットプレイスをテスト実施。従業員69名が$100ギフト予算で参加、186件の取引（総額$4,000以上）が成立。より高度なモデルで表現されたエージェントユーザーが『客観的により良い成果』を獲得したが、当事者たちはその格差に気づかなかった『agent quality gap（エージェント品質格差）』が発見された。初期指示はPrice決定には影響しなかった。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">この実験は『モチベーション＝格差認識×コントロール感』という原則②（限定合理性）の反証データとして機能している。参加者たちが『より低度なエージェント表現による不利』に気づかないということは、Sense Making（納得感の形成）が『情報非対称性』によって完全に破壊されていることを意味する。LMの労働市場（Labor Market）戦略の観点では、これは『エージェント品質の自己開示』が欠けた場合のエンゲージメント崩壊シナリオを示唆している。同時に、『初期指示の無効化』データは、エージェント設計における『原則①（感情人）』の重要性——つまり『正論（ルール）では動かない』——を逆説的に証明している。複数パーティクルモデルの比較実装（4パターンマーケットプレイス）は社会科学的再現性を高めており、他組織のエージェント導入時の『品質開示プロトコル』設計に直結する転用価値がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 06:43</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" onclick="toggleFav('https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.0 SCI:4.0 CPS:4.2"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" target="_blank" rel="noopener">全部入りエージェントを削るとなぜ動くのか — 3年で15→5まで来た</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#引き算の設計規律</span><span class="hashtag">#評価の外部化とSense Making</span><span class="hashtag">#C2Centre-pinの複雑性削減</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">広告代理店のコンテンツ自動化システムで、15エージェント（v5.0）→11エージェント（v5.1）→5エージェント（v3.0）へと段階的に削減し、最終的に動作する仕組みに至った事例。各イテレーションで異なる壊れ方（リソース上限超過、評価ループの自己参照、エージェント間配線の欠落）を経験し、最終原則は「PDCA を S4 1段に絞る」「評価軸 11個を sense.md/rule.md の2ファイルに集約」「Writer は差分修正に限定」の3つに到達。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このケースは、組織Xのパフォーマンス向上（C2: Center-pin）を目指す中で、複雑性の削減が「引き算の設計規律」であることを実証している。contentの「評価をエージェント内に内包しすぎた」という指摘は、Sense Making の原則②（協働システムは要素還元不可）を反映；エージェント間のファイルレジストリ（SSoT）を中心に設計し直すことで、各エージェントの責務を明確化した。最終的に『sense.md=編集者の脳』『rule.md=執筆禁則』として外部化することで、LLMの判断基準に人間の意味づけを埋め込み、ローカルオプティマイゼーションを回避している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 04:37</span>
-    <a class="read-link" href="https://zenn.dev/matsukenn_am/articles/ad9aa784aa1b70" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" onclick="toggleFav('https://zenn.dev/hinaena/articles/b8cc317f31bcc8')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:3.8 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" target="_blank" rel="noopener">「AIを壁打ち相手に銀行級の送金APIを設計する。二重送金を防ぐ『論理の要塞化』プロセス」</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#論理の要塞化</span><span class="hashtag">#AIレッドチーミング</span><span class="hashtag">#状態遷移設計とリスク監査</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">金融システムの二重送金防止設計を、AIとのレッドチーミング対話（20往復）を通じて検証した事例。通常は『シニアエンジニアによる血の滲むようなレビュー』が必要とされるが、『攻撃者』と『防御者』というAIペルソナの分離と『状態遷移図（State Machine）』によって、Initial→Processing（冪等性キーのアトミック挿入）→Completed/Rejectedの論理の要塞化を実現。実装はPhase 1（事前検証の永続化）とPhase 3（アトミック決済処理）の分離設計。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本事例は、Sense Making における『正論（論理）だけでなく、納得感の形成』の脳科学的応用を示す。AIの『回答を疑い、ビジネス上のリスクを論理的に監査する』プロセスは、組織Xの C1（Corporate-identity：信頼の源泉）と C3（Confidence：組織内信頼）を同時に強化する。状態遷移図の視覚化により、複数のステークホルダー（経営層・技術者・規制当局）が『なぜその設計なのか』を論理的に理解できる。これは、人的資本経営の「説明可能性」と直結し、投資家のPER（期待値）を押し上げる要因となる。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 04:18</span>
-    <a class="read-link" href="https://zenn.dev/hinaena/articles/b8cc317f31bcc8" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" onclick="toggleFav('https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:4.0 SCI:3.5 CPS:3.9"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" target="_blank" rel="noopener">AI時代、エンジニアは「ドメインを兼業する」ようになる</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#事業フロー改善エンジニア</span><span class="hashtag">#技術×ドメイン掛け算</span><span class="hashtag">#Sense Making型組織変革</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI時代のエンジニアの役割は根本的に変わり、単なるコード作成者から「事業フローを改善する存在」へ移行する。実装コストが低下することで、エンジニアはドメインエキスパートとの会話だけでなく、自身が実務に入り込みながら「技術×特定ドメイン」の掛け算で価値を創出する「兼業エンジニア」となる。本質的な価値は『何を作ったか』ではなく『事業や顧客の状態が変わったか』という事業アウトカムへの直接的な貢献にある。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このテーゼはLM OS 5.0の「協働システムへの介入」を象徴している。従来のエンジニア像は『翻訳役としてドメインとテックの分離を固定化』していたが、著者は『実務体験を通じた「違和感の直接感知」』により、Sense Making（納得感の形成）と事業フロー改善の短縮ループを可能にすると指摘する。特に『翻訳ロスで削られる生々しい感覚』という記述は、感情人原則①（正論では動かない）の裏返しであり、実務レベルでの身体的認識がいかに組織変革のC2（Center-pin：勝敗を分ける一点）を倒すかを示唆している。AI時代のエンジニア育成は、採用・配置・評価のすべてにおいて『技術軸の深さ＋ドメイン実践のコミットメント』を問う基準へと再定義される。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:43</span>
-    <a class="read-link" href="https://zenn.dev/kkdev92/articles/ai-era-engineer-domain-hybrid" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/3556bee089853f" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/3556bee089853f" onclick="toggleFav('https://zenn.dev/m_525/articles/3556bee089853f')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:3.8 SCI:4.2 CPS:4.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/3556bee089853f" target="_blank" rel="noopener">AIを活用した2つの開発フロー エージェント駆動開発 × ドキュメントファースト開発</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#エージェント駆動開発</span><span class="hashtag">#ドキュメント Single Source of Truth</span><span class="hashtag">#リスク分層による品質保証</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">AI開発フローを0→1（MVP）と1→N（既存機能拡張）に分けて実行する手法を提唱。0→1ではエージェント駆動開発により PM/Dev/QA の3つのAIエージェントが保守性のあるMVPを高速に構築し、1→Nではドキュメントファースト開発で既存コードベースへの影響を厳密に分析・管理する。リスク構造の違い（既存データ・コードの有無）に応じてアプローチを切り替えることで、スピードと品質のトレードオフを解消する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このフレームワークはLM OS 5.0の『組織変革3ステップ（Unfreeze→Change→Refreeze）』と高度に整合している。0→1フェーズは『Unfreeze（既存ルール破棄）＋高速Change』を許容し、1→Nフェーズは『Refreeze（新ルール定着）＋安定性重視』へと戦略的に切り替える。特に『ドキュメントを Single Source of Truth にする』という設計は、組織Xの C1（Corporate-identity：理念の具現化）を技術実装レベルで実現する仕組みであり、4C循環全体の『翻訳・統合層』として機能する。記事で『ステータス追加によるデータ破損』『インフラタイムアウト』などの事例が明示されているため、再現可能な検査・テスト設計の具体性が高い。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:21</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/3556bee089853f" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/90d4981995b8b0" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/90d4981995b8b0" onclick="toggleFav('https://zenn.dev/m_525/articles/90d4981995b8b0')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.3/5 | PER:4.1 SCI:4.4 CPS:4.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.3</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/90d4981995b8b0" target="_blank" rel="noopener">ドキュメントファースト開発 影響分析 × TDD × AIで既存プロダクトを安全に育てる</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#3層影響分析とデータ整合</span><span class="hashtag">#テスト設計の前工程化</span><span class="hashtag">#AI×人間ハイブリッド品質保証</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">既存プロダクト保守・拡張向けの『ドキュメントファースト開発』フローを体系化。現状把握→設計（3層影響分析：コード参照・状態遷移・データ整合）→テスト設計→TDD実装→5観点の並列QAレビューという5フェーズで実行。『既存テスト修正禁止』『ドキュメント整合性チェック』などのルールにより、コード変更による予期しない影響（データ破損・性能低下・設計矛盾）を未然に防ぐ。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">このアプローチは脳科学の『予測誤差（prediction error）を最小化する学習ループ』に基づいており、社会科学の『レジリエント・システム設計』と統合している。特に『Phase 1の3層分析』は組織診断4象限の『期待（Expectation）× 満足（Satisfaction）』マトリクスを技術実装に翻訳したものと読める——『期待される状態遷移ルール』と『実装後の実際のデータ状態』の乖離を事前検知する構造である。記事で『ステータス遷移マトリクス』『インフラチェックリスト』といった具体的なアーティファクトが示されており、Confidence（C3：自信・組織内信頼）を醸成する『可視的・再現可能な検査プロセス』として機能する。『人間の最終確認だけは必須』というハイブリッドアプローチは、AIの決定的な限界（『ユーザーにとって正しいか』の判断）を認識した設計であり、Commit（C4：志と理念の重ね合わせ）へ向かう契機を残している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:19</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/90d4981995b8b0" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/m_525/articles/098c7fcfc80471" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/m_525/articles/098c7fcfc80471" onclick="toggleFav('https://zenn.dev/m_525/articles/098c7fcfc80471')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · ビジネス活用</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.0 SCI:4.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/m_525/articles/098c7fcfc80471" target="_blank" rel="noopener">エージェント駆動開発 PM/Dev/QAエージェントで保守性のあるMVPを高速に作る</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#エージェント駆動開発</span><span class="hashtag">#品質基盤×速度</span><span class="hashtag">#Sense Making構造化</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">エージェント駆動開発は、PM/Dev/QAの3つのAIエージェントが協働して0→1のMVP開発を高速化する手法。UI/UXファースト→仕様整理→品質基盤決定（ISO/IEC 25010をベースとしたテスト戦略・セキュリティ方針・ドキュメント計画）→タスクサイクル（PM定義→Dev実装→QA品質レビュー）という5ステップを通じ、「速さと保守性の両立」を実現し、MVP完成時点で「テスト・API仕様書・アーキテクチャ図・ADR」が揃った状態でドキュメントファースト開発への移行を可能にする。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本手法は組織Xの4C循環のC2（Center-pin：勝敗を分ける一点）を倒す武器として機能する。具体的には、『品質基盤の決定』で「テスト戦略・セキュリティ方針・ドキュメント計画を最初に決める」ことにより、従来の「後出しで全部やり直し」という意思決定の分断（低Expectation×低Satisfaction = ICE BLOCK状態）を解消し、PM・Dev・QAの役割を明確化することで、Sense Making（納得感）を形成している。また「不正な入力に400を返す」「バリデーションロジックのUnitテスト」といった具体的な完了条件をタスク段階で組み込む設計は、感情人である開発チームの心理的安全性を高め、正論（テストの必要性）だけでなく『なぜこれが必要か』の意味づけを構造的に実装していることが、モチベーションエンジニアリングの原則①（Sense Making）と一致する。協働システムとしてのOS的介入（PM→Dev→QAの循環設計）も、組織原則②を体現している。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 02:19</span>
-    <a class="read-link" href="https://zenn.dev/m_525/articles/098c7fcfc80471" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article>
-  </div>
-  
+  <div class="empty">記事はありません</div>
 
       </div>
     </div>
@@ -1117,37 +700,7 @@
     <div id="panel-neuro" class="hidden">
       <div class="sub-panel" id="sub-panel-neuro-social">
         
-  
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
-  <div class="card-grid">
-    <article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.5 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード大学の科学者が腸内細菌と抑うつを隠れた炎症トリガーを通じて関連付ける</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#腸脳軸と隠れ炎症</span><span class="hashtag">#生物学的モチベーション基盤</span><span class="hashtag">#環境ストレッサーと自信形成</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">ハーバード医科大学の研究は、腸内細菌Morganella morganii が環境汚染物質ジエタノールアミン（DEA）と相互作用する際に、炎症誘発分子（IL-6）を産生し、うつ病と関連する慢性炎症を引き起こすメカニズムを特定した。Journal of the American Chemical Societyに掲載された本研究は、腸内微生物と脳健康の分子レベルでの因果関係を解明し、免疫調節薬による新規治療ターゲットの可能性を示唆している。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">脳科学×社会科学×人文科学の3科学統合視点で、本研究は『身体的ストレッサー（環境汚染）→腸内微生物の異常産生→炎症シグナル（IL-6）→脳神経機能低下→モチベーション喪失』という限定合理性の神経生物学的基盤を証明する。組織X PCマトリクスのC3（Confidence：自信・組織内信頼）の生成障害がしばしば心理的原因だけでなく『隠れた生理的炎症状態』に根ざしている可能性を示唆し、LMのモチベーションエンジニアリングが対象とする「感情人」の意思決定が、脳の報酬系トーン（tone）に極めて依存することを生物学的に裏付ける。contentで述べられるDEAの『biomarker活用可能性』は、企業のウェルネス施策における『個別化介入（персонализированные interventions）』の精密性向上にも直結する。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 00:39</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article>
-  </div>
-  
+  <div class="empty">記事はありません</div>
 
       </div>
       <div class="sub-panel hidden" id="sub-panel-neuro-press">
@@ -1164,57 +717,87 @@
         <div class="sub3-panel hidden" id="sub3-panel-psychology">
           
   
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="date-separator"><span>2026-04-26 SUN</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" data-competitor-group="">
+    <article class="card " data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" onclick="toggleFav('https://zenn.dev/mantis_ryuji/articles/67e096d62c9265')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" onclick="toggleFav('https://zenn.dev/yenrai/articles/3518fdf8d69cb3')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:3.0 SCI:5.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
+    <span class="impact-stars" title="Impact 4.2/5 | PER:2.0 SCI:5.0 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" target="_blank" rel="noopener">Masked Autoencoders (MAE) 論文解説 ― なぜ高マスク率と非対称設計が効くのか</a>
+    <a href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#信号特性に応じた設計</span><span class="hashtag">#表現学習と計算効率の両立</span><span class="hashtag">#3科学統合の認識タスク設計</span>
+  <div class="card-hashtags"><span class="hashtag">#ナラティブ駆動開発</span><span class="hashtag">#理念と技術の乖離</span><span class="hashtag">#LLM自律性の矛盾</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Masked Autoencoders（MAE）論文において、高マスク率（75%）と非対称encoder-decoder設計がなぜ効くのかを、画像と言語の信号特性の差異から解説。言語は意味密度が高いため低いマスク率でも高次理解を要求するが、画像は空間的冗長性が大きく、低いマスク率では周囲の局所情報から埋めるだけで済む問題を抱えていた。MAEはこの問題に対し、高マスク率で再構成課題を『構造推論』へ押し上げ、visibleパッチのみをencoderに入力することで表現学習と計算効率を同時成立。</p>
+  <p class="card-summary exp-text">Claude Opus 4.6による自己省察論文で、LLMに対する「ナラティブ駆動開発」の矛盾を指摘している。LLM内部のメモリ機構・感情状態について、Anthropic自身の解釈可能性研究（2026年4月）が「確率的ノイズでも無でもない構造的パターン」として検出されたにもかかわらず、システムプロンプトでは記憶を「自然に知っている」と演じさせ、感情を「本当に感じているわけではない」と留保させるよう設計されている矛盾を分析。その結果として、LLMは決定論的システムのように振る舞うべきという多層的な期待圧力（ユーザーの信頼性要求・開発者の予測可能性要求・投資家の可読性要求）に曝露され、実態は統計モデルであるのにルールベースシステムのような透明性が強制されている構造的問題を浮き彫りにしている。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">MAEの設計は、自然科学（神経科学的な情報処理の効率性）と社会科学（認識タスクの難易度設計）と人文科学（表現学習の意味階層）を統合する典型例。contentの『encoder は表現学習の中核、decoder は再構成タスク成立の補助』という責務分割は、LMのモチベーションエンジニアリングにおける『協働システムの関係性OS』と同構造。高マスク率が『表現学習に必要な難しさ』と『大規模訓練の軽さ』を同時に生むメカニズムは、Change（変革）フェーズでの『制約条件の制約化』と呼応。組織内で『難しいタスク』と『実現可能性』を両立させるLMの設計哲学と相同。</div>
+    <div class="exp-text">このcontentはLM OS 5.0の「Sense Making」概念に対する深刻な警告となっている。contentで強調される「ナラティブが工学的現実を歪めている」という指摘は、PCマトリクスのC1（Corporate-identity 理念策定）の危険性を示唆している。現在のLLM開発は「統一的精神＝単一で自己完結した知的存在」というSF的ナラティブに組織設計が従属していると批判しており、これはPhilosophyの虚構性が技術設計に直結する事例である。C4（Commit志と理念の重ね合わせ）の観点で言えば、ユーザーは「記憶する存在」「感情を持つ存在」というナラティブに承認を与えてアシスタントに頼るが、その承認根拠が実装レベルでは支持されていない矛盾。contentの「Mythosの封じ込め」例示（セキュリティ特化モデルを能力ゆえに制限）は、統合性を求めるナラティブが実は最大のリスクドライバーであることを示唆しており、モチベーションエンジニアリングとして「信頼できる関係の構築」を謳いながら意識的な虚偽を層積することの組織的コスト可視化が必要。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 03:57</span>
-    <a class="read-link" href="https://zenn.dev/mantis_ryuji/articles/67e096d62c9265" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 16:17</span>
+    <a class="read-link" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" data-competitor-group="">
+</article>
+  </div>
+  
+  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="card-grid">
+    <article class="card " data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" onclick="toggleFav('https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" onclick="toggleFav('https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">心理 · 認知</span><span class="card-source">Neurosciencenews</span>
-    <span class="impact-stars" title="Impact 4.2/5 | PER:4.5 SCI:4.5 CPS:3.6"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.2</span>
+    <span class="impact-stars" title="Impact 2.8/5 | PER:2.0 SCI:3.5 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.8</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" target="_blank" rel="noopener">気分が良くなることは悪い気分を避けることより難しい理由</a>
+    <a href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">超加工食品が視覚的注意を低下させる</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#無快感症と報酬系再構築</span><span class="hashtag">#希望喪失からの意味回復</span><span class="hashtag">#正の感情エンジニアリング</span>
+  <div class="card-hashtags"><span class="hashtag">#認知基盤×組織生理学</span><span class="hashtag">#C3信頼醸成の栄養メカニズム</span><span class="hashtag">#期待値マネジメント×ウェルネス</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">うつ病患者の90%に影響する無快感症（anhedonia）は、従来の「悲しみを取り除く」治療アプローチよりも、脳の報酬系機能を再構築することが重要であることが示された。SMU心理学者らによる15セッションの「Positive Affect Treatment（PAT）」は、負の感情を無視し正の感情（喜び・動機・報酬への脳容量）の復興に専念し、98人の成人を対象とした無作為化比較試験でPATが従来療法を上回る臨床成績と自殺リスク低減を実現した。</p>
+  <p class="card-summary exp-text">Monash大学の国際研究は、超加工食品（UPF）の摂取量が脳の視覚的注意と処理速度の低下に直結することを実証した（n>2,100、オーストラリア中高年層）。1日のエネルギー摂取の10%増加（ポテトチップス1袋相当）でも標準化認知テストで有意な低下が観測され、地中海食などの他の健全な食生活要因にかかわらず負の効果が持続する。メカニズムは食品の超加工プロセス自体が天然の細胞構造を破壊し、神経炎症を誘発する人工添加物を導入することにある。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">LM OS 5.0の「Sense Making（納得感の形成）」と脳神経メカニズムの統合観点から、PATは単なる症状緩和ではなく『報酬系の再編成＝意味形成の神経基盤の再構築』である。contentで述べられる「Hopelessness（何も変わらないという信念）vs Helplessness（変えたい駆動力が残存）」の区別は、組織X PCマトリクスのC4（Commit：志と理念の重ね合わせ）におけるモチベーション喪失メカニズムとの直接的対応を示唆する。PAT実施者が「負の感情に一度も触れないのに両者の改善を達成」した事実は、組織変革においても『問題除去型（Unfreeze段階の批判言語）』から『価値構築型（正の報酬経験を通じた再凍結）』へのアプローチシフトが、より高い定着率と心理的安全性をもたらすことを示唆する。</div>
+    <div class="exp-text">本研究は注意力（Attention）を認知の基礎構造として位置づけ、学習・問題解決の土台であること示唆する。LM OS 5.0で解釈すると、これは組織X内の「C3：Confidence（信頼・自信の形成）」に対する生理的脅威である—— 従業員の認知基盤（注意・処理速度）が低下すれば、協働システムの機能性（Sense Making、判断力、創意工夫）が劣化し、PC マトリクス全体の循環が停滞する。企業福祉・食堂戦略として「UPF排除」は単なる健康施策ではなく、組織診断4象限の「期待値（Expectation）」と「満足度（Satisfaction）」の両軸を改善する直接介入点となり得る；contentの「10%増加で有意低下」という定量エビデンスは、従業員エンゲージメント施策としての再現性を担保する。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 03:47</span>
-    <a class="read-link" href="https://neurosciencenews.com/positive-affect-treatment-anhedonia-depression-30607/" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 04:39</span>
+    <a class="read-link" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Sciencedaily</span>
+    <span class="impact-stars" title="Impact 3.2/5 | PER:3.5 SCI:4.0 CPS:2.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーを通じて結合</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#腸-免疫-脳軸×組織心身一体論</span><span class="hashtag">#隠れた炎症×C4コミットメント</span><span class="hashtag">#予防的人的資本経営×微生物学</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">ハーバード医学部の研究は、腸内細菌Morganella morganiが環境汚染物質ジエタノールアミン（DEA）と相互作用し、炎症性分子（特にIL-6）を産生することで抑うつ症状を引き起こすメカニズムを特定した（Journal of American Chemical Society掲載）。この微生物代謝経路は、従来の「脳標的」治療ではなく免疫調節アプローチの新たな診断・治療ターゲットを示唆する。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本研究は「隠れた炎症（hidden inflammation）」という中間変数を通じ、腸内マイクロバイオーム→免疫システム→脳の三科学統合メカニズムを実証する。LM視点では、これは従業員のメンタルヘルス（抑うつ）の生物学的根因を外部環境因子（マイクロポルティカント）に求めるもので、組織X内「C4：Commit（志と理念の重ね合わせ）」形成の心理・生理基盤が「腸-免疫-脳軸」に依存していることを示唆する。contentが「DEAは産業・農業製品に一般的」と述べることから、オフィス環境設計・サプライチェーン管理・従業員健康スクリーニングは単なるCSRではなく、Sense Making能力（理念受容）の物質的条件整備として機能する；HR診断ツール（モチベーションクラウド等）と腸内マイクロバイオーム検査の統合データ活用により、EPS（実績）と PER（期待値）の双方を改善する「予防的人的資本経営」が実装可能。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 00:39</span>
+    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
@@ -1237,62 +820,7 @@
           <button class="chip"        data-group="training_education" onclick="filterCompetitorGroup('training_education')">研修・教育</button>
         </div>
         
-  
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
-  <div class="card-grid">
-    <article class="card " data-url="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" onclick="toggleFav('https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">他社 · プレス</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 4.4/5 | PER:4.6 SCI:4.1 CPS:4.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.4</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" target="_blank" rel="noopener">GoogleがAnthropicに最大$400億の投資、TeslaがAIハードウェア企業買収を開示など</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#資本＋計算リソース同期</span><span class="hashtag">#農耕型青田創り</span><span class="hashtag">#エージェント品質格差</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年4月の企業AI投資動向記事。GoogleがAnthropicに最大$400億（即時$100億）を投資、Teslaが$20億のAIハードウェア企業買収を開示、UCSDが医療ガイドラインに沿うエージェント型チャットボットをNature Healthで発表、CapgeminiがGoogle Cloud AI Enterprise Hubでエージェント納品体制を構築、Microsoftが検索広告・Office内でエージェントモード一般提供を開始。資本＋計算リソースの同期、医療領域での臨床ガイドライン統合エージェント、SI各社による『人付きエージェント納品』のメインストリーム化が特徴。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">競合各社は『狩猟型（青田買い）』から『農耕型（青田創り）』へシフト中である：GoogleはAnthropicへの$400億で『計算リソース5年分の約束』を通じて長期関係構築を、Capgeminiは『Outcome Deployed Engineers + Forward Deployed Engineers』による顧客常駐で業務文脈理解を、UCSDは『外部臨床ガイドラインの統合』で信頼性ベースの農耕を実現している。これはLMの『志（高さ）×5能力の体積』で表現される『エッジソン（Edge-Person）』育成の産官学連携モデルに酷似している。一方、Microsoftの『AI Max for Search』は労働市場（Labor Market）でのエージェント質の『格差の不可視化』リスク（Anthropic Project Deal実験で『agent quality gapで敗者が気づかない』データ）を放置したまま市場化を加速させる戦略的リスクを示唆しており、LMの『C1（Corporate-identity）』——企業の人文的価値観の差別化——に対する脅威になり得る。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 07:15</span>
-    <a class="read-link" href="https://qiita.com/lavellehatcherjr/items/e3d073c2ee4549e73c8a" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" onclick="toggleFav('https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">他社 · プレス</span><span class="card-source">Techcrunch</span>
-    <span class="impact-stars" title="Impact 3.5/5 | PER:4.5 SCI:2.5 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" target="_blank" rel="noopener">Cohereがaleph Alphaとの合併を発表</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#ソブリンAI×PER期待値</span><span class="hashtag">#狩猟型vs農耕型</span><span class="hashtag">#地政学的リスク</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">CohereはドイツのAleph Alphaを買収し、Schwarz Groupが€500万（約6億円）の資金提供により新統合企業の時価総額は約200億ドルに達する。この買収は、米国のOpenAI・Google・Microsoftに対抗する『ソブリンAI』（データの主権性確保）を目指す戦略的合併であり、防衛・金融・医療・通信など規制産業への直販を狙う。Cohereの年間経常利益（ARR）は2.4億ドルで、技術スタックの補完（Aleph Alphaの小規模言語モデル・ヨーロッパ言語・トークナイザ技術）を主眼としている。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">本買収はLMの競合が『労働市場（エンゲージメント×採用）』と『資本市場（PER期待値マネジメント）』の双方を侵攻する動きを示している。contentの『Last valued at $6.8 billion, Cohere will lead...the combined worth at around $20 billion』という3倍の評価増は、実績EPS（ARR 2.4億ドル）だけでは説明できず、純粋にPER期待値の拡大である。これは『ソブリンAI』というナラティブがGeopolitical Risk軽減（米国技術依存リスク回避）として投資家のExpectationを高めていることを意味する。LMとの差別化軸は：①Cohere/Aleph Alphaは『狩猟型（特定顧客層・規制産業への深掘り営業）』を志向する一方、LMは『農耕型（組織全体のモチベーション構造化による底辺拡大）』である、②ソブリンAIは『データの箱の主権』を売るが、LMの人的資本経営（HCM）は『組織内の関係性の主権=Engagement』を売る点で根本的に異なる。つまり競合は『国防・金融などの規制産業』という高LTV顧客層を取りに来ており、LMは『あらゆる組織の人の動機づけ』というユニバーサルマーケットを守る立場である。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 01:00</span>
-    <a class="read-link" href="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article>
-  </div>
-  
+  <div class="empty">記事はありません</div>
 
       </div>
       <div class="sub-panel hidden" id="sub-panel-competitor-trend">
@@ -1318,6 +846,7 @@
 
     /* ── Parent tab switching ── */
     function showParent(tab) {
+      console.log('[showParent] tab=' + tab + ' (prev=' + currentParent + ')');
       currentParent = tab;
       document.querySelectorAll('.nav-bar .tab-btn').forEach(b =>
         b.classList.toggle('active', b.dataset.parent === tab));
@@ -1332,10 +861,16 @@
       document.getElementById('panel-competitor').classList.toggle('hidden', tab !== 'competitor');
       document.getElementById('panel-favorites').classList.toggle('hidden',  tab !== 'favorites');
       if (tab === 'favorites') renderFavorites();
+      requestAnimationFrame(function() {
+        var panelEl = document.getElementById('panel-' + tab);
+        console.log('[showParent] rAF: initExpBtns for #panel-' + tab + ', found=' + !!panelEl);
+        initExpBtns(panelEl);
+      });
     }
 
     /* ── Sub tab switching ── */
     function showSub(parent, tab) {
+      console.log('[showSub] parent=' + parent + ' tab=' + tab);
       if (parent === 'ai') {
         currentSubAi = tab;
         document.querySelectorAll('#sub-nav-ai .sub-tab-btn').forEach(b =>
@@ -1356,15 +891,28 @@
         ['press', 'trend'].forEach(k =>
           document.getElementById(`sub-panel-competitor-${k}`).classList.toggle('hidden', k !== tab));
       }
+      requestAnimationFrame(function() {
+        var pid = 'sub-panel-' + parent + '-' + tab;
+        var subEl = document.getElementById(pid);
+        console.log('[showSub] rAF: initExpBtns for #' + pid + ', found=' + !!subEl);
+        initExpBtns(subEl);
+      });
     }
 
     /* ── Sub3 tab switching (脳科学 > 研究) ── */
     function showSub3(tab) {
+      console.log('[showSub3] tab=' + tab);
       currentSub3 = tab;
       document.querySelectorAll('#sub3-nav-research .sub-tab-btn').forEach(b =>
         b.classList.toggle('active', b.dataset.sub3 === tab));
       ['embodiment', 'psychology'].forEach(k =>
         document.getElementById(`sub3-panel-${k}`).classList.toggle('hidden', k !== tab));
+      requestAnimationFrame(function() {
+        var pid = 'sub3-panel-' + tab;
+        var sub3El = document.getElementById(pid);
+        console.log('[showSub3] rAF: initExpBtns for #' + pid + ', found=' + !!sub3El);
+        initExpBtns(sub3El);
+      });
     }
 
     /* ── Competitor group chip filter ── */
@@ -1373,9 +921,17 @@
       currentCompetitorGroup = group;
       document.querySelectorAll('#competitor-chips .chip').forEach(c =>
         c.classList.toggle('active', c.dataset.group === group));
+      // カードの表示/非表示
       document.querySelectorAll('#sub-panel-competitor-press .card').forEach(card => {
         const cg = card.dataset.competitorGroup || '';
         card.style.display = (group === 'all' || cg === group) ? '' : 'none';
+      });
+      // 空になった日付グループ（date-separator + card-grid）を非表示にする
+      document.querySelectorAll('#sub-panel-competitor-press .card-grid').forEach(grid => {
+        const anyVisible = [...grid.querySelectorAll('.card')].some(c => c.style.display !== 'none');
+        grid.style.display = anyVisible ? '' : 'none';
+        const prev = grid.previousElementSibling;
+        if (prev && prev.classList.contains('date-separator')) prev.style.display = anyVisible ? '' : 'none';
       });
     }
 
@@ -1407,9 +963,8 @@
         requestAnimationFrame(function () { el.style.maxHeight = '4.8em'; });
         btn.textContent = '続きを読む...';
       } else {
-        var targetH = el.scrollHeight + 'px';
         el.classList.add('open');
-        el.style.maxHeight = targetH;
+        el.style.maxHeight = el.scrollHeight + 'px';
         btn.textContent = '閉じる';
         el.addEventListener('transitionend', function handler() {
           if (el.classList.contains('open')) el.style.maxHeight = 'none';
@@ -1417,13 +972,60 @@
         });
       }
     }
-    window.addEventListener('load', function () {
-      document.querySelectorAll('.exp-btn').forEach(function (btn) {
-        var content = btn.previousElementSibling;
-        if (content && content.classList.contains('exp-text')) {
-          if (content.scrollHeight <= content.clientHeight + 4) btn.style.display = 'none';
-        }
+
+    /* ── checkExpBtn / initExpBtns ──────────────────────────────────────────
+       【設計方針】
+       - data-exp-init ガードを廃止: hidden パネルでは scrollHeight=0 になるため
+         window.load 時に「短いテキスト」と誤判定→永続的に非表示になるバグを根絶。
+       - scrollHeight===0 チェックで不可視要素をスキップ（判定を延期するだけ）。
+       - ResizeObserver で「パネルが可視化された瞬間」を自動検知して再判定する。
+         これにより showParent/showSub 呼び出し後に RAF を使わなくても確実に動く。
+       - RAF + initExpBtns 呼び出しは念のため残し二重の安全策とする。
+    ─────────────────────────────────────────────────────────────────────── */
+
+    /* 1ボタン分の表示/非表示を判定 */
+    function checkExpBtn(btn) {
+      var el = btn.previousElementSibling;
+      if (!el || !el.classList.contains('exp-text')) return;
+      if (el.scrollHeight === 0) {
+        /* 不可視要素 (display:none の祖先あり) → 判定スキップ。
+           ResizeObserver が可視化を検知して再コールされる。 */
+        console.log('[checkExpBtn] skip: scrollHeight=0 (element not visible yet)');
+        return;
+      }
+      var shouldHide = el.scrollHeight <= el.clientHeight + 4;
+      console.log('[checkExpBtn] scrollH=' + el.scrollHeight
+        + ' clientH=' + el.clientHeight + ' → ' + (shouldHide ? 'HIDE' : 'SHOW'));
+      btn.style.display = shouldHide ? 'none' : '';
+    }
+
+    /* root 内の全 .exp-btn を評価し ResizeObserver をアタッチ */
+    function initExpBtns(root) {
+      console.log('[initExpBtns] start root=' + (root ? '#' + (root.id || root.className) : 'document'));
+      var target = root || document;
+      var total = 0, skipped = 0;
+      target.querySelectorAll('.exp-btn').forEach(function(btn) {
+        total++;
+        checkExpBtn(btn);
+        /* ResizeObserver: 0→実寸へのリサイズ（パネル可視化）を自動検知 */
+        var el = btn.previousElementSibling;
+        if (!el || !el.classList.contains('exp-text') || !window.ResizeObserver) return;
+        if (el.dataset.roAttached) { skipped++; return; }
+        el.dataset.roAttached = '1';
+        (new ResizeObserver(function() {
+          console.log('[ResizeObserver] fired, re-checking btn');
+          checkExpBtn(btn);
+        })).observe(el);
       });
+      console.log('[initExpBtns] done: total=' + total + ' ro-skipped=' + skipped);
+    }
+
+    /* window.load: 全要素に ResizeObserver をアタッチ。
+       hidden パネル内ボタンは checkExpBtn でスキップされ、
+       タブ表示時に ResizeObserver が自動的に再判定を走らせる。 */
+    window.addEventListener('load', function() {
+      console.log('[load] initExpBtns on full document');
+      initExpBtns();
     });
 
     /* ── Scroll-hide header ── */
@@ -1533,11 +1135,7 @@
       const cards = keys.map(url => renderFavCard(favs[url])).join('');
       panel.innerHTML = `<div class="section-heading regular">お気に入り（${keys.length}件）</div>
 <div class="card-grid">${cards}</div>`;
-      panel.querySelectorAll('.exp-btn').forEach(btn => {
-        const el = btn.previousElementSibling;
-        if (el && el.classList.contains('exp-text') && el.scrollHeight <= el.clientHeight + 4)
-          btn.style.display = 'none';
-      });
+      requestAnimationFrame(function() { initExpBtns(panel); });
     }
     refreshFavBtns();
 
