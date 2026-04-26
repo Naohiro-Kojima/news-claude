@@ -337,7 +337,7 @@ HTML_TEMPLATE = """\
   {%- for i in range(1, 6) -%}<span class="star {{ 'filled' if i <= impact|float else 'empty' }}">★</span>{%- endfor -%}
   <span class="impact-val">{{ "%.1f"|format(impact|float) }}</span><span class="impact-label">Total</span>
 </span>
-{%- if axes and axes.per is defined %}
+{%- if axes and axes.per is defined and (axes.per|float + axes.sci|float + axes.cps|float) > 0 %}
 <div class="impact-axes">
   <span class="axis-item" title="PER &amp; Social Impact"><span class="axis-label">PER</span>{{ render_mini_stars(axes.per) }}</span>
   <span class="axis-item" title="Utility &amp; Curiosity"><span class="axis-label">SCI</span>{{ render_mini_stars(axes.sci) }}</span>
@@ -847,14 +847,14 @@ HTML_TEMPLATE = """\
     [data-theme="dark"] .hashtag { color: var(--accent2); background: var(--tag-bg); }
     .impact-val { font-size: 10px; color: var(--muted); font-family: -apple-system, sans-serif; margin-left: 2px; }
     .impact-label { font-size: 8px; color: var(--muted); font-family: -apple-system, sans-serif; letter-spacing: 0.04em; margin-left: 4px; text-transform: uppercase; }
-    .impact-block { display: inline-flex; flex-direction: column; gap: 3px; }
-    .impact-axes { display: flex; gap: 8px; flex-wrap: wrap; }
-    .axis-item { display: inline-flex; align-items: center; gap: 2px; }
-    .axis-label { font-size: 8px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); font-family: -apple-system, sans-serif; text-transform: uppercase; min-width: 22px; }
-    .mini-star { font-size: 9px; line-height: 1; }
+    .impact-block { display: inline-flex; flex-direction: column; gap: 2px; }
+    .impact-axes { display: flex; gap: 6px; flex-wrap: nowrap; align-items: center; }
+    .axis-item { display: inline-flex; align-items: center; gap: 1px; }
+    .axis-label { font-size: 7.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--muted); font-family: -apple-system, sans-serif; text-transform: uppercase; min-width: 20px; }
+    .mini-star { font-size: 8px; line-height: 1; }
     .mini-star.filled { color: var(--star-filled); }
     .mini-star.empty  { color: var(--star-empty); }
-    .mini-val { font-size: 8.5px; color: var(--muted); font-family: -apple-system, sans-serif; margin-left: 1px; }
+    .mini-val { font-size: 8px; color: var(--muted); font-family: -apple-system, sans-serif; margin-left: 1px; }
     .empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 60px 0; font-size: 14px; font-family: -apple-system, sans-serif; }
 
     /* ===== Accordion ===== */
@@ -1363,9 +1363,10 @@ HTML_TEMPLATE = """\
       const stars = Array.from({length:5}, (_,i) =>
         `<span class="star ${i < imp ? 'filled' : 'empty'}">★</span>`).join('');
       const ax = a.impact_axes || {};
-      const axTitle = ax.per != null
+      const axHasData = ax.per != null && (ax.per + ax.sci + ax.cps) > 0;
+      const axTitle = axHasData
         ? ` | PER:${ax.per} SCI:${ax.sci} CPS:${ax.cps}` : '';
-      const axesHtml = ax.per != null ? `
+      const axesHtml = axHasData ? `
     <div class="impact-axes">
       <span class="axis-item" title="PER &amp; Social Impact"><span class="axis-label">PER</span>${renderMiniStars(ax.per)}</span>
       <span class="axis-item" title="Utility &amp; Curiosity"><span class="axis-label">SCI</span>${renderMiniStars(ax.sci)}</span>
