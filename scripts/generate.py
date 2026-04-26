@@ -103,7 +103,7 @@ def _extract_source(url: str) -> str:
 
 _CATEGORY_LABELS: dict[str, str] = {
     "ai_product":        "AI · プロダクト",
-    "ai_business":       "AI · ビジネス活用",
+    "ai_business":       "AI · プロダクトTips",
     "neuro_social":      "脳科学 · 社会",
     "neuro_press":       "脳科学 · プレス",
     "neuro_embodiment":  "身体性",
@@ -112,7 +112,7 @@ _CATEGORY_LABELS: dict[str, str] = {
     "competitor_press":  "他社 · プレス",
     "industry_trend":    "業界トレンド",
     # 旧互換
-    "ai_social":         "AI · ビジネス活用",
+    "ai_social":         "AI · プロダクトTips",
     "ai_press":          "AI · プロダクト",
     "ai_academic":       "AI · 研究",
     "hr_social":         "業界トレンド",
@@ -816,7 +816,7 @@ HTML_TEMPLATE = """\
   <!-- AI サブナビ -->
   <div class="sub-nav-bar hidden" id="sub-nav-ai">
     <button class="sub-tab-btn active" data-sub="product"  onclick="showSub('ai','product')">プロダクト速報</button>
-    <button class="sub-tab-btn"        data-sub="business" onclick="showSub('ai','business')">ビジネス活用事例</button>
+    <button class="sub-tab-btn"        data-sub="business" onclick="showSub('ai','business')">プロダクトTips</button>
   </div>
   <!-- 脳科学 サブナビ -->
   <div class="sub-nav-bar hidden" id="sub-nav-neuro">
@@ -928,6 +928,7 @@ HTML_TEMPLATE = """\
       document.getElementById('panel-competitor').classList.toggle('hidden', tab !== 'competitor');
       document.getElementById('panel-favorites').classList.toggle('hidden',  tab !== 'favorites');
       if (tab === 'favorites') renderFavorites();
+      requestAnimationFrame(function() { initExpBtns(document.getElementById('panel-' + tab)); });
     }
 
     /* ── Sub tab switching ── */
@@ -952,6 +953,7 @@ HTML_TEMPLATE = """\
         ['press', 'trend'].forEach(k =>
           document.getElementById(`sub-panel-competitor-${k}`).classList.toggle('hidden', k !== tab));
       }
+      requestAnimationFrame(function() { initExpBtns(document.getElementById(`sub-panel-${parent}-${tab}`)); });
     }
 
     /* ── Sub3 tab switching (脳科学 > 研究) ── */
@@ -961,6 +963,7 @@ HTML_TEMPLATE = """\
         b.classList.toggle('active', b.dataset.sub3 === tab));
       ['embodiment', 'psychology'].forEach(k =>
         document.getElementById(`sub3-panel-${k}`).classList.toggle('hidden', k !== tab));
+      requestAnimationFrame(function() { initExpBtns(document.getElementById(`sub3-panel-${tab}`)); });
     }
 
     /* ── Competitor group chip filter ── */
@@ -969,9 +972,17 @@ HTML_TEMPLATE = """\
       currentCompetitorGroup = group;
       document.querySelectorAll('#competitor-chips .chip').forEach(c =>
         c.classList.toggle('active', c.dataset.group === group));
+      // カードの表示/非表示
       document.querySelectorAll('#sub-panel-competitor-press .card').forEach(card => {
         const cg = card.dataset.competitorGroup || '';
         card.style.display = (group === 'all' || cg === group) ? '' : 'none';
+      });
+      // 空になった日付グループ（date-separator + card-grid）を非表示にする
+      document.querySelectorAll('#sub-panel-competitor-press .card-grid').forEach(grid => {
+        const anyVisible = [...grid.querySelectorAll('.card')].some(c => c.style.display !== 'none');
+        grid.style.display = anyVisible ? '' : 'none';
+        const prev = grid.previousElementSibling;
+        if (prev && prev.classList.contains('date-separator')) prev.style.display = anyVisible ? '' : 'none';
       });
     }
 
@@ -1013,14 +1024,20 @@ HTML_TEMPLATE = """\
         });
       }
     }
-    window.addEventListener('load', function () {
-      document.querySelectorAll('.exp-btn').forEach(function (btn) {
-        var content = btn.previousElementSibling;
-        if (content && content.classList.contains('exp-text')) {
-          if (content.scrollHeight <= content.clientHeight + 4) btn.style.display = 'none';
-        }
+    /* initExpBtns: hiddenパネルでは scrollHeight=0 になるため、
+       パネルが可視になったタイミングで遅延初期化する。
+       data-exp-init 属性で二重初期化を防ぐ。 */
+    function initExpBtns(root) {
+      var target = root || document;
+      target.querySelectorAll('.exp-btn').forEach(function(btn) {
+        if (btn.dataset.expInit) return;
+        btn.dataset.expInit = '1';
+        var el = btn.previousElementSibling;
+        if (el && el.classList.contains('exp-text') && el.scrollHeight <= el.clientHeight + 4)
+          btn.style.display = 'none';
       });
-    });
+    }
+    window.addEventListener('load', function() { initExpBtns(); });
 
     /* ── Scroll-hide header ── */
     (function () {
@@ -1129,11 +1146,7 @@ HTML_TEMPLATE = """\
       const cards = keys.map(url => renderFavCard(favs[url])).join('');
       panel.innerHTML = `<div class="section-heading regular">お気に入り（${keys.length}件）</div>
 <div class="card-grid">${cards}</div>`;
-      panel.querySelectorAll('.exp-btn').forEach(btn => {
-        const el = btn.previousElementSibling;
-        if (el && el.classList.contains('exp-text') && el.scrollHeight <= el.clientHeight + 4)
-          btn.style.display = 'none';
-      });
+      requestAnimationFrame(function() { initExpBtns(panel); });
     }
     refreshFavBtns();
 

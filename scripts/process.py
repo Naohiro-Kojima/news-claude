@@ -171,6 +171,19 @@ SYSTEM_PROMPT = DEEP_ANALYSIS_PROMPT  # noqa: F841 (validate_prompt.py 等から
 
 
 
+_AI_VENDOR_DOMAINS: frozenset[str] = frozenset({
+    "openai.com", "anthropic.com", "deepmind.google", "blog.google",
+    "ai.google", "labs.google", "microsoft.com", "huggingface.co",
+    "meta.ai", "about.fb.com", "stability.ai", "mistral.ai", "cohere.com", "x.ai",
+})
+
+
+def _is_ai_vendor_url(url: str) -> bool:
+    from urllib.parse import urlparse
+    host = (urlparse(url).hostname or "").lstrip("www.")
+    return any(host == d or host.endswith("." + d) for d in _AI_VENDOR_DOMAINS)
+
+
 VALID_GEMINI_CATS: frozenset[str] = frozenset({
     "ai_product", "ai_business",
     "neuro_social", "neuro_press", "neuro_embodiment", "neuro_psychology", "neuro_ai",
@@ -747,6 +760,9 @@ def _parse_article(original: Article, item: dict, screen: dict,
     cat = screen.get("category", fallback_cat)
     if cat not in VALID_GEMINI_CATS:
         cat = fallback_cat
+    # AI主要ベンダーの一次情報は競合・業界分類から ai_product へ優先昇格
+    if cat in {"competitor_press", "industry_trend"} and _is_ai_vendor_url(original["url"]):
+        cat = "ai_product"
 
     host = (_urlparse(original["url"]).hostname or "").lstrip("www.")
     parts = host.split(".")
