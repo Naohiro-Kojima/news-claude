@@ -1246,6 +1246,7 @@ HTML_TEMPLATE = """\
     function checkExpBtn(btn) {
       var el = btn.previousElementSibling;
       if (!el || !el.classList.contains('exp-text')) return;
+      if (el.classList.contains('open')) return;
       if (el.scrollHeight === 0) {
         /* 不可視要素 (display:none の祖先あり) → 判定スキップ。
            ResizeObserver が可視化を検知して再コールされる。 */

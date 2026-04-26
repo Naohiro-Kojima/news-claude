@@ -547,7 +547,7 @@
     <div class="header-top">
       <div class="header-brand">
         <h1>Human Science Insights</h1>
-        <span class="header-updated">2026-04-27 01:19 JST</span>
+        <span class="header-updated">2026-04-27 01:28 JST</span>
       </div>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     </div>
@@ -3738,6 +3738,7 @@
     function checkExpBtn(btn) {
       var el = btn.previousElementSibling;
       if (!el || !el.classList.contains('exp-text')) return;
+      if (el.classList.contains('open')) return;
       if (el.scrollHeight === 0) {
         /* 不可視要素 (display:none の祖先あり) → 判定スキップ。
            ResizeObserver が可視化を検知して再コールされる。 */
