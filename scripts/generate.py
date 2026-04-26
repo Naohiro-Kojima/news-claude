@@ -376,17 +376,6 @@ HTML_TEMPLATE = """\
   <div class="insight-actions">
     <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
   </div>
-  {%- if article.related %}
-  <div class="card-related hidden">
-    <div class="related-label">Related Articles</div>
-    {%- for r in article.related %}
-    <a class="related-item" href="{{ r.url }}" target="_blank" rel="noopener">
-      <span class="related-title">{{ r.title_ja }}</span>
-      <span class="related-date">{{ r.published_jst[:10] }}</span>
-    </a>
-    {%- endfor %}
-  </div>
-  {%- endif %}
   <div class="card-footer">
     <span class="card-date">{{ article.published_jst }}</span>
     <a class="read-link" href="{{ article.url }}" target="_blank" rel="noopener">原文 →</a>
