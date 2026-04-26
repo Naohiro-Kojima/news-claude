@@ -1211,8 +1211,7 @@ HTML_TEMPLATE = """\
       var title   = titleEl   ? titleEl.textContent.trim()   : '';
       var insight = insightEl ? insightEl.textContent.trim() : '';
       var url     = card.dataset.url || '';
-      var preview = insight.length > 80 ? insight.slice(0, 80) + '...' : insight;
-      var text    = ['「考察あり」' + title, preview, '#HumanScienceInsights', url].join('\\n');
+      var text    = [title, url].join('\\n');
       function feedback() {
         var orig = btn.textContent;
         btn.textContent = 'コピー済み ✓';
