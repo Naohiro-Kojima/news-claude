@@ -640,28 +640,6 @@ HTML_TEMPLATE = """\
     }
 
     /* ===== Chip Filter Bar ===== */
-    .chip-filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .chip {
-      padding: 5px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: 99px;
-      background: var(--chip-bg);
-      color: var(--text2);
-      font-size: 12px;
-      font-weight: 600;
-      font-family: -apple-system, sans-serif;
-      cursor: pointer;
-      transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
-      white-space: nowrap;
-    }
-    .chip:hover { border-color: var(--accent); color: var(--accent); }
-    .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* ===== Card Grid ===== */
     .card-grid {
@@ -1027,15 +1005,6 @@ HTML_TEMPLATE = """\
     <!-- ===== 他社リサーチ パネル ===== -->
     <div id="panel-competitor" class="hidden">
       <div class="sub-panel" id="sub-panel-competitor-press">
-        <!-- 競合グループ チップフィルター -->
-        <div class="chip-filter-bar" id="competitor-chips">
-          <button class="chip active" data-group="all"               onclick="filterCompetitorGroup('all')">すべて</button>
-          <button class="chip"        data-group="org_hr_consulting"  onclick="filterCompetitorGroup('org_hr_consulting')">組織人事コンサル</button>
-          <button class="chip"        data-group="strategy_consulting" onclick="filterCompetitorGroup('strategy_consulting')">総合・戦略コンサル</button>
-          <button class="chip"        data-group="hr_tech"            onclick="filterCompetitorGroup('hr_tech')">HRテック</button>
-          <button class="chip"        data-group="talent_recruitment" onclick="filterCompetitorGroup('talent_recruitment')">人材紹介</button>
-          <button class="chip"        data-group="training_education" onclick="filterCompetitorGroup('training_education')">研修・教育</button>
-        </div>
         {{ render_timeline(panels.competitor.press) }}
       </div>
       <div class="sub-panel hidden" id="sub-panel-competitor-trend">
@@ -1128,25 +1097,6 @@ HTML_TEMPLATE = """\
       });
     }
 
-    /* ── Competitor group chip filter ── */
-    let currentCompetitorGroup = 'all';
-    function filterCompetitorGroup(group) {
-      currentCompetitorGroup = group;
-      document.querySelectorAll('#competitor-chips .chip').forEach(c =>
-        c.classList.toggle('active', c.dataset.group === group));
-      // カードの表示/非表示
-      document.querySelectorAll('#sub-panel-competitor-press .card').forEach(card => {
-        const cg = card.dataset.competitorGroup || '';
-        card.style.display = (group === 'all' || cg === group) ? '' : 'none';
-      });
-      // 空になった日付グループ（date-separator + card-grid）を非表示にする
-      document.querySelectorAll('#sub-panel-competitor-press .card-grid').forEach(grid => {
-        const anyVisible = [...grid.querySelectorAll('.card')].some(c => c.style.display !== 'none');
-        grid.style.display = anyVisible ? '' : 'none';
-        const prev = grid.previousElementSibling;
-        if (prev && prev.classList.contains('date-separator')) prev.style.display = anyVisible ? '' : 'none';
-      });
-    }
 
     /* ── Dark / Light mode ── */
     function toggleTheme() {
