@@ -361,10 +361,7 @@ HTML_TEMPLATE = """\
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
-    <button class="share-x-btn" onclick="shareInsight(this)" title="X(Twitter)でシェア">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.735-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      シェア
-    </button>
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
   </div>
   {%- if article.related %}
   <div class="card-related hidden">
@@ -863,14 +860,13 @@ HTML_TEMPLATE = """\
       justify-content: flex-end;
       margin-top: 6px;
     }
-    .share-x-btn {
-      display: flex;
+    .copy-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 5px;
       background: none;
       border: 1.5px solid var(--border);
       border-radius: 6px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       min-height: 36px;
       cursor: pointer;
       color: var(--text2);
@@ -881,8 +877,8 @@ HTML_TEMPLATE = """\
       transition: all 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
-    .share-x-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--tag-bg); }
-    @media (max-width: 640px) { .share-x-btn { min-height: 44px; } }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--tag-bg); }
+    @media (max-width: 640px) { .copy-btn { min-height: 44px; } }
 
     /* ===== Related Articles ===== */
     .card-related {
@@ -1184,18 +1180,34 @@ HTML_TEMPLATE = """\
       }
     }
 
-    /* ── SNS Share ── */
-    function shareInsight(btn) {
+    /* ── Copy Insight to Clipboard ── */
+    function copyInsight(btn) {
       var card = btn.closest('.card');
       if (!card) return;
-      var titleEl = card.querySelector('.card-title a');
+      var titleEl   = card.querySelector('.card-title a');
       var insightEl = card.querySelector('.card-insight .exp-text');
       var title   = titleEl   ? titleEl.textContent.trim()   : '';
       var insight = insightEl ? insightEl.textContent.trim() : '';
       var url     = card.dataset.url || '';
-      var preview = insight.length > 80 ? insight.slice(0, 80) + '…' : insight;
-      var text = '【考察あり】' + title + '\n' + preview + '\n#HumanScienceInsights\n' + url;
-      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+      var preview = insight.length > 80 ? insight.slice(0, 80) + '...' : insight;
+      var text    = ['「考察あり」' + title, preview, '#HumanScienceInsights', url].join('\\n');
+      function feedback() {
+        var orig = btn.textContent;
+        btn.textContent = 'コピー済み ✓';
+        setTimeout(function() { btn.textContent = orig; }, 2000);
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(feedback);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        feedback();
+      }
     }
 
     /* ── checkExpBtn / initExpBtns ──────────────────────────────────────────
@@ -1344,10 +1356,7 @@ HTML_TEMPLATE = """\
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
-    <button class="share-x-btn" onclick="shareInsight(this)" title="X(Twitter)でシェア">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.735-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      シェア
-    </button>
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
   </div>
   <div class="card-footer">
     <span class="card-date">${a.published_jst}</span>
