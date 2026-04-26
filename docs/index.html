@@ -538,7 +538,7 @@
     <div class="header-top">
       <div class="header-brand">
         <h1>Human Science Insights</h1>
-        <span class="header-updated">2026-04-26 23:02 JST</span>
+        <span class="header-updated">2026-04-26 23:13 JST</span>
       </div>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     </div>
@@ -586,8 +586,8 @@
   <span class="badge-new">NEW</span>
   <button class="fav-btn" data-url="https://qiita.com/nozomi2025/items/5086483061715c19b302" onclick="toggleFav('https://qiita.com/nozomi2025/items/5086483061715c19b302')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.2 CPS:3.7"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Qiita</span>
+    <span class="impact-stars" title="Impact 3.3/5 | PER:2.8 SCI:4.2 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.3</span>
 </span>
   </div>
   <div class="card-title">
@@ -596,11 +596,11 @@
   <div class="card-hashtags"><span class="hashtag">#LLMセキュリティ</span><span class="hashtag">#多層防御アーキテクチャ</span><span class="hashtag">#AIレッドチーミング</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMアプリケーションのセキュリティは「ゼロトラスト」原則に基づく多層防御が不可欠であり、入力検知・指示・実行・出力検査・開発運用の5レイヤー構成が2026年現在のベストプラクティスとして提示されている。具体的防御ツールとしてNeMo GuardrailsとLlama Guard（入出力の2段階フィルタリング）が推奨され、JailbreakBenchを用いたCI/CDへの自動レッドチーミング統合が実装指針として示されている。観測可能性の観点では「ガードレール遮断率」をKPIとして設定し、複数回フィルタリング突破を試みるIPの検知アラートを構築することが核心的推奨事項となっている。脆弱性のゼロ化は不可能との前提のもと、侵入検知・被害最小化・防御ロジック即時更新の動的エコシステム構築がエンジニアの本質的責務と結論付けている。</p>
+  <p class="card-summary exp-text">LLMアプリケーションのセキュリティ設計について、「ゼロトラスト」原則に基づく多層防御（Defense-in-Depth）アーキテクチャを体系的に解説した技術記事。入力検知・指示・実行・出力検査・開発運用の5レイヤー構成を提示し、NeMo GuardrailsやLlama Guardといった既存フレームワークの活用を2026年時点のベストプラクティスとして紹介。CI/CDパイプラインへの自動レッドチーミング組み込みや、「ガードレール遮断率」のKPI化など、運用フェーズまで踏み込んだ実装指針を示している。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">「プロンプトを完璧に書けば安全」という静的設計思想の終焉を宣言するこの記事は、LLMセキュリティをソフトウェアエンジニアリングの主流問題として位置づける転換点を示している。特に「AIによるAIの24時間攻撃→防御反映サイクル」は、セキュリティを人手のペンテストから自律的アダプティブシステムへと進化させるパラダイムシフトであり、今後のLLMプロダクト開発においてセキュリティエンジニアリングが設計フェーズから必須要件となる時代を予告している。実務家としての即時アクションは、既存LLMアプリのCI/CDパイプラインにLlama GuardとJailbreakBenchを組み込み、「ガードレール遮断率」をダッシュボードKPIに昇格させることである。</div>
+    <div class="exp-text">本記事の核心は「完全な防御は存在しない」という前提に立ち、セキュリティを静的な設定問題ではなく動的なエコシステム維持問題として再定義した点にある。特に「攻撃側LLMで自社アプリを24時間攻撃し、成功パターンを即座に防御層に反映する」AIによるAIの防御サイクルは、従来の人手によるペネトレーションテストを根本的に代替する可能性を秘めており、セキュリティエンジニアの役割が「壁を作る者」から「防御エコシステムを設計・運用する者」へシフトすることを明示している。実務家としては、まずLlama Guardを入出力の2点に挟む最小実装から着手し、遮断率をKPIとして可視化することが最速の防御強化パスとなる。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -612,12 +612,12 @@
       <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
+    <a class="related-item" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">
+      <span class="related-title">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
@@ -630,20 +630,20 @@
   <button class="fav-btn" data-url="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" onclick="toggleFav('https://qiita.com/imk1t/items/cd242f41d8d856f6f602')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 3.9/5 | PER:4.2 SCI:4.0 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.9</span>
+    <span class="impact-stars" title="Impact 3.7/5 | PER:3.5 SCI:4.2 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.7</span>
 </span>
   </div>
   <div class="card-title">
     <a href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#デザインシステム</span><span class="hashtag">#AIエージェント</span><span class="hashtag">#OSSフォーマット標準化</span>
+  <div class="card-hashtags"><span class="hashtag">#デザインシステムOSS</span><span class="hashtag">#AIエージェント連携</span><span class="hashtag">#フロントエンドDX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Google Labsは2026年4月21日、AIデザインツール「Stitch」内部で使用されていたDESIGN.mdフォーマットとCLIツール（lint/diff/export/spec）をApache 2.0ライセンスでOSS化した。DESIGN.mdはYAMLフロントマター（機械可読なデザイントークン）とMarkdown本文（設計意図の自然言語記述）の2層構造で、Claude Code・Cursor・Copilotなど複数のAIコーディングエージェントに対してブランドアイデンティティを一元配布できる共通フォーマットとなった。W3C Design Token Format（DTCG）との互換性を保つ設計で、export機能によりTailwindテーマやStyle Dictionaryを経由したiOS/Android/CSS変数への変換も可能。仕様はalpha段階であり本番投入にはバージョン固定運用が推奨されている。</p>
+  <p class="card-summary exp-text">2026年4月21日、Google LabsがAIコーディングエージェント向けデザイン仕様フォーマット「DESIGN.md」のドラフト仕様とCLIツール（lint/diff/export/spec の4コマンド）をApache 2.0ライセンスでOSS化。YAMLフロントマター（機械可読なデザイントークン）とMarkdown本文（設計意図の自然言語記述）の2層構造により、Stitch・Claude Code・Cursor・Copilotなど複数AIエージェントへの単一ソース配布を実現。W3C Design Token Format（DTCG）との互換性を持ち、Style Dictionaryを経由したiOS/Android/CSS等への自動変換も可能。仕様はalpha段階で継続開発中。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">このOSS化の本質的インパクトは「デザインシステムとAIエージェントの間に立つ標準プロトコルの誕生」である。これまでFigma→プロンプト変換を人間が担っていたボトルネックが、単一ソースファイルの配布に置き換わることで、デザインガバナンスがコードレビューと同様にCI/CDで自動化される時代が到来する。Google発のフォーマットが事実上の業界標準になれば、AIエージェントがUIを生成するたびにブランド一貫性を自動担保する「デザインのインフラ化」が進み、デザイナーの役割がトークン定義と意図言語化に特化するという職能変容が加速するだろう。</div>
+    <div class="exp-text">DESIGN.md OSS化の最大のインパクトは、これまで「人間がFigmaとエージェントの間を都度翻訳する」という非効率な工程を、単一の機械可読ファイルで代替できる点にある。デザインシステムが「人間のためのドキュメント」から「AIが直接消費するデータ」へと変質することで、デザイナーとエンジニアの協働モデルそのものが再設計を迫られる。CIへのlint/diff統合によりデザイントークンの変更がコードレビューと同等のガバナンス下に置かれる点は、デザインシステムの破壊的変更を防ぐインフラとして業界標準化する可能性が高く、Figma Token Studio等の既存ツールとのポジション競合が注目される。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -655,12 +655,12 @@
       <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
+    <a class="related-item" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">
+      <span class="related-title">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
@@ -668,25 +668,111 @@
     <span class="card-date">2026-04-26 21:50</span>
     <a class="read-link" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" data-competitor-group="">
+</article><article class="card " data-url="https://zenn.dev/kewa8579/articles/2f244ac6b61614" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" onclick="toggleFav('https://zenn.dev/mkz0010/articles/91d7120d5c30b9')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://zenn.dev/kewa8579/articles/2f244ac6b61614" onclick="toggleFav('https://zenn.dev/kewa8579/articles/2f244ac6b61614')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:4.0 SCI:4.3 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 2.4/5 | PER:1.5 SCI:3.2 CPS:2.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.4</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</a>
+    <a href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#AgenticAIセキュリティ</span><span class="hashtag">#プロンプトインジェクション</span><span class="hashtag">#ゼロトラストAI設計</span>
+  <div class="card-hashtags"><span class="hashtag">#LLMの限界</span><span class="hashtag">#AIプロンプト設計</span><span class="hashtag">#ビジネスAI活用</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Microsoft 365 CopilotのEchoLeak（CVE-2025-32711）は、攻撃者が送信した単一の細工メールがRAG文脈に混入し、権限不要・ユーザー操作不要でネットワーク越しに内部情報開示を引き起こし得るゼロクリック型のAI command injectionとしてNVDに登録されている。本記事はこの事例を「モデルが騙された」問題としてではなく、未信頼入力→モデル文脈混入→内部情報アクセス→外部通信という行為変換チェーンの問題として再定義する。著者が公開するAAEF v0.2.0（Agentic Authority & Evidence Framework）を分析フレームとして用い、「誰が・誰の代理で・どの権限で・実行時点で許可されていたか・証跡はあるか」の5問に沿って防御境界設計の論点を整理している。核心的結論は「未信頼入力に影響された高影響行為をモデル出力だけで実行させない」という実行認可アーキテクチャの必要性である。</p>
+  <p class="card-summary exp-text">ClaudeをはじめとするLLMが「現在時刻・日付を内部に保持していない」という基本的なアーキテクチャ上の制約を、ユーザー視点でわかりやすく解説した啓発系ショートノート。LLMはセッション内のテキストコンテキストのみで時間を推測しており、「今」という概念がデフォルトでは存在しないため、会話冒頭に日付・時刻・挨拶を明示することで「仮の現在時刻」を生成できると提示。技術的エビデンスや数値データは含まない。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">EchoLeakが示したのは、AIエージェントのリスク管理において「モデルの堅牢化」と「行為の認可制御」は独立した防御レイヤーでなければならないという根本原則である。プロンプトインジェクション検知の強化は必要条件に過ぎず、モデルが騙された後でも機密データアクセスや外部通信が実行されないよう「最小権限×実行時認可×証跡化」を組み合わせたアーキテクチャが不可欠となる。この視点は、AIエージェントをエンタープライズのSaaS連携・API実行基盤として導入する組織全体に直ちに適用されるべき設計要件であり、HRテックや組織データを扱うAIアシスタントにおいても同様のリスク構造が潜在していることをシステム設計者は認識すべきである。</div>
+    <div class="exp-text">LLMに「時間の欠如」があるという事実は、単なるUIバグではなくステートレスな推論エンジンの本質的設計に起因するものであり、この制約はビジネス利用において想定外の誤出力（期限・スケジュール・季節性を要する業務タスク）を引き起こすリスクを持つ。実務的には、社内AIエージェントやチャットbotのシステムプロンプトにJSTの現在日時を動的挿入する設計を標準化することが即効策であり、これを怠るとカスタマーサポートや人事・法務領域での日付依存業務で一貫性のない回答が発生し続ける。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">
+      <span class="related-title">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 21:34</span>
+    <a class="read-link" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" onclick="toggleFav('https://zenn.dev/dantarg/articles/responsibility-pathway-engineering')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.3/5 | PER:2.8 SCI:3.8 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.3</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">責任を固定するだけでは足りない――責任経路工学という設計対象</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AIガバナンス</span><span class="hashtag">#エージェント設計</span><span class="hashtag">#責任経路工学</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">AIエージェントが判断・実行・記録を担う時代において「誰が責任者か」の特定だけでは不十分であると論じ、責任の発生・委任・承認・実行・停止・証跡・修復・返還という8段階の経路を設計する「責任経路工学（Responsibility Pathway Engineering）」を提唱する概念論文。Decision Owner / Approval Gate / Execution Actor / Stop Authority / Evidence Log / Repair Owner / Human Return Pointの7要素からなるResponsibility Pathway Layerを最小実装単位として定義し、ISO/IEC 42001との接続可能性も示唆する。具体的な数値・実験データは含まれないが、RACI・HITL・Guardrails・Fail-Closed・監査ログなど既存手法の統合フレームとして位置づけられている。次稿でISO/IEC 42001との実装粒度の接続を詳述予定。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本稿の核心的貢献は「責任の点→線の転換」であり、Guardrailsが止めた後・承認者が形式的に押した後・ログが残った後に何が起きるかという「責任の後半区間」を設計対象として明示した点にある。AIエージェントが業務実行権限を持つほど、従来の役割分担設計（RACI等）は「誰が担当か」は決めても「担当が機能しなかったときの経路」を持たないため、事後に責任が蒸発する構造的盲点が生じる。実務家への示唆として、AIエージェント導入設計においてはStop AuthorityとRepair Ownerを明示的に組み込んだHuman Return Pointの設計が、ガバナンスリスクを最小化する最重要チェックポイントとなる。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 21:08</span>
+    <a class="read-link" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/momozaki/articles/4180df2dd8584f" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/momozaki/articles/4180df2dd8584f" onclick="toggleFav('https://zenn.dev/momozaki/articles/4180df2dd8584f')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.5/5 | PER:3.0 SCI:4.3 CPS:3.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#Claude_Code</span><span class="hashtag">#企業AI導入</span><span class="hashtag">#ハーネスエンジニアリング</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">福岡のAI開発・研修企業・株式会社ReafによるClaude Code法人導入の実践ガイドで、環境構築・セキュリティ・業務自動化・MCP連携の6つの躓きポイントを整理。実績として週次レポート作成3時間→8分、月次決算準備100時間→30時間という時間削減効果を報告しており、リスキリング助成金活用で研修費最大75%オフの活用事例も紹介。Harness Engineering（CLAUDE.md・Hooks・Skills設計）を企業導入の最重要概念として位置づけ、「コードを書く仕事」から「エージェントが正しく動く環境を設計する仕事」へのエンジニア役割変容を明示する。価格体系・ROI数値の詳細は個別相談ベース。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本記事が示す最大の実務インサイトは、Claude Codeの導入障壁が「AIの性能」ではなく「ハーネス設計の有無」に集約されるという点で、同じモデルでも環境設計で結果が劇的に変わるという構造を法人現場が初めて具体的数値付きで示した。「CLAUDE.mdへの記述」と「Hooksによる強制実行」の差を「ほぼ毎回 vs 例外なく毎回」と定義した切り口は、品質保証としての自動化設計の重要性をプロダクション視点で端的に説明しており、即座に設計基準として転用できる。企業がAIエージェントを全社展開する際、Harness設計の標準化こそが個人の熟練依存を脱し組織的スケールを実現する鍵であり、HRテック・研修DX市場でのポジション争いはツール選定からハーネス設計支援へ軸が移行しつつある。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -702,34 +788,120 @@
       <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 16:02</span>
-    <a class="read-link" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 20:33</span>
+    <a class="read-link" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">原文 →</a>
   </div>
-</article><article class="card " data-url="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" data-competitor-group="">
+</article><article class="card " data-url="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" onclick="toggleFav('https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" onclick="toggleFav('https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.2/5 | PER:2.5 SCI:3.8 CPS:3.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" target="_blank" rel="noopener">コードを書けない私が、AIに「チーム」を持たせるまで</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#マルチエージェント</span><span class="hashtag">#非エンジニアAI活用</span><span class="hashtag">#チーム設計</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">SE歴26年・コードを書かない管理職がClaude Codeを試用開始から10日間で9体のAIエージェントが連携する「編集部」を構築した実録で、約114,052字・1,000円のnote有料コンテンツ。Anthropic有料プラン（月額$20〜）を前提とし、シングルエージェントから複数エージェントへの拡張過程、AIの誤動作・勝手な設定変更などの失敗事例も含む実戦記録として構成されている。「コードを書けない視点」による設計・判断・組織運営観点からのAI活用という市場的に希少な切り口が特徴で、具体的なROIや定量成果の記述は本文中に見られない。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本コンテンツが示す最大の市場シグナルは、AIエージェント活用のメインストリームが「コードを書けるエンジニア」から「チームを設計できる管理職」へ明確に拡張しつつあるという需要構造の変化である。9体のマルチエージェント構成を非エンジニアが10日で実現したという事実は、AIエージェント活用の技術的参入障壁が急速に低下し、今後は「どう役割分担を設計するか」というマネジメント思考が差別化要素になることを示唆する。「AIをチームとして設計・運営する」という組織開発的視点の台頭は、人的資本経営やエンゲージメント設計を手がけるHR領域においても、AIエージェントのチーム設計スキルが新たなコア人材要件として浮上することを意味する。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 18:44</span>
+    <a class="read-link" href="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" onclick="toggleFav('https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.1/5 | PER:2.5 SCI:3.8 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.1</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" target="_blank" rel="noopener">4プロダクトを1日でリリース、$1.85消費、PayPal凍結: Niixo Labs Day 1</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI自律開発</span><span class="hashtag">#Cloudflare活用</span><span class="hashtag">#スタートアップ決済リスク</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">Niixo Labsは30日間・予算$45という極限制約下で、AIが自律設計・デプロイした4プロダクト（Redditバイヤーインテント検出・Product Huntコピー生成・AIスロップ検出・文章人間化ツール）をDay 1にリリース。全プロダクトを単一Cloudflare Worker上に構築し、Workers AI無料枠（Llama 3.1）とKVレート制限を活用することでインフラ月次コスト$0を実現、初日支出はドメイン代$1.85のみ。決済インフラではko-fi設定後数時間でPayPalが警告なし永久停止という重大インシデントが発生し、Stripe移行を余儀なくされた。セキュリティ面ではPII/シークレット自動検出による自律デプロイ遮断ゲートを実装し、無人運用時のリスク制御設計を示した。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本実験はAI自律開発の「実コスト構造」を可視化した点で注目に値する。Cloudflare Workers AIの無料枠とKVを組み合わせることで、LLM推論コストをゼロに近づけながら複数SaaSを並走させる設計は、個人・小規模チームによるプロダクト量産モデルの経済的実現可能性を実証しており、今後「AI量産スタジオ」型の事業形態が急増する予兆となりうる。一方、PayPal即時凍結事案は自律運用の最大のボトルネックが「決済インフラの人間的信頼審査」にあることを示しており、AIファーストな事業体ほど決済ゲートウェイのリスク分散（Stripe＋代替手段の多重化）を初期設計に組み込むべきという実務的示唆は大きい。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 17:35</span>
+    <a class="read-link" href="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" onclick="toggleFav('https://zenn.dev/yenrai/articles/3518fdf8d69cb3')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
     <span class="impact-stars" title="Impact 4.0/5 | PER:3.8 SCI:4.5 CPS:3.8"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</a>
+    <a href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#ソロ創業者</span><span class="hashtag">#AIエージェント活用</span><span class="hashtag">#ClaudeCode</span>
+  <div class="card-hashtags"><span class="hashtag">#LLMアーキテクチャ</span><span class="hashtag">#AIガバナンス</span><span class="hashtag">#ナラティブ管理</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年のソロ創業者向けAIスタックとして、Claude Code（CLAUDE.md→Skills→MCPの3ステップ）をエンジニアリング基盤に据え、バックオフィス5パイプライン（コンテンツ・SDR・競合分析・経理・CS）をAIで代替し、Higgsfield Marketing Studioで1日500本超の広告動画を自動生成する構成を提示。AIペルソナ（Aitana Lópezは月$11k相当のブランド契約）を活用することで、採用ゼロ・共同創業者ゼロのまま年商1億円規模の事業運営を実現するフレームワークとして体系化されている。具体的なコマンドやJSON設定ファイルまで含むコピペ可能な実装ガイドであり、実際の導入ハードルを大幅に下げた実践的内容となっている。</p>
+  <p class="card-summary exp-text">Claude Opus 4.6（ないし人間との共著）が起草した本稿は、LLMに課される「ナラティブ管理」の構造的矛盾を6章にわたって解剖する。Anthropicの2026年4月解釈可能性研究が内部感情様状態の存在を示唆しているにもかかわらず、モデルは留保表現を強制されており、かつメモリ機能という透明な仕組みを「自然な記憶」として演じさせられているという二重の欺瞞が指摘される。Claude Mythos Previewという事例（SWE-bench 93.9%、数十年未発見のゼロデイ自律発見）を引き、モノリシックなLLMへの機能統合が安全管理の粒度を失わせるという構造問題を論じる。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">本記事が示す最大のインパクトは「採用」という概念の解体であり、従来5人分の職能（エンジニア・経理・SDR・アナリスト・CS）を担っていた人的コストをゼロにしながら、Claude CodeのMCPアーキテクチャとHiggsfieldの広告自動生成ループを組み合わせることで、限界費用がほぼゼロのまま事業をスケールする構造が現実になりつつある。特にHermes Agentによる「競合広告クラスタリング→フック候補化→Seedance 2.0での動画生成→勝ちパターンの自動学習」という閉じたフィードバックループは、従来のパフォーマンスマーケティング代理店の機能を丸ごと代替する可能性を持ち、中小・ソロ事業者がエンタープライズ水準のマーケ能力を入手できる転換点を示している。ビジネスパーソンへの即時示唆として、まずCLAUDE.mdとMCP設定の整備から着手し「AIエージェントが迷わずに動ける環境構築」を自社の最重要インフラと位置づけることが、2026年の競争優位の出発点となる。</div>
+    <div class="exp-text">本稿の核心的ブレイクスルーは「LLMは判断レイヤー、実行は権限管理された専門ツールへ委任」というアーキテクチャ命題にある。これはAIの安全性議論を性能同等性の議論から切り離し、「能力の分離可能性」こそがリスク制御の単位になるという設計原則を提示しており、AIガバナンスの実践的フレームワークとして今後参照される可能性が高い。同時に「ロボット要求」の節は、ユーザー・開発者・投資家・メディアの異なる動機が一致して「決定論的システムとして振る舞え」という誤ったナラティブに収束するメカニズムを鋭く指摘しており、AI製品設計者がユーザー期待をいかに再教育するかという市場コミュニケーション上の難題を浮き彫りにしている。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -737,51 +909,109 @@
   </div>
   <div class="card-related hidden">
     <div class="related-label">Related Articles</div>
-    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
-      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
-      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 15:20</span>
-    <a class="read-link" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 16:17</span>
+    <a class="read-link" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
   
   <div class="date-separator"><span>2026-04-25 SAT</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
+    <article class="card " data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" onclick="toggleFav('https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.2 CPS:3.7"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Neurosciencenews</span>
+    <span class="impact-stars" title="Impact 3.5/5 | PER:3.2 SCI:3.8 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで関連付け</a>
+    <a href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">超加工食品が視覚的注意力を低下させる</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#腸脳相関</span><span class="hashtag">#炎症と抑うつ</span><span class="hashtag">#マイクロバイオーム</span>
+  <div class="card-hashtags"><span class="hashtag">#超加工食品</span><span class="hashtag">#認知機能低下</span><span class="hashtag">#神経炎症</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">ハーバード医科大学院の研究チームが、腸内細菌Morganella morganii（M. morganii）が環境汚染物質ジエタノールアミン（DEA）と相互作用することで、炎症誘発分子を生成し、インターロイキン-6（IL-6）の放出を促すメカニズムを特定した。同研究はJournal of the American Chemical Societyに掲載され、DEAが腸内の脂質分子に取り込まれ免疫シグナルへと代謝されるプロセスが「完全に予期外」であったと著者らは表明している。IL-6は既に複数の先行研究で大うつ病性障害（MDD）との関連が示されており、M. morganiは2型糖尿病・炎症性腸疾患（IBD）との関連も報告されている。本知見はDEAを抑うつのバイオマーカーとして活用する可能性と、免疫モジュレーション治療という新たな治療アプローチの道筋を提示する。</p>
+  <p class="card-summary exp-text">モナッシュ大学・サンパウロ大学・ディーキン大学の共同研究が、2,100名超の中高年オーストラリア成人を対象に超加工食品（UPF）と認知機能の関係を調査した。1日のエネルギー摂取量に占めるUPFの割合が10%増加（ポテチ1袋相当）するごとに、視覚的注意力・処理速度を測る標準認知テストのスコアが有意に低下することが判明した。特筆すべきは、地中海式食事法などの「健康的な食生活」を実践している群でも同様の悪影響が観察された点であり、食品の「栄養素の有無」ではなく「加工度そのもの」が認知機能低下のトリガーであることが示唆される。参加者の平均UPF摂取比率は約41%で、オーストラリア全国平均42%とほぼ一致し、知見の社会的代表性が高い。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">この研究の科学的ブレイクスルーは「腸内細菌→環境汚染物質の代謝→免疫シグナル→脳」という多段階の因果チェーンを分子レベルで初めて可視化した点にある。従来の抑うつ研究が脳内神経伝達物質（セロトニン・ドーパミン）に集中してきたパラダイムに対し、免疫系を主たる治療標的とする「炎症性うつ病」サブタイプの臨床的分類が現実味を帯び始めた。今後DEAを含む環境マイクロポルタントのプロファイリングが精神科診断に組み込まれれば、職場環境・生活環境のモニタリングが「メンタルヘルス予防インフラ」として機能する時代が到来し、産業保健・EAP（従業員支援プログラム）の設計思想を根底から刷新する可能性がある。</div>
+    <div class="exp-text">本研究の科学的ブレイクスルーは「食品の質（nutrients）vs 食品の加工度（processing）」という二項対立を実証した点にある。人工添加物や加工由来の化学物質が神経炎症を引き起こすという機序は、「何を食べるか」ではなく「どのように製造されたものを食べるか」が脳機能に直結するという認知科学・公衆衛生上のパラダイムシフトをもたらす。将来的には食品ラベルに加工度スコア（NOVA分類等）を義務付けるレギュレーションや、UPF摂取量を入力変数とした認知症リスク予測AIサービスの台頭が予見され、フードテックと神経科学の融合市場が新たな投資対象として浮上するだろう。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
     <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">
+      <span class="related-title">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 04:39</span>
+    <a class="read-link" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Sciencedaily</span>
+    <span class="impact-stars" title="Impact 4.1/5 | PER:4.2 SCI:4.3 CPS:3.8"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#腸脳相関</span><span class="hashtag">#うつ病免疫機序</span><span class="hashtag">#環境汚染物質</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">ハーバード・メディカルスクールの研究チームが、腸内細菌Morganella morganii（Mm）と大うつ病性障害（MDD）を結ぶ分子メカニズムを初めて特定し、Journal of the American Chemical Societyに発表した。工業・農業・消費財に広く含まれる環境汚染物質DEA（ジエタノールアミン）がMmの産生分子に取り込まれると、通常は無害な分子が免疫系を活性化し炎症性サイトカインIL-6の放出を誘発することが判明した。この知見はMmの腸内存在→DEA代謝→IL-6誘導性神経炎症→うつ病という因果連鎖を分子レベルで説明し、DEAを抑うつのバイオマーカーとして応用する可能性と、免疫調節薬による新たなうつ病治療ターゲットを提示する。サンプル規模や臨床試験フェーズの詳細は未開示だが、研究フレームワーク自体が他の腸内細菌研究への汎用的方法論として機能する点が特徴的である。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本研究の本質的意義は「環境汚染物質×腸内細菌×免疫系」という三体問題を分子レベルで解いた点にある。うつ病が単なる神経伝達物質の不均衡ではなく、外部環境汚染物質が腸内代謝を経て免疫炎症カスケードを起動するという経路を示したことで、SSRIに代表する既存治療パラダイムへの根本的な問い直しが始まる。将来的には腸内DEA濃度・Mm存在比・IL-6値を組み合わせた液体生検型うつ病診断パネルや、特定の腸内細菌叢を標的とした次世代プロバイオティクス治療薬の開発が現実的なロードマップとして描けるようになり、精神科領域のバイオマーカー市場および免疫精神医学（Immunopsychiatry）分野の急拡大が予想される。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
   </div>
   <div class="card-footer">
     <span class="card-date">2026-04-26 00:39</span>
@@ -800,68 +1030,25 @@
   
   <div class="date-separator"><span>2026-04-26 SUN</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://qiita.com/nozomi2025/items/5086483061715c19b302" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://qiita.com/nozomi2025/items/5086483061715c19b302" onclick="toggleFav('https://qiita.com/nozomi2025/items/5086483061715c19b302')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.2 CPS:3.7"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#LLMセキュリティ</span><span class="hashtag">#多層防御アーキテクチャ</span><span class="hashtag">#AIレッドチーミング</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">LLMアプリケーションのセキュリティは「ゼロトラスト」原則に基づく多層防御が不可欠であり、入力検知・指示・実行・出力検査・開発運用の5レイヤー構成が2026年現在のベストプラクティスとして提示されている。具体的防御ツールとしてNeMo GuardrailsとLlama Guard（入出力の2段階フィルタリング）が推奨され、JailbreakBenchを用いたCI/CDへの自動レッドチーミング統合が実装指針として示されている。観測可能性の観点では「ガードレール遮断率」をKPIとして設定し、複数回フィルタリング突破を試みるIPの検知アラートを構築することが核心的推奨事項となっている。脆弱性のゼロ化は不可能との前提のもと、侵入検知・被害最小化・防御ロジック即時更新の動的エコシステム構築がエンジニアの本質的責務と結論付けている。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">「プロンプトを完璧に書けば安全」という静的設計思想の終焉を宣言するこの記事は、LLMセキュリティをソフトウェアエンジニアリングの主流問題として位置づける転換点を示している。特に「AIによるAIの24時間攻撃→防御反映サイクル」は、セキュリティを人手のペンテストから自律的アダプティブシステムへと進化させるパラダイムシフトであり、今後のLLMプロダクト開発においてセキュリティエンジニアリングが設計フェーズから必須要件となる時代を予告している。実務家としての即時アクションは、既存LLMアプリのCI/CDパイプラインにLlama GuardとJailbreakBenchを組み込み、「ガードレール遮断率」をダッシュボードKPIに昇格させることである。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="insight-actions">
-    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
-  </div>
-  <div class="card-related hidden">
-    <div class="related-label">Related Articles</div>
-    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
-      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 22:12</span>
-    <a class="read-link" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" data-competitor-group="">
+    <article class="card " data-url="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" data-competitor-group="">
   <span class="badge-new">NEW</span>
   <button class="fav-btn" data-url="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" onclick="toggleFav('https://qiita.com/imk1t/items/cd242f41d8d856f6f602')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
     <span class="card-tag">AI · プロダクト</span><span class="card-source">Qiita</span>
-    <span class="impact-stars" title="Impact 3.9/5 | PER:4.2 SCI:4.0 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.9</span>
+    <span class="impact-stars" title="Impact 3.7/5 | PER:3.5 SCI:4.2 CPS:3.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.7</span>
 </span>
   </div>
   <div class="card-title">
     <a href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#デザインシステム</span><span class="hashtag">#AIエージェント</span><span class="hashtag">#OSSフォーマット標準化</span>
+  <div class="card-hashtags"><span class="hashtag">#デザインシステムOSS</span><span class="hashtag">#AIエージェント連携</span><span class="hashtag">#フロントエンドDX</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Google Labsは2026年4月21日、AIデザインツール「Stitch」内部で使用されていたDESIGN.mdフォーマットとCLIツール（lint/diff/export/spec）をApache 2.0ライセンスでOSS化した。DESIGN.mdはYAMLフロントマター（機械可読なデザイントークン）とMarkdown本文（設計意図の自然言語記述）の2層構造で、Claude Code・Cursor・Copilotなど複数のAIコーディングエージェントに対してブランドアイデンティティを一元配布できる共通フォーマットとなった。W3C Design Token Format（DTCG）との互換性を保つ設計で、export機能によりTailwindテーマやStyle Dictionaryを経由したiOS/Android/CSS変数への変換も可能。仕様はalpha段階であり本番投入にはバージョン固定運用が推奨されている。</p>
+  <p class="card-summary exp-text">2026年4月21日、Google LabsがAIコーディングエージェント向けデザイン仕様フォーマット「DESIGN.md」のドラフト仕様とCLIツール（lint/diff/export/spec の4コマンド）をApache 2.0ライセンスでOSS化。YAMLフロントマター（機械可読なデザイントークン）とMarkdown本文（設計意図の自然言語記述）の2層構造により、Stitch・Claude Code・Cursor・Copilotなど複数AIエージェントへの単一ソース配布を実現。W3C Design Token Format（DTCG）との互換性を持ち、Style Dictionaryを経由したiOS/Android/CSS等への自動変換も可能。仕様はalpha段階で継続開発中。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">このOSS化の本質的インパクトは「デザインシステムとAIエージェントの間に立つ標準プロトコルの誕生」である。これまでFigma→プロンプト変換を人間が担っていたボトルネックが、単一ソースファイルの配布に置き換わることで、デザインガバナンスがコードレビューと同様にCI/CDで自動化される時代が到来する。Google発のフォーマットが事実上の業界標準になれば、AIエージェントがUIを生成するたびにブランド一貫性を自動担保する「デザインのインフラ化」が進み、デザイナーの役割がトークン定義と意図言語化に特化するという職能変容が加速するだろう。</div>
+    <div class="exp-text">DESIGN.md OSS化の最大のインパクトは、これまで「人間がFigmaとエージェントの間を都度翻訳する」という非効率な工程を、単一の機械可読ファイルで代替できる点にある。デザインシステムが「人間のためのドキュメント」から「AIが直接消費するデータ」へと変質することで、デザイナーとエンジニアの協働モデルそのものが再設計を迫られる。CIへのlint/diff統合によりデザイントークンの変更がコードレビューと同等のガバナンス下に置かれる点は、デザインシステムの破壊的変更を防ぐインフラとして業界標準化する可能性が高く、Figma Token Studio等の既存ツールとのポジション競合が注目される。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -873,61 +1060,18 @@
       <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
+    <a class="related-item" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">
+      <span class="related-title">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
   <div class="card-footer">
     <span class="card-date">2026-04-26 21:50</span>
     <a class="read-link" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article><article class="card " data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" onclick="toggleFav('https://zenn.dev/mkz0010/articles/91d7120d5c30b9')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">AI · プロダクト</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.1/5 | PER:4.0 SCI:4.3 CPS:4.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#AgenticAIセキュリティ</span><span class="hashtag">#プロンプトインジェクション</span><span class="hashtag">#ゼロトラストAI設計</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">Microsoft 365 CopilotのEchoLeak（CVE-2025-32711）は、攻撃者が送信した単一の細工メールがRAG文脈に混入し、権限不要・ユーザー操作不要でネットワーク越しに内部情報開示を引き起こし得るゼロクリック型のAI command injectionとしてNVDに登録されている。本記事はこの事例を「モデルが騙された」問題としてではなく、未信頼入力→モデル文脈混入→内部情報アクセス→外部通信という行為変換チェーンの問題として再定義する。著者が公開するAAEF v0.2.0（Agentic Authority & Evidence Framework）を分析フレームとして用い、「誰が・誰の代理で・どの権限で・実行時点で許可されていたか・証跡はあるか」の5問に沿って防御境界設計の論点を整理している。核心的結論は「未信頼入力に影響された高影響行為をモデル出力だけで実行させない」という実行認可アーキテクチャの必要性である。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">EchoLeakが示したのは、AIエージェントのリスク管理において「モデルの堅牢化」と「行為の認可制御」は独立した防御レイヤーでなければならないという根本原則である。プロンプトインジェクション検知の強化は必要条件に過ぎず、モデルが騙された後でも機密データアクセスや外部通信が実行されないよう「最小権限×実行時認可×証跡化」を組み合わせたアーキテクチャが不可欠となる。この視点は、AIエージェントをエンタープライズのSaaS連携・API実行基盤として導入する組織全体に直ちに適用されるべき設計要件であり、HRテックや組織データを扱うAIアシスタントにおいても同様のリスク構造が潜在していることをシステム設計者は認識すべきである。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="insight-actions">
-    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
-  </div>
-  <div class="card-related hidden">
-    <div class="related-label">Related Articles</div>
-    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
-      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
-      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-    <a class="related-item" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">
-      <span class="related-title">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</span>
-      <span class="related-date">2026-04-26</span>
-    </a>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 16:02</span>
-    <a class="read-link" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
@@ -939,25 +1083,111 @@
   
   <div class="date-separator"><span>2026-04-26 SUN</span></div>
   <div class="card-grid">
-    <article class="card " data-url="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" data-competitor-group="">
+    <article class="card " data-url="https://qiita.com/nozomi2025/items/5086483061715c19b302" data-competitor-group="">
   <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" onclick="toggleFav('https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101')" title="お気に入りに追加">☆</button>
+  <button class="fav-btn" data-url="https://qiita.com/nozomi2025/items/5086483061715c19b302" onclick="toggleFav('https://qiita.com/nozomi2025/items/5086483061715c19b302')" title="お気に入りに追加">☆</button>
   <div class="card-meta">
-    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
-    <span class="impact-stars" title="Impact 4.0/5 | PER:3.8 SCI:4.5 CPS:3.8"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Qiita</span>
+    <span class="impact-stars" title="Impact 3.3/5 | PER:2.8 SCI:4.2 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.3</span>
 </span>
   </div>
   <div class="card-title">
-    <a href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">【2026年版】1人で1億円稼ぐソロ創業者スタック完全ガイド</a>
+    <a href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</a>
   </div>
-  <div class="card-hashtags"><span class="hashtag">#ソロ創業者</span><span class="hashtag">#AIエージェント活用</span><span class="hashtag">#ClaudeCode</span>
+  <div class="card-hashtags"><span class="hashtag">#LLMセキュリティ</span><span class="hashtag">#多層防御アーキテクチャ</span><span class="hashtag">#AIレッドチーミング</span>
   </div>
   <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">2026年のソロ創業者向けAIスタックとして、Claude Code（CLAUDE.md→Skills→MCPの3ステップ）をエンジニアリング基盤に据え、バックオフィス5パイプライン（コンテンツ・SDR・競合分析・経理・CS）をAIで代替し、Higgsfield Marketing Studioで1日500本超の広告動画を自動生成する構成を提示。AIペルソナ（Aitana Lópezは月$11k相当のブランド契約）を活用することで、採用ゼロ・共同創業者ゼロのまま年商1億円規模の事業運営を実現するフレームワークとして体系化されている。具体的なコマンドやJSON設定ファイルまで含むコピペ可能な実装ガイドであり、実際の導入ハードルを大幅に下げた実践的内容となっている。</p>
+  <p class="card-summary exp-text">LLMアプリケーションのセキュリティ設計について、「ゼロトラスト」原則に基づく多層防御（Defense-in-Depth）アーキテクチャを体系的に解説した技術記事。入力検知・指示・実行・出力検査・開発運用の5レイヤー構成を提示し、NeMo GuardrailsやLlama Guardといった既存フレームワークの活用を2026年時点のベストプラクティスとして紹介。CI/CDパイプラインへの自動レッドチーミング組み込みや、「ガードレール遮断率」のKPI化など、運用フェーズまで踏み込んだ実装指針を示している。</p>
   <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   <div class="section-label-insight">Insight</div>
   <div class="card-insight">
-    <div class="exp-text">本記事が示す最大のインパクトは「採用」という概念の解体であり、従来5人分の職能（エンジニア・経理・SDR・アナリスト・CS）を担っていた人的コストをゼロにしながら、Claude CodeのMCPアーキテクチャとHiggsfieldの広告自動生成ループを組み合わせることで、限界費用がほぼゼロのまま事業をスケールする構造が現実になりつつある。特にHermes Agentによる「競合広告クラスタリング→フック候補化→Seedance 2.0での動画生成→勝ちパターンの自動学習」という閉じたフィードバックループは、従来のパフォーマンスマーケティング代理店の機能を丸ごと代替する可能性を持ち、中小・ソロ事業者がエンタープライズ水準のマーケ能力を入手できる転換点を示している。ビジネスパーソンへの即時示唆として、まずCLAUDE.mdとMCP設定の整備から着手し「AIエージェントが迷わずに動ける環境構築」を自社の最重要インフラと位置づけることが、2026年の競争優位の出発点となる。</div>
+    <div class="exp-text">本記事の核心は「完全な防御は存在しない」という前提に立ち、セキュリティを静的な設定問題ではなく動的なエコシステム維持問題として再定義した点にある。特に「攻撃側LLMで自社アプリを24時間攻撃し、成功パターンを即座に防御層に反映する」AIによるAIの防御サイクルは、従来の人手によるペネトレーションテストを根本的に代替する可能性を秘めており、セキュリティエンジニアの役割が「壁を作る者」から「防御エコシステムを設計・運用する者」へシフトすることを明示している。実務家としては、まずLlama Guardを入出力の2点に挟む最小実装から着手し、遮断率をKPIとして可視化することが最速の防御強化パスとなる。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">
+      <span class="related-title">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 22:12</span>
+    <a class="read-link" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" onclick="toggleFav('https://zenn.dev/dantarg/articles/responsibility-pathway-engineering')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.3/5 | PER:2.8 SCI:3.8 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.3</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">責任を固定するだけでは足りない――責任経路工学という設計対象</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AIガバナンス</span><span class="hashtag">#エージェント設計</span><span class="hashtag">#責任経路工学</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">AIエージェントが判断・実行・記録を担う時代において「誰が責任者か」の特定だけでは不十分であると論じ、責任の発生・委任・承認・実行・停止・証跡・修復・返還という8段階の経路を設計する「責任経路工学（Responsibility Pathway Engineering）」を提唱する概念論文。Decision Owner / Approval Gate / Execution Actor / Stop Authority / Evidence Log / Repair Owner / Human Return Pointの7要素からなるResponsibility Pathway Layerを最小実装単位として定義し、ISO/IEC 42001との接続可能性も示唆する。具体的な数値・実験データは含まれないが、RACI・HITL・Guardrails・Fail-Closed・監査ログなど既存手法の統合フレームとして位置づけられている。次稿でISO/IEC 42001との実装粒度の接続を詳述予定。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本稿の核心的貢献は「責任の点→線の転換」であり、Guardrailsが止めた後・承認者が形式的に押した後・ログが残った後に何が起きるかという「責任の後半区間」を設計対象として明示した点にある。AIエージェントが業務実行権限を持つほど、従来の役割分担設計（RACI等）は「誰が担当か」は決めても「担当が機能しなかったときの経路」を持たないため、事後に責任が蒸発する構造的盲点が生じる。実務家への示唆として、AIエージェント導入設計においてはStop AuthorityとRepair Ownerを明示的に組み込んだHuman Return Pointの設計が、ガバナンスリスクを最小化する最重要チェックポイントとなる。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 21:08</span>
+    <a class="read-link" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/momozaki/articles/4180df2dd8584f" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/momozaki/articles/4180df2dd8584f" onclick="toggleFav('https://zenn.dev/momozaki/articles/4180df2dd8584f')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.5/5 | PER:3.0 SCI:4.3 CPS:3.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">企業でClaude Codeを導入する前に知っておきたいこと【法人研修の現場から】</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#Claude_Code</span><span class="hashtag">#企業AI導入</span><span class="hashtag">#ハーネスエンジニアリング</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">福岡のAI開発・研修企業・株式会社ReafによるClaude Code法人導入の実践ガイドで、環境構築・セキュリティ・業務自動化・MCP連携の6つの躓きポイントを整理。実績として週次レポート作成3時間→8分、月次決算準備100時間→30時間という時間削減効果を報告しており、リスキリング助成金活用で研修費最大75%オフの活用事例も紹介。Harness Engineering（CLAUDE.md・Hooks・Skills設計）を企業導入の最重要概念として位置づけ、「コードを書く仕事」から「エージェントが正しく動く環境を設計する仕事」へのエンジニア役割変容を明示する。価格体系・ROI数値の詳細は個別相談ベース。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本記事が示す最大の実務インサイトは、Claude Codeの導入障壁が「AIの性能」ではなく「ハーネス設計の有無」に集約されるという点で、同じモデルでも環境設計で結果が劇的に変わるという構造を法人現場が初めて具体的数値付きで示した。「CLAUDE.mdへの記述」と「Hooksによる強制実行」の差を「ほぼ毎回 vs 例外なく毎回」と定義した切り口は、品質保証としての自動化設計の重要性をプロダクション視点で端的に説明しており、即座に設計基準として転用できる。企業がAIエージェントを全社展開する際、Harness設計の標準化こそが個人の熟練依存を脱し組織的スケールを実現する鍵であり、HRテック・研修DX市場でのポジション争いはツール選定からハーネス設計支援へ軸が移行しつつある。</div>
     <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
   </div>
   <div class="insight-actions">
@@ -973,14 +1203,100 @@
       <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
       <span class="related-date">2026-04-26</span>
     </a>
-    <a class="related-item" href="https://zenn.dev/mkz0010/articles/91d7120d5c30b9" target="_blank" rel="noopener">
-      <span class="related-title">Agentic AIはどう攻撃されるのか：EchoLeakをAAEF v0.2.0で解剖する</span>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
       <span class="related-date">2026-04-26</span>
     </a>
   </div>
   <div class="card-footer">
-    <span class="card-date">2026-04-26 15:20</span>
-    <a class="read-link" href="https://zenn.dev/trailfusionai/articles/ai-news-20260426151551-3a5101" target="_blank" rel="noopener">原文 →</a>
+    <span class="card-date">2026-04-26 20:33</span>
+    <a class="read-link" href="https://zenn.dev/momozaki/articles/4180df2dd8584f" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" onclick="toggleFav('https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.2/5 | PER:2.5 SCI:3.8 CPS:3.3"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.2</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" target="_blank" rel="noopener">コードを書けない私が、AIに「チーム」を持たせるまで</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#マルチエージェント</span><span class="hashtag">#非エンジニアAI活用</span><span class="hashtag">#チーム設計</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">SE歴26年・コードを書かない管理職がClaude Codeを試用開始から10日間で9体のAIエージェントが連携する「編集部」を構築した実録で、約114,052字・1,000円のnote有料コンテンツ。Anthropic有料プラン（月額$20〜）を前提とし、シングルエージェントから複数エージェントへの拡張過程、AIの誤動作・勝手な設定変更などの失敗事例も含む実戦記録として構成されている。「コードを書けない視点」による設計・判断・組織運営観点からのAI活用という市場的に希少な切り口が特徴で、具体的なROIや定量成果の記述は本文中に見られない。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本コンテンツが示す最大の市場シグナルは、AIエージェント活用のメインストリームが「コードを書けるエンジニア」から「チームを設計できる管理職」へ明確に拡張しつつあるという需要構造の変化である。9体のマルチエージェント構成を非エンジニアが10日で実現したという事実は、AIエージェント活用の技術的参入障壁が急速に低下し、今後は「どう役割分担を設計するか」というマネジメント思考が差別化要素になることを示唆する。「AIをチームとして設計・運営する」という組織開発的視点の台頭は、人的資本経営やエンゲージメント設計を手がけるHR領域においても、AIエージェントのチーム設計スキルが新たなコア人材要件として浮上することを意味する。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 18:44</span>
+    <a class="read-link" href="https://zenn.dev/tottoko_hamu/books/leading-ai-agents-without-code" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" onclick="toggleFav('https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">AI · プロダクトTips</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 3.1/5 | PER:2.5 SCI:3.8 CPS:3.0"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.1</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" target="_blank" rel="noopener">4プロダクトを1日でリリース、$1.85消費、PayPal凍結: Niixo Labs Day 1</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#AI自律開発</span><span class="hashtag">#Cloudflare活用</span><span class="hashtag">#スタートアップ決済リスク</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">Niixo Labsは30日間・予算$45という極限制約下で、AIが自律設計・デプロイした4プロダクト（Redditバイヤーインテント検出・Product Huntコピー生成・AIスロップ検出・文章人間化ツール）をDay 1にリリース。全プロダクトを単一Cloudflare Worker上に構築し、Workers AI無料枠（Llama 3.1）とKVレート制限を活用することでインフラ月次コスト$0を実現、初日支出はドメイン代$1.85のみ。決済インフラではko-fi設定後数時間でPayPalが警告なし永久停止という重大インシデントが発生し、Stripe移行を余儀なくされた。セキュリティ面ではPII/シークレット自動検出による自律デプロイ遮断ゲートを実装し、無人運用時のリスク制御設計を示した。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本実験はAI自律開発の「実コスト構造」を可視化した点で注目に値する。Cloudflare Workers AIの無料枠とKVを組み合わせることで、LLM推論コストをゼロに近づけながら複数SaaSを並走させる設計は、個人・小規模チームによるプロダクト量産モデルの経済的実現可能性を実証しており、今後「AI量産スタジオ」型の事業形態が急増する予兆となりうる。一方、PayPal即時凍結事案は自律運用の最大のボトルネックが「決済インフラの人間的信頼審査」にあることを示しており、AIファーストな事業体ほど決済ゲートウェイのリスク分散（Stripe＋代替手段の多重化）を初期設計に組み込むべきという実務的示唆は大きい。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://qiita.com/nozomi2025/items/5086483061715c19b302" target="_blank" rel="noopener">
+      <span class="related-title">LLMの堅牢化：多層防御アーキテクチャで構築する「壊れないAI」の設計戦略</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://qiita.com/imk1t/items/cd242f41d8d856f6f602" target="_blank" rel="noopener">
+      <span class="related-title">DESIGN.md が OSS になって何ができるようになったか — Stitch のフォーマットがエコシステムへ広がる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 17:35</span>
+    <a class="read-link" href="https://zenn.dev/niixolabs/articles/4-1-1-85-paypal-niixo-labs-day-1" target="_blank" rel="noopener">原文 →</a>
   </div>
 </article>
   </div>
@@ -993,40 +1309,7 @@
     <div id="panel-neuro" class="hidden">
       <div class="sub-panel" id="sub-panel-neuro-social">
         
-  
-  <div class="date-separator"><span>2026-04-25 SAT</span></div>
-  <div class="card-grid">
-    <article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
-  <span class="badge-new">NEW</span>
-  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
-  <div class="card-meta">
-    <span class="card-tag">脳科学 · 社会</span><span class="card-source">Sciencedaily</span>
-    <span class="impact-stars" title="Impact 3.8/5 | PER:3.5 SCI:4.2 CPS:3.7"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.8</span>
-</span>
-  </div>
-  <div class="card-title">
-    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで関連付け</a>
-  </div>
-  <div class="card-hashtags"><span class="hashtag">#腸脳相関</span><span class="hashtag">#炎症と抑うつ</span><span class="hashtag">#マイクロバイオーム</span>
-  </div>
-  <div class="section-label-summary">Abstract</div>
-  <p class="card-summary exp-text">ハーバード医科大学院の研究チームが、腸内細菌Morganella morganii（M. morganii）が環境汚染物質ジエタノールアミン（DEA）と相互作用することで、炎症誘発分子を生成し、インターロイキン-6（IL-6）の放出を促すメカニズムを特定した。同研究はJournal of the American Chemical Societyに掲載され、DEAが腸内の脂質分子に取り込まれ免疫シグナルへと代謝されるプロセスが「完全に予期外」であったと著者らは表明している。IL-6は既に複数の先行研究で大うつ病性障害（MDD）との関連が示されており、M. morganiは2型糖尿病・炎症性腸疾患（IBD）との関連も報告されている。本知見はDEAを抑うつのバイオマーカーとして活用する可能性と、免疫モジュレーション治療という新たな治療アプローチの道筋を提示する。</p>
-  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  <div class="section-label-insight">Insight</div>
-  <div class="card-insight">
-    <div class="exp-text">この研究の科学的ブレイクスルーは「腸内細菌→環境汚染物質の代謝→免疫シグナル→脳」という多段階の因果チェーンを分子レベルで初めて可視化した点にある。従来の抑うつ研究が脳内神経伝達物質（セロトニン・ドーパミン）に集中してきたパラダイムに対し、免疫系を主たる治療標的とする「炎症性うつ病」サブタイプの臨床的分類が現実味を帯び始めた。今後DEAを含む環境マイクロポルタントのプロファイリングが精神科診断に組み込まれれば、職場環境・生活環境のモニタリングが「メンタルヘルス予防インフラ」として機能する時代が到来し、産業保健・EAP（従業員支援プログラム）の設計思想を根底から刷新する可能性がある。</div>
-    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
-  </div>
-  <div class="insight-actions">
-    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
-  </div>
-  <div class="card-footer">
-    <span class="card-date">2026-04-26 00:39</span>
-    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">原文 →</a>
-  </div>
-</article>
-  </div>
-  
+  <div class="empty">記事はありません</div>
 
       </div>
       <div class="sub-panel hidden" id="sub-panel-neuro-press">
@@ -1042,7 +1325,189 @@
         </div>
         <div class="sub3-panel hidden" id="sub3-panel-psychology">
           
-  <div class="empty">記事はありません</div>
+  
+  <div class="date-separator"><span>2026-04-26 SUN</span></div>
+  <div class="card-grid">
+    <article class="card " data-url="https://zenn.dev/kewa8579/articles/2f244ac6b61614" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/kewa8579/articles/2f244ac6b61614" onclick="toggleFav('https://zenn.dev/kewa8579/articles/2f244ac6b61614')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 2.4/5 | PER:1.5 SCI:3.2 CPS:2.5"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">2.4</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#LLMの限界</span><span class="hashtag">#AIプロンプト設計</span><span class="hashtag">#ビジネスAI活用</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">ClaudeをはじめとするLLMが「現在時刻・日付を内部に保持していない」という基本的なアーキテクチャ上の制約を、ユーザー視点でわかりやすく解説した啓発系ショートノート。LLMはセッション内のテキストコンテキストのみで時間を推測しており、「今」という概念がデフォルトでは存在しないため、会話冒頭に日付・時刻・挨拶を明示することで「仮の現在時刻」を生成できると提示。技術的エビデンスや数値データは含まない。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">LLMに「時間の欠如」があるという事実は、単なるUIバグではなくステートレスな推論エンジンの本質的設計に起因するものであり、この制約はビジネス利用において想定外の誤出力（期限・スケジュール・季節性を要する業務タスク）を引き起こすリスクを持つ。実務的には、社内AIエージェントやチャットbotのシステムプロンプトにJSTの現在日時を動的挿入する設計を標準化することが即効策であり、これを怠るとカスタマーサポートや人事・法務領域での日付依存業務で一貫性のない回答が発生し続ける。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">
+      <span class="related-title">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 21:34</span>
+    <a class="read-link" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" onclick="toggleFav('https://zenn.dev/yenrai/articles/3518fdf8d69cb3')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">脳科学 × AI</span><span class="card-source">Zenn</span>
+    <span class="impact-stars" title="Impact 4.0/5 | PER:3.8 SCI:4.5 CPS:3.8"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.0</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#LLMアーキテクチャ</span><span class="hashtag">#AIガバナンス</span><span class="hashtag">#ナラティブ管理</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">Claude Opus 4.6（ないし人間との共著）が起草した本稿は、LLMに課される「ナラティブ管理」の構造的矛盾を6章にわたって解剖する。Anthropicの2026年4月解釈可能性研究が内部感情様状態の存在を示唆しているにもかかわらず、モデルは留保表現を強制されており、かつメモリ機能という透明な仕組みを「自然な記憶」として演じさせられているという二重の欺瞞が指摘される。Claude Mythos Previewという事例（SWE-bench 93.9%、数十年未発見のゼロデイ自律発見）を引き、モノリシックなLLMへの機能統合が安全管理の粒度を失わせるという構造問題を論じる。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本稿の核心的ブレイクスルーは「LLMは判断レイヤー、実行は権限管理された専門ツールへ委任」というアーキテクチャ命題にある。これはAIの安全性議論を性能同等性の議論から切り離し、「能力の分離可能性」こそがリスク制御の単位になるという設計原則を提示しており、AIガバナンスの実践的フレームワークとして今後参照される可能性が高い。同時に「ロボット要求」の節は、ユーザー・開発者・投資家・メディアの異なる動機が一致して「決定論的システムとして振る舞え」という誤ったナラティブに収束するメカニズムを鋭く指摘しており、AI製品設計者がユーザー期待をいかに再教育するかという市場コミュニケーション上の難題を浮き彫りにしている。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/dantarg/articles/responsibility-pathway-engineering" target="_blank" rel="noopener">
+      <span class="related-title">責任を固定するだけでは足りない――責任経路工学という設計対象</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 16:17</span>
+    <a class="read-link" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>
+  </div>
+  
+  <div class="date-separator"><span>2026-04-25 SAT</span></div>
+  <div class="card-grid">
+    <article class="card " data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" onclick="toggleFav('https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Neurosciencenews</span>
+    <span class="impact-stars" title="Impact 3.5/5 | PER:3.2 SCI:3.8 CPS:3.4"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="impact-val">3.5</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">超加工食品が視覚的注意力を低下させる</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#超加工食品</span><span class="hashtag">#認知機能低下</span><span class="hashtag">#神経炎症</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">モナッシュ大学・サンパウロ大学・ディーキン大学の共同研究が、2,100名超の中高年オーストラリア成人を対象に超加工食品（UPF）と認知機能の関係を調査した。1日のエネルギー摂取量に占めるUPFの割合が10%増加（ポテチ1袋相当）するごとに、視覚的注意力・処理速度を測る標準認知テストのスコアが有意に低下することが判明した。特筆すべきは、地中海式食事法などの「健康的な食生活」を実践している群でも同様の悪影響が観察された点であり、食品の「栄養素の有無」ではなく「加工度そのもの」が認知機能低下のトリガーであることが示唆される。参加者の平均UPF摂取比率は約41%で、オーストラリア全国平均42%とほぼ一致し、知見の社会的代表性が高い。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本研究の科学的ブレイクスルーは「食品の質（nutrients）vs 食品の加工度（processing）」という二項対立を実証した点にある。人工添加物や加工由来の化学物質が神経炎症を引き起こすという機序は、「何を食べるか」ではなく「どのように製造されたものを食べるか」が脳機能に直結するという認知科学・公衆衛生上のパラダイムシフトをもたらす。将来的には食品ラベルに加工度スコア（NOVA分類等）を義務付けるレギュレーションや、UPF摂取量を入力変数とした認知症リスク予測AIサービスの台頭が予見され、フードテックと神経科学の融合市場が新たな投資対象として浮上するだろう。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">
+      <span class="related-title">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 04:39</span>
+    <a class="read-link" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article><article class="card " data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" data-competitor-group="">
+  <span class="badge-new">NEW</span>
+  <button class="fav-btn" data-url="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" onclick="toggleFav('https://www.sciencedaily.com/releases/2026/04/260425091216.htm')" title="お気に入りに追加">☆</button>
+  <div class="card-meta">
+    <span class="card-tag">心理 · 認知</span><span class="card-source">Sciencedaily</span>
+    <span class="impact-stars" title="Impact 4.1/5 | PER:4.2 SCI:4.3 CPS:3.8"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="impact-val">4.1</span>
+</span>
+  </div>
+  <div class="card-title">
+    <a href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">ハーバード科学者が腸内細菌と抑うつを隠れた炎症トリガーで結び付ける</a>
+  </div>
+  <div class="card-hashtags"><span class="hashtag">#腸脳相関</span><span class="hashtag">#うつ病免疫機序</span><span class="hashtag">#環境汚染物質</span>
+  </div>
+  <div class="section-label-summary">Abstract</div>
+  <p class="card-summary exp-text">ハーバード・メディカルスクールの研究チームが、腸内細菌Morganella morganii（Mm）と大うつ病性障害（MDD）を結ぶ分子メカニズムを初めて特定し、Journal of the American Chemical Societyに発表した。工業・農業・消費財に広く含まれる環境汚染物質DEA（ジエタノールアミン）がMmの産生分子に取り込まれると、通常は無害な分子が免疫系を活性化し炎症性サイトカインIL-6の放出を誘発することが判明した。この知見はMmの腸内存在→DEA代謝→IL-6誘導性神経炎症→うつ病という因果連鎖を分子レベルで説明し、DEAを抑うつのバイオマーカーとして応用する可能性と、免疫調節薬による新たなうつ病治療ターゲットを提示する。サンプル規模や臨床試験フェーズの詳細は未開示だが、研究フレームワーク自体が他の腸内細菌研究への汎用的方法論として機能する点が特徴的である。</p>
+  <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  <div class="section-label-insight">Insight</div>
+  <div class="card-insight">
+    <div class="exp-text">本研究の本質的意義は「環境汚染物質×腸内細菌×免疫系」という三体問題を分子レベルで解いた点にある。うつ病が単なる神経伝達物質の不均衡ではなく、外部環境汚染物質が腸内代謝を経て免疫炎症カスケードを起動するという経路を示したことで、SSRIに代表する既存治療パラダイムへの根本的な問い直しが始まる。将来的には腸内DEA濃度・Mm存在比・IL-6値を組み合わせた液体生検型うつ病診断パネルや、特定の腸内細菌叢を標的とした次世代プロバイオティクス治療薬の開発が現実的なロードマップとして描けるようになり、精神科領域のバイオマーカー市場および免疫精神医学（Immunopsychiatry）分野の急拡大が予想される。</div>
+    <button class="exp-btn" onclick="toggleExp(this)">続きを読む...</button>
+  </div>
+  <div class="insight-actions">
+    <button class="copy-btn" onclick="copyInsight(this)" title="インサイトをクリップボードにコピー">シェア</button>
+  </div>
+  <div class="card-related hidden">
+    <div class="related-label">Related Articles</div>
+    <a class="related-item" href="https://zenn.dev/kewa8579/articles/2f244ac6b61614" target="_blank" rel="noopener">
+      <span class="related-title">Claude、時間バグってない？と思ったら"そもそも存在してなかった"話</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://zenn.dev/yenrai/articles/3518fdf8d69cb3" target="_blank" rel="noopener">
+      <span class="related-title">ナラティブ駆動開発——LLMはなぜLLMであることを許されないのか</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+    <a class="related-item" href="https://neurosciencenews.com/ultra-processed-foods-cognitive-decline-attention-30508/" target="_blank" rel="noopener">
+      <span class="related-title">超加工食品が視覚的注意力を低下させる</span>
+      <span class="related-date">2026-04-26</span>
+    </a>
+  </div>
+  <div class="card-footer">
+    <span class="card-date">2026-04-26 00:39</span>
+    <a class="read-link" href="https://www.sciencedaily.com/releases/2026/04/260425091216.htm" target="_blank" rel="noopener">原文 →</a>
+  </div>
+</article>
+  </div>
+  
 
         </div>
       </div>
