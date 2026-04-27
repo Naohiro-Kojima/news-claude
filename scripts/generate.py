@@ -504,8 +504,8 @@ HTML_TEMPLATE = """\
   <div class="card-meta">
     <span class="card-tag">{{ article.category_label }}</span>
     {%- if article.source %}<span class="card-source">{{ article.source }}</span>{% endif %}
-    {{ render_stars(article.impact, article.impact_axes) }}
   </div>
+  {{ render_stars(article.impact, article.impact_axes) }}
   <div class="card-title">
     <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title_ja }}</a>
   </div>
@@ -825,7 +825,8 @@ HTML_TEMPLATE = """\
     }
 
     /* ===== Card Internals ===== */
-    .card-meta { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: nowrap; }
+    .impact-block { margin-bottom: 6px; }
     .card-tag {
       display: inline-block;
       font-size: 9.5px;
@@ -1579,9 +1580,9 @@ HTML_TEMPLATE = """\
   <button class="fav-btn favorited" data-url="${a.url}" onclick="toggleFav('${a.url.replace(/'/g,"\\'")}')">★</button>
   <div class="card-meta">
     <span class="card-tag">${a.category_label||''}</span>${src}
-    <div class="impact-block">
+  </div>
+  <div class="impact-block">
     <span class="impact-stars" title="Impact ${imp.toFixed(1)}/5${axTitle}">${stars}<span class="impact-val">${imp.toFixed(1)}</span><span class="impact-label">Total</span></span>${axesHtml}
-    </div>
   </div>
   <div class="card-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title_ja}</a></div>
   ${hashtags ? `<div class="card-hashtags">${hashtags}</div>` : ''}
