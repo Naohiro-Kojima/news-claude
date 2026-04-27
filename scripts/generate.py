@@ -825,8 +825,7 @@ HTML_TEMPLATE = """\
     }
 
     /* ===== Card Internals ===== */
-    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: nowrap; }
-    .impact-block { margin-bottom: 6px; }
+    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: nowrap; }
     .card-tag {
       display: inline-block;
       font-size: 9.5px;
@@ -964,7 +963,7 @@ HTML_TEMPLATE = """\
     [data-theme="dark"] .hashtag { color: var(--accent2); background: var(--tag-bg); }
     .impact-val { font-size: 10px; color: var(--muted); font-family: -apple-system, sans-serif; margin-left: 2px; }
     .impact-label { font-size: 8px; color: var(--muted); font-family: -apple-system, sans-serif; letter-spacing: 0.04em; margin-left: 4px; text-transform: uppercase; }
-    .impact-block { display: inline-flex; flex-direction: column; gap: 2px; }
+    .impact-block { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 8px; line-height: 1; }
     .impact-axes { display: flex; gap: 6px; flex-wrap: nowrap; align-items: center; }
     .axis-item { display: inline-flex; align-items: center; gap: 1px; }
     .axis-label { font-size: 7.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--muted); font-family: -apple-system, sans-serif; text-transform: uppercase; min-width: 20px; }
