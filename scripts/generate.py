@@ -970,6 +970,12 @@ HTML_TEMPLATE = """\
     .mini-val { font-size: 8px; line-height: 1; color: var(--muted); font-family: -apple-system, sans-serif; margin-left: 1px; }
     .empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 60px 0; font-size: 14px; font-family: -apple-system, sans-serif; }
 
+    /* ===== DEBUG (REMOVE) ===== */
+    .card-meta { background: rgba(255,165,0,0.25) !important; }
+    .impact-block { background: rgba(255,0,0,0.1) !important; outline: 2px solid red; }
+    .impact-stars { background: rgba(0,200,0,0.3) !important; }
+    .impact-axes { background: rgba(0,100,255,0.3) !important; }
+
     /* ===== Accordion ===== */
     .exp-text { max-height: 4.8em; overflow: hidden; transition: max-height 0.32s ease; }
     .exp-btn {
